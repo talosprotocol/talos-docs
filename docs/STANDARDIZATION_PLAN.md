@@ -21,79 +21,78 @@ This document outlines the roadmap to unify packaging, code style, and coding st
 
 ## 2. Target State
 
-### 2.1 Unified Versioning
-All SDKs will follow a **Lock-Step Versioning** model initially, synchronizing with the `talos-contracts` version (currently moving to `v0.2.0`).
-- **Action**: Bump all SDKs to `0.2.0-alpha`.
-- **Tooling**: Implement a root-level `version-sync` script that updates `pyproject.toml`, `package.json`, `pom.xml`, etc.
+### 2.1 Versioning Strategy (Option A)
+**Phase 1 (Stabilization)**: Lock-step versioning (e.g., `0.2.0-alpha` through `0.2.x`) for all SDKs and Contracts.
+**Phase 2 (Long-term)**: Decoupled Semantic Versioning.
+- SDK Version is independent.
+- Compatibility governed by `PROTOCOL_RANGE` + `CONTRACT_HASH`.
+- Conformance tests select vectors by **Release Set**.
 
-### 2.2 Standardized Configuration (Google Style)
-
-All projects MUST follow [Google Style Guides](https://google.github.io/styleguide/).
+### 2.2 Standardized Configuration
 
 #### Python (`pyproject.toml`)
 - **Style**: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
-- **Linter**: `ruff` (Select rules matching Google style).
+- **Linter**: `ruff` (Google rules).
 - **Formatter**: `ruff format` (docstring-code-format = true).
-- **Docstrings**: Google Style (`"""Args: ... Returns: ..."""`).
-- **Types**: `mypy` (strict = true).
+- **Types**: `mypy` (Strict for Core Modules: `canonical`, `wallet`, `mcp`, `session`; Gradual for others).
+- **DTOs**: `Pydantic` mandated.
 
 #### TypeScript (`package.json`)
 - **Style**: [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html).
-- **Tooling**: `gts` (Google TypeScript Style) instead of standard eslint/prettier.
+- **Tooling**: **Option A** - `eslint` + `prettier` configured with Google rules (Minimize churn).
 - **Types**: `strict: true`.
 
 #### Java (`pom.xml`)
 - **Style**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html).
 - **Formatter**: `spotless-maven-plugin` with `googleJavaFormat()`.
+- **DI**: Manual wiring or lightweight interfaces for SDK lib (Avoid heavy Spring in Kernel).
 
 #### Go
 - **Style**: [Google Go Style](https://google.github.io/styleguide/go/).
-- **Linter**: `golangci-lint` configured for Google best practices.
+- **Linter**: `golangci-lint` (Google best practices).
 
-#### Shell
+#### Rust
+- **Linter**: `clippy`.
+- **Safety**: Fuzz harness for decoders.
 - **Style**: [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
 - **Linter**: `shellcheck` (enforced in CI).
 
-### 2.3 Architecture Standards (Hexagonal / Ports & Adapters)
+### 2.3 Architecture Standards
 
-All applications MUST follow **Hexagonal Architecture** (Ports and Adapters) to ensure extensibility and separation of concerns.
+#### SDK Libraries (Kernel + Adapters)
+SDKs are libraries, not services. They must use a **Kernel + Adapters** model.
+1.  **Kernel**: Pure logic, Schema-bound types, Deterministic Framing, Crypto Interfaces.
+    - **NO** heavy framework dependencies (e.g. No Spring in core SDK).
+2.  **Adapters**: Implementations for Crypto Provider, Transport, Filesystem.
+3.  **Dependency Injection**:
+    - **Libraries**: Manual Constructor/Interface injection. Keep it lean.
+    - **Apps**: Framework DI (Spring, FastAPI) is acceptable.
 
-#### Backend (Hexagonal)
-1.  **Domain Layer (Core)**:
-    - Pure business logic.
-    - **NO dependencies** on frameworks, databases, or external SDKs.
-    - Defines **Ports** (Interfaces) for all external interactions (e.g., `RepositoryPort`, `CryptoProviderPort`).
-2.  **Infrastructure Layer (Adapters)**:
-    - Implements Ports.
-    - **Database**: PostgreSQL adapter, In-Memory adapter.
-    - **Talos SDK**: The SDK itself is an *Infrastructure Adapter*. **DO NOT** import `talos_sdk` directly in the Domain Layer. Wrap it in a Port (e.g., `TalosServicePort`).
-3.  **Application Layer**:
-    - Orchestrates Use Cases / Services.
-    - Wires Adapters to Ports via Dependency Injection.
+#### Backend Apps (Hexagonal)
+- Follow Ports and Adapters. Domain decoupled from Infrastructure.
 
-#### Frontend (Clean Architecture)
-Frontend apps must separate **UI Components** from **Business Logic** and **Data Access**.
-1.  **UI/View**: React Components / Tailwind. Dumb rendering.
-2.  **Logic/State**: Hooks / Context / Stores.
-3.  **Infrastructure**: API Clients / SDK Wrappers.
-    - The API Client is an adapter.
-    - UI Components should ask for data via a hooked interface (Port), not call `fetch` directly.
+#### Frontend Apps (Clean)
+- Separate UI from Logic and Data Adapters.
 
-#### Extensibility First
-- **Database Agnostic**: All apps must support swapping the database (e.g. Postgres <-> SQLite) by implementing the Repository Port.
-- **SDK Agnostic**: The system must allow swapping the underlying Talos SDK implementation (e.g. Python SDK <-> Remote GRPC Service) without changing business logic.
+### 2.4 Testing & Manifest Standards
+- **Coverage**: >= 80% Overall.
+- **Happy Path**: 100% Coverage for required methods and release-set vectors.
+- **Conformance**: Vectors are **required gates**.
+- **Manifests**: All SDK manifests (`pyproject.toml`, etc.) MUST validate against `talos-contracts/sdk/sdk_manifest.schema.json`.
 
-- **Dependency Injection (DI)**: All applications/SDKs MUST use dependency injection principles.
-    - **Java**: Spring Boot (Autowired).
-    - **Python**: Constructor injection or `dependencies` (FastAPI style) / `pydantic-settings`.
-    - **Typescript**: Constructor injection (e.g. `InversifyJS` or manual pattern).
-    - **Go**: Interface injection.
-- **Data Modeling**:
-    - **Python**: **MUST** use `Pydantic` for all data transfer objects and configuration.
-
-### 2.4 Testing Standards
-- **Happy Path Guarantee**: Every feature MUST have at least one explicit "Happy Path" unit test demonstrating success under normal conditions.
-- **Coverage**: 80% Minimum line coverage.
+### 2.5 Universal Makefile Interface
+Every repository MUST implement these targets:
+```makefile
+all: install lint test build conformance
+install:     # Install deps
+typecheck:   # Language specific type check
+lint:        # Style + Types
+format:      # Auto-fix style
+test:        # Unit tests
+conformance: # Run vectors (Release Sets)
+build:       # Compile artifacts
+clean:       # Remove artifacts
+```
 
 ## 3. Implementation Roadmap
 
@@ -102,10 +101,6 @@ Frontend apps must separate **UI Components** from **Business Logic** and **Data
 - [ ] **Java**: Add `spotless` plugin, verify Spring context.
 - [ ] **TypeScript**: Audit `tsconfig` strictness, verify DI pattern.
 
-### 2.5 Universal Makefile Interface
-Every repository MUST implement these targets:
-```makefile
-all: install lint test build
 install: # Install deps
 lint:    # Check style & types (fail on error)
 format:  # Auto-fix style
