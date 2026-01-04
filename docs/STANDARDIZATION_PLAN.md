@@ -12,7 +12,7 @@ This document outlines the roadmap to unify packaging, code style, and coding st
 | **Formatting** | Manual | `prettier` | Manual | `gofmt` | `rustfmt` |
 | **Type Safety** | Loose | Strict | Static | Static | Static |
 | **Build** | `setup.py`/toml | `npm` | `maven` | `go build` | `cargo` |
-| **CI/CD** | Inconsistent | Inconsistent | Inconsistent | - | - |
+| **CI/CD** | Inconsistent | Inconsistent | Inconsistent | Inconsistent / Missing | Inconsistent / Missing |
 
 **Key Issues:**
 1.  **Divergent Versioning**: SDKs are out of sync, making compatibility tracking difficult.
@@ -25,7 +25,7 @@ This document outlines the roadmap to unify packaging, code style, and coding st
 **Phase 1 (Stabilization)**: Lock-step versioning (e.g., `0.2.0-alpha` through `0.2.x`) for all SDKs and Contracts.
 **Phase 2 (Long-term)**: Decoupled Semantic Versioning.
 - SDK Version is independent.
-- Compatibility governed by `PROTOCOL_RANGE` + `CONTRACT_HASH`.
+- Compatibility governed by `PROTOCOL_RANGE` + `CONTRACT_HASH` (and `SCHEDULE_HASH` for ratchet).
 - Conformance tests select vectors by **Release Set**.
 
 ### 2.2 Standardized Configuration
@@ -34,26 +34,34 @@ This document outlines the roadmap to unify packaging, code style, and coding st
 - **Style**: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
 - **Linter**: `ruff` (Google rules).
 - **Formatter**: `ruff format` (docstring-code-format = true).
-- **Types**: `mypy` (Strict for Core Modules: `canonical`, `wallet`, `mcp`, `session`; Gradual for others).
+- **Types**: `mypy` (Strict for Core Modules; Gradual for others).
+    - **Core**: `canonical`, `wallet`, `mcp`, `session`, `crypto`.
 - **DTOs**: `Pydantic` mandated.
 
 #### TypeScript (`package.json`)
 - **Style**: [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html).
 - **Tooling**: **Option A** - `eslint` + `prettier` configured with Google rules (Minimize churn).
 - **Types**: `strict: true`.
+    - **Core**: `canonical`, `base64url`, `errors`, `mcp`, `session`.
 
 #### Java (`pom.xml`)
 - **Style**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html).
 - **Formatter**: `spotless-maven-plugin` with `googleJavaFormat()`.
-- **DI**: Manual wiring or lightweight interfaces for SDK lib (Avoid heavy Spring in Kernel).
+- **DI**: Manual wiring or lightweight interfaces for SDK lib (No Spring in Kernel).
+    - **Core**: `canonical`, `crypto`, `mcp`, `session` packages.
 
 #### Go
 - **Style**: [Google Go Style](https://google.github.io/styleguide/go/).
 - **Linter**: `golangci-lint` (Google best practices).
+    - **Core**: `pkg/talos/canonical`, `pkg/talos/crypto`, `pkg/talos/mcp`, `pkg/talos/session`.
 
 #### Rust
 - **Linter**: `clippy`.
+- **Formatter**: `rustfmt`.
 - **Safety**: Fuzz harness for decoders.
+    - **Core**: `canonical`, `base64url`, `frame codec`, `crypto`.
+
+#### Shell
 - **Style**: [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
 - **Linter**: `shellcheck` (enforced in CI).
 
@@ -94,29 +102,40 @@ build:       # Compile artifacts
 clean:       # Remove artifacts
 ```
 
+### 2.6 Acceptance Criteria (Per SDK)
+- `make typecheck` passes.
+- `make lint` passes.
+- `make test` passes with **>= 80% coverage** (100% Happy Path).
+- `make conformance RELEASE_SET=<...>` passes for required sets.
+- Packaging metadata validates against `sdk_manifest.schema.json`.
+- Exports: `SDK_VERSION`, `PROTOCOL_RANGE`, `CONTRACT_HASH`, `SCHEDULE_HASH`.
+- Repo-Lint: No deep links, canonicalization via contracts only.
+
 ## 3. Implementation Roadmap
 
-### Phase 1: Configuration & Architecture Hardening (Immediate)
-- [ ] **Python**: Enforce `mypy`, strict `ruff`, refactor to `Pydantic` models if missing.
-- [ ] **Java**: Add `spotless` plugin, verify Spring context.
-- [ ] **TypeScript**: Audit `tsconfig` strictness, verify DI pattern.
+### Phase 1: Standards and Contracts First (Foundation)
+- [ ] **Specs**: Add `sdk/sdk_manifest.schema.json` and `sdk/error_codes.json` validation to `talos-contracts`.
+- [ ] **Makefiles**: Add required targets (`typecheck`, `conformance`) across all SDKs.
+- [ ] **Lint**: Decide TS lint strategy (eslint/prettier google config).
 
-install: # Install deps
-lint:    # Check style & types (fail on error)
-format:  # Auto-fix style
-test:    # Run unit tests (Must include happy paths)
-build:   # Compile artifacts
-clean:   # Remove artifacts
-```
+### Phase 2: Tooling Enforcement (Per Language)
+- [ ] **Python**: `ruff format/lint`, `mypy --strict` (Core), Pydantic DTOs.
+- [ ] **Java**: `spotless` (Google Java Format), Verify build/tests (No Spring in Core).
+- [ ] **TypeScript**: Strict `tsconfig`, fix lint rules.
+- [ ] **Go**: `golangci-lint`, `goimports`.
+- [ ] **Rust**: `clippy`, `rustfmt`, Fuzz harnesses.
+- [ ] **Version Sync**: Implement script to update version and compatible hashes (`PROTOCOL_RANGE`, `CONTRACT_HASH`).
 
-### Phase 2: Version Synchronization
-- [ ] Create `scripts/sync_versions.py`.
-- [ ] Bump all SDKs to `0.2.0`.
+### Phase 3: CI Templates and Consistency Gates
+- [ ] **CI Contract**:
+    - `make typecheck`
+    - `make lint`
+    - `make test`
+    - `make conformance` (Non-negotiable)
+- [ ] **Repo-Lint**: Add CI job for repo boundary enforcement.
+- [ ] **Pre-commit**: Optional (must match CI). CI is the source of truth.
 
-### Phase 3: CI/CD Enforcement
-- [ ] Create `.github/workflows/ci-{lang}.yml` templates.
-- [ ] Enforce `make lint` and `make test` in CI.
-
-## 4. Maintenance
-- **Dependabot**: Enable for all repos to keep dependencies fresh.
-- **pre-commit**: Add `.pre-commit-config.yaml` to enforce standards locally before push.
+### Phase 4: Version Policy & Release
+- [ ] **Lock-step**: Sync all SDKs to `0.2.0-alpha`.
+- [ ] **Stamping**: Embed `CONTRACT_HASH` and `SCHEDULE_HASH` into builds.
+- [ ] **Artifacts**: Publish with SBOM, Changelog, Conformance Report.
