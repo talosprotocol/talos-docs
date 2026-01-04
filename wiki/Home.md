@@ -28,10 +28,15 @@ Talos uses **git submodules** for a multi-repo architecture:
 | `talos-core-rs` | Rust performance kernel |
 | `talos-sdk-py` | Python SDK |
 | `talos-sdk-ts` | TypeScript SDK |
+| `talos-sdk-go` | Go SDK |
+| `talos-sdk-java` | Java SDK |
 | `talos-gateway` | FastAPI Gateway |
 | `talos-audit-service` | Audit aggregator |
 | `talos-mcp-connector` | MCP bridge |
 | `talos-dashboard` | Next.js Console |
+| `talos-docs` | Documentation wiki |
+| `talos-examples` | Example applications |
+
 
 **Kernel Artifacts** (from `talos-contracts`):
 - `schemas/*.json` – JSON Schema definitions

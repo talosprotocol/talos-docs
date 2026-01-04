@@ -100,21 +100,25 @@ make clean      # Remove all dependencies
 ```
 talos/
 ├── deploy/
-│   ├── repos/              # 8 git submodules
+│   ├── repos/              # 12 git submodules
 │   │   ├── talos-contracts/
 │   │   ├── talos-core-rs/
 │   │   ├── talos-sdk-py/
 │   │   ├── talos-sdk-ts/
+│   │   ├── talos-sdk-go/
+│   │   ├── talos-sdk-java/
 │   │   ├── talos-gateway/
 │   │   ├── talos-audit-service/
 │   │   ├── talos-mcp-connector/
-│   │   └── talos-dashboard/
+│   │   ├── talos-dashboard/
+│   │   ├── talos-docs/
+│   │   └── talos-examples/
 │   └── scripts/
 │       ├── setup.sh
 │       ├── start_all.sh
 │       ├── cleanup_all.sh
 │       └── run_all_tests.sh
-├── docs/wiki/
+├── docs/wiki/              # (deprecated, use talos-docs)
 └── README.md
 ```
 
