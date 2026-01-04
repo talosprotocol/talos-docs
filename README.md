@@ -54,7 +54,17 @@ This repository (`talos-docs`) defines the topology above, serving as the archit
 - **Proofs**: Markdown with LaTeX math mode.
 
 ## Evaluation
-Evaluation: N/A for this repo (See: `talos-contracts` for vector pass rates, or individual SDKs for performance benchmarks).
+Latest Conformance Matrix (2026-01-04):
+
+| SDK | v1.0.0 | v1.1.0 | Status |
+|---|---|---|---|
+| **Python** | ❌ | ❌ | Failing (Regression, see logs) |
+| **TypeScript** | ✅ | ✅ | Passing (Legacy Suite) |
+| **Go** | ❌ | ❌ | Alpha / Not Implemented |
+| **Java** | ❌ | ❌ | Alpha / Not Implemented |
+| **Rust** | ❌ | ❌ | Core bindings only |
+
+Run `./deploy/scripts/run_sdk_matrix.sh` to replicate. See `deploy/reports/` for details.
 
 ## Usage
 ### Quickstart
