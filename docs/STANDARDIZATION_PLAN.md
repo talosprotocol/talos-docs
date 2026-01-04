@@ -54,7 +54,35 @@ All projects MUST follow [Google Style Guides](https://google.github.io/stylegui
 - **Style**: [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
 - **Linter**: `shellcheck` (enforced in CI).
 
-### 2.3 Architecture Standards
+### 2.3 Architecture Standards (Hexagonal / Ports & Adapters)
+
+All applications MUST follow **Hexagonal Architecture** (Ports and Adapters) to ensure extensibility and separation of concerns.
+
+#### Backend (Hexagonal)
+1.  **Domain Layer (Core)**:
+    - Pure business logic.
+    - **NO dependencies** on frameworks, databases, or external SDKs.
+    - Defines **Ports** (Interfaces) for all external interactions (e.g., `RepositoryPort`, `CryptoProviderPort`).
+2.  **Infrastructure Layer (Adapters)**:
+    - Implements Ports.
+    - **Database**: PostgreSQL adapter, In-Memory adapter.
+    - **Talos SDK**: The SDK itself is an *Infrastructure Adapter*. **DO NOT** import `talos_sdk` directly in the Domain Layer. Wrap it in a Port (e.g., `TalosServicePort`).
+3.  **Application Layer**:
+    - Orchestrates Use Cases / Services.
+    - Wires Adapters to Ports via Dependency Injection.
+
+#### Frontend (Clean Architecture)
+Frontend apps must separate **UI Components** from **Business Logic** and **Data Access**.
+1.  **UI/View**: React Components / Tailwind. Dumb rendering.
+2.  **Logic/State**: Hooks / Context / Stores.
+3.  **Infrastructure**: API Clients / SDK Wrappers.
+    - The API Client is an adapter.
+    - UI Components should ask for data via a hooked interface (Port), not call `fetch` directly.
+
+#### Extensibility First
+- **Database Agnostic**: All apps must support swapping the database (e.g. Postgres <-> SQLite) by implementing the Repository Port.
+- **SDK Agnostic**: The system must allow swapping the underlying Talos SDK implementation (e.g. Python SDK <-> Remote GRPC Service) without changing business logic.
+
 - **Dependency Injection (DI)**: All applications/SDKs MUST use dependency injection principles.
     - **Java**: Spring Boot (Autowired).
     - **Python**: Constructor injection or `dependencies` (FastAPI style) / `pydantic-settings`.
