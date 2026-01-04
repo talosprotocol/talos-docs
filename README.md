@@ -12,26 +12,32 @@ Autonomous agents require a communication substrate that guarantees security wit
 
 ```mermaid
 graph TD
-    subgraph "Agent Ecosystem"
-        A[Python Agent] <-->|MCP| TP[Talos SDK (Py)]
-        B[TS Agent] <-->|MCP| TS[Talos SDK (TS)]
-        C[Java Agent] <-->|MCP| TJ[Talos SDK (Java)]
-        D[Go Agent] <-->|MCP| TG[Talos SDK (Go)]
-    end
 
-    subgraph "Infrastructure"
-        GW[Talos Gateway]
-        AS[Audit Service]
-        CN[MCP Connector]
-    end
+subgraph Agent_Ecosystem[Agent Ecosystem]
+  A[Python Agent] <--> TP[Talos SDK (Py)]
+  B[TS Agent] <--> TS[Talos SDK (TS)]
+  C[Java Agent] <--> TJ[Talos SDK (Java)]
+  D[Go Agent] <--> TG[Talos SDK (Go)]
+end
 
-    TP <--> GW
-    TS <--> GW
-    TJ <--> GW
-    TG <--> GW
+subgraph Infrastructure[Infrastructure]
+  GW[Talos Gateway]
+  AS[Audit Service]
+  CN[MCP Connector]
+end
 
-    GW <--> AS
-    GW <--> CN
+A ---|MCP| TP
+B ---|MCP| TS
+C ---|MCP| TJ
+D ---|MCP| TG
+
+TP <--> GW
+TS <--> GW
+TJ <--> GW
+TG <--> GW
+
+GW <--> AS
+GW <--> CN
 ```
 
 This repository (`talos-docs`) defines the topology above, serving as the architectural anchor for the 12-repository ecosystem.
