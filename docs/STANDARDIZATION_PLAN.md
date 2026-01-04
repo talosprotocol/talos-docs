@@ -49,24 +49,37 @@ All SDKs will follow a **Lock-Step Versioning** model initially, synchronizing w
 #### Rust (`clippy.toml`)
 - **Linter**: `clippy::pedantic` (warn), `clippy::nursery` (allow).
 
-### 2.3 Universal Makefile Interface
+### 2.3 Architecture Standards
+- **Dependency Injection (DI)**: All applications/SDKs MUST use dependency injection principles.
+    - **Java**: Spring Boot (Autowired).
+    - **Python**: Constructor injection or `dependencies` (FastAPI style) / `pydantic-settings`.
+    - **Typescript**: Constructor injection (e.g. `InversifyJS` or manual pattern).
+    - **Go**: Interface injection.
+- **Data Modeling**:
+    - **Python**: **MUST** use `Pydantic` for all data transfer objects and configuration.
+
+### 2.4 Testing Standards
+- **Happy Path Guarantee**: Every feature MUST have at least one explicit "Happy Path" unit test demonstrating success under normal conditions.
+- **Coverage**: 80% Minimum line coverage.
+
+## 3. Implementation Roadmap
+
+### Phase 1: Configuration & Architecture Hardening (Immediate)
+- [ ] **Python**: Enforce `mypy`, strict `ruff`, refactor to `Pydantic` models if missing.
+- [ ] **Java**: Add `spotless` plugin, verify Spring context.
+- [ ] **TypeScript**: Audit `tsconfig` strictness, verify DI pattern.
+
+### 2.5 Universal Makefile Interface
 Every repository MUST implement these targets:
 ```makefile
 all: install lint test build
 install: # Install deps
 lint:    # Check style & types (fail on error)
 format:  # Auto-fix style
-test:    # Run unit tests
+test:    # Run unit tests (Must include happy paths)
 build:   # Compile artifacts
 clean:   # Remove artifacts
 ```
-
-## 3. Implementation Roadmap
-
-### Phase 1: Configuration Hardening (Immediate)
-- [ ] **Python**: Add `mypy` and strict `ruff` rules.
-- [ ] **Java**: Add `spotless` plugin.
-- [ ] **TypeScript**: Audit `tsconfig` strictness.
 
 ### Phase 2: Version Synchronization
 - [ ] Create `scripts/sync_versions.py`.
