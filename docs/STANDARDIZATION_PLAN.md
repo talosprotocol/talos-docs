@@ -114,28 +114,28 @@ clean:       # Remove artifacts
 ## 3. Implementation Roadmap
 
 ### Phase 1: Standards and Contracts First (Foundation)
-- [ ] **Specs**: Add `sdk/sdk_manifest.schema.json` and `sdk/error_codes.json` validation to `talos-contracts`.
-- [ ] **Makefiles**: Add required targets (`typecheck`, `conformance`) across all SDKs.
-- [ ] **Lint**: Decide TS lint strategy (eslint/prettier google config).
+- [x] **Specs**: Add `sdk/sdk_manifest.schema.json` and `sdk/error_codes.json` validation to `talos-contracts`.
+- [x] **Makefiles**: Add required targets (`typecheck`, `conformance`) across all SDKs.
+- [x] **Lint**: Decide TS lint strategy (eslint/prettier google config).
 
 ### Phase 2: Tooling Enforcement (Per Language)
-- [ ] **Python**: `ruff format/lint`, `mypy --strict` (Core), Pydantic DTOs.
-- [ ] **Java**: `spotless` (Google Java Format), Verify build/tests (No Spring in Core).
-- [ ] **TypeScript**: Strict `tsconfig`, fix lint rules.
+- [x] **Python**: `ruff format/lint`, `mypy --strict` (Core), Pydantic DTOs.
+- [x] **Java**: `spotless` (Google Java Format), Verify build/tests (No Spring in Core).
+- [x] **TypeScript**: Strict `tsconfig`, fix lint rules.
 - [ ] **Go**: `golangci-lint`, `goimports`.
-- [ ] **Rust**: `clippy`, `rustfmt`, Fuzz harnesses.
+- [x] **Rust**: `clippy`, `rustfmt`, Fuzz harnesses.
 - [ ] **Version Sync**: Implement script to update version and compatible hashes (`PROTOCOL_RANGE`, `CONTRACT_HASH`).
 
 ### Phase 3: CI Templates and Consistency Gates
-- [ ] **CI Contract**:
-    - `make typecheck`
-    - `make lint`
-    - `make test`
-    - `make conformance` (Non-negotiable)
-- [ ] **Repo-Lint**: Add CI job for repo boundary enforcement.
-- [ ] **Pre-commit**: Optional (must match CI). CI is the source of truth.
+- [x] **CI Contract**:
+    - [x] `make typecheck`
+    - [x] `make lint`
+    - [x] `make test`
+    - [x] `make conformance` (Non-negotiable)
+- [x] **Repo-Lint**: Add CI job for repo boundary enforcement.
+- [x] **Pre-commit**: Optional (must match CI). CI is the source of truth.
 
 ### Phase 4: Version Policy & Release
-- [ ] **Lock-step**: Sync all SDKs to `0.2.0-alpha`.
+- [/] **Lock-step**: Sync all SDKs to `0.2.0-alpha`.
 - [ ] **Stamping**: Embed `CONTRACT_HASH` and `SCHEDULE_HASH` into builds.
 - [ ] **Artifacts**: Publish with SBOM, Changelog, Conformance Report.
