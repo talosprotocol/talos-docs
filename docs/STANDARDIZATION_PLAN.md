@@ -26,28 +26,33 @@ All SDKs will follow a **Lock-Step Versioning** model initially, synchronizing w
 - **Action**: Bump all SDKs to `0.2.0-alpha`.
 - **Tooling**: Implement a root-level `version-sync` script that updates `pyproject.toml`, `package.json`, `pom.xml`, etc.
 
-### 2.2 Standardized Configuration
+### 2.2 Standardized Configuration (Google Style)
+
+All projects MUST follow [Google Style Guides](https://google.github.io/styleguide/).
 
 #### Python (`pyproject.toml`)
-- **Linter**: `ruff` (Select: E, F, I, B, SIM, TID, UP).
-- **Formatter**: `ruff format` (Line length: 100).
+- **Style**: [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
+- **Linter**: `ruff` (Select rules matching Google style).
+- **Formatter**: `ruff format` (docstring-code-format = true).
+- **Docstrings**: Google Style (`"""Args: ... Returns: ..."""`).
 - **Types**: `mypy` (strict = true).
-- **Dependencies**: Pinned ranges (`^X.Y.Z`).
 
-#### TypeScript (`package.json`, `tsconfig.json`)
-- **Linter**: `eslint-config-love` (Strict TypeScript).
-- **Formatter**: `prettier` (Single quotes, trailing comma).
-- **Types**: `strict: true`, `noImplicitAny: true`.
+#### TypeScript (`package.json`)
+- **Style**: [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html).
+- **Tooling**: `gts` (Google TypeScript Style) instead of standard eslint/prettier.
+- **Types**: `strict: true`.
 
 #### Java (`pom.xml`)
-- **Formatter**: `spotless-maven-plugin` (Google Java Format).
-- **Linter**: `maven-checkstyle-plugin`.
+- **Style**: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html).
+- **Formatter**: `spotless-maven-plugin` with `googleJavaFormat()`.
 
-#### Go (`.golangci.yml`)
-- **Linter**: `golangci-lint` (enable: `gofmt`, `govet`, `staticcheck`).
+#### Go
+- **Style**: [Google Go Style](https://google.github.io/styleguide/go/).
+- **Linter**: `golangci-lint` configured for Google best practices.
 
-#### Rust (`clippy.toml`)
-- **Linter**: `clippy::pedantic` (warn), `clippy::nursery` (allow).
+#### Shell
+- **Style**: [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html).
+- **Linter**: `shellcheck` (enforced in CI).
 
 ### 2.3 Architecture Standards
 - **Dependency Injection (DI)**: All applications/SDKs MUST use dependency injection principles.
