@@ -8,7 +8,7 @@
  graph TD
      %% Core Kernel (Source of Truth)
      subgraph Kernel [Contract-Driven Kernel]
-         Contracts[talos-contracts (Schemas/Vectors)]
+         Contracts["talos-contracts (Schemas/Vectors)"]
          CoreRS[talos-core-rs (Rust Crypto/Validation)]
      end
  
