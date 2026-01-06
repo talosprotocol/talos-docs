@@ -94,9 +94,9 @@ The **Model Context Protocol (MCP)** is the industry standard for LLM-to-Tool co
 
 ```mermaid
 graph LR
-    A[AI Agent] -->|MCP JSON-RPC| S[Talos SDK]
-    S -->|Encrypted/Signed Tunnel| G[Talos Gateway]
-    G -->|Secured Tool Access| T[Internal Tools/DB]
+    A["AI Agent"] -->|MCP JSON-RPC| S["Talos SDK"]
+    S -->|"Encrypted/Signed Tunnel"| G["Talos Gateway"]
+    G -->|"Secured Tool Access"| T["Internal Tools/DB"]
 ```
 
 ### 5.1 Capability-Based Authorization
