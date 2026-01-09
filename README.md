@@ -107,3 +107,9 @@ cat Mathematical_Security_Proof.md
 2.  [Talos Contracts](../talos-contracts/README.md)
 3.  [Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
 4.  [Model Context Protocol](https://github.com/modelcontextprotocol)
+
+## License
+
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
+
+Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
