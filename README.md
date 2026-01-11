@@ -23,23 +23,21 @@ subgraph Agent_Ecosystem[Agent Ecosystem]
 end
 
 subgraph Infrastructure[Infrastructure]
-  GW[Talos Gateway]
+  GW[Talos AI Gateway]
   AS[Audit Service]
   CN[MCP Connector]
+  Tools[MCP Tools]
 end
 
-A ---|MCP| TP
-B ---|MCP| TS
-C ---|MCP| TJ
-D ---|MCP| TG
+A ---|Signed MCP| TP
+B ---|Signed MCP| TS
 
-TP <--> GW
-TS <--> GW
-TJ <--> GW
-TG <--> GW
+TP <-->|Tunnel| GW
+TS <-->|Tunnel| GW
 
-GW <--> AS
-GW <--> CN
+GW <-->|Audit| AS
+GW <-->|Proxy| CN
+CN <-->|Invoke| Tools
 ```
 
 This repository (`talos-docs`) defines the topology above, serving as the architectural anchor for the 12-repository ecosystem.
