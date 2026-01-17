@@ -13,11 +13,11 @@ audience: Operator, Developer
 
 ## Overview
 
-| Observability Type | What It Provides |
-|-------------------|------------------|
-| **Metrics** | Quantitative measurements (latency, throughput, errors) |
-| **Logs** | Structured event records |
-| **Traces** | Request flow across components |
+| Observability Type | What It Provides                                        |
+| ------------------ | ------------------------------------------------------- |
+| **Metrics**        | Quantitative measurements (latency, throughput, errors) |
+| **Traces**         | Request flow across components (via OpenTelemetry)      |
+| **Audit**          | Cryptographically chained activity logs                 |
 
 ---
 
@@ -39,59 +39,59 @@ Access at: `http://localhost:9090/metrics`
 
 #### Session Metrics
 
-| Metric | Type | Description |
-|--------|------|-------------|
-| `talos_sessions_active` | Gauge | Current active sessions |
-| `talos_sessions_established_total` | Counter | Total sessions established |
-| `talos_session_establishment_seconds` | Histogram | Session setup latency |
-| `talos_session_failures_total` | Counter | Failed session attempts |
+| Metric                                | Type      | Description                |
+| ------------------------------------- | --------- | -------------------------- |
+| `talos_sessions_active`               | Gauge     | Current active sessions    |
+| `talos_sessions_established_total`    | Counter   | Total sessions established |
+| `talos_session_establishment_seconds` | Histogram | Session setup latency      |
+| `talos_session_failures_total`        | Counter   | Failed session attempts    |
 
 #### Message Metrics
 
-| Metric | Type | Description |
-|--------|------|-------------|
-| `talos_messages_sent_total` | Counter | Messages sent |
-| `talos_messages_received_total` | Counter | Messages received |
-| `talos_message_send_seconds` | Histogram | Send latency |
-| `talos_message_size_bytes` | Histogram | Message sizes |
-| `talos_messages_queued` | Gauge | Messages waiting to send |
+| Metric                          | Type      | Description              |
+| ------------------------------- | --------- | ------------------------ |
+| `talos_messages_sent_total`     | Counter   | Messages sent            |
+| `talos_messages_received_total` | Counter   | Messages received        |
+| `talos_message_send_seconds`    | Histogram | Send latency             |
+| `talos_message_size_bytes`      | Histogram | Message sizes            |
+| `talos_messages_queued`         | Gauge     | Messages waiting to send |
 
 #### Capability Metrics
 
-| Metric | Type | Description |
-|--------|------|-------------|
-| `talos_capabilities_granted_total` | Counter | Capabilities issued |
-| `talos_capabilities_revoked_total` | Counter | Capabilities revoked |
-| `talos_capabilities_active` | Gauge | Currently valid capabilities |
-| `talos_capability_verification_seconds` | Histogram | Verification latency |
+| Metric                                  | Type      | Description                  |
+| --------------------------------------- | --------- | ---------------------------- |
+| `talos_capabilities_granted_total`      | Counter   | Capabilities issued          |
+| `talos_capabilities_revoked_total`      | Counter   | Capabilities revoked         |
+| `talos_capabilities_active`             | Gauge     | Currently valid capabilities |
+| `talos_capability_verification_seconds` | Histogram | Verification latency         |
 
 #### Audit Metrics
 
-| Metric | Type | Description |
-|--------|------|-------------|
-| `talos_audit_entries_total` | Counter | Audit log entries |
-| `talos_audit_anchor_total` | Counter | Blockchain anchors |
-| `talos_audit_anchor_failures_total` | Counter | Failed anchors |
-| `talos_audit_size_bytes` | Gauge | Audit log size |
+| Metric                              | Type    | Description        |
+| ----------------------------------- | ------- | ------------------ |
+| `talos_audit_entries_total`         | Counter | Audit log entries  |
+| `talos_audit_anchor_total`          | Counter | Blockchain anchors |
+| `talos_audit_anchor_failures_total` | Counter | Failed anchors     |
+| `talos_audit_size_bytes`            | Gauge   | Audit log size     |
 
 #### Cryptography Metrics
 
-| Metric | Type | Description |
-|--------|------|-------------|
-| `talos_crypto_operations_total` | Counter | Crypto operations by type |
-| `talos_crypto_operation_seconds` | Histogram | Operation latency |
-| `talos_key_rotation_timestamp` | Gauge | Last key rotation time |
+| Metric                           | Type      | Description               |
+| -------------------------------- | --------- | ------------------------- |
+| `talos_crypto_operations_total`  | Counter   | Crypto operations by type |
+| `talos_crypto_operation_seconds` | Histogram | Operation latency         |
+| `talos_key_rotation_timestamp`   | Gauge     | Last key rotation time    |
 
 ### Example Prometheus Config
 
 ```yaml
 # prometheus.yml
 scrape_configs:
-  - job_name: 'talos-agents'
+  - job_name: "talos-agents"
     static_configs:
-      - targets: 
-        - 'agent-1:9090'
-        - 'agent-2:9090'
+      - targets:
+          - "agent-1:9090"
+          - "agent-2:9090"
     scrape_interval: 15s
 ```
 
@@ -149,13 +149,13 @@ client = await TalosClient.create(
 
 ### Log Levels
 
-| Level | Use Case |
-|-------|----------|
-| `DEBUG` | Development, troubleshooting |
-| `INFO` | Normal operations |
-| `WARNING` | Unusual but handled situations |
-| `ERROR` | Failures requiring attention |
-| `CRITICAL` | System-level failures |
+| Level      | Use Case                       |
+| ---------- | ------------------------------ |
+| `DEBUG`    | Development, troubleshooting   |
+| `INFO`     | Normal operations              |
+| `WARNING`  | Unusual but handled situations |
+| `ERROR`    | Failures requiring attention   |
+| `CRITICAL` | System-level failures          |
 
 ### Key Log Events
 
@@ -213,22 +213,23 @@ Trace: message-send-abc123
 └── Span: ack_received (3ms)
 ```
 
-### OpenTelemetry Integration
+### AI Gateway OpenTelemetry
 
-```python
-from opentelemetry import trace
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
+The `talos-ai-gateway` uses OpenTelemetry for distributed tracing across FastAPI, SQLAlchemy, and Upstream providers.
 
-# Configure exporter
-client = await TalosClient.create(
-    "agent",
-    tracing={
-        "enabled": True,
-        "exporter": "jaeger",
-        "endpoint": "http://jaeger:14268/api/traces"
-    }
-)
+```bash
+# Environment Variables for Gateway Tracing
+export OTEL_SDK_DISABLED=false
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://jaeger:4317
+export OTEL_SERVICE_NAME=talos-ai-gateway
 ```
+
+Traced components:
+
+- **FastAPI Router**: Entry/Exit spans with HTTP attributes.
+- **SQLAlchemy**: Database query latency and error spans.
+- **Routing Service**: Performance of model selection and upstream dispatch.
+- **HTTP Clients**: Latency of downstream LLM calls (OpenAI/Ollama).
 
 ---
 
@@ -271,10 +272,10 @@ client = await TalosClient.create(
 )
 ```
 
-| Endpoint | Purpose |
-|----------|---------|
-| `/health` | Overall health status |
-| `/health/live` | Liveness (process running) |
+| Endpoint        | Purpose                        |
+| --------------- | ------------------------------ |
+| `/health`       | Overall health status          |
+| `/health/live`  | Liveness (process running)     |
 | `/health/ready` | Readiness (can accept traffic) |
 
 ### Response Format
@@ -319,23 +320,23 @@ readinessProbe:
 
 ```yaml
 groups:
-- name: talos-critical
-  rules:
-  - alert: TalosDown
-    expr: up{job="talos"} == 0
-    for: 1m
-    labels:
-      severity: critical
-      
-  - alert: AuditAnchorFailing
-    expr: increase(talos_audit_anchor_failures_total[1h]) > 5
-    labels:
-      severity: critical
-      
-  - alert: SignatureVerificationFailures
-    expr: increase(talos_signature_failures_total[5m]) > 0
-    labels:
-      severity: critical
+  - name: talos-critical
+    rules:
+      - alert: TalosDown
+        expr: up{job="talos"} == 0
+        for: 1m
+        labels:
+          severity: critical
+
+      - alert: AuditAnchorFailing
+        expr: increase(talos_audit_anchor_failures_total[1h]) > 5
+        labels:
+          severity: critical
+
+      - alert: SignatureVerificationFailures
+        expr: increase(talos_signature_failures_total[5m]) > 0
+        labels:
+          severity: critical
 ```
 
 ### Warning Alerts
@@ -346,15 +347,15 @@ groups:
   for: 5m
   labels:
     severity: warning
-    
+
 - alert: QueueBacklog
   expr: talos_messages_queued > 100
   for: 5m
   labels:
     severity: warning
-    
+
 - alert: KeyRotationOverdue
-  expr: (time() - talos_key_rotation_timestamp) > 2592000  # 30 days
+  expr: (time() - talos_key_rotation_timestamp) > 2592000 # 30 days
   labels:
     severity: warning
 ```

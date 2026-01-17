@@ -12,6 +12,13 @@ graph TD
         CoreRS["talos-core-rs (Rust Crypto/Validation)"]
     end
 
+    %% Multi-Region Infrastructure
+    subgraph Infra ["Multi-Region Persistence"]
+        Primary["Postgres (Primary/Write)"]
+        Replica["Postgres (Replica/Read)"]
+        Cache["Redis (Rate Limits/Tracing)"]
+    end
+
     %% SDK Layer (Ports & Adapters)
     subgraph SDK ["Polyglot SDKs"]
         SDK_PY[talos-sdk-py]
@@ -20,11 +27,20 @@ graph TD
 
     %% Service Layer (Consumers)
     subgraph Services ["Service Layer"]
-        Gateway[talos-gateway]
-        Audit[talos-audit-service]
-        Connector[talos-mcp-connector]
-        Dashboard[talos-dashboard]
+        Gateway_A["talos-ai-gateway (Region A)"]
+        Gateway_B["talos-ai-gateway (Region B)"]
+        Audit["talos-audit-service"]
+        Connector["talos-mcp-connector"]
+        Dashboard["talos-dashboard"]
     end
+
+    %% Multi-Region Flow
+    Gateway_A -->|Write| Primary
+    Gateway_A -->|Read| Primary
+    Gateway_B -->|Write| Primary
+    Gateway_B -->|Read| Replica
+    Primary -->|Repl| Replica
+    Gateway_A & Gateway_B -->|Trace| Cache
 
     %% Relationships
     Contracts -->|Defines| CoreRS
@@ -67,10 +83,10 @@ graph TD
 
 ### 4. Services
 
-- **`talos-gateway`**: FastAPI entry point for the network.
-- **`talos-audit-service`**: Dedicated audit log aggregator and query engine.
+- **`talos-ai-gateway`**: Unified LLM + MCP entrance. Supports Multi-Region Read with automatic replica fallback.
+- **`talos-audit-service`**: Dedicated audit log aggregator using deterministic hash-chaining.
 - **`talos-mcp-connector`**: Secure bridge for AI Agents to strictly typed internal tools.
-- **`talos-dashboard`**: Visual security console for verifying audit proofs.
+- **`talos-dashboard`**: Visual security console for verifying audit proofs and monitoring gateway health.
 
 ## Data Flow
 

@@ -24,30 +24,24 @@ docker run talos-test
 # Start node
 docker-compose up -d talos-node
 
-# Start with bootstrap node
-docker-compose --profile bootstrap up -d
+# Start Standalone Gateway (LLM + MCP Demo)
+docker-compose -f deploy/repos/talos-ai-gateway/docker-compose.yml up -d
 
-# Start with Ollama AI
-docker-compose --profile ai up -d
+# Start Multi-Region Gateway (Simulated)
+docker-compose -f deploy/repos/talos-ai-gateway/docker-compose.multi-region.yml up -d
 
-# Run tests
-docker-compose --profile dev run talos-test
-
-# View logs
-docker-compose logs -f talos-node
-
-# Stop
-docker-compose down
 ```
 
 ### Services
 
-| Service | Ports | Description |
-|---------|-------|-------------|
-| `talos-node` | 8765, 8468 | Main P2P node |
-| `talos-bootstrap` | 8766, 8469 | Bootstrap node |
-| `ollama` | 11434 | AI backend |
-| `talos-test` | - | Test runner |
+| Service               | Ports      | Description           |
+| --------------------- | ---------- | --------------------- |
+| `talos-node`          | 8765, 8468 | Main P2P node         |
+| `talos-ai-gateway`    | 8000       | LLM/MCP Gateway       |
+| `talos-audit-service` | 8001       | Audit Service         |
+| `postgres`            | 5432       | Primary Persistence   |
+| `redis`               | 6379       | Rate Limiting/Tracing |
+| `ollama`              | 11434      | AI backend (Local)    |
 
 ---
 
@@ -73,18 +67,18 @@ helm uninstall talos
 
 ### Configuration
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `replicaCount` | 3 | Number of replicas |
-| `image.repository` | talos-protocol | Image name |
-| `image.tag` | 2.0.0 | Image tag |
-| `service.type` | ClusterIP | Service type |
-| `service.p2pPort` | 8765 | P2P WebSocket port |
-| `service.dhtPort` | 8468 | DHT UDP port |
-| `talos.difficulty` | 2 | Mining difficulty |
-| `persistence.enabled` | true | Enable PVC |
-| `persistence.size` | 1Gi | Storage size |
-| `autoscaling.enabled` | false | Enable HPA |
+| Parameter             | Default        | Description        |
+| --------------------- | -------------- | ------------------ |
+| `replicaCount`        | 3              | Number of replicas |
+| `image.repository`    | talos-protocol | Image name         |
+| `image.tag`           | 2.0.0          | Image tag          |
+| `service.type`        | ClusterIP      | Service type       |
+| `service.p2pPort`     | 8765           | P2P WebSocket port |
+| `service.dhtPort`     | 8468           | DHT UDP port       |
+| `talos.difficulty`    | 2              | Mining difficulty  |
+| `persistence.enabled` | true           | Enable PVC         |
+| `persistence.size`    | 1Gi            | Storage size       |
+| `autoscaling.enabled` | false          | Enable HPA         |
 
 ### Custom Values
 
@@ -118,14 +112,14 @@ helm install talos ./deploy/helm/talos -f custom-values.yaml
 
 ## Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `TALOS_NODE_ID` | auto | Node identifier |
-| `TALOS_DIFFICULTY` | 2 | Mining difficulty |
-| `TALOS_LOG_LEVEL` | INFO | Log level |
-| `TALOS_DATA_DIR` | /app/data | Data directory |
-| `TALOS_KEYS_DIR` | /app/keys | Keys directory |
-| `TALOS_BOOTSTRAP` | false | Bootstrap mode |
+| Variable           | Default   | Description       |
+| ------------------ | --------- | ----------------- |
+| `TALOS_NODE_ID`    | auto      | Node identifier   |
+| `TALOS_DIFFICULTY` | 2         | Mining difficulty |
+| `TALOS_LOG_LEVEL`  | INFO      | Log level         |
+| `TALOS_DATA_DIR`   | /app/data | Data directory    |
+| `TALOS_KEYS_DIR`   | /app/keys | Keys directory    |
+| `TALOS_BOOTSTRAP`  | false     | Bootstrap mode    |
 
 ---
 
