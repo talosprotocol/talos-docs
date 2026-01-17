@@ -10,10 +10,10 @@ Talos uses `cryptography.hazmat` (OpenSSL backend) for high-performance primitiv
 
 | Operation         | Algorithm          | Avg Time (ms) | Throughput (ops/sec) |
 | ----------------- | ------------------ | ------------- | -------------------- |
-| **Signing**       | Ed25519            | 0.1281 ms     | 7,807                |
-| **Verification**  | Ed25519            | 0.1424 ms     | 7,023                |
-| **Batch Verify**  | Ed25519 (Parallel) | 0.1578 ms     | 6,337                |
-| **Encryption**    | ChaCha20-Poly1305  | 0.0034 ms     | 290,234              |
+| **Signing**       | Ed25519            | 0.1331 ms     | 7,515                |
+| **Verification**  | Ed25519            | 0.1451 ms     | 6,893                |
+| **Batch Verify**  | Ed25519 (Parallel) | 0.1616 ms     | 6,190                |
+| **Encryption**    | ChaCha20-Poly1305  | 0.0035 ms     | 289,345              |
 | **Block Hashing** | SHA-256            | 0.0030 ms     | ~380,000             |
 
 _Table 1: Microbenchmarks of core security functions._
@@ -22,8 +22,8 @@ _Table 1: Microbenchmarks of core security functions._
 
 The internal lightweight blockchain processes blocks sequentially, but validation is parallelized.
 
-- **Block Validation (Standard)**: 0.2412 ms per block
-- **Block Validation (Parallel)**: 0.2967 ms per block
+- **Block Validation (Standard)**: 0.2626 ms per block
+- **Block Validation (Parallel)**: 0.3034 ms per block
 - **Hash Calculation (SHA-256)**: < 0.01ms per message
 - **End-to-End Latency** (Localhost): ~4-6ms
 
@@ -69,8 +69,8 @@ Talos uses LMDB (Lightning Memory-Mapped Database) for high-performance storage.
 
 | Operation         | Latency (ms) | Throughput (ops/sec) |
 | ----------------- | ------------ | -------------------- |
-| **Write (Batch)** | 0.0005 ms    | 2,016,214            |
-| **Read (Random)** | 0.0003 ms    | 3,922,530            |
+| **Write (Batch)** | 0.0004 ms    | 2,519,394            |
+| **Read (Random)** | 0.0003 ms    | 3,617,236            |
 
 _Table 2: Storage Backend Benchmarks_
 
@@ -80,8 +80,8 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 
 | Operation              | Latency (ms) | Throughput (ops/sec) |
 | ---------------------- | ------------ | -------------------- |
-| **Serialize (JSON)**   | 0.0007 ms    | 1,333,370            |
-| **Deserialize (JSON)** | 0.0008 ms    | 1,177,152            |
+| **Serialize (JSON)**   | 0.0008 ms    | 1,266,558            |
+| **Deserialize (JSON)** | 0.0009 ms    | 1,091,480            |
 
 ## 7. Python SDK Benchmarks (talos-sdk-py)
 
@@ -91,48 +91,48 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 
 | Operation          | Avg Time (ms) | Throughput (ops/sec) |
 | ------------------ | ------------- | -------------------- |
-| Wallet.generate()  | 0.095 ms      | 10,563               |
-| Wallet.from_seed() | 0.066 ms      | 15,089               |
-| Wallet.sign(64B)   | 0.065 ms      | 15,442               |
-| Wallet.sign(10KB)  | 0.076 ms      | 13,216               |
-| Wallet.verify()    | 0.145 ms      | 6,877                |
-| Wallet.to_did()    | 0.004 ms      | 269,101              |
+| Wallet.generate()  | 0.095 ms      | 10,515               |
+| Wallet.from_seed() | 0.067 ms      | 15,005               |
+| Wallet.sign(64B)   | 0.064 ms      | 15,600               |
+| Wallet.sign(10KB)  | 0.078 ms      | 12,873               |
+| Wallet.verify()    | 0.146 ms      | 6,827                |
+| Wallet.to_did()    | 0.004 ms      | 259,209              |
 
 ### Double Ratchet (A2A Encryption)
 
 | Operation                    | Avg Time (ms) | Throughput (ops/sec) |
 | ---------------------------- | ------------- | -------------------- |
-| Session create pair (X3DH)   | 1.494 ms      | 669                  |
-| Session.encrypt(35B)         | 0.020 ms      | **50,729**           |
-| Session.encrypt(10KB)        | 0.057 ms      | 17,456               |
-| Session roundtrip(35B)       | 1.496 ms      | 669                  |
-| RatchetFrameCrypto.encrypt() | 0.027 ms      | 36,619               |
-| RatchetFrameCrypto roundtrip | 1.517 ms      | 659                  |
+| Session create pair (X3DH)   | 1.452 ms      | 689                  |
+| Session.encrypt(35B)         | 0.020 ms      | **50,557**           |
+| Session.encrypt(10KB)        | 0.055 ms      | 18,242               |
+| Session roundtrip(35B)       | 1.492 ms      | 670                  |
+| RatchetFrameCrypto.encrypt() | 0.028 ms      | 36,183               |
+| RatchetFrameCrypto roundtrip | 1.541 ms      | 649                  |
 
 ### Canonical JSON & Digests
 
 | Operation              | Avg Time (ms) | Throughput (ops/sec) |
 | ---------------------- | ------------- | -------------------- |
-| canonical_json_bytes() | 0.003 ms      | 296,864              |
-| SHA256 digest          | 0.000 ms      | **2,616,860**        |
+| canonical_json_bytes() | 0.003 ms      | 292,138              |
+| SHA256 digest          | 0.000 ms      | **3,035,076**        |
 
 ### Session Serialization
 
 | Operation           | Avg Time (ms) | Throughput (ops/sec) |
 | ------------------- | ------------- | -------------------- |
-| Session.to_dict()   | 0.003 ms      | 391,526              |
-| json.dumps(session) | 0.006 ms      | 172,637              |
-| json.loads(session) | 0.002 ms      | 410,385              |
-| Session.from_dict() | 0.003 ms      | 301,073              |
+| Session.to_dict()   | 0.002 ms      | 400,604              |
+| json.dumps(session) | 0.006 ms      | 174,664              |
+| json.loads(session) | 0.002 ms      | 453,764              |
+| Session.from_dict() | 0.003 ms      | 346,222              |
 
 ### Summary by Category
 
 | Category           | Avg ops/sec |
 | ------------------ | ----------- |
-| Wallet             | 55,048      |
-| Double Ratchet     | 17,381      |
-| RatchetFrameCrypto | 18,639      |
-| Canonical JSON     | 1,456,862   |
-| Serialization      | 318,905     |
+| Wallet             | 53,338      |
+| Double Ratchet     | 17,540      |
+| RatchetFrameCrypto | 18,416      |
+| Canonical JSON     | 1,663,607   |
+| Serialization      | 343,814     |
 
 > **Run benchmarks**: `cd talos-sdk-py && PYTHONPATH=src python benchmarks/bench_crypto.py`
