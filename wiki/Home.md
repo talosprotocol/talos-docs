@@ -2,7 +2,7 @@
 
 > **Talos is the secure communication and trust layer for autonomous AI agents.**
 
-**Version 4.0** | **700+ Tests** | **Multi-Repo** | **Contract-Driven**
+**Version 5.0** | **800+ Tests** | **Multi-Repo** | **Contract-Driven** | **Phase 10: A2A Complete**
 
 ---
 
@@ -70,6 +70,7 @@ AI agents lack a trustable way to:
 | 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](Audit-Explorer)         |
 | 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](MCP-Cookbook)             |
 | 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](DIDs-DHT)                   |
+| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](A2A-Channels)             |
 
 ---
 

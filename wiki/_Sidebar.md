@@ -35,6 +35,7 @@
 - [Wire Format](Wire-Format)
 - [Cryptography](Cryptography)
 - [Double Ratchet](Double-Ratchet)
+- [A2A Channels](A2A-Channels)
 - [Key Management](Key-Management)
 
 ### 🆔 Agent Model
