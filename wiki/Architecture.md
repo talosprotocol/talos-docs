@@ -26,7 +26,6 @@ flowchart LR
   K -.-> A
 ```
 
-
 ```mermaid
 graph TD
     %% Core Kernel (Source of Truth)
@@ -184,55 +183,40 @@ P2P Layer → TransmissionEngine
              └─────────────┘
 ```
 
-## File Structure
+## Repository Structure
 
 ```
-blockchain-messaging-protocol/
-├── src/
-│   ├── core/
-│   │   ├── blockchain.py    # Blockchain + Block + MerkleProof
-│   │   ├── crypto.py        # Cryptographic primitives
-│   │   ├── message.py       # Message types and payload
-│   │   └── sync.py          # Chain synchronization
-│   ├── engine/
-│   │   ├── engine.py        # TransmissionEngine
-│   │   ├── chunker.py       # Data chunking
-│   │   └── media.py         # File transfer
-│   ├── network/
-│   │   ├── p2p.py           # P2P networking
-│   │   └── pool.py          # Connection pooling
-│   ├── client/
-│   │   ├── client.py        # High-level client
-│   │   └── cli.py           # Command-line interface
-│   └── server/
-│       └── registry.py      # Registry server
-├── tests/                   # 122 unit tests
-├── benchmarks/              # Performance benchmarks
-└── docs/                    # Documentation
+blockchain-mcp-security/
+├── contracts/               # Schemas and Test Vectors
+├── sdks/
+│   ├── python/              # Talos SDK (Python)
+│   └── typescript/          # Talos SDK (Node/Browser)
+├── services/
+│   ├── ai-gateway/          # Unified Access Point (FastAPI)
+│   ├── audit/               # Immutable Audit Log (Merkle Tree)
+│   └── mcp-connector/       # Secure Tool Sandbox
+├── site/
+│   └── dashboard/           # Security Console (Next.js)
+├── deploy/                  # Kubernetes & Infrastructure
+└── docs/                    # Documentation & Wiki
 ```
 
 ## Design Decisions
 
-### Why WebSocket over TCP?
+### Why Centralized Gateway (vs P2P)?
 
-- Bidirectional communication without polling
-- Built-in framing (no manual packet handling)
-- Easy upgrade path to WebRTC for real-time media
+- **Enterprise Control**: Organizations require centralized policy enforcement.
+- **Performance**: Low-latency caching and routing optimization.
+- **Simplicity**: HTTP/REST is universally supported by AI frameworks.
 
-### Why Lightweight PoW?
+### Why Merkle Tree Audit (vs PoW Blockchain)?
 
-- Prevents spam without expensive consensus
-- Each node maintains local chain (no global agreement needed)
-- Configurable difficulty for different use cases
+- **Throughput**: Supports high-volume event ingestion (10k+ TPS).
+- **Efficiency**: No energy-intensive mining; security provided by cryptographic chaining and signed roots.
+- **Verifiability**: Clients can request cryptographic proofs (SPV-style) for any log entry.
 
 ### Why Ed25519 + X25519?
 
-- Modern curves with 128-bit security
-- Small keys (32 bytes) and signatures (64 bytes)
-- Fast operations (~8k ops/s for sign+verify)
-
-### Why ChaCha20-Poly1305?
-
-- Same cipher as TLS 1.3
-- 450 MB/s+ encryption speed
-- Authenticated encryption (integrity + confidentiality)
+- **Modern Standards**: High-security curves (128-bit) compliant with implementation best practices.
+- **Performance**: Optimized for high-frequency signing/verification loops in Agent communications.
+- **Size**: Small keys (32 bytes) reduce payload overhead.

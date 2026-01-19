@@ -81,10 +81,11 @@ Every Talos agent is identified by an **Ed25519 Public Key**.
 
 ### 4.3 Integrated Audit Trail
 
-Unlike traditional message queues, Talos records message headers (sender, recipient, timestamp, hash) on a lightweight blockchain.
+Unlike traditional message queues, Talos records message headers (sender, recipient, timestamp, hash) in a **Tamper-Evident Merkle Log**.
 
-- **Proof-of-Work (PoW)**: A lightweight PoW prevents spam and sybil attacks.
-- **Merkle Roots**: Message hashes are rolled up into Merkle trees, allowing agents to generate "SPV Proofs" of their interactions for third-party verification.
+- **Cryptographic Chaining**: Every event is hashed and linked to the previous one, creating an unbreakable chain of custody.
+- **Merkle Roots**: Event hashes are aggregated into Merkle trees, enabling efficient "SPV Proofs" where clients can verify inclusion without downloading the entire log.
+- **Signed Commitments**: The root of the tree is signed by the Audit Service, providing a definitive anchor for the system's state.
 
 ---
 
