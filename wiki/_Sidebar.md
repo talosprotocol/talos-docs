@@ -57,6 +57,7 @@
 - [Hardening Guide](Hardening-Guide)
 - [Observability](Observability)
 - [Infrastructure](Infrastructure)
+- [Multi-Region](Multi-Region)
 - [Failure Modes](Failure-Modes)
 - [Compatibility Matrix](Compatibility-Matrix)
 
