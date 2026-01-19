@@ -23,6 +23,17 @@ audience: Developer, Operator
 
 ---
 
+## Authentication
+
+Access to the dashboard is restricted to authenticated users.
+
+- **Login Page**: `/login` (Automatically redirected)
+- **Default Admin**: `admin@talos.security` / `talos_secure_start`
+- **Protected Routes**: `/`, `/console`, `/status`
+- **Mechanism**: NextAuth v5 with Middleware protection
+
+---
+
 ## Features (v3.2)
 
 ### Overview Page (`/`)
