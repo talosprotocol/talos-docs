@@ -4,6 +4,29 @@
 
 Talos v4.0 adopts a **Contract-Driven Kernel** architecture using **Ports & Adapters (Hexagonal)** pattern.
 
+High level overview of the architecture
+
+```mermaid
+flowchart LR
+  U[You] --> D[Dashboard\n(the app you use)]
+  D --> G[Talos Gateway\n(Security checkpoint)]
+  G --> C[MCP Connector\n(Tool bridge)]
+  C --> T[AI Model or Tools\n(e.g., Ollama, APIs, databases)]
+  T --> C --> G --> D --> U
+
+  %% Parallel audit path
+  G -->|Writes "receipts"| A[Audit Service\n(Tamper-evident log)]
+  A --> V[Audit Dashboard\n(View history, proofs)]
+
+  %% Shared rulebook
+  K[Contracts\n(Rulebook: schemas + test vectors)]
+  K -.-> D
+  K -.-> G
+  K -.-> C
+  K -.-> A
+```
+
+
 ```mermaid
 graph TD
     %% Core Kernel (Source of Truth)
