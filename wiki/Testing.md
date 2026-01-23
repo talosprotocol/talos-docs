@@ -10,37 +10,35 @@ The test suite validates:
 - **Unit tests**: Per-repo test suites
 - **Integration tests**: Live service validation
 
-## Test Runner
+## Test Runner (Universal Orchestrator)
 
-The master test runner orchestrates all tests:
+The master test runner uses **auto-discovery** to detect and valid repositories. It scans for `.agent/test_manifest.yml` and triggers the standardized contract.
 
 ```bash
-./deploy/scripts/run_all_tests.sh
+./run_all_tests.sh [options]
 ```
 
 ### Flags
 
 | Flag | Description |
 |------|-------------|
-| `--with-live` | Run live integration tests (starts services) |
-| `--skip-build` | Skip build steps (faster, uses cached artifacts) |
-| `--only <repo>` | Test single repo only |
-| `--report <path>` | Custom report output path |
+| `--ci` | Run standard CI suite (Smoke + Unit + Coverage) |
+| `--full` | Run everything (Unit + Integration + Coverage) |
+| `--changed` | Only run tests for repos affected by recent changes |
+| `--changed-mode M` | Discovery mode: `staged`, `workspace`, or `ci` |
+| `--keep-going` | Continue running even if a repo fails |
 
 ### Examples
 
 ```bash
-# Full unit tests
-./deploy/scripts/run_all_tests.sh
+# Optimized developer workflow (staged changes only)
+./run_all_tests.sh --ci --changed --changed-mode staged
 
-# With live integration
-./deploy/scripts/run_all_tests.sh --with-live
+# Full workspace regression
+./run_all_tests.sh --full
 
-# Single repo
-./deploy/scripts/run_all_tests.sh --only talos-contracts
-
-# CI mode (skip build for cached artifacts)
-./deploy/scripts/run_all_tests.sh --skip-build
+# Single repo manual run
+cd core && scripts/test.sh --ci
 ```
 
 ## Test Isolation
@@ -144,18 +142,24 @@ TALOS_SETUP_MODE=strict ./deploy/scripts/setup.sh
 | `/tmp/talos-*.log` | Service runtime logs |
 | Console output | Summary with ✓/✗ indicators |
 
-## Coverage
+## Coverage Enforcement
 
-Coverage targets are per-repo. Run with:
+Coverage is automatically enforced by the `coverage_coordinator.py`.
+
+### Threshold Levels
+
+1. **Global**: Line and branch rates for the whole repo (manifested).
+2. **Critical Paths**: High-security paths (e.g., `src/crypto/**`) can have higher requirements (95-100%).
+
+### Workflow
+
+1. Repos run tests and emit **Cobertura XML** to `artifacts/coverage/coverage.xml`.
+2. The coordinator parses these reports and validates against `.agent/test_manifest.yml`.
+3. CI/Hooks fail if any threshold is violated.
 
 ```bash
-# Python
-cd deploy/repos/talos-gateway
-pytest --cov=.
-
-# TypeScript
-cd deploy/repos/talos-sdk-ts
-npm test -- --coverage
+# Manual check of coverage artifacts
+python3 scripts/coverage_coordinator.py --repos core sdks-python
 ```
 
 ## Adding Tests
@@ -163,3 +167,47 @@ npm test -- --coverage
 1. **Schema tests**: Add to `talos-contracts/test_vectors/`
 2. **Unit tests**: Add to repo's `tests/` or `test/` directory
 3. **Integration tests**: Extend `test_integration.sh`
+
+
+## Performance Testing
+
+### Running Performance Tests
+
+The project includes comprehensive performance tests to ensure SLA compliance and track performance regressions.
+
+#### Core SLA Tests
+
+Core authorization and capability tests with strict latency targets:
+
+```bash
+# From repo root
+PYTHONPATH=src pytest tests/test_performance.py -v
+```
+
+#### Python SDK Benchmarks
+
+Cryptographic operations benchmarks (wallet, double ratchet, A2A):
+
+```bash
+cd sdks/python
+PYTHONPATH=src python benchmarks/bench_crypto.py
+```
+
+#### Full Performance Suite
+
+Run all performance tests with JSON output and multiple runs:
+
+```bash
+./scripts/perf/run_all.sh
+```
+
+Results are saved to `artifacts/perf/<date>-<sha>/` with full metadata.
+
+### Performance SLAs
+
+- Authorization (cached session): <1ms p99
+- Signature verification: <500μs
+- Total Talos overhead: <5ms p99
+- Authorization throughput: >10,000 auth/sec
+
+See [Benchmarks](Benchmarks.md) for detailed results and historical data.

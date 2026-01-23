@@ -198,8 +198,28 @@ blockchain-mcp-security/
 ├── site/
 │   └── dashboard/           # Security Console (Next.js)
 ├── deploy/                  # Kubernetes & Infrastructure
-└── docs/                    # Documentation & Wiki
+├── docs/                    # Documentation & Wiki
+├── run_all_tests.sh         # Universal Test Orchestrator
+└── scripts/
+    └── coverage_coordinator.py # Coverage Enforcement Engine
 ```
+
+## Quality System: Contract-Driven Testing
+
+Talos enforces a uniform test contract across all repositories.
+
+### 1. Unified Orchestration
+The master `run_all_tests.sh` uses **auto-discovery** to find manifest-bearing repositories. It eliminates manual runner updates when new service submodules are added.
+
+### 2. Test manifests (`.agent/test_manifest.yml`)
+Each repo defines its:
+- **Test Entrypoint**: Standardized `scripts/test.sh`
+- **Coverage Targets**: Detailed line/branch/path thresholds
+- **CI Settings**: Parallelism and timeout constraints
+
+### 3. Coverage Enforcement
+
+The `coverage_coordinator.py` enforces thresholds by parsing Cobertura XML reports. It supports **Risk-Based Coverage** (e.g., 95%+ required for crypto-sensitive paths).
 
 ## Design Decisions
 

@@ -136,3 +136,17 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 | Serialization      | 343,814     |
 
 > **Run benchmarks**: `cd talos-sdk-py && PYTHONPATH=src python benchmarks/bench_crypto.py`
+
+
+---
+
+## Automated Benchmark Run - 2026-01-22
+
+### Latest Results (2026-01-23)
+
+**Hardware:** Apple M4 Max, 14 cores, 36GB RAM
+**Python:** 3.13.5
+**Git SHA:** `a639264d`
+
+| Operation | Median (ms) | p95 (ms) | Throughput (ops/sec) |
+|-----------|-------------|----------|---------------------|
