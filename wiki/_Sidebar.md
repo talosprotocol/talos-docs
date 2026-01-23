@@ -5,7 +5,7 @@
 - [Mental Model](Talos-Mental-Model)
 - [Quickstart](Quickstart)
 - [Glossary](Glossary)
-- [Whitepaper](WHITEPAPER)
+- [Whitepaper](https://github.com/talosprotocol/talos/blob/main/WHITEPAPER.md)
 
 ### 📂 Repository
 

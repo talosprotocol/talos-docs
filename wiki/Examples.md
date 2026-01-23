@@ -19,18 +19,17 @@ python examples/14_gateway.py
 
 | Example | Description | Features |
 |---------|-------------|----------|
-| [demo_capability.py](../../../examples/demo_capability.py) | Full Phase 1-3 demo | All features |
-| [01_crypto.py](../../../examples/01_crypto.py) | Cryptographic primitives | Wallet, signatures, encryption |
-| [02_blockchain.py](../../../examples/02_blockchain.py) | Blockchain operations | Mining, validation, persistence |
-| [03_acl.py](../../../examples/03_acl.py) | Access control | ACL rules, rate limiting |
-| [10_sdk_quickstart.py](../../../examples/10_sdk_quickstart.py) | SDK basics | Wallet, Blockchain |
-| [11_capability_auth.py](../../../examples/11_capability_auth.py) | **Capability authorization** | Grant, authorize, delegate |
-| [12_rate_limiting.py](../../../examples/12_rate_limiting.py) | **Rate limiting** | Token bucket, per-session |
-| [13_audit_plane.py](../../../examples/13_audit_plane.py) | **Audit plane** | Events, export JSON/CSV |
-| [14_gateway.py](../../../examples/14_gateway.py) | **Gateway** | Multi-tenant, health check |
-| [mcp_server_ollama.py](../../../examples/mcp_server_ollama.py) | **Ollama** | JSON-RPC, Local LLM Bridge |
-| [start_ollama.sh](../../../start_ollama.sh) | **Ollama Startup** | P2P Bridge, Identity Init |
-| [connector.py](../../../products/mcp-connector/connector.py) | **Generic Connector** | YAML Config, Multi-tool Multiplexing |
+| [demo_capability.py](../../examples/demo_capability.py) | Full Phase 1-3 demo | All features |
+| [01_crypto.py](../../examples/01_crypto.py) | Cryptographic primitives | Wallet, signatures, encryption |
+| [02_blockchain.py](../../examples/02_blockchain.py) | Blockchain operations | Mining, validation, persistence |
+| [03_acl.py](../../examples/03_acl.py) | Access control | ACL rules, rate limiting |
+| [10_sdk_quickstart.py](../../examples/10_sdk_quickstart.py) | SDK basics | Wallet, Blockchain |
+| [11_capability_auth.py](../../examples/11_capability_auth.py) | **Capability authorization** | Grant, authorize, delegate |
+| [12_rate_limiting.py](../../examples/12_rate_limiting.py) | **Rate limiting** | Token bucket, per-session |
+| [13_audit_plane.py](../../examples/13_audit_plane.py) | **Audit plane** | Events, export JSON/CSV |
+| [14_gateway.py](../../examples/14_gateway.py) | **Gateway** | Multi-tenant, health check |
+| [mcp_server_ollama.py](../../examples/mcp_server_ollama.py) | **Ollama** | JSON-RPC, Local LLM Bridge |
+| [connector.py](../../services/mcp-connector/src/talos_mcp/cli.py) | **Generic Connector** | YAML Config, Multi-tool Multiplexing |
 
 ---
 
@@ -195,7 +194,7 @@ pytest tests/test_gateway.py -v         # Gateway tests
 
 - [Capability Authorization](Capability-Authorization.md)
 - [Testing](Testing.md)
-- [RUNBOOK](../../../RUNBOOK.md)
+- [RUNBOOK](../../RUNBOOK.md)
 
 ---
 

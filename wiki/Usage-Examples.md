@@ -20,14 +20,14 @@ python examples/01_crypto.py
 
 | Example | Topic | Run Command |
 |---------|-------|-------------|
-| [01_crypto.py](file:///examples/01_crypto.py) | Cryptography | `python examples/01_crypto.py` |
-| [02_blockchain.py](file:///examples/02_blockchain.py) | Blockchain | `python examples/02_blockchain.py` |
-| [03_acl.py](file:///examples/03_acl.py) | Access Control | `python examples/03_acl.py` |
-| [04_light_client.py](file:///examples/04_light_client.py) | SPV Client | `python examples/04_light_client.py` |
-| [05_did.py](file:///examples/05_did.py) | DIDs | `python examples/05_did.py` |
-| [06_dht.py](file:///examples/06_dht.py) | DHT | `python examples/06_dht.py` |
-| [07_validation.py](file:///examples/07_validation.py) | Validation | `python examples/07_validation.py` |
-| [08_full_demo.py](file:///examples/08_full_demo.py) | **Full Demo** | `python examples/08_full_demo.py` |
+| [01_crypto.py](../../examples/01_crypto.py) | Cryptography | `python examples/01_crypto.py` |
+| [02_blockchain.py](../../examples/02_blockchain.py) | Blockchain | `python examples/02_blockchain.py` |
+| [03_acl.py](../../examples/03_acl.py) | Access Control | `python examples/03_acl.py` |
+| [04_light_client.py](../../examples/04_light_client.py) | SPV Client | `python examples/04_light_client.py` |
+| [05_did.py](../../examples/05_did.py) | DIDs | `python examples/05_did.py` |
+| [06_dht.py](../../examples/06_dht.py) | DHT | `python examples/06_dht.py` |
+| [07_validation.py](../../examples/07_validation.py) | Validation | `python examples/07_validation.py` |
+| [08_full_demo.py](../../examples/08_full_demo.py) | **Full Demo** | `python examples/08_full_demo.py` |
 
 ---
 

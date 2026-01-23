@@ -15,7 +15,7 @@
 | **Understand the model** | [Mental Model](Talos-Mental-Model)      |
 | **Hands-on in 10 min**   | [Quickstart](Quickstart)                |
 | **Learn the terms**      | [Glossary](Glossary)                    |
-| **The Whitepaper**       | [Whitepaper](WHITEPAPER)                |
+| **The Whitepaper**       | [Whitepaper](https://github.com/talosprotocol/talos/blob/main/WHITEPAPER.md)                |
 
 ---
 
