@@ -89,52 +89,52 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 
 ## Python SDK Benchmarks
 
-### Latest Results (2026-01-23)
+### Latest Results (2026-01-24)
 
 **Hardware:** Apple M4 Max, 14 cores, 36GB RAM
 **Environment:** Local, Power: normal, Thermal: unknown
 > ⚠️ **Note:** Results marked as non-baseline (battery or thermal throttling detected)
-**Git SHA:** `b6b1ea2d`
+**Git SHA:** `0f158955`
 
 | Operation | Median (ms) | p95 (ms) | Throughput (ops/sec) |
 |-----------|-------------|----------|---------------------|
-| RatchetFrameCrypto roundtrip | 1.5010 | 1.5050 | 666 |
-| RatchetFrameCrypto.encrypt() | 0.0270 | 0.0280 | 37,037 |
+| RatchetFrameCrypto roundtrip | 1.5450 | 1.5510 | 647 |
+| RatchetFrameCrypto.encrypt() | 0.0290 | 0.0310 | 34,483 |
 | SHA256 digest | 0.0000 | 0.0000 | 0 |
-| Session create pair (X3DH) | 1.4550 | 1.4600 | 687 |
-| Session roundtrip(35B) | 1.4890 | 1.4910 | 672 |
-| Session.encrypt(10KB) | 0.0560 | 0.0560 | 17,857 |
-| Session.encrypt(35B) | 0.0200 | 0.0200 | 50,000 |
+| Session create pair (X3DH) | 1.5000 | 1.5520 | 667 |
+| Session roundtrip(35B) | 1.5280 | 1.5290 | 654 |
+| Session.encrypt(10KB) | 0.0580 | 0.0650 | 17,241 |
+| Session.encrypt(35B) | 0.0200 | 0.0220 | 50,000 |
 | Session.from_dict() | 0.0030 | 0.0030 | 333,333 |
-| Session.to_dict() | 0.0020 | 0.0030 | 500,000 |
-| Wallet.from_seed() | 0.0670 | 0.0680 | 14,925 |
-| Wallet.generate() | 0.0950 | 0.0960 | 10,526 |
-| Wallet.sign(10KB) | 0.0770 | 0.0770 | 12,987 |
-| Wallet.sign(64B) | 0.0660 | 0.0660 | 15,152 |
+| Session.to_dict() | 0.0030 | 0.0030 | 333,333 |
+| Wallet.from_seed() | 0.0690 | 0.0690 | 14,493 |
+| Wallet.generate() | 0.0970 | 0.1000 | 10,309 |
+| Wallet.sign(10KB) | 0.0780 | 0.0790 | 12,821 |
+| Wallet.sign(64B) | 0.0670 | 0.0670 | 14,925 |
 | Wallet.to_did() | 0.0040 | 0.0040 | 250,000 |
-| Wallet.verify() | 0.1460 | 0.1480 | 6,849 |
-| canonical_json_bytes() | 0.0030 | 0.0030 | 333,333 |
+| Wallet.verify() | 0.1510 | 0.1530 | 6,623 |
+| canonical_json_bytes() | 0.0040 | 0.0040 | 250,000 |
 | json.dumps(session) | 0.0060 | 0.0060 | 166,667 |
-| json.loads(session) | 0.0020 | 0.0030 | 500,000 |
+| json.loads(session) | 0.0030 | 0.0030 | 333,333 |
 
 ## Go SDK Benchmarks
 
-### Latest Results (2026-01-23)
+### Latest Results (2026-01-24)
 
 **Hardware:** Apple M4 Max, 14 cores, 36GB RAM
 **Environment:** Local, Power: normal, Thermal: unknown
 > ⚠️ **Note:** Results marked as non-baseline (battery or thermal throttling detected)
-**Git SHA:** `b6b1ea2d`
+**Git SHA:** `0f158955`
 
 | Operation | Median (ms) | p95 (ms) | Throughput (ops/sec) |
 |-----------|-------------|----------|---------------------|
-| BenchmarkCanonicalJSON | 0.0010 | 0.0010 | 1,017,915 |
-| BenchmarkCryptoSign10KB | 0.0235 | 0.0235 | 42,560 |
-| BenchmarkCryptoSign64B | 0.0131 | 0.0131 | 76,529 |
-| BenchmarkCryptoVerify | 0.0282 | 0.0282 | 35,495 |
-| BenchmarkSHA256 | 0.0000 | 0.0000 | 24,956,326 |
-| BenchmarkWalletFromSeed | 0.0103 | 0.0103 | 96,740 |
-| BenchmarkWalletGenerate | 0.0105 | 0.0105 | 94,895 |
+| BenchmarkCanonicalJSON | 0.0010 | 0.0010 | 957,854 |
+| BenchmarkCryptoSign10KB | 0.0247 | 0.0247 | 40,445 |
+| BenchmarkCryptoSign64B | 0.0134 | 0.0134 | 74,878 |
+| BenchmarkCryptoVerify | 0.0290 | 0.0290 | 34,435 |
+| BenchmarkSHA256 | 0.0000 | 0.0000 | 24,055,809 |
+| BenchmarkWalletFromSeed | 0.0106 | 0.0106 | 94,482 |
+| BenchmarkWalletGenerate | 0.0110 | 0.0110 | 91,241 |
 
 
 <!-- PERF-AUTO:END -->
