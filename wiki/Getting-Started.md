@@ -84,7 +84,7 @@ curl http://localhost:3000                      # Dashboard
 Each repo has a Makefile:
 
 ```bash
-cd deploy/repos/talos-gateway
+cd services/gateway
 
 make install    # Install dependencies
 make build      # Build artifacts

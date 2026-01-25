@@ -25,10 +25,10 @@ docker run talos-test
 docker-compose up -d talos-node
 
 # Start Standalone Gateway (LLM + MCP Demo)
-docker-compose -f deploy/repos/talos-ai-gateway/docker-compose.yml up -d
+docker-compose -f talos-ai-gateway/docker-compose.yml up -d
 
 # Start Multi-Region Gateway (Simulated)
-docker-compose -f deploy/repos/talos-ai-gateway/docker-compose.multi-region.yml up -d
+docker-compose -f talos-ai-gateway/docker-compose.multi-region.yml up -d
 
 ```
 

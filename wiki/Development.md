@@ -22,7 +22,7 @@ Talos uses git submodules for 8 component repositories:
 Every repo has a `Makefile` with consistent targets:
 
 ```bash
-cd deploy/repos/<repo-name>
+cd <repo-name>
 
 make install    # Install dependencies
 make build      # Build artifacts
@@ -157,10 +157,10 @@ TALOS_SETUP_MODE=strict ./deploy/scripts/setup.sh
 ### Update submodule to latest
 
 ```bash
-cd deploy/repos/talos-contracts
+cd contracts
 git pull origin main
 cd ../..
-git add deploy/repos/talos-contracts
+git add contracts
 git commit -m "chore: update talos-contracts submodule"
 ```
 

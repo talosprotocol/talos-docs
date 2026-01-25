@@ -95,7 +95,7 @@ Each repo has a `scripts/test.sh`:
 Run via Makefile:
 
 ```bash
-cd deploy/repos/talos-gateway
+cd services/gateway
 make test
 make lint
 ```

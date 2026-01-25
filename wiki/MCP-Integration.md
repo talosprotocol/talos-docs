@@ -10,8 +10,8 @@ The MCP Connector (`talos-mcp-connector`) bridges the Model Context Protocol wit
 
 | Component         | Location                            |
 | ----------------- | ----------------------------------- |
-| **MCP Connector** | `deploy/repos/talos-mcp-connector/` |
-| **Gateway API**   | `deploy/repos/talos-gateway/`       |
+| **MCP Connector** | `services/mcp-connector/` |
+| **Gateway API**   | `services/gateway/`       |
 
 ## Architecture
 
@@ -107,7 +107,7 @@ Security is inherited from Talos Protocol:
 ## Development
 
 ```bash
-cd deploy/repos/talos-mcp-connector
+cd services/mcp-connector
 
 make install    # Install dependencies
 make test       # Run tests

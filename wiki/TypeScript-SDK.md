@@ -160,7 +160,7 @@ try {
 ## Development
 
 ```bash
-cd deploy/repos/talos-sdk-ts
+cd sdks/typescript
 
 make install    # npm ci
 make build      # npm run build

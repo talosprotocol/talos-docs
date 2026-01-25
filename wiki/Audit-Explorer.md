@@ -8,7 +8,7 @@ repository: talos-dashboard, talos-audit-service
 
 > **Problem**: Developers need to inspect and verify audit proofs.  
 > **Guarantee**: CLI commands and Dashboard UI to explore message hashes, signature chains, and Merkle proofs.  
-> **Dashboard**: `deploy/repos/talos-dashboard/` | **Service**: `deploy/repos/talos-audit-service/`
+> **Dashboard**: `site/dashboard/` | **Service**: `services/audit/`
 
 ---
 
