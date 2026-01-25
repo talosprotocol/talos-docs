@@ -10,11 +10,11 @@
 
 | New to Talos?            | Start with                              |
 | ------------------------ | --------------------------------------- |
-| **Clone & setup**        | [Getting Started](Getting-Started)       |
-| **60-second overview**   | [Talos in 60 Seconds](Talos-60-Seconds)  |
-| **Understand the model** | [Mental Model](Talos-Mental-Model)       |
-| **Hands-on in 10 min**   | [Quickstart](Quickstart)                 |
-| **Learn the terms**      | [Glossary](Glossary)                     |
+| **Clone & setup**        | [Getting Started](Getting-Started)      |
+| **60-second overview**   | [Talos in 60 Seconds](Talos-60-Seconds) |
+| **Understand the model** | [Mental Model](Talos-Mental-Model)      |
+| **Hands-on in 10 min**   | [Quickstart](Quickstart)                |
+| **Learn the terms**      | [Glossary](Glossary)                    |
 | **The Whitepaper**       | [Whitepaper](https://github.com/talosprotocol/talos/blob/main/WHITEPAPER.md) |
 
 ---
@@ -70,11 +70,11 @@ AI agents lack a trustable way to:
 | 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](Audit-Explorer)         |
 | 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](MCP-Cookbook)             |
 | 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](DIDs-DHT)                   |
-| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels | [A2A Channels](A2A-Channels) |
-| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking  | [Multi-Region](Multi-Region) |
-| 🔑 **Rotation**        | Zero-downtime automated secret rotation  | [Secrets Rotation](Secrets-Rotation) |
-| ⚖️ **GSLB**            | Global load balancing & geo-routing     | [Global Load Balancing](Global-Load-Balancing) |
-| 💸 **Budgets**         | Atomic cost enforcement for agents       | [Adaptive Budgets](Adaptive-Budgets) |
+| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](A2A-Channels)             |
+| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking      | [Multi-Region](Multi-Region)             |
+| 🔑 **Rotation**        | Zero-downtime automated secret rotation      | [Secrets Rotation](Secrets-Rotation)     |
+| ⚖️ **GSLB**            | Global load balancing & geo-routing          | [Global Load Balancing](Global-Load-Balancing) |
+| 💸 **Budgets**         | Atomic cost enforcement for agents           | [Adaptive Budgets](Adaptive-Budgets)     |
 
 ---
 
