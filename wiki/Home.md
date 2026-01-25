@@ -125,4 +125,4 @@ git clone --recurse-submodules git@github.com:talosprotocol/talos.git
 
 ## License
 
-MIT © 2026 Talos Protocol Contributors
+Apache 2.0 © 2026 Talos Protocol Contributors
