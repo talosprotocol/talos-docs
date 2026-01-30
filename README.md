@@ -1,117 +1,180 @@
 # Talos Protocol Documentation
 
-**Repo Role**: Central documentation hub, architectural definitions, and mathematical security proofs for the Talos Protocol ecosystem.
+Welcome to the Talos Protocol documentation! This documentation is organized into logical categories for easy navigation.
 
-## Abstract
+## Quick Links
 
-Talos is a secure, high-performance messaging layer designed for autonomous AI agents. By integrating the Double Ratchet Algorithm with the Model Context Protocol (MCP), Talos provides confidentiality, integrity, authentication, and forward secrecy for agent-to-agent communication. This repository serves as the canonical source for system architecture, security proofs, and integration guides.
+- 🚀 [Getting Started](#getting-started) - New to Talos? Start here!
+- 📖 [Guides](#guides) - Step-by-step how-to guides
+- 🏗️ [Architecture](#architecture) - System design and structure
+- ⭐ [Features](#features) - Core capabilities
+- 💻 [SDK](#sdk) - Client libraries and integration
+- 🔌 [API](#api) - API reference
+- 🔒 [Security](#security) - Security documentation
+- 🧪 [Testing](#testing) - Testing guides
+- 📚 [Reference](#reference) - Glossary and comparisons
+- 🔬 [Research](#research) - Whitepaper, roadmap, future work
+- 💼 [Business](#business) - Go-to-market and enterprise
 
-## Introduction
+---
 
-Autonomous agents require a communication substrate that guarantees security without human intervention. Standard transport layers (HTTP/WebSockets) lack intrinsic identity binding and message-level encryption suitable for autonomous negotiation. Talos Protocol solves this by implementing a Double Ratchet session over an immutable ledger for initial key exchange, establishing a secure tunnel for MCP JSON-RPC messages.
+## Getting Started
 
-## System Architecture
+New to Talos? Start with these guides:
 
-```mermaid
-graph TD
+- **[Talos in 60 Seconds](getting-started/talos-60-seconds.md)** - Ultra-quick overview
+- **[Mental Model](getting-started/mental-model.md)** - Understand the core concepts
+- **[Quickstart Guide](getting-started/quickstart.md)** - Get up and running  
+- **[Simple Guide](getting-started/simple-guide.md)** - Step-by-step tutorial
+- **[One-Command Demo](getting-started/one-command-demo.md)** - Try it now
 
-subgraph Agent_Ecosystem[Agent Ecosystem]
-  A["Python Agent"] <--> TP["Talos SDK (Py)"]
-  B["TS Agent"] <--> TS["Talos SDK (TS)"]
-  C["Java Agent"] <--> TJ["Talos SDK (Java)"]
-  D["Go Agent"] <--> TG["Talos SDK (Go)"]
-end
+## Guides
 
-subgraph Infrastructure[Infrastructure]
-  GW[Talos AI Gateway]
-  AS[Audit Service]
-  CN[MCP Connector]
-  Tools[MCP Tools]
-end
+Practical how-to guides for common tasks:
 
-A ---|Signed MCP| TP
-B ---|Signed MCP| TS
+- **[Deployment](guides/deployment.md)** - Production deployment guide
+- **[Development](guides/development.md)** - Local development setup
+- **[Production Hardening](guides/production-hardening.md)** - Production best practices
+- **[Hardening Guide](guides/hardening-guide.md)** - Security hardening
+- **[Runbook (Non-Technical)](guides/runbook-non-technical.md)** - Operations guide
+- **[Error Troubleshooting](guides/error-troubleshooting.md)** - Common issues
 
-TP <-->|Tunnel| GW
-TS <-->|Tunnel| GW
+## Architecture
 
-GW <-->|Audit| AS
-GW <-->|Proxy| CN
-CN <-->|Invoke| Tools
-```
+System design and technical architecture:
 
-This repository (`talos-docs`) defines the topology above, serving as the architectural anchor for the 12-repository ecosystem.
+- **[Overview](architecture/overview.md)** - High-level architecture
+- **[Simplified View](architecture/simplified.md)** - Architecture for beginners
+- **[Infrastructure](architecture/infrastructure.md)** - Infrastructure design
+- **[Wire Format](architecture/wire-format.md)** - Protocol wire format
+- **[Protocol Guarantees](architecture/protocol-guarantees.md)** - What Talos guarantees
+- **[Threat Model](architecture/threat-model.md)** - Security threat model
 
-## Technical Design
+## Features
 
-### Modules
+Core features and capabilities:
 
-- **Mathematical Proofs**: Formal verification of security properties.
-- **Roadmap**: Strategic development plan (v2+).
-- **Design Docs**: ADRs and architectural decisions.
-- **Wiki**: Detailed guides and references.
+### Identity & Authentication
+- [Agent Identity](features/identity/agent-identity.md)
+- [DIDs with DHT](features/identity/dids-dht.md)
+- [Key Management](features/identity/key-management.md)
 
-### Data Formats
+### Authorization
+- [Access Control](features/authorization/access-control.md)
+- [Capability Authorization](features/authorization/capability-authorization.md)
+- [Agent Capabilities](features/authorization/agent-capabilities.md)
 
-- **Contracts**: References `talos-contracts` for JSON schemas.
-- **Proofs**: Markdown with LaTeX math mode.
+### Messaging
+- [A2A Channels](features/messaging/a2a-channels.md)
+- [Double Ratchet](features/messaging/double-ratchet.md)
+- [Group Messaging](features/messaging/group-messaging.md)
+- [File Transfer](features/messaging/file-transfer.md)
 
-## Evaluation
+### Observability
+- [Audit Scope](features/observability/audit-scope.md)
+- [Audit Use Cases](features/observability/audit-use-cases.md)
+- [Audit Explorer](features/observability/audit-explorer.md)
+- [Observability](features/observability/observability.md)
 
-Latest Conformance Matrix (2026-01-04):
+### Operations
+- [Adaptive Budgets](features/operations/adaptive-budgets.md)
+- [Secrets Rotation](features/operations/secrets-rotation.md)
+- [Multi-Region](features/operations/multi-region.md)
+- [Global Load Balancing](features/operations/global-load-balancing.md)
 
-| SDK            | v1.0.0 | v1.1.0 | Status                         |
-| -------------- | ------ | ------ | ------------------------------ |
-| **Python**     | ❌     | ❌     | Failing (Regression, see logs) |
-| **TypeScript** | ✅     | ✅     | Passing (Legacy Suite)         |
-| **Go**         | ❌     | ❌     | Alpha / Not Implemented        |
-| **Java**       | ❌     | ❌     | Alpha / Not Implemented        |
-| **Rust**       | ❌     | ❌     | Core bindings only             |
+### Integrations
+- [MCP Integration](features/integrations/mcp-integration.md)
+- [MCP Cookbook](features/integrations/mcp-cookbook.md)
+- [MCP Proof Flow](features/integrations/mcp-proof-flow.md)
+- [Framework Integrations](features/integrations/framework-integrations.md)
 
-Run `./deploy/scripts/run_sdk_matrix.sh` to replicate. See `deploy/reports/` for details.
+## SDK
 
-## Usage
+Client libraries and integration guides:
 
-### Quickstart
+- **[Python SDK](sdk/python-sdk.md)** - Python client library
+- **[TypeScript SDK](sdk/typescript-sdk.md)** - TypeScript/JavaScript library
+- **[A2A SDK Guide](sdk/a2a-sdk-guide.md)** - Agent-to-Agent messaging guide
+- **[SDK Integration](sdk/sdk-integration.md)** - Integration guide
+- **[SDK Ergonomics](sdk/sdk-ergonomics.md)** - SDK design principles
+- **[Usage Examples](sdk/usage-examples.md)** - Code examples
+- **[Examples](sdk/examples.md)** - More examples
 
-read the security proof:
+## API
 
-```bash
-cat Mathematical_Security_Proof.md
-```
+API documentation and reference:
 
-### Common Workflows
+- **[API Reference](api/api-reference.md)** - Complete API reference
+- **[Schemas](api/schemas.md)** - JSON schema documentation
 
-1.  **Architecture Review**: Start with the Wiki or Mermaid diagrams.
-2.  **Security Audit**: Verify claims in `Mathematical_Security_Proof.md`.
+## Security
 
-## Operational Interface
+Security documentation and best practices:
 
-- `make test`: N/A (Documentation only)
-- `scripts/test.sh`: Validates documentation formatting (planned).
+- **[Cryptography](security/cryptography.md)** - Cryptographic primitives
+- **[Security Properties](security/security-properties.md)** - Security guarantees
+- **[Mathematical Proof](security/mathematical-proof.md)** - Formal security proof
+- **[Validation Engine](security/validation-engine.md)** - Input validation
+- **[Security Dashboard](security/security-dashboard.md)** - Security monitoring
 
-## Security Considerations
+## Testing
 
-- **Threat Model**: Assumes a hostile network where all transport traffic is observable.
-- **Guarantees**:
-  - **Confidentiality**: Only intended recipient can read messages.
-  - **Integrity**: Messages cannot be modified without detection.
-  - **Authenticity**: Sender identity is cryptographically bound.
-  - **Forward Secrecy**: Compromise of past keys does not compromise future messages.
+Testing guides and documentation:
 
-## References
+- **[Testing Guide](testing/testing.md)** - How to test Talos
+- **[Benchmarks](testing/benchmarks.md)** - Performance benchmarks
+- **[Test Manifests](testing/test-manifests.md)** - Test manifest format
+- **[Compatibility Matrix](testing/compatibility-matrix.md)** - Platform compatibility
 
-1.  [Mathematical Security Proof](./Mathematical_Security_Proof.md)
-2.  [Talos Contracts](../talos-contracts/README.md)
-3.  [Double Ratchet Algorithm](https://signal.org/docs/specifications/doubleratchet/)
-4.  [Model Context Protocol](https://github.com/modelcontextprotocol)
+## Reference
+
+Reference material and comparisons:
+
+- **[Glossary](reference/glossary.md)** - Terms and definitions
+- **[Alternatives Comparison](reference/alternatives-comparison.md)** - How Talos compares
+- **[Failure Modes](reference/failure-modes.md)** - Known failure modes
+- **[Non-Goals](reference/non-goals.md)** - What Talos doesn't do
+- **[Decision Log](reference/decision-log.md)** - Design decisions
+
+## Research
+
+Research papers, roadmap, and future work:
+
+- **[Whitepaper](research/whitepaper.md)** - Technical whitepaper
+- **[Roadmap](research/roadmap.md)** - Product roadmap
+- **[Future Improvements](research/future-improvements.md)** - Planned features
+- **[Agents Research](research/agents.md)** - Agent research
+- **[MVP Design](research/mvp-design.md)** - MVP design document
+- **[Blockchain](research/blockchain.md)** - Blockchain integration research  
+- **[ICP](research/icp.md)** - Internet Computer Protocol
+- **[Light Client](research/light-client.md)** - Light client design
+
+## Business
+
+Go-to-market and enterprise documentation:
+
+- **[GTM Plan](business/gtm-plan.md)** - Go-to-market strategy
+- **[Why Talos Wins](business/why-talos-wins.md)** - Competitive advantages
+- **[Enterprise Performance](business/enterprise-performance.md)** - Enterprise capabilities
+- **[Agent Lifecycle](business/agent-lifecycle.md)** - Agent management
+
+---
+
+## Templates
+
+Documentation templates for contributors:
+
+- [API Template](templates/api-template.md)
+- [Contributing Template](templates/contributing-template.md)
+- [README Template](templates/readme-template.md)
+- [README Checklist](templates/readme-checklist.md)
+
+---
+
+## Contributing
+
+See our [contributing guidelines](templates/contributing-template.md) for how to contribute to this documentation.
 
 ## License
 
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
-
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
-
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
-
-Licensed under the Apache License 2.0. See [LICENSE](LICENSE).
+This documentation is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
