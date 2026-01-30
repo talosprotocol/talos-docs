@@ -15,6 +15,8 @@ Welcome to the Talos Protocol documentation! This documentation is organized int
 - 📚 [Reference](#reference) - Glossary and comparisons
 - 🔬 [Research](#research) - Whitepaper, roadmap, future work
 - 💼 [Business](#business) - Go-to-market and enterprise
+- 🌐 [Network Protocols](#network-protocols) - Communication protocols
+- ⚙️ [Configuration Reference](#configuration-reference) - Configuration schemas
 
 ---
 
@@ -24,7 +26,7 @@ New to Talos? Start with these guides:
 
 - **[Talos in 60 Seconds](getting-started/talos-60-seconds.md)** - Ultra-quick overview
 - **[Mental Model](getting-started/mental-model.md)** - Understand the core concepts
-- **[Quickstart Guide](getting-started/quickstart.md)** - Get up and running  
+- **[Quickstart Guide](getting-started/quickstart.md)** - Get up and running
 - **[Simple Guide](getting-started/simple-guide.md)** - Step-by-step tutorial
 - **[One-Command Demo](getting-started/one-command-demo.md)** - Try it now
 
@@ -55,34 +57,40 @@ System design and technical architecture:
 Core features and capabilities:
 
 ### Identity & Authentication
+
 - [Agent Identity](features/identity/agent-identity.md)
 - [DIDs with DHT](features/identity/dids-dht.md)
 - [Key Management](features/identity/key-management.md)
 
 ### Authorization
+
 - [Access Control](features/authorization/access-control.md)
 - [Capability Authorization](features/authorization/capability-authorization.md)
 - [Agent Capabilities](features/authorization/agent-capabilities.md)
 
 ### Messaging
+
 - [A2A Channels](features/messaging/a2a-channels.md)
 - [Double Ratchet](features/messaging/double-ratchet.md)
 - [Group Messaging](features/messaging/group-messaging.md)
 - [File Transfer](features/messaging/file-transfer.md)
 
 ### Observability
+
 - [Audit Scope](features/observability/audit-scope.md)
 - [Audit Use Cases](features/observability/audit-use-cases.md)
 - [Audit Explorer](features/observability/audit-explorer.md)
 - [Observability](features/observability/observability.md)
 
 ### Operations
+
 - [Adaptive Budgets](features/operations/adaptive-budgets.md)
 - [Secrets Rotation](features/operations/secrets-rotation.md)
 - [Multi-Region](features/operations/multi-region.md)
 - [Global Load Balancing](features/operations/global-load-balancing.md)
 
 ### Integrations
+
 - [MCP Integration](features/integrations/mcp-integration.md)
 - [MCP Cookbook](features/integrations/mcp-cookbook.md)
 - [MCP Proof Flow](features/integrations/mcp-proof-flow.md)
@@ -125,6 +133,14 @@ Testing guides and documentation:
 - **[Benchmarks](testing/benchmarks.md)** - Performance benchmarks
 - **[Test Manifests](testing/test-manifests.md)** - Test manifest format
 - **[Compatibility Matrix](testing/compatibility-matrix.md)** - Platform compatibility
+
+## Network Protocols
+
+- [Talos Overlays](file:///Users/nileshchakraborty/workspace/talos/docs/protocols/overlays.md): Secure mesh networking protocol.
+
+## Configuration Reference
+
+- [Core Schemas](file:///Users/nileshchakraborty/workspace/talos/contracts/schemas/config/v1): JSON schemas for all configuration objects.
 
 ## Reference
 
