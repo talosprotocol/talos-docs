@@ -94,7 +94,187 @@ DATABASE_URL=postgresql://user:pass@rds.amazonaws.com:5432/talos
 kubectl apply -f deploy/k8s/base/postgres/statefulset.yaml
 ```
 
-### 4. Monitoring (Optional)
+### 5. Phase 11: Production Hardening (Required)
+
+Phase 11 introduces production-grade reliability features that **must** be configured for production deployments.
+
+#### 5.1 Rate Limiting
+
+**Redis Backend (Required in Production)**
+
+```bash
+# Create Redis secret
+kubectl create secret generic talos-redis \
+  --from-literal=redis-url=redis://redis-cluster:6379 \
+  --namespace talos-system
+
+# Or use managed service (AWS ElastiCache, GCP Memorystore)
+kubectl create secret generic talos-redis \
+  --from-literal=redis-url=redis://elasticache.amazonaws.com:6379 \
+  --namespace talos-system
+```
+
+**Environment Variables:**
+
+```yaml
+# values.yaml or kustomize patch
+env:
+  - name: RATE_LIMIT_ENABLED
+    value: "true"
+  - name: RATE_LIMIT_BACKEND
+    value: "redis"  # REQUIRED in production
+  - name: REDIS_URL
+    valueFrom:
+      secretKeyRef:
+        name: talos-redis
+        key: redis-url
+  - name: RATE_LIMIT_DEFAULT_RPS
+    value: "10"
+  - name: RATE_LIMIT_DEFAULT_BURST
+    value: "20"
+```
+
+**Surface-Specific Limits:**
+
+Update `gateway_surface.json` ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-surface-config
+data:
+  gateway_surface.json: |
+    {
+      "surface_id": "llm.chat.completions",
+      "rate_limit_rps": 10,
+      "rate_limit_burst": 20
+    }
+```
+
+#### 5.2 Distributed Tracing
+
+**OTLP Collector (Required in Production if Tracing Enabled)**
+
+**Option A: Jaeger**
+
+```bash
+# Install Jaeger Operator
+kubectl create namespace observability
+kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.51.0/jaeger-operator.yaml -n observability
+
+# Deploy Jaeger instance
+kubectl apply -f - <<EOF
+apiVersion: jaegertracing.io/v1
+kind: Jaeger
+metadata:
+  name: talos-jaeger
+  namespace: observability
+spec:
+  strategy: production
+  collector:
+    maxReplicas: 5
+    resources:
+      limits:
+        cpu: 1000m
+        memory: 1Gi
+EOF
+```
+
+**Option B: Managed Service (Datadog, New Relic, etc.)**
+
+```bash
+kubectl create secret generic talos-otlp \
+  --from-literal=endpoint=https://otlp.datadoghq.com:4317 \
+  --namespace talos-system
+```
+
+**Environment Variables:**
+
+```yaml
+env:
+  - name: TRACING_ENABLED
+    value: "true"
+  - name: OTEL_EXPORTER_OTLP_ENDPOINT
+    valueFrom:
+      secretKeyRef:
+        name: talos-otlp
+        key: endpoint  # REQUIRED in production if TRACING_ENABLED=true
+  - name: OTEL_RESOURCE_ATTRIBUTES
+    value: "service.name=talos-gateway,environment=prod"
+```
+
+**Automatic Redaction:**
+
+The Gateway automatically redacts:
+- `Authorization` headers
+- A2A frame contents (`header_b64u`, `ciphertext_b64u`)
+- All matching `*secret*`, `*token*`, `*signature*` attributes
+
+#### 5.3 Health Checks
+
+Configure Kubernetes probes:
+
+```yaml
+# Gateway Deployment
+livenessProbe:
+  httpGet:
+    path: /health/live  # Phase 11: Always responds
+    port: 8000
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /health/ready  # Phase 11: Checks DB + Redis
+    port: 8000
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 3
+  successThreshold: 1
+  failureThreshold: 3
+```
+
+**Endpoints:**
+- `/health/live`: Liveness (no dependency checks)
+- `/health/ready`: Readiness (validates PostgreSQL, Redis connectivity)
+
+#### 5.4 Graceful Shutdown
+
+**Environment Variables:**
+
+```yaml
+env:
+  - name: SHUTDOWN_DRAIN_TIMEOUT_SECONDS
+    value: "30"  # Request drain timeout
+```
+
+**Deployment Configuration:**
+
+```yaml
+spec:
+  terminationGracePeriodSeconds: 60  # Allow time for graceful shutdown
+  template:
+    spec:
+      containers:
+      - name: gateway
+        lifecycle:
+          preStop:
+            exec:
+              command: ["/bin/sh", "-c", "sleep 5"]  # Allow LB to remove endpoint
+```
+
+**Behavior:**
+1. SIGTERM received
+2. Shutdown gate activates (new requests get 503 `SERVER_SHUTTING_DOWN`)
+3. `/health/live` continues responding
+4. In-flight requests drain (up to `SHUTDOWN_DRAIN_TIMEOUT_SECONDS`)
+5. Background workers stop
+6. Connections closed
+
+### 6. Monitoring (Optional)
 
 Install Prometheus Operator:
 
@@ -281,6 +461,7 @@ kubectl run -it --rm debug --image=postgres:15 --restart=Never -- \
 
 ## Production Checklist
 
+### Core Infrastructure
 - [ ] Secrets externally managed (not in Git)
 - [ ] TLS certificates configured
 - [ ] Database backups enabled
@@ -291,6 +472,19 @@ kubectl run -it --rm debug --image=postgres:15 --restart=Never -- \
 - [ ] Ingress rate limiting configured
 - [ ] Log aggregation setup (ELK, Datadog, etc.)
 - [ ] Disaster recovery plan documented
+
+### Phase 11: Production Hardening
+- [ ] `MODE=prod` environment variable set
+- [ ] **Rate Limiting**: Redis backend configured (`RATE_LIMIT_BACKEND=redis`)
+- [ ] **Rate Limiting**: `REDIS_URL` secret created
+- [ ] **Tracing**: OTLP endpoint configured (if `TRACING_ENABLED=true`)
+- [ ] **Tracing**: Verified sensitive data redaction
+- [ ] **Health Checks**: Liveness probe uses `/health/live`
+- [ ] **Health Checks**: Readiness probe uses `/health/ready`
+- [ ] **Graceful Shutdown**: `terminationGracePeriodSeconds` ≥60s
+- [ ] **Graceful Shutdown**: Tested SIGTERM handling
+- [ ] **Monitoring**: Rate limit rejection metrics tracked
+- [ ] **Monitoring**: Trace export errors alerted
 
 ## References
 
