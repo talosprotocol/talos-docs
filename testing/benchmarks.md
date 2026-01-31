@@ -72,7 +72,7 @@ Talos uses LMDB (Lightning Memory-Mapped Database) for high-performance storage.
 | **Write (Batch)** | 0.0004 ms | 2,519,394 |
 | **Read (Random)** | 0.0003 ms | 3,617,236 |
 
-**Table 2: Storage Backend Benchmarks**
+### Table 2: Storage Backend Benchmarks
 
 ## 6. Serialization Performance
 
