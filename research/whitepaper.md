@@ -1,6 +1,6 @@
 # Talos Protocol Whitepaper
 
-### Secure, Decentralized Communication for the Autonomous AI Agent Era
+## Secure, Decentralized Communication for the Autonomous AI Agent Era
 
 **Version**: 4.1.0  
 **Date**: January 2026  
