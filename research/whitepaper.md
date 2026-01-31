@@ -2,7 +2,7 @@
 
 **Secure, Decentralized Communication for the Autonomous AI Agent Era**
 
-**Version**: 4.0.0  
+**Version**: 4.1.0  
 **Date**: January 2026  
 **Status**: Stable / Production-Grade  
 **Authors**: Talos Protocol Contributors
@@ -34,12 +34,13 @@ Talos Protocol bridge this gap by prioritizing **determinism** and **mathematica
 
 Talos is a multi-layered security framework designed to wrap existing agent interactions in a verified envelope. Its core philosophy is: **"Trust Math, Not Servers."**
 
-The protocol is built on four pillars:
+The protocol is built on five pillars:
 
 1.  **Contract-Driven Determinism**: Centralized specifications for decentralized execution.
 2.  **Perfect Forward Secrecy**: Per-message key rotation.
 3.  **Self-Sovereign Identity**: Decentralized identifiers (DIDs) via DHT.
 4.  **Immutable Accountability**: Blockchain-anchored proofs of interaction.
+5.  **Runtime Resilience**: Automated governance and recovery via **Talos Governance Agent (TGA)**.
 
 ---
 
@@ -59,6 +60,14 @@ To handle the high-throughput requirements of AI agents (sometimes thousands of 
 
 - **The Rust Wedge**: Critical cryptographic primitives (Ed25519, ChaCha20-Poly1305) and Merkle Tree logic are implemented in Rust.
 - **PyO3/Maturin Integration**: These high-performance bindings are exposed to Python and other high-level languages without overhead.
+
+### 3.3 Talos Governance Agent (TGA)
+
+The TGA serves as the immune system of the protocol, ensuring operational stability without manual intervention.
+
+- **Runtime Resilience**: Automatically detects and mitigates failures in agent loops.
+- **Drift Detection**: Validates that running services match their deployed configuration.
+- **Self-Healing**: Triggers circuit breakers and safeguards during high-load events.
 
 ---
 
@@ -106,7 +115,26 @@ Talos introduces **Scoped Capability Tokens**. An agent doesn't just "have acces
 
 ---
 
-## 6. Performance and Scalability
+## 6. Enterprise-Grade Features (Phases 9-15)
+
+Talos has evolved from a research prototype to a hardened production system:
+
+### 6.1 Production Hardening (Phase 11)
+- **Rate Limiting**: Token bucket algorithm backed by Redis prevents abuse.
+- **Distributed Tracing**: Full OTLP integration for verifying request flows across service boundaries.
+- **Health Checks**: Deep readiness probes ensure traffic only reaches healthy nodes.
+
+### 6.2 Multi-Region Architecture (Phase 12)
+- **Read/Write Splitting**: Optimizes database throughput by directing reads to local replicas.
+- **Circuit Breakers**: Automatically fails over traffic to health-checked alternatives during partial outages.
+
+### 6.3 Automated Operations (Phase 13, 15)
+- **Secrets Rotation**: Zero-downtime rotation of cryptographic keys using multi-KEK envelopes.
+- **Adaptive Budgets**: Atomic cost controls prevent agents from exceeding financial or compute quotas.
+
+---
+
+## 7. Performance and Scalability
 
 Talos is built for enterprise-grade performance:
 
@@ -116,23 +144,25 @@ Talos is built for enterprise-grade performance:
 
 ---
 
-## 7. Roadmap and Future Vision
+## 8. Roadmap and Future Vision
 
-### v4.x (Current)
+### v4.1 (Current - "Argonaut")
 
 - High-performance Rust kernel integration.
 - Polyglot SDK parity (Python, TS, Go, Java).
-- Next.js Security Dashboard for audit visualization.
+- **AI Configuration Assistant**: Natural language configuration of security policies via Dashboard.
+- **Talos Governance Agent (TGA)**: Automated runtime resilience.
 
 ### v5.0 (Upcoming)
 
 - **Post-Quantum Hybrid Encryption**: Kyber-768 integration to protect today's agent communications against tomorrow's quantum computers.
 - **Onion Routing**: Metadata protection to hide "who is talking to whom" from network observers.
 - **ZK-Proofs**: Zero-Knowledge verification for private capability grants.
+- **Global Load Balancing (Phase 14)**: Geo-routing and traffic optimization.
 
 ---
 
-## 8. Conclusion
+## 9. Conclusion
 
 The Talos Protocol transforms the internet from a "network of servers" into a **"trust-minimized substrate for autonomous intelligence."** By moving security from the infrastructure layer to the message and contract layer, Talos enables a future where agents can co-operate across organizational boundaries with absolute cryptographic certainty.
 
