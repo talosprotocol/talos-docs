@@ -210,6 +210,6 @@ stats = light.get_stats()
 
 ## See Also
 
-- [Blockchain Design](Blockchain.md) - Full node implementation
-- [Validation Engine](Validation-Engine.md) - Block validation
-- [Python SDK](Python-SDK.md) - High-level API
+- [Blockchain Design](blockchain.md) - Full node implementation
+- [Validation Engine](../security/validation-engine.md) - Block validation
+- [Python SDK](../sdk/python-sdk.md) - High-level API
