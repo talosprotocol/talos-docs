@@ -1,6 +1,6 @@
 # Talos Protocol Whitepaper
 
-**Secure, Decentralized Communication for the Autonomous AI Agent Era**
+### Secure, Decentralized Communication for the Autonomous AI Agent Era
 
 **Version**: 4.1.0  
 **Date**: January 2026  
@@ -36,11 +36,11 @@ Talos is a multi-layered security framework designed to wrap existing agent inte
 
 The protocol is built on five pillars:
 
-1.  **Contract-Driven Determinism**: Centralized specifications for decentralized execution.
-2.  **Perfect Forward Secrecy**: Per-message key rotation.
-3.  **Self-Sovereign Identity**: Decentralized identifiers (DIDs) via DHT.
-4.  **Immutable Accountability**: Blockchain-anchored proofs of interaction.
-5.  **Runtime Resilience**: Automated governance and recovery via **Talos Governance Agent (TGA)**.
+1. **Contract-Driven Determinism**: Centralized specifications for decentralized execution.
+2. **Perfect Forward Secrecy**: Per-message key rotation.
+3. **Self-Sovereign Identity**: Decentralized identifiers (DIDs) via DHT.
+4. **Immutable Accountability**: Blockchain-anchored proofs of interaction.
+5. **Runtime Resilience**: Automated governance and recovery via **Talos Governance Agent (TGA)**.
 
 ---
 
@@ -50,9 +50,9 @@ The protocol is built on five pillars:
 
 In the Talos ecosystem, **Specification is King**. The `talos-contracts` repository is the single source of truth for all protocol definitions.
 
-- **JSON Schemas**: Strictly define every message type, preventing injection attacks.
-- **Golden Vectors**: Thousands of cryptographically generated test cases that every SDK (Python, TS, Go, Java) must pass.
-- **Rules of Interop**: No implementation is allowed to "improvise" cryptographic derivations; they must adhere to the contract.
+- **JSON Schemas**: strictly define every message type, preventing injection attacks.
+- **Golden Vectors**: thousands of cryptographically generated test cases that every SDK (Python, TS, Go, Java) must pass.
+- **Rules of Interop**: no implementation is allowed to "improvise" cryptographic derivations; they must adhere to the contract.
 
 ### 3.2 High-Performance Kernel (`talos-core-rs`)
 
@@ -120,15 +120,18 @@ Talos introduces **Scoped Capability Tokens**. An agent doesn't just "have acces
 Talos has evolved from a research prototype to a hardened production system:
 
 ### 6.1 Production Hardening (Phase 11)
+
 - **Rate Limiting**: Token bucket algorithm backed by Redis prevents abuse.
 - **Distributed Tracing**: Full OTLP integration for verifying request flows across service boundaries.
 - **Health Checks**: Deep readiness probes ensure traffic only reaches healthy nodes.
 
 ### 6.2 Multi-Region Architecture (Phase 12)
+
 - **Read/Write Splitting**: Optimizes database throughput by directing reads to local replicas.
 - **Circuit Breakers**: Automatically fails over traffic to health-checked alternatives during partial outages.
 
 ### 6.3 Automated Operations (Phase 13, 15)
+
 - **Secrets Rotation**: Zero-downtime rotation of cryptographic keys using multi-KEK envelopes.
 - **Adaptive Budgets**: Atomic cost controls prevent agents from exceeding financial or compute quotas.
 
@@ -172,7 +175,7 @@ The Talos Protocol transforms the internet from a "network of servers" into a **
 
 ## References
 
-1.  _The Double Ratchet Algorithm_, Signal Messaging Inc.
-2.  _Model Context Protocol (MCP) Specification_, ModelContextProtocol.
-3.  _JSON Schema: A Media Type for Describing JSON Data Structures_, IETF.
-4.  _Decentralized Identifiers (DIDs) v1.0_, W3C.
+1. _The Double Ratchet Algorithm_, Signal Messaging Inc.
+2. _Model Context Protocol (MCP) Specification_, ModelContextProtocol.
+3. _JSON Schema: A Media Type for Describing JSON Data Structures_, IETF.
+4. _Decentralized Identifiers (DIDs) v1.0_, W3C.
