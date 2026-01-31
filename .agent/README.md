@@ -1,4 +1,5 @@
 # Agent workspace: docs
+> **Project**: docs
 
 This folder contains agent-facing context, tasks, workflows, and planning artifacts for this submodule.
 
