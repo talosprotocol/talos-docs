@@ -8,14 +8,14 @@
 
 ## 🚀 Start Here
 
-| New to Talos?            | Start with                              |
-| ------------------------ | --------------------------------------- |
-| **Clone & setup**        | [Getting Started](Getting-Started)      |
+| New to Talos?            | Start with                                                 |
+| :----------------------- | :--------------------------------------------------------- |
+| **Clone & setup**        | [Getting Started](Getting-Started)                         |
 | **60-second overview**   | [Talos in 60 Seconds](getting-started/talos-60-seconds.md) |
-| **Understand the model** | [Mental Model](getting-started/mental-model.md)      |
+| **Understand the model** | [Mental Model](getting-started/mental-model.md)            |
 | **Hands-on in 10 min**   | [Quickstart](getting-started/quickstart.md)                |
-| **Learn the terms**      | [Glossary](reference/glossary.md)        |
-| **The Whitepaper**       | [Whitepaper](research/whitepaper.md)    |
+| **Learn the terms**      | [Glossary](reference/glossary.md)                          |
+| **The Whitepaper**       | [Whitepaper](research/whitepaper.md)                       |
 
 ---
 
@@ -67,14 +67,14 @@ AI agents lack a trustable way to:
 | 🦀 **Rust Kernel**     | High-performance crypto & validation         | [Architecture](Architecture)             |
 | 🔐 **Double Ratchet**  | Per-message forward secrecy                  | [Double Ratchet](Double-Ratchet)         |
 | 🔒 **Capabilities**    | Scoped, expiring authorization               | [Agent Capabilities](Agent-Capabilities) |
-| 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](Audit-Explorer)         |
-| 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](MCP-Cookbook)             |
-| 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](DIDs-DHT)                   |
-| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](A2A-Channels)             |
-| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking      | [Multi-Region](Multi-Region)             |
-| 🔑 **Rotation**        | Zero-downtime automated secret rotation      | [Secrets Rotation](Secrets-Rotation)     |
+| 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](Audit-Explorer)               |
+| 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](MCP-Cookbook)                   |
+| 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](DIDs-DHT)                         |
+| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](A2A-Channels)                   |
+| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking      | [Multi-Region](Multi-Region)                   |
+| 🔑 **Rotation**        | Zero-downtime automated secret rotation      | [Secrets Rotation](Secrets-Rotation)           |
 | ⚖️ **GSLB**            | Global load balancing & geo-routing          | [Global Load Balancing](Global-Load-Balancing) |
-| 💸 **Budgets**         | Atomic cost enforcement for agents           | [Adaptive Budgets](Adaptive-Budgets)     |
+| 💸 **Budgets**         | Atomic cost enforcement for agents           | [Adaptive Budgets](Adaptive-Budgets)           |
 
 ---
 

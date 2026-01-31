@@ -5,7 +5,7 @@ This guide walks you through setting up the Talos development environment.
 ## Prerequisites
 
 | Tool | Version | Check |
-|------|---------|-------|
+| :--- | :--- | :--- |
 | Python | 3.11+ | `python3 --version` |
 | Node.js | 20+ | `node --version` |
 | Rust | stable | `cargo --version` |
@@ -24,6 +24,7 @@ cd talos
 ```
 
 > **Already cloned without submodules?**
+>
 > ```bash
 > git submodule update --init --recursive
 > ```
@@ -39,7 +40,7 @@ The setup script initializes all submodules and configures SSH/HTTPS fallback:
 **Environment Variables:**
 
 | Variable | Default | Description |
-|----------|---------|-------------|
+| :--- | :--- | :--- |
 | `TALOS_SETUP_MODE` | `lenient` | `lenient` = warn on missing repos, `strict` = fail |
 | `TALOS_USE_GLOBAL_INSTEADOF` | `0` | Set to `1` to configure HTTPS fallback globally |
 
@@ -51,6 +52,7 @@ The setup script initializes all submodules and configures SSH/HTTPS fallback:
 ```
 
 The test runner checks for:
+
 - bash, python3, node, npm, curl
 - cargo (Rust toolchain)
 - rg (ripgrep, optional)
@@ -97,8 +99,9 @@ make clean      # Remove all dependencies
 
 ## Directory Structure
 
-```
+```text
 talos/
+
 ├── deploy/
 │   ├── repos/              # 12 git submodules
 │   │   ├── talos-contracts/
