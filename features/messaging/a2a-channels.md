@@ -66,18 +66,18 @@ sequenceDiagram
 
 ### Gateway Surfaces
 
-| Endpoint                      | Method | Description                   |
-| :---------------------------- | :----- | :---------------------------- |
-| `/a2a/sessions`               | POST   | Create new session            |
-| `/a2a/sessions/{id}/accept`   | POST   | Accept pending session        |
-| `/a2a/sessions/{id}/frames`   | POST   | Send encrypted frame          |
-| `/a2a/sessions/{id}/frames`   | GET    | Receive frames (cursor-based) |
-| `/a2a/sessions/{id}/close`    | DELETE | Close session                 |
-| `/a2a/sessions/{id}/rotate`   | POST   | Rotate session keys           |
-| `/a2a/groups`                 | POST   | Create group                  |
-| `/a2a/groups/{id}/members`    | POST   | Add group member              |
-| `/a2a/groups/{id}/members/{pid}` | DELETE | Remove group member        |
-| `/a2a/groups/{id}`            | DELETE | Close group                   |
+| Endpoint                         | Method | Description                   |
+| :------------------------------- | :----- | :---------------------------- |
+| `/a2a/sessions`                  | POST   | Create new session            |
+| `/a2a/sessions/{id}/accept`      | POST   | Accept pending session        |
+| `/a2a/sessions/{id}/frames`      | POST   | Send encrypted frame          |
+| `/a2a/sessions/{id}/frames`      | GET    | Receive frames (cursor-based) |
+| `/a2a/sessions/{id}/close`       | DELETE | Close session                 |
+| `/a2a/sessions/{id}/rotate`      | POST   | Rotate session keys           |
+| `/a2a/groups`                    | POST   | Create group                  |
+| `/a2a/groups/{id}/members`       | POST   | Add group member              |
+| `/a2a/groups/{id}/members/{pid}` | DELETE | Remove group member           |
+| `/a2a/groups/{id}`               | DELETE | Close group                   |
 
 ### SDK Components
 

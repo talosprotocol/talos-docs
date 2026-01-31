@@ -18,16 +18,16 @@ python examples/01_crypto.py
 
 ## Examples Overview
 
-| Example | Topic | Run Command |
-|---------|-------|-------------|
-| [01_crypto.py](../../examples/01_crypto.py) | Cryptography | `python examples/01_crypto.py` |
-| [02_blockchain.py](../../examples/02_blockchain.py) | Blockchain | `python examples/02_blockchain.py` |
-| [03_acl.py](../../examples/03_acl.py) | Access Control | `python examples/03_acl.py` |
-| [04_light_client.py](../../examples/04_light_client.py) | SPV Client | `python examples/04_light_client.py` |
-| [05_did.py](../../examples/05_did.py) | DIDs | `python examples/05_did.py` |
-| [06_dht.py](../../examples/06_dht.py) | DHT | `python examples/06_dht.py` |
-| [07_validation.py](../../examples/07_validation.py) | Validation | `python examples/07_validation.py` |
-| [08_full_demo.py](../../examples/08_full_demo.py) | **Full Demo** | `python examples/08_full_demo.py` |
+| Example                                                   | Topic          | Run Command                            |
+| --------------------------------------------------------- | -------------- | -------------------------------------- |
+| [01_crypto.py](../../examples/01_crypto.py)               | Cryptography   | `python examples/01_crypto.py`         |
+| [02_blockchain.py](../../examples/02_blockchain.py)       | Blockchain     | `python examples/02_blockchain.py`     |
+| [03_acl.py](../../examples/03_acl.py)                     | Access Control | `python examples/03_acl.py`            |
+| [04_light_client.py](../../examples/04_light_client.py)   | SPV Client     | `python examples/04_light_client.py`   |
+| [05_did.py](../../examples/05_did.py)                     | DIDs           | `python examples/05_did.py`            |
+| [06_dht.py](../../examples/06_dht.py)                     | DHT            | `python examples/06_dht.py`            |
+| [07_validation.py](../../examples/07_validation.py)       | Validation     | `python examples/07_validation.py`     |
+| [08_full_demo.py](../../examples/08_full_demo.py)         | **Full Demo**  | `python examples/08_full_demo.py`      |
 
 ---
 
@@ -249,6 +249,7 @@ python examples/08_full_demo.py
 ```
 
 Features demonstrated:
+
 - End-to-end encryption
 - Digital signatures
 - Blockchain audit trail
@@ -260,10 +261,11 @@ Features demonstrated:
 ## 9. Live MCP POC (Ollama + DB)
 
 Demonstrates a full MCP flow:
-1.  **Registry**: Starts a local registry.
-2.  **Alice (Host)**: Registers and exposes a Mock Database via `mcp-serve`.
-3.  **Bob (Agent)**: Registers and connects to Alice via `mcp-connect`.
-4.  **Interaction**: Bob sends JSON-RPC commands to Query Alice's DB over the blockchain tunnel.
+
+1. **Registry**: Starts a local registry.
+2. **Alice (Host)**: Registers and exposes a Mock Database via `mcp-serve`.
+3. **Bob (Agent)**: Registers and connects to Alice via `mcp-connect`.
+4. **Interaction**: Bob sends JSON-RPC commands to Query Alice's DB over the blockchain tunnel.
 
 ```bash
 # Run the POC
@@ -271,6 +273,7 @@ Demonstrates a full MCP flow:
 ```
 
 **Expected Output**:
+
 ```json
 [Agent] 🦅 Calling Tool: query_db(users)...
 [Agent] ✅ Database Result:

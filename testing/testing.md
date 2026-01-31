@@ -5,6 +5,7 @@ This guide covers the Talos test infrastructure.
 ## Overview
 
 The test suite validates:
+
 - **Contract compliance**: Schemas, vectors, helpers
 - **Boundary purity**: No duplicated logic across repos
 - **Unit tests**: Per-repo test suites
@@ -20,13 +21,13 @@ The master test runner uses **auto-discovery** to detect and valid repositories.
 
 ### Flags
 
-| Flag | Description |
-|------|-------------|
-| `--ci` | Run standard CI suite (Smoke + Unit + Coverage) |
-| `--full` | Run everything (Unit + Integration + Coverage) |
-| `--changed` | Only run tests for repos affected by recent changes |
-| `--changed-mode M` | Discovery mode: `staged`, `workspace`, or `ci` |
-| `--keep-going` | Continue running even if a repo fails |
+| Flag               | Description                                         |
+| ------------------ | --------------------------------------------------- |
+| `--ci`             | Run standard CI suite (Smoke + Unit + Coverage)     |
+| `--full`           | Run everything (Unit + Integration + Coverage)      |
+| `--changed`        | Only run tests for repos affected by recent changes |
+| `--changed-mode M` | Discovery mode: `staged`, `workspace`, or `ci`      |
+| `--keep-going`     | Continue running even if a repo fails               |
 
 ### Examples
 
@@ -45,11 +46,11 @@ cd core && scripts/test.sh --ci
 
 Tests use environment isolation:
 
-| Variable | Purpose |
-|----------|---------|
-| `TALOS_ENV=test` | Marks test environment |
-| `TALOS_RUN_ID=<uuid>` | Unique per test run |
-| `TALOS_DB_PATH=/tmp/talos_test_*.db` | Ephemeral storage |
+| Variable                               | Purpose                |
+| -------------------------------------- | ---------------------- |
+| `TALOS_ENV=test`                       | Marks test environment |
+| `TALOS_RUN_ID=<uuid>`                  | Unique per test run    |
+| `TALOS_DB_PATH=/tmp/talos_test_*.db`   | Ephemeral storage      |
 
 ## Boundary Gate
 
@@ -60,6 +61,7 @@ The boundary purity gate prevents architectural drift:
 ```
 
 **Checks:**
+
 1. ❌ No `deriveCursor` reimplementation outside contracts
 2. ❌ No `btoa`/`atob` usage (use contracts helpers)
 3. ❌ No deep cross-repo imports
@@ -73,6 +75,7 @@ Test vectors in `talos-contracts/test_vectors/` are the source of truth:
 ```
 
 **Validates:**
+
 - Directory exists
 - JSON files are valid
 - At least one vector file present
@@ -81,16 +84,16 @@ Test vectors in `talos-contracts/test_vectors/` are the source of truth:
 
 Each repo has a `scripts/test.sh`:
 
-| Repo | Test Framework | Linter |
-|------|----------------|--------|
-| talos-contracts | Vitest + pytest | ESLint + ruff |
-| talos-core-rs | cargo test | clippy |
-| talos-sdk-py | pytest | ruff |
-| talos-sdk-ts | Vitest | ESLint |
-| talos-gateway | pytest | ruff |
-| talos-audit-service | pytest | ruff |
-| talos-mcp-connector | pytest | ruff |
-| talos-dashboard | Vitest | ESLint |
+| Repo                | Test Framework  | Linter        |
+| ------------------- | --------------- | ------------- |
+| talos-contracts     | Vitest + pytest | ESLint + ruff |
+| talos-core-rs       | cargo test      | clippy        |
+| talos-sdk-py        | pytest          | ruff          |
+| talos-sdk-ts        | Vitest          | ESLint        |
+| talos-gateway       | pytest          | ruff          |
+| talos-audit-service | pytest          | ruff          |
+| talos-mcp-connector | pytest          | ruff          |
+| talos-dashboard     | Vitest          | ESLint        |
 
 Run via Makefile:
 
@@ -136,11 +139,11 @@ TALOS_SETUP_MODE=strict ./deploy/scripts/setup.sh
 
 ## Reports and Logs
 
-| Location | Content |
-|----------|---------|
-| `deploy/reports/logs/*.log` | Per-repo test output |
-| `/tmp/talos-*.log` | Service runtime logs |
-| Console output | Summary with ✓/✗ indicators |
+| Location                    | Content                      |
+| --------------------------- | ---------------------------- |
+| `deploy/reports/logs/*.log` | Per-repo test output         |
+| `/tmp/talos-*.log`          | Service runtime logs         |
+| Console output              | Summary with ✓/✗ indicators  |
 
 ## Coverage Enforcement
 
@@ -167,7 +170,6 @@ python3 scripts/coverage_coordinator.py --repos core sdks-python
 1. **Schema tests**: Add to `talos-contracts/test_vectors/`
 2. **Unit tests**: Add to repo's `tests/` or `test/` directory
 3. **Integration tests**: Extend `test_integration.sh`
-
 
 ## Performance Testing
 

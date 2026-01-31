@@ -87,6 +87,7 @@ done
 ### Distributed Tracing Overview
 
 Talos integrates **OpenTelemetry** for distributed tracing with:
+
 - Automatic span generation (FastAPI, SQLAlchemy)
 - OTLP export to Jaeger, Zipkin, or other collectors
 - **Automatic redaction** of sensitive data

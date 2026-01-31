@@ -47,7 +47,7 @@ docker-compose -f talos-ai-gateway/docker-compose.multi-region.yml up -d
 
 ## Kubernetes (Helm)
 
-### Quick Start
+### Kubernetes Quick Start
 
 ```bash
 # Install chart
