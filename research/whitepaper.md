@@ -50,6 +50,19 @@ The protocol is built on five pillars:
 
 In the Talos ecosystem, **Specification is King**. The `talos-contracts` repository is the single source of truth for all protocol definitions.
 
+```mermaid
+graph TD
+    Contracts["talos-contracts"] -->|Generates| SDK_PY["Python SDK"]
+    Contracts -->|Generates| SDK_TS["TypeScript SDK"]
+    Contracts -->|Generates| SDK_GO["Go SDK"]
+    Contracts -->|Generates| Gateway["AI Gateway"]
+    Contracts -->|Validates| Traffic["Live Traffic"]
+    
+    subgraph "Single Source of Truth"
+        Contracts
+    end
+```
+
 - **JSON Schemas**: strictly define every message type, preventing injection attacks.
 - **Golden Vectors**: thousands of cryptographically generated test cases that every SDK (Python, TS, Go, Java) must pass.
 - **Rules of Interop**: no implementation is allowed to "improvise" cryptographic derivations; they must adhere to the contract.
@@ -65,6 +78,18 @@ To handle the high-throughput requirements of AI agents (sometimes thousands of 
 
 The TGA serves as the immune system of the protocol, ensuring operational stability without manual intervention.
 
+```mermaid
+graph LR
+    TGA[Talos Governance Agent] -->|Monitors| Gateway[Gateway]
+    TGA -->|Monitors| Audit[Audit Service]
+    TGA -->|Enforces| Policy[Security Policy]
+    
+    Gateway -->|Metrics| TGA
+    Audit -->|Health| TGA
+    
+    TGA -->|Circuit Break| Gateway
+```
+
 - **Runtime Resilience**: Automatically detects and mitigates failures in agent loops.
 - **Drift Detection**: Validates that running services match their deployed configuration.
 - **Self-Healing**: Triggers circuit breakers and safeguards during high-load events.
@@ -76,6 +101,25 @@ The TGA serves as the immune system of the protocol, ensuring operational stabil
 ### 4.1 Confidentiality via Double Ratchet
 
 Talos implements the **Double Ratchet Algorithm** (pioneered by Signal).
+
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    
+    Note over Alice, Bob: Initial X3DH Handshake
+    Alice->>Bob: PreKey Bundle Request
+    Bob-->>Alice: PreKey Bundle
+    Alice->>Bob: Initial Message (X3DH)
+    
+    Note over Alice, Bob: Double Ratchet Session
+    Alice->>Bob: Message 1 (Chain A, Ratchet 1)
+    Bob->>Alice: Message 2 (Chain B, Ratchet 1)
+    Alice->>Bob: Message 3 (Chain A, Ratchet 2)
+    
+    Note right of Bob: Typical Ratchet Step
+    Note right of Bob: KDF(RootKey, DH_Out) -> NewRoot, ChainKey
+```
 
 - **Key Exchange**: Uses X3DH (Extended Triple Diffie-Hellman) for asynchronous initial handshakes.
 - **Per-Message Rotation**: Every single message sent between agents uses a unique key.
@@ -104,9 +148,15 @@ The **Model Context Protocol (MCP)** is the industry standard for LLM-to-Tool co
 
 ```mermaid
 graph LR
-    A["AI Agent"] -->|MCP JSON-RPC| S["Talos SDK"]
-    S -->|"Encrypted/Signed Tunnel"| G["Talos Gateway"]
-    G -->|"Secured Tool Access"| T["Internal Tools/DB"]
+    Agent[AI Agent] -->|MCP Request| T_SDK[Talos SDK]
+    
+    subgraph "Secure Tunnel"
+        T_SDK -->|Encrypted/Signed| Gateway
+    end
+    
+    Gateway -->|Decrypted Check| ACL[ACL Engine]
+    ACL -->|Allowed| Tool[Internal Tool]
+    ACL -->|Denied| Reject[403 Forbidden]
 ```
 
 ### 5.1 Capability-Based Authorization
@@ -126,6 +176,24 @@ Talos has evolved from a research prototype to a hardened production system:
 - **Health Checks**: Deep readiness probes ensure traffic only reaches healthy nodes.
 
 ### 6.2 Multi-Region Architecture (Phase 12)
+
+```mermaid
+graph TD
+    Client[Client Traffic] --> GSLB[Global Load Balancer]
+    
+    subgraph "Region A (Primary)"
+        GSLB --> RegionA_LB[Load Balancer]
+        RegionA_LB --> Gateway_A[Gateway Cluster]
+        Gateway_A --> DB_Primary[(Primary DB)]
+    end
+    
+    subgraph "Region B (Secondary)"
+        GSLB --> RegionB_LB[Load Balancer]
+        RegionB_LB --> Gateway_B[Gateway Cluster]
+        Gateway_B --> DB_Replica[(Read Replica)]
+        DB_Primary -.->|Replication| DB_Replica
+    end
+```
 
 - **Read/Write Splitting**: Optimizes database throughput by directing reads to local replicas.
 - **Circuit Breakers**: Automatically fails over traffic to health-checked alternatives during partial outages.
