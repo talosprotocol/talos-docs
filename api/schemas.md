@@ -126,8 +126,21 @@ This reference documents the JSON schemas for the core data models used in the T
     "data",
     "previous_hash"
   ],
-  "title": "Block",
-  "type": "object"
+## Block
+
+```json
+{
+  "type": "object",
+  "properties": {
+    "index": { "type": "integer" },
+    "timestamp": { "type": "number" },
+    "data": { "type": "object", "properties": { "messages": { "type": "array" } } },
+    "previous_hash": { "type": "string" },
+    "nonce": { "type": "integer" },
+    "hash": { "type": "string" },
+    "merkle_root": { "type": "string" }
+  },
+  "required": ["index", "timestamp", "data", "previous_hash", "hash", "merkle_root"]
 }
 ```
 
@@ -135,131 +148,20 @@ This reference documents the JSON schemas for the core data models used in the T
 
 ```json
 {
-  "$defs": {
-    "ChunkInfo": {
-      "description": "Information about a chunk in a streaming message.\n\nUsed for reassembling chunked data (text, audio, video).",
-      "properties": {
-        "sequence": {
-          "title": "Sequence",
-          "type": "integer"
-        },
-        "total": {
-          "title": "Total",
-          "type": "integer"
-        },
-        "stream_id": {
-          "title": "Stream Id",
-          "type": "string"
-        },
-        "hash": {
-          "title": "Hash",
-          "type": "string"
-        }
-      },
-      "required": [
-        "sequence",
-        "total",
-        "stream_id",
-        "hash"
-      ],
-      "title": "ChunkInfo",
-      "type": "object"
-    },
-    "MessageType": {
-      "description": "Enumeration of supported message types.",
-      "enum": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15
-      ],
-      "title": "MessageType",
-      "type": "integer"
-    }
-  },
-  "description": "The core message structure for the protocol.\n\nAll messages in the system use this structure, whether they're\nsimple text messages, streaming chunks, or control messages.",
+  "type": "object",
+  "description": "Core message structure. Type is serialized as a String (Enum Name).",
   "properties": {
-    "id": {
-      "title": "Id",
-      "type": "string"
-    },
-    "type": {
-      "$ref": "#/$defs/MessageType"
-    },
-    "sender": {
-      "title": "Sender",
-      "type": "string"
-    },
-    "recipient": {
-      "title": "Recipient",
-      "type": "string"
-    },
-    "timestamp": {
-      "title": "Timestamp",
-      "type": "number"
-    },
-    "content": {
-      "format": "binary",
-      "title": "Content",
-      "type": "string"
-    },
-    "signature": {
-      "format": "binary",
-      "title": "Signature",
-      "type": "string"
-    },
-    "nonce": {
-      "anyOf": [
-        {
-          "format": "binary",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Nonce"
-    },
-    "chunk_info": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/ChunkInfo"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "metadata": {
-      "additionalProperties": true,
-      "title": "Metadata",
-      "type": "object"
-    }
+    "id": { "type": "string" },
+    "type": { "type": "string", "enum": ["TEXT", "ACK", "MCP_MESSAGE", "MCP_RESPONSE", "HANDSHAKE", "ERROR"] },
+    "sender": { "type": "string" },
+    "recipient": { "type": "string" },
+    "timestamp": { "type": "number" },
+    "content": { "type": "string", "description": "Base64 encoded bytes" },
+    "signature": { "type": "string", "description": "Base64 encoded bytes" },
+    "nonce": { "type": "string", "description": "Base64 encoded bytes (optional)" },
+    "metadata": { "type": "object" }
   },
-  "required": [
-    "id",
-    "type",
-    "sender",
-    "recipient",
-    "timestamp",
-    "content",
-    "signature"
-  ],
-  "title": "MessagePayload",
-  "type": "object"
+  "required": ["id", "type", "sender", "recipient", "timestamp", "content", "signature"]
 }
 ```
 
