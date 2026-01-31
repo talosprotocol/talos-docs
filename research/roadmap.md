@@ -10,6 +10,15 @@
 
 > **Current Version: 2.0.0-alpha.1** | **Tests: 196 passing** | **Date: December 2025**
 
+### Version Mapping
+
+| Marketing Version | Component Versions |
+|-------------------|--------------------|
+| **v2.0.0 Alpha**  | `talos-sdk-py` v0.1.25+, `ai-gateway` v0.1.0+ |
+| **v1.1 Foundation** | Legacy components |
+
+> Note: The "v2.0.0" designation represents the target architecture. Component versions (0.1.x) are current implementation artifacts.
+
 | Phase | Feature                 | Status      | Tests | Files                                              |
 | ----- | ----------------------- | ----------- | ----- | -------------------------------------------------- |
 | 1     | Block Validation Engine | ✅ Complete | 19    | `src/core/validation/`                             |
