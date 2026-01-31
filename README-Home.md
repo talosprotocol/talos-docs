@@ -11,11 +11,11 @@
 | New to Talos?            | Start with                              |
 | ------------------------ | --------------------------------------- |
 | **Clone & setup**        | [Getting Started](Getting-Started)      |
-| **60-second overview**   | [Talos in 60 Seconds](Talos-60-Seconds) |
-| **Understand the model** | [Mental Model](Talos-Mental-Model)      |
-| **Hands-on in 10 min**   | [Quickstart](Quickstart)                |
-| **Learn the terms**      | [Glossary](Glossary)                    |
-| **The Whitepaper**       | [Whitepaper](https://github.com/talosprotocol/talos/blob/main/WHITEPAPER.md) |
+| **60-second overview**   | [Talos in 60 Seconds](getting-started/talos-60-seconds.md) |
+| **Understand the model** | [Mental Model](getting-started/mental-model.md)      |
+| **Hands-on in 10 min**   | [Quickstart](getting-started/quickstart.md)                |
+| **Learn the terms**      | [Glossary](reference/glossary.md)        |
+| **The Whitepaper**       | [Whitepaper](research/whitepaper.md)    |
 
 ---
 

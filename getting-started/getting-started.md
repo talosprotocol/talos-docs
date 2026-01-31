@@ -146,8 +146,8 @@ git submodule update --init --recursive
 
 ## Next Steps
 
-- [Development Workflow](Development) – Makefiles, testing, scripts
-- [Architecture](Architecture) – System design
-- [Testing](Testing) – Test suite details
-- [Python SDK](Python-SDK) – Use the Python client
-- [TypeScript SDK](TypeScript-SDK) – Use the TypeScript client
+- [Development Workflow](../guides/development.md) – Makefiles, testing, scripts
+- [Architecture](../architecture/overview.md) – System design
+- [Testing](../testing/testing.md) – Test suite details
+- [Python SDK](../sdk/python-sdk.md) – Use the Python client
+- [TypeScript SDK](../sdk/typescript-sdk.md) – Use the TypeScript client
