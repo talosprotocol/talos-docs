@@ -7,7 +7,7 @@ audience: Developer
 
 > **Problem**: Get from zero to working Talos agent in 10 minutes.  
 > **Guarantee**: Minimal steps, no optional branches.  
-> **Non-goal**: This is not comprehensive—see [Python SDK](Python-SDK) for full API.
+> **Non-goal**: This is not comprehensive—see [Python SDK](../sdk/python-sdk.md) for full API.
 
 ## Prerequisites
 
@@ -170,11 +170,11 @@ result = await client.invoke_tool(
 
 | Goal | Page |
 |------|------|
-| Understand the mental model | [Talos Mental Model](Talos-Mental-Model) |
-| Learn all API methods | [Python SDK](Python-SDK) |
-| Secure MCP tools | [MCP Cookbook](MCP-Cookbook) |
-| Deploy to production | [Hardening Guide](Hardening-Guide) |
+| Understand the mental model | [Talos Mental Model](mental-model.md) |
+| Learn all API methods | [Python SDK](../sdk/python-sdk.md) |
+| Secure MCP tools | [MCP Cookbook](../features/integrations/mcp-cookbook.md) |
+| Deploy to production | [Hardening Guide](../guides/hardening-guide.md) |
 
 ---
 
-> ⚠️ **Do not copy-paste to production**. This quickstart uses defaults suitable for development. See [Hardening Guide](Hardening-Guide) for production configuration.
+> ⚠️ **Do not copy-paste to production**. This quickstart uses defaults suitable for development. See [Hardening Guide](../guides/hardening-guide.md) for production configuration.

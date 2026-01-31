@@ -7,7 +7,7 @@ audience: Developer
 
 > **Problem**: Developers need concrete recipes for securing MCP.  
 > **Guarantee**: End-to-end examples for common patterns.  
-> **Non-goal**: MCP protocol details—see [MCP Integration](MCP-Integration).
+> **Non-goal**: MCP protocol details—see [MCP Integration](mcp-integration.md).
 
 ---
 
@@ -386,4 +386,4 @@ await provider.revoke_capability(
 
 ---
 
-**See also**: [MCP Integration](MCP-Integration) | [Agent Capabilities](Agent-Capabilities) | [Audit Explorer](Audit-Explorer)
+**See also**: [MCP Integration](mcp-integration.md) | [Agent Capabilities](../authorization/agent-capabilities.md) | [Audit Explorer](../observability/audit-explorer.md)

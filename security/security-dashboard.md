@@ -7,7 +7,7 @@ audience: Developer, Operator
 
 > **Problem**: Operators need real-time visibility into security events and denial patterns.  
 > **Guarantee**: Web-based console with live metrics, denial analytics, and proof verification.  
-> **Non-goal**: Full SIEM replacement—see [Observability](Observability) for integration.
+> **Non-goal**: Full SIEM replacement—see [Observability](../features/observability/observability.md) for integration.
 
 ---
 
@@ -216,4 +216,4 @@ graph TD
 
 ---
 
-**See also**: [Audit Explorer](Audit-Explorer) | [Observability](Observability) | [Schemas](Schemas)
+**See also**: [Audit Explorer](../features/observability/audit-explorer.md) | [Observability](../features/observability/observability.md) | [Schemas](../api/schemas.md)

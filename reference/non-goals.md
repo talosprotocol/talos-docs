@@ -18,6 +18,7 @@ audience: Everyone
 Talos is **not** Kafka, RabbitMQ, or SQS.
 
 **Why not**:
+
 - No pub/sub fan-out
 - No message persistence by default
 - No topic-based routing
@@ -34,6 +35,7 @@ Talos is **not** Kafka, RabbitMQ, or SQS.
 Talos is **not** Temporal, Airflow, or Step Functions.
 
 **Why not**:
+
 - No workflow state machines
 - No retry policies
 - No saga orchestration
@@ -50,6 +52,7 @@ Talos is **not** Temporal, Airflow, or Step Functions.
 Talos is **not** LangChain, CrewAI, or AutoGPT.
 
 **Why not**:
+
 - Talos does not define agent behavior
 - No prompting, no chains, no tools
 - No memory management
@@ -64,16 +67,19 @@ Talos is **not** LangChain, CrewAI, or AutoGPT.
 ### ❌ A Sandbox for Malicious Agents
 
 Talos **does not** protect against agents that:
+
 - Are intentionally malicious
 - Execute harmful tool calls
 - Violate their own organization's policies
 
 **Why not**:
+
 - Talos secures *transport*, not *behavior*
 - Capabilities limit scope but don't sandbox execution
 - A malicious agent with valid capability can still cause harm
 
 **What Talos provides**:
+
 - Proof of who did what
 - Non-repudiable audit for accountability
 - Blast radius limitation via scoped capabilities
@@ -83,34 +89,39 @@ Talos **does not** protect against agents that:
 ### ❌ Endpoint Security
 
 Talos **does not** protect against:
+
 - Compromised host machines
 - Stolen private keys
 - Malware on agent endpoints
 - Physical access attacks
 
 **Why not**:
+
 - This is OS, hardware, and operational security
 - Talos assumes agent endpoints are trusted
 - Key management is the agent operator's responsibility
 
-**See**: [Hardening Guide](Hardening-Guide) for mitigations.
+**See**: [Hardening Guide](../guides/hardening-guide.md) for mitigations.
 
 ---
 
 ### ❌ A Privacy Silver Bullet
 
 Talos **does not** provide:
+
 - Complete metadata hiding
 - Sender/receiver anonymity
 - Traffic analysis resistance
 - Plausible deniability
 
 **Why not**:
+
 - Routing metadata is visible at transport layer
 - Timing and message sizes can be correlated
 - Full anonymity requires onion routing (planned future)
 
 **What Talos provides**:
+
 - Content confidentiality (E2EE)
 - P2P reduces central observation
 - Optional future metadata protections
@@ -122,6 +133,7 @@ Talos **does not** provide:
 Talos **is not** just mTLS with extra steps.
 
 **Differences**:
+
 - mTLS: transport-level, server identity
 - Talos: application-level, agent identity
 - mTLS: no forward secrecy per message
@@ -140,18 +152,21 @@ Talos **is not** just mTLS with extra steps.
 ### ❌ A Blockchain for Data Storage
 
 Talos **does not** store:
+
 - Message contents on-chain
 - Tool payloads on-chain
 - Agent state on-chain
 - Media or files on-chain
 
 **Why not**:
+
 - Cost: blockchain storage is expensive
 - Latency: on-chain writes are slow
 - Privacy: on-chain data is public
 - Scale: doesn't work at message volume
 
 **What blockchain does in Talos**:
+
 - Identity anchors (rare)
 - Capability commitment hashes (occasional)
 - Audit root hashes (periodic, batched)
@@ -162,11 +177,13 @@ Talos **does not** store:
 ### ❌ Real-Time Streaming
 
 Talos **is not optimized for**:
+
 - Audio/video streaming
 - Sub-millisecond latency
 - Continuous data flows
 
 **Why not**:
+
 - Cryptographic overhead per message
 - Ratcheting on every message
 - Audit commitment latency
@@ -179,7 +196,7 @@ Talos **is not optimized for**:
 ## Summary Table
 
 | Capability | Talos Provides | Does Not Provide |
-|------------|----------------|------------------|
+| :--------- | :------------- | :--------------- |
 | Secure messaging | ✅ | ❌ High-throughput pub/sub |
 | Agent identity | ✅ | ❌ Agent behavior logic |
 | Capability control | ✅ | ❌ Sandboxed execution |
@@ -192,6 +209,7 @@ Talos **is not optimized for**:
 ## Why This Matters
 
 Documenting non-goals:
+
 - **Prevents misadoption**: Users choose Talos correctly
 - **Builds trust**: Honesty signals maturity
 - **Focus development**: Scope stays crisp
@@ -199,4 +217,4 @@ Documenting non-goals:
 
 ---
 
-**See also**: [Threat Model](Threat-Model) | [Why Talos Wins](Why-Talos-Wins)
+**See also**: [Threat Model](../architecture/threat-model.md) | [Why Talos Wins](../business/why-talos-wins.md)

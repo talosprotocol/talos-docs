@@ -17,15 +17,16 @@ All features enforce **fail-closed** behavior in production mode to prevent secu
 
 ## 1. Rate Limiting
 
-### Overview
+### Rate Limiting Overview
 
 Talos implements a **Token Bucket** rate limiter with:
+
 - Redis backend for distributed rate limiting
 - Per-principal and per-IP limiting
 - Surface-specific rate limit overrides
 - Atomic operations via Lua scripts
 
-### Configuration
+### Rate Limit Configuration
 
 ```bash
 # Enable rate limiting
@@ -40,9 +41,10 @@ RATE_LIMIT_DEFAULT_RPS=5      # Requests per second
 RATE_LIMIT_DEFAULT_BURST=10   # Burst capacity
 ```
 
-### Fail-Closed Behavior
+### Rate Limit Fail-Closed
 
 In **production mode** (`MODE=prod`):
+
 - `RATE_LIMIT_BACKEND` **MUST** be `redis`
 - `REDIS_URL` **MUST** be configured
 - Gateway fails to start if these are missing
@@ -62,11 +64,11 @@ Override rates per-surface in [`gateway_surface.json`](file:///Users/nileshchakr
 ### Error Codes
 
 | Code | HTTP | When | Mode |
-|------|------|------|------|
+| :--- | :--- | :--- | :--- |
 | `RATE_LIMITED` | 429 | Quota exceeded | All |
 | `RATE_LIMITER_UNAVAILABLE` | 503 | Redis down | Dev only |
 
-### Testing
+### Rate Limit Testing
 
 ```bash
 # Test rate limiting
@@ -82,7 +84,7 @@ done
 
 ## 2. Distributed Tracing
 
-### Overview
+### Distributed Tracing Overview
 
 Talos integrates **OpenTelemetry** for distributed tracing with:
 - Automatic span generation (FastAPI, SQLAlchemy)
@@ -90,7 +92,7 @@ Talos integrates **OpenTelemetry** for distributed tracing with:
 - **Automatic redaction** of sensitive data
 - SQL statement logging disabled by default
 
-### Configuration
+### Tracing Configuration
 
 ```bash
 # Enable tracing
@@ -103,9 +105,10 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317
 OTEL_RESOURCE_ATTRIBUTES=service.name=talos-gateway
 ```
 
-### Fail-Closed Behavior
+### Tracing Fail-Closed
 
 In **production mode** (`MODE=prod`):
+
 - If `TRACING_ENABLED=true`, `OTEL_EXPORTER_OTLP_ENDPOINT` **MUST** be set
 - Gateway fails to start if missing
 
@@ -153,7 +156,7 @@ python -m uvicorn app.main:app
 
 ## 3. Health Checks
 
-### Overview
+### Health Checks Overview
 
 Talos provides two health check endpoints:
 
@@ -222,7 +225,7 @@ spec:
 
 ## 4. Graceful Shutdown
 
-### Overview
+### Graceful Shutdown Overview
 
 Talos implements graceful shutdown via [`ShutdownGateMiddleware`](file:///Users/nileshchakraborty/workspace/talos/services/ai-gateway/app/middleware/shutdown_gate.py):
 
@@ -254,7 +257,7 @@ Non-health requests during shutdown receive:
 
 HTTP status: **503 Service Unavailable**
 
-### Testing
+### Shutdown Testing
 
 ```bash
 # Start Gateway in background
@@ -283,7 +286,7 @@ curl http://localhost:8000/health/live
 Phase 11 introduces the following stable error codes:
 
 | Code | HTTP | Description | Mode |
-|------|------|-------------|------|
+| :--- | :--- | :--- | :--- |
 | `RATE_LIMITED` | 429 | Request rate exceeded | All |
 | `RATE_LIMITER_UNAVAILABLE` | 503 | Rate limiter backend down | Dev only |
 | `SERVER_SHUTTING_DOWN` | 503 | Graceful shutdown in progress | All |
@@ -326,15 +329,17 @@ DATABASE_WRITE_URL=postgresql://user:pass@db-primary:5432/talos
 DATABASE_READ_URL=postgresql://user:pass@db-replica:5432/talos
 ```
 
-###Monitoring
+### Monitoring
 
 **Metrics to track**:
+
 - Rate limiting: `talos_rate_limit_rejections_total`
 - Tracing: Span export errors
 - Health checks: `/health/ready` success rate
 - Shutdown: Request drain duration
 
 **Alerts to configure**:
+
 - Redis connection failures
 - OTLP export failures
 - Health check failures
@@ -388,7 +393,7 @@ DATABASE_READ_URL=postgresql://user:pass@db-replica:5432/talos
 
 ## 8. See Also
 
-- [A2A Channels](./A2A-Channels.md) - Agent-to-Agent communication (Phase 10)
-- [Deployment Guide](../DEPLOYMENT.md) - Full deployment instructions
-- [Architecture](./Architecture.md) - System architecture overview
-- [API Reference](./API-Reference.md) - Complete API documentation
+- [A2A Channels](../features/messaging/a2a-channels.md) - Agent-to-Agent communication (Phase 10)
+- [Deployment Guide](deployment.md) - Full deployment instructions
+- [Architecture](../architecture/overview.md) - System architecture overview
+- [API Reference](../api/api-reference.md) - Complete API documentation

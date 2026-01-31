@@ -275,4 +275,4 @@ Key assumptions:
 
 ---
 
-**See also**: [Threat Model](Threat-Model) | [Protocol Guarantees](Protocol-Guarantees) | [Cryptography](Cryptography)
+**See also**: [Threat Model](../architecture/threat-model.md) | [Protocol Guarantees](../architecture/protocol-guarantees.md) | [Cryptography](cryptography.md)

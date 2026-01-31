@@ -274,6 +274,6 @@ class Session:
 
 ## See Also
 
-- [Cryptography Guide](Cryptography.md) - Underlying primitives
-- [Access Control](Access-Control.md) - Permission management
-- [Mathematical Security Proof](Mathematical-Security-Proof.md) - Formal guarantees
+- [Cryptography Guide](../../security/cryptography.md) - Underlying primitives
+- [Access Control](../../features/authorization/access-control.md) - Permission management
+- [Mathematical Security Proof](../../security/mathematical-proof.md) - Formal guarantees

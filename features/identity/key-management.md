@@ -329,4 +329,4 @@ def zero_bytes(data: bytearray):
 
 ---
 
-**See also**: [Cryptography](Cryptography) | [Agent Lifecycle](Agent-Lifecycle) | [Hardening Guide](Hardening-Guide)
+**See also**: [Cryptography](../../security/cryptography.md) | [Agent Lifecycle](../../business/agent-lifecycle.md) | [Hardening Guide](../../guides/hardening-guide.md)

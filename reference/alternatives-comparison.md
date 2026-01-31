@@ -177,4 +177,4 @@ No existing solution provides all of these together.
 
 ---
 
-**See also**: [Why Talos Wins](Why-Talos-Wins) | [Non-Goals](Non-Goals) | [Talos in 60 Seconds](Talos-60-Seconds)
+**See also**: [Why Talos Wins](../business/why-talos-wins.md) | [Non-Goals](non-goals.md) | [Talos in 60 Seconds](../getting-started/talos-60-seconds.md)

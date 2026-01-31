@@ -128,4 +128,4 @@ This is the foundation of **privacy-preserving accountability**.
 
 ---
 
-**Next**: [Glossary](Glossary) | [Protocol Guarantees](Protocol-Guarantees) | [Agent Capabilities](Agent-Capabilities)
+**Next**: [Glossary](../reference/glossary.md) | [Protocol Guarantees](../architecture/protocol-guarantees.md) | [Agent Capabilities](../features/authorization/agent-capabilities.md)

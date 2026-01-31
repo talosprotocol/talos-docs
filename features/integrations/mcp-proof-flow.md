@@ -4,7 +4,7 @@
 
 > **The Complete Flow from Agent Action to Verifiable Evidence**
 
-This page stitches together [Agent Capabilities](Agent-Capabilities), [MCP Integration](MCP-Integration), and [Audit Explorer](Audit-Explorer) into one end-to-end proof flow.
+This page stitches together [Agent Capabilities](../authorization/agent-capabilities.md), [MCP Integration](mcp-integration.md), and [Audit Explorer](../observability/audit-explorer.md) into one end-to-end proof flow.
 
 ---
 
@@ -276,7 +276,7 @@ The audit chain provides a tamper-evident log that can be reconstructed and veri
 
 ## See Also
 
-- [Agent Capabilities](Agent-Capabilities) - Authorization model
-- [Audit Explorer](Audit-Explorer) - CLI commands for querying
-- [MCP Integration](MCP-Integration) - Transport architecture
-- [Security Properties](Security-Properties) - Formal guarantees
+- [Agent Capabilities](../authorization/agent-capabilities.md) - Authorization model
+- [Audit Explorer](../observability/audit-explorer.md) - CLI commands for querying
+- [MCP Integration](mcp-integration.md) - Transport architecture
+- [Security Properties](../../security/cryptography.md) - Formal guarantees

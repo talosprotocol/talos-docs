@@ -360,7 +360,7 @@ def secure_tool(peer_id: str, tool: str, args: dict):
 
 ## See Also
 
-- [Getting Started](Getting-Started.md)
-- [Python SDK](Python-SDK.md)
-- [API Reference](API-Reference.md)
-- [Development Guide](Development.md)
+- [Getting Started](../getting-started/getting-started.md)
+- [Python SDK](python-sdk.md)
+- [API Reference](../api/api-reference.md)
+- [Development Guide](../guides/development.md)

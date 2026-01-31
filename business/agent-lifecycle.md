@@ -7,7 +7,7 @@ audience: Developer, Operator
 
 > **Problem**: Agents have complex lifecycles beyond creation.  
 > **Guarantee**: Clear guidance for provisioning, rotation, recovery, revocation.  
-> **Non-goal**: Implementation code—see [Python SDK](Python-SDK).
+> **Non-goal**: Implementation code—see [Python SDK](../sdk/python-sdk.md).
 
 ---
 
@@ -408,4 +408,4 @@ talos recover --backup /path/to/backup.enc
 
 ---
 
-**See also**: [Agent Capabilities](Agent-Capabilities) | [Key Management](Key-Management) | [Hardening Guide](Hardening-Guide)
+**See also**: [Agent Capabilities](../features/authorization/agent-capabilities.md) | [Key Management](../features/identity/key-management.md) | [Hardening Guide](../guides/hardening-guide.md)

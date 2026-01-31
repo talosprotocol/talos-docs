@@ -9,7 +9,7 @@ The ACL system provides granular permission control for MCP tool and resource ac
 ## Features
 
 | Feature | Description |
-|---------|-------------|
+| :--- | :--- |
 | **Pattern Matching** | Wildcard patterns for tools and resources |
 | **Deny-First** | Deny rules always take precedence |
 | **Rate Limiting** | Requests/min and bytes/day limits |
@@ -58,6 +58,7 @@ server = MCPServerProxy(
 ### 3. Access is automatically enforced
 
 When a peer tries to call a tool:
+
 - ✅ Allowed tools execute normally
 - ❌ Denied tools return JSON-RPC error
 
@@ -140,7 +141,8 @@ for entry in log:
 ```
 
 Sample output:
-```
+
+```text
 1703367890.123: abc123... tools/call -> ALLOW
 1703367891.456: abc123... tools/call -> DENY
 1703367892.789: xyz789... resources/read -> RATE_LIMITED
@@ -213,6 +215,6 @@ class ACLCheckResult:
 
 ## See Also
 
-- [MCP Integration](MCP-Integration.md) - Overview of MCP tunneling
-- [Cryptography Guide](Cryptography.md) - How peers are authenticated
-- [Validation Engine](Validation-Engine.md) - Block-level security
+- [MCP Integration](../../features/integrations/mcp-integration.md) - Overview of MCP tunneling
+- [Cryptography Guide](../../security/cryptography.md) - How peers are authenticated
+- [Validation Engine](../../security/validation-engine.md) - Block-level security

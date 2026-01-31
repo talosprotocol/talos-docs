@@ -97,4 +97,4 @@ async with TalosClient.create("my-agent") as client:
 
 ---
 
-**Next**: [Quickstart](Quickstart) | [Mental Model](Talos-Mental-Model) | [Glossary](Glossary)
+**Next**: [Quickstart](quickstart.md) | [Mental Model](mental-model.md) | [Glossary](../reference/glossary.md)

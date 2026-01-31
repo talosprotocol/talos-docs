@@ -221,4 +221,4 @@ The following is anchored on-chain:
 
 ---
 
-**See also**: [Audit Explorer](Audit-Explorer) | [Security Properties](Security-Properties) | [Protocol Guarantees](Protocol-Guarantees)
+**See also**: [Audit Explorer](audit-explorer.md) | [Security Properties](../../security/cryptography.md) | [Protocol Guarantees](../../architecture/protocol-guarantees.md)

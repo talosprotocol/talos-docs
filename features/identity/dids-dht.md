@@ -224,6 +224,6 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 
 ## See Also
 
-- [Python SDK](Python-SDK.md) - High-level client
-- [Cryptography](Cryptography.md) - Key generation
-- [Architecture](Architecture.md) - System design
+- [Python SDK](../../sdk/python-sdk.md) - High-level client
+- [Cryptography](../../security/cryptography.md) - Key generation
+- [Architecture](../../architecture/overview.md) - System design

@@ -125,6 +125,6 @@ make stop       # Stop service
 
 ## See Also
 
-- [MCP Cookbook](MCP-Cookbook) - Recipes and examples
-- [MCP Proof Flow](MCP-Proof-Flow) - Audit proof verification
-- [Gateway API](API-Reference) - Full API reference
+- [MCP Cookbook](mcp-cookbook.md) - Recipes and examples
+- [MCP Proof Flow](mcp-proof-flow.md) - Audit proof verification
+- [Gateway API](../../api/api-reference.md) - Full API reference

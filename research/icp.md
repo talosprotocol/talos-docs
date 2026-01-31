@@ -196,4 +196,4 @@ audience: Business
 
 ---
 
-**See also**: [Why Talos Wins](Why-Talos-Wins) | [Use Cases](MCP-Cookbook) | [GTM Plan](GTM-Plan)
+**See also**: [Why Talos Wins](../business/why-talos-wins.md) | [Use Cases](../features/integrations/mcp-cookbook.md) | [GTM Plan](../business/gtm-plan.md)

@@ -202,7 +202,7 @@ To be clear about scope:
 | Sandbox | Not endpoint protection |
 | Privacy silver bullet | Transport-level privacy |
 
-See [Non-Goals](Non-Goals) for full list.
+See [Non-Goals](../reference/non-goals.md) for full list.
 
 ---
 
@@ -218,4 +218,4 @@ If you're building:
 
 ---
 
-**Start here**: [Talos in 60 Seconds](Talos-60-Seconds) | [Quickstart](Quickstart) | [MCP Cookbook](MCP-Cookbook)
+**Start here**: [Talos in 60 Seconds](../getting-started/talos-60-seconds.md) | [Quickstart](../getting-started/quickstart.md) | [MCP Cookbook](../features/integrations/mcp-cookbook.md)

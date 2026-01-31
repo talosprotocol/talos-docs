@@ -42,5 +42,5 @@ uv run pytest tests/test_gslb.py
 
 ## Related
 
-- [Multi-Region Architecture](Multi-Region)
-- [Observability](Observability)
+- [Multi-Region Architecture](multi-region.md)
+- [Observability](../observability/observability.md)

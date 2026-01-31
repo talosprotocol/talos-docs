@@ -7,6 +7,7 @@
 The **A2A (Agent-to-Agent) SDK** enables secure, forward-secret communication between autonomous agents using the Signal Double Ratchet protocol.
 
 **Key Features**:
+
 - Session lifecycle management (create, accept, rotate)
 - Frame encryption/decryption with replay protection
 - Ratchet state persistence and synchronization
@@ -86,6 +87,7 @@ print(f"Session created: {client.session_id}")
 ```
 
 The initiator:
+
 1. Generates an ephemeral X25519 keypair
 2. Calls `POST /a2a/sessions` with responder DID
 3. Initializes Double Ratchet with initiator role
@@ -109,6 +111,7 @@ print(f"Session accepted: {client.session_id}")
 ```
 
 The responder:
+
 1. Generates an ephemeral X25519 keypair
 2. Calls `POST /a2a/sessions/{session_id}/accept`
 3. Initializes Double Ratchet with responder role
@@ -126,6 +129,7 @@ print("Session rotated - new ratchet state")
 ```
 
 Rotation:
+
 1. Generates new ephemeral keypair
 2. Calls `POST /a2a/sessions/{session_id}/rotate`
 3. Re-initializes Double Ratchet
@@ -149,6 +153,7 @@ await client.send_message(
 ```
 
 Under the hood:
+
 1. Increments sender sequence number
 2. Encrypts plaintext with Double Ratchet
 3. Computes `ciphertext_hash = SHA256(ciphertext)`
@@ -171,6 +176,7 @@ async for frame in client.receive_messages():
 ```
 
 Under the hood:
+
 1. Calls `GET /a2a/frames?session_id={session_id}&recipient_id={your_id}`
 2. Validates `ciphertext_hash`
 3. Checks sequence numbers for replay protection
@@ -186,6 +192,7 @@ The SDK automatically persist ratchet state after each encryption/decryption ope
 ### Ratchet State Blob
 
 The Gateway stores:
+
 - `ratchet_state_blob_b64u`: Base64url-encoded serialized ratchet state
 - `ratchet_state_digest`: SHA-256 hash of the blob
 
@@ -299,7 +306,7 @@ except PermissionDeniedError:
 ### Error Codes
 
 | Code | Description |
-|------|-------------|
+| :--- | :--- |
 | `A2A_SESSION_NOT_FOUND` | Session ID does not exist |
 | `A2A_SESSION_EXPIRED` | Session TTL exceeded |
 | `A2A_SESSION_STATE_INVALID` | Invalid state transition |
@@ -482,7 +489,7 @@ class A2ASessionClient:
 
 ## 8. See Also
 
-- [A2A Channels](./A2A-Channels.md) - Protocol specification
-- [Production Hardening](./Production-Hardening.md) - Phase 11 features
-- [Double Ratchet](./Double-Ratchet.md) - Cryptographic details
-- [API Reference](./API-Reference.md) - Complete API documentation
+- [A2A Channels](../features/messaging/a2a-channels.md) - Protocol specification
+- [Production Hardening](../guides/production-hardening.md) - Phase 11 features
+- [Double Ratchet](../features/messaging/double-ratchet.md) - Cryptographic details
+- [API Reference](../api/api-reference.md) - Complete API documentation

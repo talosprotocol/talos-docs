@@ -2,7 +2,7 @@
 
 ## Core Modules
 
-> **Note**: JSON Schemas for all core models are available in [Schemas](Schemas.md).
+> **Note**: JSON Schemas for all core models are available in [Schemas](schemas.md).
 
 ### `src.core.blockchain`
 
@@ -25,16 +25,16 @@ bc = Blockchain(
 ##### Properties
 
 | Property | Type | Description |
-|----------|------|-------------|
+| :--- | :--- | :--- |
 | `height` | `int` | Current chain height (blocks - 1) |
 | `latest_block` | `Block` | Most recent block |
 | `total_work` | `int` | Cumulative proof-of-work |
 | `genesis_hash` | `str` | Genesis block hash |
 
-##### Methods
+##### Blockchain Methods
 
 | Method | Returns | Description |
-|--------|---------|-------------|
+| :--- | :--- | :--- |
 | `add_data(data: dict)` | `bool` | Add data to mempool |
 | `mine_pending()` | `Optional[Block]` | Mine pending data into block |
 | `is_chain_valid()` | `bool` | Validate entire chain |
@@ -90,15 +90,15 @@ block.mine(difficulty=2)
 ##### Properties
 
 | Property | Type | Description |
-|----------|------|-------------|
+| :--- | :--- | :--- |
 | `hash` | `str` | SHA-256 hash (64 hex chars) |
 | `merkle_root` | `str` | Merkle root of data |
 | `size` | `int` | Approximate size in bytes |
 
-##### Methods
+##### Block Methods
 
 | Method | Returns | Description |
-|--------|---------|-------------|
+| :--- | :--- | :--- |
 | `calculate_hash()` | `str` | Compute block hash |
 | `mine(difficulty: int)` | `None` | Mine with PoW |
 | `validate(difficulty: int)` | `bool` | Validate PoW |
@@ -134,7 +134,7 @@ restored = Wallet.from_dict(data)
 #### Functions
 
 | Function | Signature | Description |
-|----------|-----------|-------------|
+| :--- | :--- | :--- |
 | `generate_signing_keypair()` | `-> KeyPair` | Ed25519 key pair |
 | `generate_encryption_keypair()` | `-> KeyPair` | X25519 key pair |
 | `sign_message(msg, private_key)` | `-> bytes` | Ed25519 signature |

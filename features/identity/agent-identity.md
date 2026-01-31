@@ -253,7 +253,7 @@ Identity key material is stored locally:
 
 ## See Also
 
-- [Agent Capabilities](Agent-Capabilities) - What actions are authorized
-- [Agent Lifecycle](Agent-Lifecycle) - Provisioning and rotation
-- [DIDs & DHT](DIDs-DHT) - Decentralized identity resolution
-- [Key Management](Key-Management) - Operational key handling
+- [Agent Capabilities](../authorization/agent-capabilities.md) - What actions are authorized
+- [Agent Lifecycle](../../business/agent-lifecycle.md) - Provisioning and rotation
+- [DIDs & DHT](dids-dht.md) - Decentralized identity resolution
+- [Key Management](key-management.md) - Operational key handling

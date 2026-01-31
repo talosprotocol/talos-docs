@@ -1,6 +1,6 @@
 # Talos Protocol v2.0.0 Roadmap
 
-**Codename: Argonaut**
+## Codename: Argonaut
 
 > _The definitive security layer for the autonomous agent era._
 
@@ -13,14 +13,14 @@
 ### Version Mapping
 
 | Marketing Version | Component Versions |
-|-------------------|--------------------|
-| **v2.0.0 Alpha**  | `talos-sdk-py` v0.1.25+, `ai-gateway` v0.1.0+ |
+| :--- | :--- |
+| **v2.0.0 Alpha** | `talos-sdk-py` v0.1.25+, `ai-gateway` v0.1.0+ |
 | **v1.1 Foundation** | Legacy components |
 
 > Note: The "v2.0.0" designation represents the target architecture. Component versions (0.1.x) are current implementation artifacts.
 
 | Phase | Feature                 | Status      | Tests | Files                                              |
-| ----- | ----------------------- | ----------- | ----- | -------------------------------------------------- |
+| :---- | :---------------------- | :---------- | :---- | :------------------------------------------------- |
 | 1     | Block Validation Engine | ✅ Complete | 19    | `src/core/validation/`                             |
 | 2     | Double Ratchet Protocol | ✅ Complete | 16    | `src/core/session.py`                              |
 | 3     | Fine-Grained ACLs       | ✅ Complete | 16    | `src/mcp_bridge/acl.py`                            |
@@ -35,11 +35,11 @@
 
 Version 2.0.0 transforms Talos from a research prototype into a **production-grade, feature-complete security framework** for AI agent communication. This release focuses on five pillars:
 
-1.  **Cryptographic Excellence**: Perfect Forward Secrecy, Post-Quantum Readiness
-2.  **Decentralization**: DHT-based Peer Discovery, Onion-Routed Metadata
-3.  **Performance & Scale**: Consensus-Free Append, Light Client Mode
-4.  **Block Validation Engine**: Multi-Layer Validation, BFT, Zero-Knowledge Proofs
-5.  **Developer Experience**: SDKs, Dashboard, Formal Verification
+1. **Cryptographic Excellence**: Perfect Forward Secrecy, Post-Quantum Readiness
+2. **Decentralization**: DHT-based Peer Discovery, Onion-Routed Metadata
+3. **Performance & Scale**: Consensus-Free Append, Light Client Mode
+4. **Block Validation Engine**: Multi-Layer Validation, BFT, Zero-Knowledge Proofs
+5. **Developer Experience**: SDKs, Dashboard, Formal Verification
 
 ---
 
@@ -74,7 +74,7 @@ Version 2.0.0 transforms Talos from a research prototype into a **production-gra
 
 **Key Derivation** (Hybrid):
 
-```
+```text
 K_shared = HKDF(X25519(sk, pk) || Kyber.Decapsulate(c, sk_kyber))
 ```
 
@@ -417,7 +417,7 @@ For networks with multiple validators, implement BFT consensus rules:
 
 **Validation Quorum**:
 
-```
+```text
 Block accepted IFF: valid_signatures ≥ ⌈(2n + 1) / 3⌉
 ```
 
@@ -494,7 +494,7 @@ report = engine.generate_audit_report(block)
 
 **Prometheus Export**:
 
-```
+```text
 talos_validation_duration_seconds{layer="cryptographic"} 0.0023
 talos_blocks_rejected_total{reason="CRYPTO_INVALID"} 42
 ```

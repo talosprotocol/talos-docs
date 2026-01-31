@@ -383,4 +383,4 @@ talos diagnose --export /tmp/talos-diag.tar.gz
 
 ---
 
-**See also**: [Hardening Guide](Hardening-Guide) | [Failure Modes](Failure-Modes) | [Infrastructure](Infrastructure)
+**See also**: [Hardening Guide](../../guides/hardening-guide.md) | [Failure Modes](../../reference/failure-modes.md) | [Infrastructure](../../architecture/infrastructure.md)

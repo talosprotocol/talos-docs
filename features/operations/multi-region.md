@@ -163,6 +163,6 @@ Fails if p95 replication lag exceeds the threshold.
 
 ## Related
 
-- [Architecture](Architecture.md)
-- [Observability](Observability.md)
-- [Hardening Guide](Hardening-Guide.md)
+- [Architecture](../../architecture/overview.md)
+- [Observability](../../features/observability/observability.md)
+- [Hardening Guide](../../guides/hardening-guide.md)

@@ -1,3 +1,4 @@
+<!-- markdownlint-disable MD060 -->
 # Welcome to the Talos Wiki
 
 > **Talos is the secure communication and trust layer for autonomous AI agents.**
@@ -8,14 +9,14 @@
 
 ## 🚀 Start Here
 
-| New to Talos?            | Start with                                                 |
-| :----------------------- | :--------------------------------------------------------- |
-| **Clone & setup**        | [Getting Started](Getting-Started)                         |
-| **60-second overview**   | [Talos in 60 Seconds](getting-started/talos-60-seconds.md) |
-| **Understand the model** | [Mental Model](getting-started/mental-model.md)            |
-| **Hands-on in 10 min**   | [Quickstart](getting-started/quickstart.md)                |
-| **Learn the terms**      | [Glossary](reference/glossary.md)                          |
-| **The Whitepaper**       | [Whitepaper](research/whitepaper.md)                       |
+| New to Talos? | Start with |
+| :--- | :--- |
+| **Clone & setup** | [Getting Started](getting-started/getting-started.md) |
+| **60-second overview** | [Talos in 60 Seconds](getting-started/talos-60-seconds.md) |
+| **Understand the model** | [Mental Model](getting-started/mental-model.md) |
+| **Hands-on in 10 min** | [Quickstart](getting-started/quickstart.md) |
+| **Learn the terms** | [Glossary](reference/glossary.md) |
+| **The Whitepaper** | [Whitepaper](research/whitepaper.md) |
 
 ---
 
@@ -23,20 +24,20 @@
 
 Talos uses **git submodules** for a multi-repo architecture:
 
-| Repo                  | Purpose                            |
-| --------------------- | ---------------------------------- |
-| `talos-contracts`     | Source of truth (schemas, vectors) |
-| `talos-core-rs`       | Rust performance kernel            |
-| `talos-sdk-py`        | Python SDK                         |
-| `talos-sdk-ts`        | TypeScript SDK                     |
-| `talos-sdk-go`        | Go SDK                             |
-| `talos-sdk-java`      | Java SDK                           |
-| `talos-gateway`       | FastAPI Gateway                    |
-| `talos-audit-service` | Audit aggregator                   |
-| `talos-mcp-connector` | MCP bridge                         |
-| `talos-dashboard`     | Next.js Console                    |
-| `talos-docs`          | Documentation wiki                 |
-| `talos-examples`      | Example applications               |
+| Repo | Purpose |
+| :--- | :--- |
+| `talos-contracts` | Source of truth (schemas, vectors) |
+| `talos-core-rs` | Rust performance kernel |
+| `talos-sdk-py` | Python SDK |
+| `talos-sdk-ts` | TypeScript SDK |
+| `talos-sdk-go` | Go SDK |
+| `talos-sdk-java` | Java SDK |
+| `talos-gateway` | FastAPI Gateway |
+| `talos-audit-service` | Audit aggregator |
+| `talos-mcp-connector` | MCP bridge |
+| `talos-dashboard` | Next.js Console |
+| `talos-docs` | Documentation wiki |
+| `talos-examples` | Example applications |
 
 **Kernel Artifacts** (from `talos-contracts`):
 
@@ -55,26 +56,26 @@ AI agents lack a trustable way to:
 - **Prove** what they did, to whom, and when
 - **Authorize** actions across organizational boundaries
 
-**Talos solves this.** See [Why Talos Wins](Why-Talos-Wins) and [Alternatives Comparison](Alternatives-Comparison).
+**Talos solves this.** See [Why Talos Wins](business/why-talos-wins.md) and [Alternatives Comparison](reference/alternatives-comparison.md).
 
 ---
 
 ## Core Features
 
 | Feature                | Description                                  | Page                                     |
-| ---------------------- | -------------------------------------------- | ---------------------------------------- |
-| 📜 **Contract-Driven** | Single Source of Truth for schemas & vectors | [Architecture](Architecture)             |
-| 🦀 **Rust Kernel**     | High-performance crypto & validation         | [Architecture](Architecture)             |
-| 🔐 **Double Ratchet**  | Per-message forward secrecy                  | [Double Ratchet](Double-Ratchet)         |
-| 🔒 **Capabilities**    | Scoped, expiring authorization               | [Agent Capabilities](Agent-Capabilities) |
-| 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](Audit-Explorer)               |
-| 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](MCP-Cookbook)                   |
-| 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](DIDs-DHT)                         |
-| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](A2A-Channels)                   |
-| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking      | [Multi-Region](Multi-Region)                   |
-| 🔑 **Rotation**        | Zero-downtime automated secret rotation      | [Secrets Rotation](Secrets-Rotation)           |
-| ⚖️ **GSLB**            | Global load balancing & geo-routing          | [Global Load Balancing](Global-Load-Balancing) |
-| 💸 **Budgets**         | Atomic cost enforcement for agents           | [Adaptive Budgets](Adaptive-Budgets)           |
+| :--- | :--- | :--- |
+| 📜 **Contract-Driven** | Single Source of Truth for schemas & vectors | [Architecture](architecture/overview.md)             |
+| 🦀 **Rust Kernel**     | High-performance crypto & validation         | [Architecture](architecture/overview.md)             |
+| 🔐 **Double Ratchet**  | Per-message forward secrecy                  | [Double Ratchet](features/messaging/double-ratchet.md)         |
+| 🔒 **Capabilities**    | Scoped, expiring authorization               | [Agent Capabilities](features/authorization/agent-capabilities.md) |
+| 📊 **Audit Dashboard** | Next.js UI for proof visualization           | [Audit Explorer](features/observability/audit-explorer.md)           |
+| 🔗 **MCP Connector**   | Zero-code bridge to MCP servers              | [MCP Cookbook](features/integrations/mcp-cookbook.md)                |
+| 🆔 **Agent Identity**  | Cryptographic DIDs                           | [DIDs & DHT](features/identity/dids-dht.md)                          |
+| 💬 **A2A Messaging**   | Secure agent-to-agent encrypted channels     | [A2A Channels](features/messaging/a2a-channels.md)                   |
+| 🌎 **Multi-Region**    | Read/write splitting & circuit breaking      | [Multi-Region](features/operations/multi-region.md)                  |
+| 🔑 **Rotation**        | Zero-downtime automated secret rotation      | [Secrets Rotation](features/operations/secrets-rotation.md)          |
+| ⚖️ **GSLB**            | Global load balancing & geo-routing          | [Global Load Balancing](features/operations/global-load-balancing.md)|
+| 💸 **Budgets**         | Atomic cost enforcement for agents           | [Adaptive Budgets](features/operations/adaptive-budgets.md)          |
 
 ---
 
@@ -83,36 +84,36 @@ AI agents lack a trustable way to:
 ### 👨‍💻 Developers
 
 | Goal                 | Page                               |
-| -------------------- | ---------------------------------- |
-| Clone & build        | [Getting Started](Getting-Started) |
-| Python SDK           | [Python SDK](Python-SDK)           |
-| TypeScript SDK       | [TypeScript SDK](TypeScript-SDK)   |
-| MCP tools            | [MCP Cookbook](MCP-Cookbook)       |
-| Development workflow | [Development](Development)         |
+| :--- | :--- |
+| Clone & build        | [Getting Started](getting-started/getting-started.md) |
+| Python SDK           | [Python SDK](sdk/python-sdk.md)           |
+| TypeScript SDK       | [TypeScript SDK](sdk/typescript-sdk.md)   |
+| MCP tools            | [MCP Cookbook](features/integrations/mcp-cookbook.md)       |
+| Development workflow | [Development](guides/development.md)         |
 
 ### 🔒 Security Reviewers
 
 | Goal         | Page                                       |
-| ------------ | ------------------------------------------ |
-| Threat model | [Threat Model](Threat-Model)               |
-| Guarantees   | [Security Properties](Security-Properties) |
-| Cryptography | [Cryptography](Cryptography)               |
-| Non-goals    | [Non-Goals](Non-Goals)                     |
+| :--- | :--- |
+| Threat model | [Threat Model](architecture/threat-model.md)               |
+| Guarantees   | [Security Properties](security/cryptography.md) |
+| Cryptography | [Cryptography](security/cryptography.md)               |
+| Non-goals    | [Non-Goals](reference/non-goals.md)                     |
 
 ### 🏢 Operators
 
 | Goal             | Page                               |
-| ---------------- | ---------------------------------- |
-| Production setup | [Hardening Guide](Hardening-Guide) |
-| Monitoring       | [Observability](Observability)     |
-| Testing          | [Testing](Testing)                 |
-| Performance      | [Benchmarks](Benchmarks)           |
+| :--- | :--- |
+| Production setup | [Hardening Guide](guides/hardening-guide.md) |
+| Monitoring       | [Observability](features/observability/observability.md)     |
+| Testing          | [Testing](testing/testing.md)                 |
+| Performance      | [Benchmarks](testing/benchmarks.md)           |
 
 ---
 
 ## Contributing
 
-See [Development](Development) for the development workflow, Makefiles, and testing infrastructure.
+See [Development](guides/development.md) for the development workflow, Makefiles, and testing infrastructure.
 
 ```bash
 # Quick setup

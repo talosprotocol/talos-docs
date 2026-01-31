@@ -136,10 +136,10 @@ asyncio.run(demo())
 
 ## Next Steps
 
-- [Quickstart](Quickstart) - Build your first Talos agent
-- [SDK Ergonomics](SDK-Ergonomics) - Learn the API patterns
-- [Audit Explorer](Audit-Explorer) - Inspect proofs in detail
+- [Quickstart](quickstart.md) - Build your first Talos agent
+- [SDK Ergonomics](../sdk/sdk-ergonomics.md) - Learn the API patterns
+- [Audit Explorer](../features/observability/audit-explorer.md) - Inspect proofs in detail
 
 ---
 
-> ⚠️ **Demo only**. For production, see [Hardening Guide](Hardening-Guide).
+> ⚠️ **Demo only**. For production, see [Hardening Guide](../guides/hardening-guide.md).

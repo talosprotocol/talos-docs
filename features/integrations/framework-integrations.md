@@ -272,4 +272,4 @@ We welcome community integrations:
 
 ---
 
-**See also**: [MCP Cookbook](MCP-Cookbook) | [Python SDK](Python-SDK) | [MCP Integration](MCP-Integration)
+**See also**: [MCP Cookbook](mcp-cookbook.md) | [Python SDK](../../sdk/python-sdk.md) | [MCP Integration](mcp-integration.md)

@@ -7,6 +7,7 @@
 ## Overview
 
 Talos uses **capability tokens** instead of ACLs for authorization. Capabilities are:
+
 - **Cryptographically signed** by the issuer
 - **Scoped** to specific tools and methods
 - **Time-bounded** with expiry
@@ -18,7 +19,7 @@ Talos uses **capability tokens** instead of ACLs for authorization. Capabilities
 ## Core Concepts
 
 | Concept | Description |
-|---------|-------------|
+| :--- | :--- |
 | **Capability** | Signed token granting access to a scope |
 | **Scope** | `tool:<name>/method:<name>/resource:<pattern>` |
 | **Issuer** | Authority that signs capabilities |
@@ -132,7 +133,7 @@ assert result.reason == DenialReason.REVOKED
 ## Denial Reasons
 
 | Code | Description |
-|------|-------------|
+| :--- | :--- |
 | `NO_CAPABILITY` | No capability provided |
 | `EXPIRED` | Capability TTL exceeded |
 | `REVOKED` | Capability explicitly revoked |
@@ -147,7 +148,7 @@ assert result.reason == DenialReason.REVOKED
 ## Performance SLAs
 
 | Operation | Target | Measured |
-|-----------|--------|----------|
+| :--- | :--- | :--- |
 | `authorize_fast` | <1ms p99 | **0μs avg** |
 | `verify` (signature) | <500μs | **154μs avg** |
 | Grant | <5ms | **72μs avg** |
@@ -159,14 +160,14 @@ assert result.reason == DenialReason.REVOKED
 
 In the proxy, capabilities are **mandatory** for all requests:
 
-```
+```text
 Request 1: capability + session_id → full verify → cache session
 Request 2: session_id only       → authorize_fast (<1ms)
 Request 3: session_id only       → authorize_fast (<1ms)
 ...
 ```
 
-See [MCP Cookbook](MCP-Cookbook) for integration details.
+See [MCP Cookbook](../integrations/mcp-cookbook.md) for integration details.
 
 ---
 
@@ -183,6 +184,6 @@ See [MCP Cookbook](MCP-Cookbook) for integration details.
 ## Related Pages
 
 - [Protocol Specification](../../PROTOCOL.md)
-- [MCP Cookbook](MCP-Cookbook)
-- [Threat Model](Threat-Model)
-- [Agent Capabilities](Agent-Capabilities)
+- [MCP Cookbook](../integrations/mcp-cookbook.md)
+- [Threat Model](../../architecture/threat-model.md)
+- [Agent Capabilities](agent-capabilities.md)

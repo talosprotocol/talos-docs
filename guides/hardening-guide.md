@@ -7,7 +7,7 @@ audience: Operator
 
 > **Problem**: Production deployments need security hardening.  
 > **Guarantee**: Checklist of security configurations.  
-> **Non-goal**: Threat elimination—see [Threat Model](Threat-Model).
+> **Non-goal**: Threat elimination—see [Threat Model](../architecture/threat-model.md).
 
 ---
 
@@ -392,4 +392,4 @@ client = await TalosClient.create(
 
 ---
 
-**See also**: [Threat Model](Threat-Model) | [Agent Lifecycle](Agent-Lifecycle) | [Infrastructure](Infrastructure)
+**See also**: [Threat Model](../architecture/threat-model.md) | [Agent Lifecycle](../business/agent-lifecycle.md) | [Infrastructure](../architecture/infrastructure.md)

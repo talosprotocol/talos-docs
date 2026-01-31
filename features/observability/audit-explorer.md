@@ -355,4 +355,4 @@ talos audit export \
 
 ---
 
-**See also**: [Audit Scope](Audit-Scope) | [Audit Use Cases](Audit-Use-Cases) | [Validation Engine](Validation-Engine)
+**See also**: [Audit Scope](audit-scope.md) | [Audit Use Cases](audit-use-cases.md) | [Validation Engine](../../security/validation-engine.md)

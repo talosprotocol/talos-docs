@@ -202,6 +202,6 @@ talos_signature_verify_rate 7917.5
 
 ## See Also
 
-- [Blockchain Design](Blockchain.md) - Core blockchain architecture
-- [Cryptography Guide](Cryptography.md) - Cryptographic primitives
-- [Mathematical Security Proof](Mathematical-Security-Proof.md) - Formal security proofs
+- [Blockchain Design](../research/blockchain.md) - Core blockchain architecture
+- [Cryptography Guide](cryptography.md) - Cryptographic primitives
+- [Mathematical Security Proof](mathematical-proof.md) - Formal security proofs

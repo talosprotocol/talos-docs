@@ -210,4 +210,4 @@ Results are saved to `artifacts/perf/<date>-<sha>/` with full metadata.
 - Total Talos overhead: <5ms p99
 - Authorization throughput: >10,000 auth/sec
 
-See [Benchmarks](Benchmarks.md) for detailed results and historical data.
+See [Benchmarks](benchmarks.md) for detailed results and historical data.

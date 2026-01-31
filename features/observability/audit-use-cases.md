@@ -7,7 +7,7 @@ audience: Developer, Compliance
 
 > **Problem**: Users need to understand audit applications.  
 > **Guarantee**: Concrete scenarios for audit usage.  
-> **Non-goal**: Implementation details—see [Audit Explorer](Audit-Explorer).
+> **Non-goal**: Implementation details—see [Audit Explorer](audit-explorer.md).
 
 ---
 
@@ -351,4 +351,4 @@ assert combined.consistent  # Both sides agree
 
 ---
 
-**See also**: [Audit Explorer](Audit-Explorer) | [Audit Scope](Audit-Scope) | [Protocol Guarantees](Protocol-Guarantees)
+**See also**: [Audit Explorer](audit-explorer.md) | [Audit Scope](audit-scope.md) | [Protocol Guarantees](../../architecture/protocol-guarantees.md)

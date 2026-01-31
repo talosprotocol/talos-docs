@@ -196,7 +196,7 @@ Areas where community help is welcome:
 
 ## How to Contribute
 
-See [Development Guide](Development.md) for setup instructions.
+See [Development Guide](../guides/development.md) for setup instructions.
 
 1. Fork repository
 2. Create feature branch
@@ -219,6 +219,6 @@ See [Development Guide](Development.md) for setup instructions.
 
 ## See Also
 
-- [ROADMAP_v2.md](../ROADMAP_v2.md) - Current development plan
+- [Roadmap](roadmap.md) - Current development plan
 - [CHANGELOG](../../CHANGELOG.md) - Release history
-- [Architecture](Architecture.md) - System design
+- [Architecture](../architecture/overview.md) - System design

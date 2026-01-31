@@ -209,4 +209,4 @@ await asyncio.gather(*[
 
 ---
 
-**See also**: [Double Ratchet](Double-Ratchet) | [Future Improvements](Future-Improvements) | [Security Properties](Security-Properties)
+**See also**: [Double Ratchet](double-ratchet.md) | [Future Improvements](../../research/future-improvements.md) | [Security Properties](../../security/cryptography.md)

@@ -7,7 +7,7 @@ audience: Developer, Security
 
 > **Problem**: Agents need scoped, revocable authorization.  
 > **Guarantee**: First-class capability model with explicit separation of concerns.  
-> **Non-goal**: General-purpose policy engine—see [Access Control](Access-Control).
+> **Non-goal**: General-purpose policy engine—see [Access Control](access-control.md).
 
 ---
 
@@ -383,4 +383,4 @@ talos capabilities verify cap_7f3k2m4n
 
 ---
 
-**See also**: [Agent Lifecycle](Agent-Lifecycle) | [Access Control](Access-Control) | [MCP Cookbook](MCP-Cookbook)
+**See also**: [Agent Lifecycle](../../business/agent-lifecycle.md) | [Access Control](access-control.md) | [MCP Cookbook](../integrations/mcp-cookbook.md)

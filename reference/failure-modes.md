@@ -7,7 +7,7 @@ audience: Operator
 
 > **Problem**: Operators need to understand how Talos fails.  
 > **Guarantee**: Documented failure scenarios and behaviors.  
-> **Non-goal**: Prevention—see [Hardening Guide](Hardening-Guide).
+> **Non-goal**: Prevention—see [Hardening Guide](../guides/hardening-guide.md).
 
 ---
 
@@ -409,4 +409,4 @@ groups:
 
 ---
 
-**See also**: [Hardening Guide](Hardening-Guide) | [Observability](Observability) | [Troubleshooting](Error-Troubleshooting)
+**See also**: [Hardening Guide](../guides/hardening-guide.md) | [Observability](../features/observability/observability.md) | [Troubleshooting](../guides/error-troubleshooting.md)

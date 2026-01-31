@@ -298,4 +298,4 @@ block_hash = SHA256(
 
 ---
 
-**See also**: [Schemas](Schemas) | [Cryptography](Cryptography) | [API Reference](API-Reference)
+**See also**: [Schemas](../api/schemas.md) | [Cryptography](../security/cryptography.md) | [API Reference](../api/api-reference.md)

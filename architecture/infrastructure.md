@@ -146,5 +146,5 @@ podAnnotations:
 
 ## See Also
 
-- [Getting Started](Getting-Started.md)
-- [Development](Development.md)
+- [Getting Started](../getting-started/getting-started.md)
+- [Development](../guides/development.md)

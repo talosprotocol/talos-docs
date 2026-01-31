@@ -192,8 +192,8 @@ pytest tests/test_gateway.py -v         # Gateway tests
 
 ## See Also
 
-- [Capability Authorization](Capability-Authorization.md)
-- [Testing](Testing.md)
+- [Capability Authorization](../features/authorization/capability-authorization.md)
+- [Testing](../testing/testing.md)
 - [RUNBOOK](../../RUNBOOK.md)
 
 ---

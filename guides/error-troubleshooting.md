@@ -415,4 +415,4 @@ talos diagnose --export /tmp/debug.tar.gz
 
 ---
 
-**See also**: [Python SDK](Python-SDK) | [Observability](Observability) | [Failure Modes](Failure-Modes)
+**See also**: [Python SDK](../sdk/python-sdk.md) | [Observability](../features/observability/observability.md) | [Failure Modes](../reference/failure-modes.md)

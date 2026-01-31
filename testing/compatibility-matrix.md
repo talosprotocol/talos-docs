@@ -235,4 +235,4 @@ ufw allow 8766/tcp
 
 ---
 
-**See also**: [Getting Started](Getting-Started) | [Infrastructure](Infrastructure) | [Testing](Testing)
+**See also**: [Getting Started](../getting-started/getting-started.md) | [Infrastructure](../architecture/infrastructure.md) | [Testing](testing.md)

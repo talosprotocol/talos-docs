@@ -67,7 +67,7 @@ sequenceDiagram
 ### Gateway Surfaces
 
 | Endpoint                      | Method | Description                   |
-| ----------------------------- | ------ | ----------------------------- |
+| :---------------------------- | :----- | :---------------------------- |
 | `/a2a/sessions`               | POST   | Create new session            |
 | `/a2a/sessions/{id}/accept`   | POST   | Accept pending session        |
 | `/a2a/sessions/{id}/frames`   | POST   | Send encrypted frame          |
@@ -115,7 +115,7 @@ assert decrypted == plaintext
 ## Security Properties
 
 | Property               | Implementation                              |
-| ---------------------- | ------------------------------------------- |
+| :--------------------- | :------------------------------------------ |
 | **Forward Secrecy**    | Double Ratchet per-message keys             |
 | **Replay Protection**  | `UNIQUE(session_id, sender_id, sender_seq)` |
 | **Integrity**          | `frame_digest = SHA256(canonical_preimage)` |
@@ -126,7 +126,7 @@ assert decrypted == plaintext
 ## Benchmarks
 
 | Operation                  | Throughput        |
-| -------------------------- | ----------------- |
+| :------------------------- | :---------------- |
 | Session.encrypt(35B)       | 50,729 ops/sec    |
 | Session.encrypt(10KB)      | 17,456 ops/sec    |
 | Session roundtrip          | 669 ops/sec       |
@@ -157,7 +157,7 @@ await client.add_member(group_id, "alice-did")
 
 ## Related Pages
 
-- [Double Ratchet](Double-Ratchet) - Underlying encryption protocol
-- [Python SDK](Python-SDK) - SDK documentation
-- [Benchmarks](Benchmarks) - Full performance data
-- [Architecture](Architecture) - System design
+- [Double Ratchet](double-ratchet.md) - Underlying encryption protocol
+- [Python SDK](../../sdk/python-sdk.md) - SDK documentation
+- [Benchmarks](../../testing/benchmarks.md) - Full performance data
+- [Architecture](../../architecture/overview.md) - System design

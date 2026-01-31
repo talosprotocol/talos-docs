@@ -7,7 +7,7 @@ audience: Developer
 
 > **Problem**: SDK should be pleasant to use.  
 > **Guarantee**: Best practices and common patterns.  
-> **Non-goal**: API reference—see [Python SDK](Python-SDK).
+> **Non-goal**: API reference—see [Python SDK](python-sdk.md).
 
 ---
 
@@ -335,4 +335,4 @@ async def test_handler():
 
 ---
 
-**See also**: [Python SDK](Python-SDK) | [API Reference](API-Reference) | [Error Troubleshooting](Error-Troubleshooting)
+**See also**: [Python SDK](python-sdk.md) | [API Reference](../api/api-reference.md) | [Error Troubleshooting](../guides/error-troubleshooting.md)

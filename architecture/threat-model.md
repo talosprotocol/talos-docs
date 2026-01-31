@@ -7,7 +7,7 @@ audience: Security, Developer
 
 > **Problem**: Security reviewers need to know what Talos defends against.  
 > **Guarantee**: Explicit threat enumeration with mitigations.  
-> **Non-goal**: Defend against everything—see [Non-Goals](Non-Goals).
+> **Non-goal**: Defend against everything—see [Non-Goals](../reference/non-goals.md).
 
 ---
 
@@ -97,7 +97,7 @@ audience: Security, Developer
 - Timing of messages
 - Message sizes
 
-**See**: [Security Properties](Security-Properties)
+**See**: [Security Properties](../security/cryptography.md)
 
 ---
 
@@ -179,7 +179,7 @@ audience: Security, Developer
 **Why not defended**:
 - This is an OS/hardware security problem
 - Talos assumes the endpoint is trusted
-- See [Hardening Guide](Hardening-Guide) for mitigations
+- See [Hardening Guide](../guides/hardening-guide.md) for mitigations
 
 ---
 
@@ -254,4 +254,4 @@ audience: Security, Developer
 
 ---
 
-**See also**: [Non-Goals](Non-Goals) | [Security Properties](Security-Properties) | [Hardening Guide](Hardening-Guide)
+**See also**: [Non-Goals](../reference/non-goals.md) | [Security Properties](../security/cryptography.md) | [Hardening Guide](../guides/hardening-guide.md)

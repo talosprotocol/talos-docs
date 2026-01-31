@@ -237,4 +237,4 @@ audience: Business
 
 ---
 
-**See also**: [ICP](ICP) | [Why Talos Wins](Why-Talos-Wins) | [Future Improvements](Future-Improvements)
+**See also**: [ICP](../research/icp.md) | [Why Talos Wins](why-talos-wins.md) | [Future Improvements](../research/future-improvements.md)

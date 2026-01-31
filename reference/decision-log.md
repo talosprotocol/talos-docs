@@ -320,4 +320,4 @@ Each entry follows:
 
 ---
 
-**See also**: [Architecture](Architecture) | [Cryptography](Cryptography) | [Future Improvements](Future-Improvements)
+**See also**: [Architecture](../architecture/overview.md) | [Cryptography](../security/cryptography.md) | [Future Improvements](../research/future-improvements.md)

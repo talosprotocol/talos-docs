@@ -210,4 +210,4 @@ audience: Security, Developer
 
 ---
 
-**See also**: [Threat Model](Threat-Model) | [Cryptography](Cryptography) | [Security Proof](Mathematical-Security-Proof)
+**See also**: [Threat Model](threat-model.md) | [Cryptography](../security/cryptography.md) | [Security Proof](Mathematical-Security-Proof)
