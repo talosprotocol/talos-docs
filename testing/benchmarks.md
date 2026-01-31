@@ -47,19 +47,19 @@ This section measures the overhead added by Talos when tunneling JSON-RPC traffi
 **Analysis**:
 The overhead comes from:
 
-1.  **Encryption/Signing**: Every JSON-RPC frame is encrypted and signed.
-2.  **Network Framing**: `aiohttp`/WebSocket framing.
-3.  **Process Context Switching**: Agent -> ClientProxy -> Network -> ServerProxy -> Tool.
+1. **Encryption/Signing**: Every JSON-RPC frame is encrypted and signed.
+2. **Network Framing**: `aiohttp`/WebSocket framing.
+3. **Process Context Switching**: Agent -> ClientProxy -> Network -> ServerProxy -> Tool.
 
 > **Note**: For MCP workloads (e.g., FileSystem reads, Database queries), a 12ms latency add-on is negligible compared to the tool's execution time (often 100ms+), making Talos highly viable for real-world agentic workflows.
 
 ## 4. File Transfer (Binaries)
 
-| File Size | Transfer Time | Speed     |
-| --------- | ------------- | --------- |
-| 10 MB     | 0.8s          | 12.5 MB/s |
-| 100 MB    | 9.2s          | 10.8 MB/s |
-| 1 GB      | 110s          | 9.1 MB/s  |
+| File Size | Transfer Time | Speed |
+| :--- | :--- | :--- |
+| 10 MB | 0.8s | 12.5 MB/s |
+| 100 MB | 9.2s | 10.8 MB/s |
+| 1 GB | 110s | 9.1 MB/s |
 
 _Benchmarks ran over local loopback._
 
@@ -67,21 +67,21 @@ _Benchmarks ran over local loopback._
 
 Talos uses LMDB (Lightning Memory-Mapped Database) for high-performance storage.
 
-| Operation         | Latency (ms) | Throughput (ops/sec) |
-| ----------------- | ------------ | -------------------- |
-| **Write (Batch)** | 0.0004 ms    | 2,519,394            |
-| **Read (Random)** | 0.0003 ms    | 3,617,236            |
+| Operation | Latency (ms) | Throughput (ops/sec) |
+| :--- | :--- | :--- |
+| **Write (Batch)** | 0.0004 ms | 2,519,394 |
+| **Read (Random)** | 0.0003 ms | 3,617,236 |
 
-_Table 2: Storage Backend Benchmarks_
+**Table 2: Storage Backend Benchmarks**
 
 ## 6. Serialization Performance
 
 All data models are Pydantic v2 `BaseModel`, optimized for speed.
 
-| Operation              | Latency (ms) | Throughput (ops/sec) |
-| ---------------------- | ------------ | -------------------- |
-| **Serialize (JSON)**   | 0.0008 ms    | 1,266,558            |
-| **Deserialize (JSON)** | 0.0009 ms    | 1,091,480            |
+| Operation | Latency (ms) | Throughput (ops/sec) |
+| :--- | :--- | :--- |
+| **Serialize (JSON)** | 0.0008 ms | 1,266,558 |
+| **Deserialize (JSON)** | 0.0009 ms | 1,091,480 |
 
 ## 7. Automated Benchmarks
 
@@ -89,33 +89,33 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 
 ## Python SDK Benchmarks
 
-### Latest Results (2026-01-24)
+### Latest Results (2026-01-30)
 
 **Hardware:** Apple M4 Max, 14 cores, 36GB RAM
 **Environment:** Local, Power: normal, Thermal: unknown
 > ⚠️ **Note:** Results marked as non-baseline (battery or thermal throttling detected)
-**Git SHA:** `0f158955`
+**Git SHA:** `HEAD`
 
 | Operation | Median (ms) | p95 (ms) | Throughput (ops/sec) |
-|-----------|-------------|----------|---------------------|
-| RatchetFrameCrypto roundtrip | 1.5450 | 1.5510 | 647 |
-| RatchetFrameCrypto.encrypt() | 0.0290 | 0.0310 | 34,483 |
-| SHA256 digest | 0.0000 | 0.0000 | 0 |
-| Session create pair (X3DH) | 1.5000 | 1.5520 | 667 |
-| Session roundtrip(35B) | 1.5280 | 1.5290 | 654 |
-| Session.encrypt(10KB) | 0.0580 | 0.0650 | 17,241 |
-| Session.encrypt(35B) | 0.0200 | 0.0220 | 50,000 |
-| Session.from_dict() | 0.0030 | 0.0030 | 333,333 |
-| Session.to_dict() | 0.0030 | 0.0030 | 333,333 |
-| Wallet.from_seed() | 0.0690 | 0.0690 | 14,493 |
-| Wallet.generate() | 0.0970 | 0.1000 | 10,309 |
-| Wallet.sign(10KB) | 0.0780 | 0.0790 | 12,821 |
-| Wallet.sign(64B) | 0.0670 | 0.0670 | 14,925 |
-| Wallet.to_did() | 0.0040 | 0.0040 | 250,000 |
-| Wallet.verify() | 0.1510 | 0.1530 | 6,623 |
-| canonical_json_bytes() | 0.0040 | 0.0040 | 250,000 |
-| json.dumps(session) | 0.0060 | 0.0060 | 166,667 |
-| json.loads(session) | 0.0030 | 0.0030 | 333,333 |
+| :--- | :--- | :--- | :--- |
+| RatchetFrameCrypto roundtrip | 1.6710 | 1.6710 | 599 |
+| RatchetFrameCrypto.encrypt() | 0.0270 | 0.0270 | 37,127 |
+| SHA256 digest | 0.0000 | 0.0000 | 2,667,358 |
+| Session create pair (X3DH) | 1.5600 | 1.5600 | 641 |
+| Session roundtrip(35B) | 1.5680 | 1.5680 | 638 |
+| Session.encrypt(10KB) | 0.0570 | 0.0570 | 17,571 |
+| Session.encrypt(35B) | 0.0220 | 0.0220 | 44,898 |
+| Session.from_dict() | 0.0040 | 0.0040 | 284,484 |
+| Session.to_dict() | 0.0030 | 0.0030 | 372,524 |
+| Wallet.from_seed() | 0.0750 | 0.0750 | 13,291 |
+| Wallet.generate() | 0.2130 | 0.2130 | 4,704 |
+| Wallet.sign(10KB) | 0.1040 | 0.1040 | 9,618 |
+| Wallet.sign(64B) | 0.0720 | 0.0720 | 13,844 |
+| Wallet.to_did() | 0.0040 | 0.0040 | 248,103 |
+| Wallet.verify() | 0.1530 | 0.1530 | 6,542 |
+| canonical_json_bytes() | 0.0040 | 0.0040 | 272,195 |
+| json.dumps(session) | 0.0060 | 0.0060 | 167,268 |
+| json.loads(session) | 0.0030 | 0.0030 | 386,543 |
 
 ## Go SDK Benchmarks
 
@@ -127,7 +127,7 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 **Git SHA:** `0f158955`
 
 | Operation | Median (ms) | p95 (ms) | Throughput (ops/sec) |
-|-----------|-------------|----------|---------------------|
+| :--- | :--- | :--- | :--- |
 | BenchmarkCanonicalJSON | 0.0010 | 0.0010 | 957,854 |
 | BenchmarkCryptoSign10KB | 0.0247 | 0.0247 | 40,445 |
 | BenchmarkCryptoSign64B | 0.0134 | 0.0134 | 74,878 |
@@ -135,7 +135,6 @@ All data models are Pydantic v2 `BaseModel`, optimized for speed.
 | BenchmarkSHA256 | 0.0000 | 0.0000 | 24,055,809 |
 | BenchmarkWalletFromSeed | 0.0106 | 0.0106 | 94,482 |
 | BenchmarkWalletGenerate | 0.0110 | 0.0110 | 91,241 |
-
 
 <!-- PERF-AUTO:END -->
 
