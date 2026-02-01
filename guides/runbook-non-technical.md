@@ -60,7 +60,7 @@ You will see "Verified" and "Audited" badges in the dashboard, proving that the 
 - Ensure you have the model: `ollama pull llama3.2:latest`
 
 **Dashboard says "Network Error"**
-- Ensure the Gateway is running on port 8080 and Connector on 8082.
+- Ensure the Gateway is running on port 8000 and Connector on 8004.
 - Check logs: `cat /tmp/talos-gateway.log`
 
 **"Tampered" or "Invalid" Events**

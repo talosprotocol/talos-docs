@@ -113,7 +113,7 @@ helm install talos talos/talos
 | 8765 | TCP/WebSocket | P2P communication | Yes |
 | 8766 | TCP/WebSocket | Registry server | If running registry |
 | 9090 | TCP/HTTP | Prometheus metrics | Optional |
-| 8080 | TCP/HTTP | Health endpoints | Optional |
+| 8000 | TCP/HTTP | Health endpoints | Optional |
 
 ### Firewall
 
@@ -228,7 +228,7 @@ ufw allow 8766/tcp
 
 | Talos Version | Wire Protocol | Breaking Changes |
 |---------------|---------------|------------------|
-| 2.0.x | v2 | - |
+| 5.15.x | v2 | - |
 | 1.x | v1 | Not compatible with 2.x |
 
 **Protocol negotiation**: Automatic version detection on handshake.

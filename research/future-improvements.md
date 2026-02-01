@@ -1,6 +1,6 @@
 # Future Improvements
 
-> **Roadmap for Talos Protocol beyond v2.0.0**
+> **Roadmap for Talos Protocol beyond v5.15.2**
 
 ## Overview
 

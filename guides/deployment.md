@@ -441,8 +441,8 @@ kubectl get ingress -n talos-system
 kubectl logs -n ingress-nginx -l app.kubernetes.io/component=controller
 
 # Test with port-forward
-kubectl port-forward -n talos-system svc/talos-gateway 8080:8080
-curl http://localhost:8080/healthz
+kubectl port-forward -n talos-system svc/talos-gateway 8000:8000
+curl http://localhost:8000/healthz
 ```
 
 ### Database connection issues

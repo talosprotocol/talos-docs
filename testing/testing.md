@@ -107,7 +107,7 @@ make lint
 
 Enabled with `--with-live`:
 
-1. Starts Gateway on port 8080
+1. Starts Gateway on port 8000
 2. Starts Dashboard on port 3000
 3. Validates `/api/gateway/status` endpoint
 4. Runs cross-language vector verification

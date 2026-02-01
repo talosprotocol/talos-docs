@@ -34,14 +34,16 @@ docker-compose -f talos-ai-gateway/docker-compose.multi-region.yml up -d
 
 ### Services
 
-| Service               | Ports      | Description           |
-| --------------------- | ---------- | --------------------- |
-| `talos-node`          | 8765, 8468 | Main P2P node         |
-| `talos-ai-gateway`    | 8000       | LLM/MCP Gateway       |
-| `talos-audit-service` | 8001       | Audit Service         |
-| `postgres`            | 5432       | Primary Persistence   |
-| `redis`               | 6379       | Rate Limiting/Tracing |
-| `ollama`              | 11434      | AI backend (Local)    |
+| Service               | Ports           | Description                       |
+| --------------------- | --------------- | --------------------------------- |
+| `talos-node`          | 8765, 8468      | Main P2P node                     |
+| `talos-gateway`       | 8000            | Security Kernel (Policy/Identity) |
+| `talos-ai-gateway`    | 8001            | AI Safety & LLM Proxy             |
+| `talos-audit-service` | 8002            | Tamper-proof Logging              |
+| `talos-config-service`| 8003            | Adaptive Budgets & Global Policy  |
+| `postgres`            | 5432            | Primary Persistence               |
+| `redis`               | 6379            | Rate Limiting/Tracing             |
+| `ollama`              | 11434           | AI backend (Local)                |
 
 ---
 
@@ -68,10 +70,10 @@ helm uninstall talos
 ### Configuration
 
 | Parameter             | Default        | Description        |
-| --------------------- | -------------- | ------------------ |
+| :-------------------- | :------------- | :----------------- |
 | `replicaCount`        | 3              | Number of replicas |
 | `image.repository`    | talos-protocol | Image name         |
-| `image.tag`           | 2.0.0          | Image tag          |
+| `image.tag`           | 5.15.2         | Image tag          |
 | `service.type`        | ClusterIP      | Service type       |
 | `service.p2pPort`     | 8765           | P2P WebSocket port |
 | `service.dhtPort`     | 8468           | DHT UDP port       |

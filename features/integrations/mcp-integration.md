@@ -23,8 +23,8 @@ graph LR
     end
 
     subgraph "Talos Network"
-        GW["Gateway :8080"]
-        Audit["Audit Service :8081"]
+        GW["Gateway :8000"]
+        Audit["Audit Service :8002"]
     end
 
     subgraph "Tool Machine"
@@ -47,20 +47,20 @@ graph LR
 
 Services started:
 
-- Gateway: `http://localhost:8080`
-- MCP Connector: `http://localhost:8082`
-- Audit Service: `http://localhost:8081`
+- Gateway: `http://localhost:8000`
+- MCP Connector: `http://localhost:8004`
+- Audit Service: `http://localhost:8002`
 
 ### 2. Check Status
 
 ```bash
-curl http://localhost:8082/api/mcp/status
+curl http://localhost:8004/api/mcp/status
 ```
 
 ### 3. List Available Tools
 
 ```bash
-curl http://localhost:8082/api/mcp/tools
+curl http://localhost:8004/api/mcp/tools
 ```
 
 ## API Endpoints
@@ -87,8 +87,8 @@ Security is inherited from Talos Protocol:
 
 | Variable            | Default                 | Description      |
 | ------------------- | ----------------------- | ---------------- |
-| `TALOS_MCP_PORT`    | `8082`                  | Connector port   |
-| `TALOS_GATEWAY_URL` | `http://localhost:8080` | Gateway endpoint |
+| `TALOS_MCP_PORT`    | `8004`                  | Connector port   |
+| `TALOS_GATEWAY_URL` | `http://localhost:8000` | Gateway endpoint |
 | `TALOS_ENV`         | `production`            | Environment      |
 
 ### Claude Desktop Integration
@@ -98,7 +98,7 @@ Security is inherited from Talos Protocol:
   "mcpServers": {
     "talos": {
       "command": "curl",
-      "args": ["-X", "POST", "http://localhost:8082/api/mcp/invoke"]
+      "args": ["-X", "POST", "http://localhost:8004/api/mcp/invoke"]
     }
   }
 }
@@ -119,8 +119,8 @@ make stop       # Stop service
 
 | Issue              | Solution                           |
 | ------------------ | ---------------------------------- |
-| Connection timeout | Ensure Gateway is running on :8080 |
-| 404 errors         | Check MCP connector is on :8082    |
+| Connection timeout | Ensure Gateway is running on :8000 |
+| 404 errors         | Check MCP connector is on :8004    |
 | Auth failures      | Verify capability tokens           |
 
 ## See Also

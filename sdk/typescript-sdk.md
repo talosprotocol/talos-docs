@@ -45,7 +45,7 @@ client.on('message', (msg) => {
 interface TalosClientOptions {
   agentId: string;
   privateKey?: string;
-  gatewayUrl?: string;  // default: http://localhost:8080
+  gatewayUrl?: string;  // default: http://localhost:8000
 }
 
 class TalosClient {

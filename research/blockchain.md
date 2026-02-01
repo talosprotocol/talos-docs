@@ -1,6 +1,6 @@
 # Blockchain Design
 
-> **Status**: Implemented | **Code**: `src/core/blockchain.py` | **Version**: 2.0.6
+> **Status**: Implemented | **Code**: `src/core/blockchain.py` | **Version**: 5.15.2
 
 ## Overview
 

@@ -1,6 +1,6 @@
 # Agent Identity
 
-> **Status**: Implemented | **Code**: `src/core/did.py`, `talos/identity.py` | **Version**: 2.0.6
+> **Status**: Implemented | **Code**: `src/core/did.py`, `talos/identity.py` | **Version**: 5.15.2
 
 > **The Foundation: Every Agent Action Starts with Proven Identity**
 

@@ -252,7 +252,7 @@ client = await TalosClient.create(
 ### CEF Format Example
 
 ```
-CEF:0|Talos|Protocol|2.0.6|SESSION_ESTABLISHED|Session Established|3|
+CEF:0|Talos|Protocol|5.15.2|SESSION_ESTABLISHED|Session Established|3|
   src=did:talos:alice dst=did:talos:bob
   cs1=sess_7f3k2m cs1Label=SessionID
   cn1=45 cn1Label=DurationMs
@@ -268,7 +268,7 @@ CEF:0|Talos|Protocol|2.0.6|SESSION_ESTABLISHED|Session Established|3|
 # Enable health endpoints
 client = await TalosClient.create(
     "agent",
-    health_port=8080
+    health_port=8000
 )
 ```
 
@@ -289,7 +289,7 @@ client = await TalosClient.create(
     "audit": "ok",
     "keys": "ok"
   },
-  "version": "2.0.6",
+  "version": "5.15.2",
   "uptime_seconds": 3600
 }
 ```
@@ -300,14 +300,14 @@ client = await TalosClient.create(
 livenessProbe:
   httpGet:
     path: /health/live
-    port: 8080
+    port: 8000
   initialDelaySeconds: 5
   periodSeconds: 10
 
 readinessProbe:
   httpGet:
     path: /health/ready
-    port: 8080
+    port: 8000
   initialDelaySeconds: 10
   periodSeconds: 5
 ```

@@ -301,7 +301,7 @@ client = await TalosClient.create(
     data_dir="/var/lib/talos",
     password=os.environ["TALOS_KEY_PASSWORD"],
     metrics_port=9090,
-    health_port=8080
+    health_port=8000
 )
 ```
 

@@ -77,7 +77,7 @@ The test runner checks for:
 ./deploy/scripts/start_all.sh
 
 # Verify services are running
-curl http://localhost:8080/api/gateway/status  # Gateway
+curl http://localhost:8000/api/gateway/status  # Gateway
 curl http://localhost:3000                      # Dashboard
 ```
 

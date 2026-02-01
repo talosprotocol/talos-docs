@@ -1,6 +1,6 @@
 # MCP Tool Invocation Proofs
 
-> **Status**: Partial (v3.0.0) | **Code**: `src/core/proofs.py` (planned) | **Version**: 2.0.6+
+> **Status**: Partial (v3.0.0) | **Code**: `src/core/proofs.py` (planned) | **Version**: 5.15.2+
 
 > **The Complete Flow from Agent Action to Verifiable Evidence**
 

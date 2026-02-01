@@ -37,7 +37,7 @@ did = manager.did  # did:talos:...
 
 # Create document
 doc = manager.create_document(
-    service_endpoint="wss://my-agent.com:8765"
+    service_endpoint="wss://talosprotocol.com:8765"
 )
 
 print(doc.to_json())
