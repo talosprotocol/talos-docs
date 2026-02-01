@@ -18,7 +18,7 @@ flowchart LR
     end
 
     subgraph Core ["Talos Security Layer"]
-        Gateway[AI Gateway]
+        SecurityKernel[Security Kernel]
         Config[Configuration Service]
         Audit[Audit Service]
     end
@@ -29,11 +29,12 @@ flowchart LR
     end
 
     User --> SDK
-    SDK -->|Encrypted Session| Gateway
-    Gateway <-->|Rules & Limits| Config
-    Gateway -->|Receipts| Audit
-    Gateway -->|Authorized Request| LLM
-    Gateway -->|Secure Bridge| MCP
+    SDK -->|Encrypted Session| SecurityKernel
+    SecurityKernel <-->|Rules & Limits| Config
+    SecurityKernel -->|Receipts| Audit
+    SecurityKernel -->|Authorized Request| AI_Gateway
+    AI_Gateway -->|Authorized Request| LLM
+    AI_Gateway -->|Secure Bridge| MCP
 
     %% Styling
     style Gateway fill:#f9f,stroke:#333,stroke-width:2px
@@ -67,7 +68,8 @@ graph TD
 
     %% Service Layer
     subgraph Services ["🌓 Global Service Layer"]
-        Gateway["AI Gateway\n(FastAPI / multi-region)"]
+        SecurityKernel["Security Kernel\n(FastAPI / Rust Core)"]
+        AI_Gateway["AI Gateway\n(FastAPI / LLM Safety)"]
         Config["Config Service\n(Adaptive Budgets)"]
         Audit["Audit Service\n(Merkle Tree Chaining)"]
         Connector["MCP Connector\n(Tool Sandbox)"]
@@ -81,13 +83,15 @@ graph TD
     CoreRS -->|Optimizes| SDK_PY
     CoreRS -->|Optimizes| SDK_TS
 
-    SDK_PY -->|Backbone| Gateway
+    SDK_PY -->|Backbone| SecurityKernel
+    SDK_PY -->|Backbone| AI_Gateway
     SDK_PY -->|Backbone| Config
     SDK_PY -->|Backbone| Audit
     SDK_PY -->|Backbone| Connector
 
-    Gateway <-->|Quota Check| Config
-    Gateway -->|Async Audit| Audit
+    SecurityKernel <-->|Quota Check| Config
+    SecurityKernel -->|Async Audit| Audit
+    SecurityKernel -->|Authorize| AI_Gateway
 ```
 
 ---
@@ -95,19 +99,24 @@ graph TD
 ## Core Components (v5.15)
 
 ### 1. The Contract-Driven Kernel
+
 - **`talos-contracts`**: The single source of truth for all network entities. Using JSON Schema and the **Talos Specification Language** to generate multi-language bindings.
 - **`talos-core-rs`**: A high-performance Rust crate providing the cryptographic foundation (Ed25519, Ratchet) and high-speed block validation.
 
 ### 2. Configuration & Quota Service
+
 **New in v5.15 (Phase 15)**.
+
 - **Adaptive Budgets**: Dynamic credit allocation for agents based on performance and risk scores.
 - **Configuration Distribution**: Securely distributes policies and limits to all gateway instances in real-time.
 
 ### 3. AI Gateway (The Perimeter)
+
 - **Multi-Region Persistence**: Supports read-replicas across multiple clouds with automatic failover.
 - **Transparent E2EE**: Automatic encryption of all agent-to-agent and agent-to-tool communications.
 
 ### 4. Audit & Verification
+
 - **Merkle Chaining**: Every action generates a receipt that is chained cryptographically.
 - **Proof-on-Demand**: The dashboard can generate SPV-style proofs to verify that an action took place.
 

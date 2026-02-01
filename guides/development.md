@@ -7,15 +7,23 @@ This guide covers the development workflow for the Talos multi-repo project.
 Talos uses git submodules for 8 component repositories:
 
 | Repo | Type | Tech |
-|------|------|------|
+| :--- | :--- | :--- |
 | `talos-contracts` | Library | TypeScript + Python |
 | `talos-core-rs` | Library | Rust + PyO3 |
 | `talos-sdk-py` | Library | Python |
 | `talos-sdk-ts` | Library | TypeScript |
-| `talos-gateway` | Service | FastAPI |
+| `talos-sdk-go` | Library | Go |
+| `talos-sdk-java` | Library | Java |
+| `talos-sdk-rust` | Library | Rust |
+| `talos-gateway` | Service | FastAPI + Rust |
+| `talos-ai-gateway` | Service | FastAPI |
 | `talos-audit-service` | Service | FastAPI |
+| `talos-configuration-service` | Service | FastAPI |
 | `talos-mcp-connector` | Service | Python |
+| `talos-ucp-connector` | Service | Java/Spring |
 | `talos-dashboard` | Service | Next.js |
+| `talos-aiops` | Service | Python/Go |
+| `talos-governance-agent` | Service | Python |
 
 ## Makefile Targets
 
@@ -44,10 +52,10 @@ make status     # Check service status
 ./deploy/scripts/setup.sh
 ```
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `TALOS_SETUP_MODE` | `lenient` | `strict` fails on missing repos |
-| `TALOS_USE_GLOBAL_INSTEADOF` | `0` | Set `1` for global HTTPS config |
+| Variable                     | Default   | Description                     |
+| :--------------------------- | :-------- | :------------------------------ |
+| `TALOS_SETUP_MODE`           | `lenient` | `strict` fails on missing repos |
+| `TALOS_USE_GLOBAL_INSTEADOF` | `0`       | Set `1` for global HTTPS config |
 
 ### `start_all.sh` – Start All Services
 
@@ -58,12 +66,14 @@ Validates services, rebuilds if unhealthy, restarts:
 ```
 
 Services started:
-| Service | Port |
-|---------|------|
-| talos-gateway | 8080 |
-| talos-audit-service | 8081 |
-| talos-mcp-connector | 8082 |
-| talos-dashboard | 3000 |
+
+| Service              | Port | Description         |
+| :------------------- | :--- | :------------------ |
+| talos-gateway        | 8000 | Security Kernel     |
+| talos-ai-gateway     | 8001 | AI Safety Perimeter |
+| talos-audit-service  | 8002 | Merkle Audit        |
+| talos-config-service | 8003 | Adaptive Budgets    |
+| talos-dashboard      | 3000 | Admin UI            |
 
 ### `cleanup_all.sh` – Full Clean
 
@@ -93,18 +103,19 @@ Leaves only source code, ready for fresh `setup.sh`.
 
 ## Environment Variables
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `TALOS_ENV` | `production` | Set to `test` during tests |
-| `TALOS_RUN_ID` | `default` | Unique test run ID for isolation |
-| `TALOS_GATEWAY_PORT` | `8080` | Gateway port |
-| `TALOS_DASHBOARD_PORT` | `3000` | Dashboard port |
+| Variable               | Default      | Description                      |
+| :--------------------- | :----------- | :------------------------------- |
+| `TALOS_ENV`            | `production` | Set to `test` during tests       |
+| `TALOS_RUN_ID`         | `default`    | Unique test run ID for isolation |
+| `TALOS_GATEWAY_PORT`   | `8000`       | Gateway port                     |
+| `TALOS_AI_GATEWAY_PORT`| `8001`       | AI Gateway port                  |
+| `TALOS_DASHBOARD_PORT` | `3000`       | Dashboard port                   |
 
 ## Boundary Rules
 
 **Contract-First Architecture:**
 
-```
+```text
 talos-contracts (source of truth)
         ↓
     Publishes:
@@ -118,6 +129,7 @@ talos-contracts (source of truth)
 ```
 
 **Rules:**
+
 1. ❌ No reimplementing `deriveCursor`, `base64url`, etc.
 2. ❌ No `btoa`/`atob` in browser code
 3. ❌ No deep cross-repo imports
@@ -146,11 +158,11 @@ TALOS_SETUP_MODE=strict ./deploy/scripts/setup.sh
 
 ## Logs and Reports
 
-| Path | Description |
-|------|-------------|
-| `/tmp/talos-*.log` | Service logs |
-| `/tmp/talos-*.pid` | Service PIDs |
-| `deploy/reports/logs/` | Test runner logs |
+| Path                   | Description       |
+| :--------------------- | :---------------- |
+| `/tmp/talos-*.log`     | Service logs      |
+| `/tmp/talos-*.pid`     | Service PIDs      |
+| `deploy/reports/logs/` | Test runner logs  |
 
 ## Git Submodule Workflow
 
