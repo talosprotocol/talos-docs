@@ -289,8 +289,8 @@ client = await TalosClient.create(
 client = await TalosClient.create(
     "agent",
     registry_urls=[
-        "wss://registry1.example.com",
-        "wss://registry2.example.com"
+        "wss://registry1.talosprotocol.com",
+        "wss://registry2.talosprotocol.com"
     ]
 )
 ```

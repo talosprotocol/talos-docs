@@ -131,7 +131,7 @@ import {
 ```typescript
 const client = new TalosClient({
   agentId: 'my-agent',
-  gatewayUrl: 'https://gateway.talos.example.com',
+  gatewayUrl: 'https://gateway.talos.talosprotocol.com',
 });
 ```
 

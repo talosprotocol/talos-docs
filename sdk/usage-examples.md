@@ -170,7 +170,7 @@ did = manager.did  # did:talos:abc123...
 
 # Create document
 doc = manager.create_document(
-    service_endpoint="wss://agent.example.com:8765"
+    service_endpoint="wss://agent.talosprotocol.com:8765"
 )
 
 # Add service

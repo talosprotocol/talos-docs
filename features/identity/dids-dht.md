@@ -98,7 +98,7 @@ if document:
     {
       "id": "did:talos:abc123...#messaging",
       "type": "TalosMessaging",
-      "serviceEndpoint": "wss://agent.example.com:8765"
+      "serviceEndpoint": "wss://agent.talosprotocol.com:8765"
     }
   ]
 }

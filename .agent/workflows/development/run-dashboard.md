@@ -31,7 +31,7 @@ This will:
 5. Start the Backend API (port 8000)
 6. Start the Frontend (port 3000)
    # Open http://localhost:3000
-   # Log in: admin@talos.security / talos_secure_start
+   # Log in: admin@talosprotocol.com / talos_secure_start
 7. Start the Traffic Generator (10% denial rate for demo)
 
 ## Dashboard Features (v3.2)

@@ -105,7 +105,7 @@ Each identity is represented as a W3C DID Document:
     {
       "id": "did:talos:a1b2c3...#talos",
       "type": "TalosEndpoint",
-      "serviceEndpoint": "talos://peer.example.com:8765"
+      "serviceEndpoint": "talos://peer.talosprotocol.com:8765"
     }
   ]
 }
@@ -208,7 +208,7 @@ did_document = await resolver.resolve("did:talos:a1b2c3...")
 # Deprecated - use DHT instead
 from talos.network import RegistryClient
 
-client = RegistryClient("https://registry.example.com")
+client = RegistryClient("https://registry.talosprotocol.com")
 peer_info = await client.lookup("did:talos:a1b2c3...")
 ```
 

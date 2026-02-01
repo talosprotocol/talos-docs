@@ -82,7 +82,7 @@ client = await TalosClient.create(
 # Enable TLS for registry connections
 client = await TalosClient.create(
     "agent",
-    registry_url="wss://registry.example.com:443",
+    registry_url="wss://registry.talosprotocol.com:443",
     tls_verify=True,
     tls_ca_cert="/path/to/ca.crt"
 )

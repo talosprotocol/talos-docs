@@ -243,7 +243,7 @@ client = await TalosClient.create(
     "agent",
     audit_streaming={
         "enabled": True,
-        "destination": "syslog://siem.example.com:514",
+        "destination": "syslog://siem.talosprotocol.com:514",
         "format": "cef"  # Common Event Format
     }
 )
