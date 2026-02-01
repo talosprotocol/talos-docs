@@ -10,7 +10,7 @@ Talos implements [W3C DID Core](https://www.w3.org/TR/did-core/) for self-sovere
 
 ## DID Format
 
-```
+```text
 did:talos:<32-char-hex-pubkey-hash>
 ```
 
@@ -111,7 +111,7 @@ if document:
 ### Kademlia Protocol
 
 | Parameter | Value | Description |
-|-----------|-------|-------------|
+| :--- | :--- | :--- |
 | **k** | 20 | Bucket size (max contacts per bucket) |
 | **α** | 3 | Parallelism factor |
 | **ID bits** | 256 | Node ID size (SHA-256) |
@@ -120,7 +120,7 @@ if document:
 
 Nodes are organized by XOR distance in the 256-bit ID space:
 
-```
+```text
 distance(A, B) = A ⊕ B
 ```
 
@@ -128,7 +128,7 @@ distance(A, B) = A ⊕ B
 
 Each node maintains 256 buckets, organized by XOR distance prefix:
 
-```
+```text
 Bucket 0: Nodes at distance 2^0 - 2^1
 Bucket 1: Nodes at distance 2^1 - 2^2
 ...
@@ -140,7 +140,7 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 ## RPC Messages
 
 | Message | Purpose |
-|---------|---------|
+| :--- | :--- |
 | `PING` | Check node liveness |
 | `FIND_NODE` | Find k closest nodes to ID |
 | `FIND_VALUE` | Get value or closest nodes |
@@ -151,6 +151,7 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 ## Design Patterns (SOLID)
 
 ### Single Responsibility
+
 - `DIDDocument` - Document structure only
 - `DIDManager` - Document lifecycle management
 - `DHTStorage` - Local storage only
@@ -158,14 +159,17 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 - `DIDResolver` - High-level resolution API
 
 ### Open/Closed
+
 - Abstract `VerificationMethod` supports new key types
 - `ServiceEndpoint` extensible for new service types
 
 ### Interface Segregation
+
 - `DHTNode` exposes minimal public API
 - Internal RPC handlers are private
 
 ### Dependency Inversion
+
 - `DIDResolver` depends on abstract `DHTNode` interface
 - Storage layer is pluggable
 
@@ -176,7 +180,7 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 ### DIDDocument
 
 | Method | Description |
-|--------|-------------|
+| :--- | :--- |
 | `add_verification_method()` | Add key with purposes |
 | `add_service()` | Add service endpoint |
 | `get_verification_method()` | Get key by ID |
@@ -202,10 +206,6 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 | `get()` | Retrieve value |
 | `lookup_node()` | Find closest nodes |
 
-### DIDResolver
-
-| Method | Description |
-|--------|-------------|
 | `publish()` | Store DID document |
 | `resolve()` | Lookup DID document |
 
@@ -214,7 +214,7 @@ Bucket 255: Nodes at distance 2^255 - 2^256
 ## Security Considerations
 
 | Threat | Mitigation |
-|--------|------------|
+| :--- | :--- |
 | Sybil attack | PoW for node IDs (future) |
 | Eclipse attack | Multiple bootstrap nodes |
 | Stale data | TTL on stored values |

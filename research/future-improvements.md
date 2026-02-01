@@ -12,8 +12,7 @@ This document outlines planned improvements, research directions, and potential 
 
 ### Post-Quantum Cryptography
 
-| Item | Description |
-|------|-------------|
+| Item | :--- | :--- |
 | **Hybrid Encryption** | X25519 + Kyber-768 key exchange |
 | **NIST Compliance** | Align with ML-KEM standardization |
 | **Migration Path** | Feature flag `--pq-mode` for opt-in |
@@ -26,7 +25,7 @@ config = TalosConfig(post_quantum=True)
 ### Onion Routing
 
 | Item | Description |
-|------|-------------|
+| :--- | :--- |
 | **3-Hop Circuits** | Layered encryption through relay nodes |
 | **Metadata Protection** | Hide sender/recipient relationship |
 | **Circuit Rotation** | Periodic path changes |
@@ -50,7 +49,7 @@ await client.send(peerId, Buffer.from('Hello!'));
 ### Zero-Knowledge Proofs
 
 | Use Case | ZK Circuit |
-|----------|------------|
+| :--- | :--- |
 | **Balance Proofs** | Prove `balance ≥ X` without revealing amount |
 | **Membership Proofs** | Prove message in block without content |
 | **Range Proofs** | Prove timestamp in valid range |
@@ -60,7 +59,7 @@ await client.send(peerId, Buffer.from('Hello!'));
 For multi-validator networks:
 
 | Property | Guarantee |
-|----------|-----------|
+| :--- | :--- |
 | Safety | No conflicting blocks accepted |
 | Liveness | Valid blocks eventually accepted |
 | Fault tolerance | `n ≥ 3f + 1` Byzantine nodes |
@@ -89,7 +88,7 @@ Token economics for:
 Notarize message hashes on public blockchains:
 
 | Chain | Method | Est. Cost |
-|-------|--------|-----------|
+| :--- | :--- | :--- |
 | Ethereum L2 | Batch Merkle root | ~$0.10/batch |
 | Solana | Memo instruction | ~$0.0001/msg |
 | Bitcoin | Taproot commitment | ~$0.50/batch |
@@ -149,7 +148,7 @@ Separate read/write paths for scalability.
 ## Performance Targets
 
 | Metric | Current | Target |
-|--------|---------|--------|
+| :--- | :--- | :--- |
 | Message latency | ~50ms | <20ms |
 | Throughput | ~1k msg/s | >10k msg/s |
 | Light client sync | ~5s | <1s |
@@ -210,7 +209,7 @@ See [Development Guide](../guides/development.md) for setup instructions.
 ## Versioning Policy
 
 | Version | Scope |
-|---------|-------|
+| :--- | :--- |
 | Patch (x.x.1) | Bug fixes only |
 | Minor (x.1.0) | New features, backward compatible |
 | Major (1.0.0) | Breaking changes |

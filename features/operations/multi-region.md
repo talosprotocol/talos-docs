@@ -39,7 +39,7 @@ These endpoints can tolerate eventual consistency (seconds of staleness):
 
 The read replica connection uses a circuit breaker pattern to prevent cascading failures:
 
-```
+```text
 ┌─────────────────────────────────────────────────────────────┐
 │                    Circuit Breaker                           │
 ├─────────────────────────────────────────────────────────────┤

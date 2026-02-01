@@ -22,7 +22,7 @@ bc = Blockchain(
 )
 ```
 
-##### Properties
+##### Blockchain Properties
 
 | Property | Type | Description |
 | :--- | :--- | :--- |
@@ -87,7 +87,7 @@ block = Block(
 block.mine(difficulty=2)
 ```
 
-##### Properties
+##### Block Properties
 
 | Property | Type | Description |
 | :--- | :--- | :--- |

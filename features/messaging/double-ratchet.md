@@ -101,7 +101,7 @@ plaintext = session.decrypt(encrypted)
 
 Extended Triple Diffie-Hellman establishes initial shared secrets:
 
-```
+```text
 Alice                           Bob
   │                               │
   │ Get Bob's prekey bundle       │
@@ -135,7 +135,7 @@ class PrekeyBundle:
 Each session maintains:
 
 | State | Description |
-|-------|-------------|
+| :--- | :--- |
 | `dh_keypair` | Current DH key pair |
 | `dh_remote` | Peer's current DH public key |
 | `root_key` | Secret for deriving chains |
@@ -151,7 +151,7 @@ Each session maintains:
 
 For consecutive messages in the same direction:
 
-```
+```text
 Chain Key(n) --> KDF --> Message Key(n) + Chain Key(n+1)
 ```
 
@@ -175,7 +175,7 @@ This provides break-in recovery: even if current keys leak, new ratchet step res
 
 ## Message Format
 
-```
+```text
 ┌─────────────────────┬──────────────────────┐
 │ Header Length (2B)  │                      │
 ├─────────────────────┤      Ciphertext      │
@@ -235,7 +235,7 @@ assert manager.has_session("peer_id")
 ## Security Properties
 
 | Property | Guarantee |
-|----------|-----------|
+| :--- | :--- |
 | **Confidentiality** | Only recipient can decrypt |
 | **Authenticity** | Messages are signed |
 | **Forward Secrecy** | Past messages safe if keys leak |
