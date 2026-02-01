@@ -101,28 +101,29 @@ make clean      # Remove all dependencies
 
 ```text
 talos/
-
-├── deploy/
-│   ├── repos/              # 12 git submodules
-│   │   ├── talos-contracts/
-│   │   ├── talos-core-rs/
-│   │   ├── talos-sdk-py/
-│   │   ├── talos-sdk-ts/
-│   │   ├── talos-sdk-go/
-│   │   ├── talos-sdk-java/
-│   │   ├── talos-gateway/
-│   │   ├── talos-audit-service/
-│   │   ├── talos-mcp-connector/
-│   │   ├── talos-dashboard/
-│   │   ├── talos-docs/
-│   │   └── talos-examples/
-│   └── scripts/
-│       ├── setup.sh
-│       ├── start_all.sh
-│       ├── cleanup_all.sh
-│       └── run_all_tests.sh
-├── docs/wiki/              # (deprecated, use talos-docs)
-└── README.md
+├── contracts/               # talos-contracts (Schemas & Vectors)
+├── core/                    # talos-core-rs (Rust Performance Kernel)
+├── sdks/                    # Polyglot SDKs
+│   ├── python/              # talos-sdk-py
+│   ├── typescript/          # talos-sdk-ts
+│   ├── go/                  # talos-sdk-go
+│   ├── java/                # talos-sdk-java
+│   └── rust/                # talos-sdk-rust
+├── services/                # Backend Services
+│   ├── ai-gateway/          # LLM & MCP Unified Access
+│   ├── audit/               # Tamper-Evident Audit Log
+│   ├── mcp-connector/       # Secure Tool Sandbox
+│   └── configuration/       # Adaptive Budgets & Policy
+├── site/                    # Web Components
+│   ├── dashboard/           # Security Console (Next.js)
+│   └── marketing/           # Landing Page
+├── deploy/                  # Infrastructure & Scripts
+│   ├── k8s/                 # Kubernetes Manifests
+│   ├── helm/                # Helm Charts
+│   └── scripts/             # Setup & Orchestration Scripts
+├── docs/                    # Documentation (talos-docs)
+├── scripts/                 # Auxiliary Python/Bash Scripts
+└── tools/                   # talos-tui & Setup Helpers
 ```
 
 ## Troubleshooting
