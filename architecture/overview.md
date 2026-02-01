@@ -1,242 +1,129 @@
 # Architecture Overview
 
-## High-Level Design (v4.0)
+> **Talos v5.15** | **Phase 15: Adaptive Budgets** | **Contract-Driven Design**
 
-Talos v4.0 adopts a **Contract-Driven Kernel** architecture using **Ports & Adapters (Hexagonal)** pattern.
+---
 
-High level overview of the architecture
+## High-Level System Design
+
+Talos adopts a **Contract-Driven Kernel** architecture using the **Ports & Adapters (Hexagonal)** pattern. This ensures that the core security rules are enforced identically across all languages and regions.
+
+### Logical Interaction Flow
 
 ```mermaid
 flowchart LR
-  U[You] --> D[Dashboard\n(the app you use)]
-  D --> G[Talos Gateway\n(Security checkpoint)]
-  G --> C[MCP Connector\n(Tool bridge)]
-  C --> T[AI Model or Tools\n(e.g., Ollama, APIs, databases)]
-  T --> C --> G --> D --> U
+    subgraph Client ["Agent Environment"]
+        User[AI Agent / User]
+        SDK[Talos SDK]
+    end
 
-  %% Parallel audit path
-  G -->|Writes "receipts"| A[Audit Service\n(Tamper-evident log)]
-  A --> V[Audit Dashboard\n(View history, proofs)]
+    subgraph Core ["Talos Security Layer"]
+        Gateway[AI Gateway]
+        Config[Configuration Service]
+        Audit[Audit Service]
+    end
 
-  %% Shared rulebook
-  K[Contracts\n(Rulebook: schemas + test vectors)]
-  K -.-> D
-  K -.-> G
-  K -.-> C
-  K -.-> A
+    subgraph Tools ["External World"]
+        LLM[LLM API / Ollama]
+        MCP[MCP Servers / Tools]
+    end
+
+    User --> SDK
+    SDK -->|Encrypted Session| Gateway
+    Gateway <-->|Rules & Limits| Config
+    Gateway -->|Receipts| Audit
+    Gateway -->|Authorized Request| LLM
+    Gateway -->|Secure Bridge| MCP
+
+    %% Styling
+    style Gateway fill:#f9f,stroke:#333,stroke-width:2px
+    style Config fill:#bbf,stroke:#333,stroke-width:2px
+    style Audit fill:#dfd,stroke:#333,stroke-width:2px
 ```
+
+---
+
+## Detailed Component Architecture
 
 ```mermaid
 graph TD
-    %% Core Kernel (Source of Truth)
-    subgraph Kernel ["Contract-Driven Kernel"]
-        Contracts["talos-contracts (Schemas/Vectors)"]
-        CoreRS["talos-core-rs (Rust Crypto/Validation)"]
+    %% Source of Truth
+    subgraph Truth ["📜 Source of Truth"]
+        Contracts["talos-contracts\n(Schemas & Vectors)"]
     end
 
-    %% Multi-Region Infrastructure
-    subgraph Infra ["Multi-Region Persistence"]
-        Primary["Postgres (Primary/Write)"]
-        Replica["Postgres (Replica/Read)"]
-        Cache["Redis (Rate Limits/Tracing)"]
+    %% Polyglot Core
+    subgraph Kernel ["🦀 Core Kernel"]
+        CoreRS["talos-core-rs\n(Rust Performance Engine)"]
     end
 
-    %% SDK Layer (Ports & Adapters)
-    subgraph SDK ["Polyglot SDKs"]
-        SDK_PY[talos-sdk-py]
-        SDK_TS[talos-sdk-ts]
+    %% Multi-Language SDKs
+    subgraph SDKs ["🛠️ Polyglot SDK Layer"]
+        SDK_PY[Python SDK]
+        SDK_TS[TypeScript SDK]
+        SDK_GO[Go SDK]
+        SDK_JAVA[Java SDK]
     end
 
-    %% Service Layer (Consumers)
-    subgraph Services ["Service Layer"]
-        Gateway_A["talos-ai-gateway (Region A)"]
-        Gateway_B["talos-ai-gateway (Region B)"]
-        Audit["talos-audit-service"]
-        Connector["talos-mcp-connector"]
-        Dashboard["talos-dashboard"]
+    %% Service Layer
+    subgraph Services ["🌓 Global Service Layer"]
+        Gateway["AI Gateway\n(FastAPI / multi-region)"]
+        Config["Config Service\n(Adaptive Budgets)"]
+        Audit["Audit Service\n(Merkle Tree Chaining)"]
+        Connector["MCP Connector\n(Tool Sandbox)"]
     end
-
-    %% Multi-Region Flow
-    Gateway_A -->|Write| Primary
-    Gateway_A -->|Read| Primary
-    Gateway_B -->|Write| Primary
-    Gateway_B -->|Read| Replica
-    Primary -->|Repl| Replica
-    Gateway_A & Gateway_B -->|Trace| Cache
 
     %% Relationships
-    Contracts -->|Defines| CoreRS
-    Contracts -->|Defines| SDK_PY
-    Contracts -->|Defines| SDK_TS
+    Contracts -->|Generates| SDK_PY
+    Contracts -->|Generates| SDK_TS
+    Contracts -->|Artifacts| CoreRS
 
     CoreRS -->|Optimizes| SDK_PY
+    CoreRS -->|Optimizes| SDK_TS
 
-    SDK_PY -->|Powers| Gateway
-    SDK_PY -->|Powers| Audit
-    SDK_PY -->|Powers| Connector
+    SDK_PY -->|Backbone| Gateway
+    SDK_PY -->|Backbone| Config
+    SDK_PY -->|Backbone| Audit
+    SDK_PY -->|Backbone| Connector
 
-    SDK_TS -->|Powers| Dashboard
+    Gateway <-->|Quota Check| Config
+    Gateway -->|Async Audit| Audit
 ```
 
-## Component Details
+---
 
-### 1. Contracts (`talos-contracts`)
+## Core Components (v5.15)
 
-**The Single Source of Truth.**
+### 1. The Contract-Driven Kernel
+- **`talos-contracts`**: The single source of truth for all network entities. Using JSON Schema and the **Talos Specification Language** to generate multi-language bindings.
+- **`talos-core-rs`**: A high-performance Rust crate providing the cryptographic foundation (Ed25519, Ratchet) and high-speed block validation.
 
-- **Language**: JSON / TypeScript / Python
-- **Responsibilities**: Defines Schemas, Test Vectors, and standard helper functions (Cursors, UUIDv7).
-- **Artifacts**: `@talosprotocol/contracts` (NPM), `talos-contracts` (PyPI), `test_vectors.tar.gz`.
+### 2. Configuration & Quota Service
+**New in v5.15 (Phase 15)**.
+- **Adaptive Budgets**: Dynamic credit allocation for agents based on performance and risk scores.
+- **Configuration Distribution**: Securely distributes policies and limits to all gateway instances in real-time.
 
-### 2. Rust Kernel (`talos-core-rs`)
+### 3. AI Gateway (The Perimeter)
+- **Multi-Region Persistence**: Supports read-replicas across multiple clouds with automatic failover.
+- **Transparent E2EE**: Automatic encryption of all agent-to-agent and agent-to-tool communications.
 
-**High-Performance Wedge.**
+### 4. Audit & Verification
+- **Merkle Chaining**: Every action generates a receipt that is chained cryptographically.
+- **Proof-on-Demand**: The dashboard can generate SPV-style proofs to verify that an action took place.
 
-- **Language**: Rust
-- **Responsibilities**: Cryptographic primitives (Ed25519, ChaCha20), Block Validation, Merkle Tree operations.
-- **Integration**: Exposed to Python via PyO3/Maturin.
+---
 
-### 3. SDKs (Ports & Adapters)
+## Technical Specifications
 
-**Business Logic & Glue.**
+| Feature | implementation |
+| :--- | :--- |
+| **Cryptography** | Ed25519, X25519, ChaCha20Poly1305 |
+| **Forward Secrecy** | Double Ratchet (Phase 2+) |
+| **Persistence** | Postgres 15 (TimescaleDB) / Redis 7 |
+| **Messaging** | gRPC / REST (Bridge) |
+| **Audit** | Deterministic Merkle Chaining |
 
-- **`talos-sdk-py`**: Python implementation of Use-Case Ports (Storage, Crypto, Hash) and Adapters (LMDB, HTTP, MCP).
-- **`talos-sdk-ts`**: TypeScript equivalent for Node.js and Browser environments.
+---
 
-### 4. Services
-
-- **`talos-ai-gateway`**: Unified LLM + MCP entrance. Supports Multi-Region Read with automatic replica fallback.
-- **`talos-audit-service`**: Dedicated audit log aggregator using deterministic hash-chaining.
-- **`talos-mcp-connector`**: Secure bridge for AI Agents to strictly typed internal tools.
-- **`talos-dashboard`**: Visual security console for verifying audit proofs and monitoring gateway health.
-
-## Data Flow
-
-### Sending a Message
-
-```
-User Input → Client → TransmissionEngine
-                          │
-                          ▼
-                    ┌─────────────┐
-                    │ Get Shared  │
-                    │   Secret    │
-                    └─────────────┘
-                          │
-                          ▼
-                    ┌─────────────┐
-                    │  Encrypt    │
-                    │  Content    │
-                    └─────────────┘
-                          │
-                          ▼
-                    ┌─────────────┐
-                    │    Sign     │
-                    │  Payload    │
-                    └─────────────┘
-                          │
-                          ▼
-                    ┌─────────────┐
-                    │ Add to      │
-                    │ Blockchain  │
-                    └─────────────┘
-                          │
-                          ▼
-                    ┌─────────────┐
-                    │ Send via    │
-                    │   P2P       │
-                    └─────────────┘
-```
-
-### Receiving a Message
-
-```
-P2P Layer → TransmissionEngine
-                   │
-                   ▼
-             ┌─────────────┐
-             │   Verify    │
-             │  Signature  │
-             └─────────────┘
-                   │
-                   ▼
-             ┌─────────────┐
-             │  Decrypt    │
-             │  Content    │
-             └─────────────┘
-                   │
-                   ▼
-             ┌─────────────┐
-             │ Record to   │
-             │ Blockchain  │
-             └─────────────┘
-                   │
-                   ▼
-             ┌─────────────┐
-             │   Invoke    │
-             │  Callbacks  │
-             └─────────────┘
-                   │
-                   ▼
-             ┌─────────────┐
-             │  Send ACK   │
-             └─────────────┘
-```
-
-## Repository Structure
-
-```
-blockchain-mcp-security/
-├── contracts/               # Schemas and Test Vectors
-├── sdks/
-│   ├── python/              # Talos SDK (Python)
-│   └── typescript/          # Talos SDK (Node/Browser)
-├── services/
-│   ├── ai-gateway/          # Unified Access Point (FastAPI)
-│   ├── audit/               # Immutable Audit Log (Merkle Tree)
-│   └── mcp-connector/       # Secure Tool Sandbox
-├── site/
-│   └── dashboard/           # Security Console (Next.js)
-├── deploy/                  # Kubernetes & Infrastructure
-├── docs/                    # Documentation & Wiki
-├── run_all_tests.sh         # Universal Test Orchestrator
-└── scripts/
-    └── coverage_coordinator.py # Coverage Enforcement Engine
-```
-
-## Quality System: Contract-Driven Testing
-
-Talos enforces a uniform test contract across all repositories.
-
-### 1. Unified Orchestration
-The master `run_all_tests.sh` uses **auto-discovery** to find manifest-bearing repositories. It eliminates manual runner updates when new service submodules are added.
-
-### 2. Test manifests (`.agent/test_manifest.yml`)
-Each repo defines its:
-- **Test Entrypoint**: Standardized `scripts/test.sh`
-- **Coverage Targets**: Detailed line/branch/path thresholds
-- **CI Settings**: Parallelism and timeout constraints
-
-### 3. Coverage Enforcement
-
-The `coverage_coordinator.py` enforces thresholds by parsing Cobertura XML reports. It supports **Risk-Based Coverage** (e.g., 95%+ required for crypto-sensitive paths).
-
-## Design Decisions
-
-### Why Centralized Gateway (vs P2P)?
-
-- **Enterprise Control**: Organizations require centralized policy enforcement.
-- **Performance**: Low-latency caching and routing optimization.
-- **Simplicity**: HTTP/REST is universally supported by AI frameworks.
-
-### Why Merkle Tree Audit (vs PoW Blockchain)?
-
-- **Throughput**: Supports high-volume event ingestion (10k+ TPS).
-- **Efficiency**: No energy-intensive mining; security provided by cryptographic chaining and signed roots.
-- **Verifiability**: Clients can request cryptographic proofs (SPV-style) for any log entry.
-
-### Why Ed25519 + X25519?
-
-- **Modern Standards**: High-security curves (128-bit) compliant with implementation best practices.
-- **Performance**: Optimized for high-frequency signing/verification loops in Agent communications.
-- **Size**: Small keys (32 bytes) reduce payload overhead.
+> [!NOTE]
+> For a more simplified view of the message flow, see the [Simplified Architecture](simplified.md) guide.

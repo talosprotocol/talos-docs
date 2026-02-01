@@ -1,65 +1,70 @@
 # Simplified Architecture
 
-This document explains the Talos flow using simple diagrams and terminology.
+> **Talos v5.15** | **The "Secure Pipe" Concept**
 
-## The "Secure Pipe" Concept
-Talos acts as a secure pipe between the User and the AI. Nothing passes through without being stamped and logged.
+---
+
+## 🏗️ How it Works
+
+Talos acts as a **Secure Pipe** between an AI Agent and the external world. No request can pass through without being verified against a budget and logged for audit.
 
 ```mermaid
 flowchart LR
-    User -->|Secure Message| Dashboard
-    Dashboard -->|Encrypted Request| Gateway[Talos Gateway]
-    Gateway -->|Audit Log| Audit[Tamper-Evident Log]
-    Gateway -->|Verified Command| Connector[MCP Connector]
-    Connector -->|Prompt| AI[Ollama / AI Model]
+    A[Agent] -->|Request| G[Gateway]
+    G <-->|Check Budget| C[Config Service]
+    G -->|Authorized?| T[Tool / LLM]
+    G -->|Receipt| L[Audit Log]
+    
+    style G fill:#f96,stroke:#333
+    style C fill:#69f,stroke:#333
+    style L fill:#6f6,stroke:#333
 ```
 
-## detailed Flow: Sending a Message
+---
 
-When you type "Hello" in the chat, here is the behind-the-scenes journey:
+## 📝 The Life of a Request
+
+When an agent wants to perform an action (like calling a tool or sending a message):
 
 ```mermaid
 sequenceDiagram
-    participant U as User
-    participant D as Dashboard
-    participant G as Gateway (Security)
-    participant A as Audit Log
-    participant C as Connector
-    participant AI as AI Model
+    participant A as AI Agent
+    participant G as Talos Gateway
+    participant C as Config (Budgets)
+    participant T as External Tool
+    participant L as Audit Log
 
-    Note over U, D: 1. User sends message
-    U->>D: "Hello"
-    D->>G: Send Secure Request over HTTP
+    A->>G: 1. Send Request (Signed)
+    G->>C: 2. Check Quota & Budget
+    C-->>G: 3. Approved (Budget Remaining)
     
-    Note over G: 2. Security Check & Log
-    G->>A: Log: REQUEST_RECEIVED (User said something)
-    G->>G: Verify User Permissions (Capability)
-    
-    Note over G: 3. Forward to Tool
-    G->>A: Log: TOOL_CALL (Invoking Chat Tool)
-    G->>C: Execute "Chat" Tool
-    
-    Note over C, AI: 4. AI Processing
-    C->>AI: Send Prompt to Model
-    AI-->>C: Reply: "Hi there!"
-    C-->>G: Return Result
-    
-    Note over G: 5. Verify & Log Result
-    G->>A: Log: TOOL_RESULT (AI replied)
-    G->>A: Log: RESPONSE_SENT (Sending back to user)
-    
-    Note over G, U: 6. Delivery
-    G-->>D: "Hi there!" (Signed)
-    D->>U: Display Message
+    rect rgb(240, 240, 240)
+        Note right of G: Security Boundary
+        G->>T: 4. Invoke Tool / API
+        T-->>G: 5. Return Result
+    end
+
+    G->>L: 6. Log Signed Receipt
+    G-->>A: 7. Return Result + Proof
 ```
 
-## Key Concepts
+---
 
-**Tamper-Evident Audit Log**
-A database where every entry is cryptographically linked to the previous one (like a chain). If someone modifies an old entry, the chain breaks, and the system flags it as "Corrupted".
+## 🔑 Key Concepts for Humans
 
-**Capability**
-A digital key or ticket that grants permission. The Gateway checks this ticket before allowing any message to pass.
+### 💰 Adaptive Budgets
+Think of this as a **Smart Credit Card** for your AI. Every time the AI does something, Talos checks if it has enough "credits" and if the action follows the safety rules.
 
-**MCP (Model Context Protocol)**
-The standard language the Gateway uses to talk to tools (like the Chat Tool or a Database Tool). Talos wraps this standard in a security layer.
+### 🛡️ The Gateway (The Guard)
+The Gateway is like a **Security Checkpoint**. It checks the ID of the agent, verifies the signature of the message, and makes sure everything is encrypted.
+
+### 📜 The Audit Log (The Black Box)
+Like an airplane's black box, the Audit Log records everything. Because it uses **Merkle Chaining**, it is physically impossible to change a past log entry without everyone noticing.
+
+### 🏗️ Contract-Driven
+We use a **Master Blueprints** (Contracts) to make sure that the Python version, the JavaScript version, and the Rust version of Talos all speak exactly the same language.
+
+---
+
+> [!TIP]
+> **Ready to try it?** Go to the [Quickstart](getting-started-quickstart) guide to see this flow in action!
