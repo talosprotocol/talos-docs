@@ -7,7 +7,7 @@ audience: Security
 
 > **Problem**: Engineers need formal security property definitions.  
 > **Guarantee**: Clear status of each property.  
-> **Non-goal**: Formal proofs—see [Security Proof](Mathematical-Security-Proof).
+> **Non-goal**: Formal proofs. See [Security Proof](mathematical-proof.md).
 
 ---
 
@@ -265,7 +265,7 @@ audience: Security
 
 ## Formal Model
 
-For formal security proofs, see [Mathematical Security Proof](Mathematical-Security-Proof).
+For formal security proofs, see [Mathematical Security Proof](mathematical-proof.md).
 
 Key assumptions:
 1. Cryptographic primitives are secure

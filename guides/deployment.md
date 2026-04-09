@@ -488,7 +488,7 @@ kubectl run -it --rm debug --image=postgres:15 --restart=Never -- \
 
 ## References
 
-- [Kubernetes Manifests](../deploy/k8s/)
-- [Helm Chart](../deploy/helm/talos/)
-- [Monitoring Setup](../deploy/k8s/monitoring/)
-- [CI/CD Pipeline](../.github/workflows/production-ready.yml)
+- [Kubernetes Manifests](../../deploy/k8s/)
+- [Helm Chart](../../deploy/helm/talos/)
+- [Monitoring Setup](../../deploy/k8s/monitoring/)
+- [CI/CD Pipeline](../../.github/workflows/production-ready.yml)

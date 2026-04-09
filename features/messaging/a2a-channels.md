@@ -2,7 +2,11 @@
 
 > **Phase 10 Feature** | Phase 10.1 Released 2026-01-29, Phase 10.2 Completed 2026-01-29
 
-A2A (Agent-to-Agent) Channels provide secure, encrypted communication between Talos agents with forward secrecy, replay protection, and hash-chained audit trails.
+This page describes the **Talos secure-channel extension** for A2A, not the generic A2A v1 RPC task surface.
+
+For standards-first A2A v1 discovery and JSON-RPC tasks, use the A2A Agent Card and `/rpc` surface described in [A2A v1 Rollout](../../guides/a2a-v1-rollout.md). Talos secure channels remain an extension advertised through the Agent Card extension URIs.
+
+Talos A2A Channels provide secure, encrypted communication between Talos agents with forward secrecy, replay protection, and hash-chained audit trails.
 
 ## Overview
 
@@ -25,39 +29,39 @@ sequenceDiagram
     
     Note over Alice,Bob: Session Creation (X3DH)
     
-    Alice->>GW: POST /a2a/sessions<br/>{peer_did, ik_pub, ek_pub, opk_id}
+    Alice->>GW: POST /a2a/v1/sessions<br/>{peer_did, ik_pub, ek_pub, opk_id}
     GW->>GW: Store session (status=pending)
     GW-->>Alice: {session_id, status: pending}
     
-    Bob->>GW: POST /a2a/sessions/{id}/accept<br/>{ik_pub, spk_pub, spk_sig}
+    Bob->>GW: POST /a2a/v1/sessions/{id}/accept<br/>{ik_pub, spk_pub, spk_sig}
     GW->>GW: Update (status=active)
     GW-->>Bob: {status: active}
     
     Note over Alice,Bob: Message Exchange (Double Ratchet)
    
     Alice->>Alice: dr_encrypt(plaintext)<br/>→ {ciphertext, header, seq}
-    Alice->>GW: POST /a2a/sessions/{id}/frames<br/>{frame_id, ciphertext, header, seq}
+    Alice->>GW: POST /a2a/v1/sessions/{id}/frames<br/>{frame_id, ciphertext, header, seq}
     GW->>GW: Verify seq > last_seq<br/>Store frame
     Note over GW: Audit: frame_id hash only
     GW-->>Alice: 200 OK
     
-    Bob->>GW: GET /a2a/sessions/{id}/frames?cursor=...
+    Bob->>GW: GET /a2a/v1/sessions/{id}/frames?cursor=...
     GW-->>Bob: [{frame_id, ciphertext, header, seq}]
     Bob->>Bob: dr_decrypt(ciphertext, header)<br/>→ plaintext
     
     Note over Alice,Bob: Automatic Key Rotation
     
     Bob->>Bob: dr_encrypt(reply)<br/>→ ratchet DH keys
-    Bob->>GW: POST /a2a/sessions/{id}/frames<br/>{new_ciphertext, new_header}
+    Bob->>GW: POST /a2a/v1/sessions/{id}/frames<br/>{new_ciphertext, new_header}
     GW-->>Bob: 200 OK
     
-    Alice->>GW: GET /a2a/sessions/{id}/frames
+    Alice->>GW: GET /a2a/v1/sessions/{id}/frames
     GW-->>Alice: [{frame...}]
     Alice->>Alice: dr_decrypt()<br/>→ ratchet DH keys
     
     Note over Alice,Bob: Session Cleanup
     
-    Alice->>GW: DELETE /a2a/sessions/{id}/close
+    Alice->>GW: DELETE /a2a/v1/sessions/{id}
     GW->>GW: Soft delete session
     GW-->>Alice: 200 OK
 ```
@@ -68,16 +72,16 @@ sequenceDiagram
 
 | Endpoint                         | Method | Description                   |
 | :------------------------------- | :----- | :---------------------------- |
-| `/a2a/sessions`                  | POST   | Create new session            |
-| `/a2a/sessions/{id}/accept`      | POST   | Accept pending session        |
-| `/a2a/sessions/{id}/frames`      | POST   | Send encrypted frame          |
-| `/a2a/sessions/{id}/frames`      | GET    | Receive frames (cursor-based) |
-| `/a2a/sessions/{id}/close`       | DELETE | Close session                 |
-| `/a2a/sessions/{id}/rotate`      | POST   | Rotate session keys           |
-| `/a2a/groups`                    | POST   | Create group                  |
-| `/a2a/groups/{id}/members`       | POST   | Add group member              |
-| `/a2a/groups/{id}/members/{pid}` | DELETE | Remove group member           |
-| `/a2a/groups/{id}`               | DELETE | Close group                   |
+| `/a2a/v1/sessions`                  | POST   | Create new session            |
+| `/a2a/v1/sessions/{id}/accept`      | POST   | Accept pending session        |
+| `/a2a/v1/sessions/{id}/frames`      | POST   | Send encrypted frame          |
+| `/a2a/v1/sessions/{id}/frames`      | GET    | Receive frames (cursor-based) |
+| `/a2a/v1/sessions/{id}`             | DELETE | Close session                 |
+| `/a2a/v1/sessions/{id}/rotate`      | POST   | Rotate session keys           |
+| `/a2a/v1/groups`                    | POST   | Create group                  |
+| `/a2a/v1/groups/{id}/members`       | POST   | Add group member              |
+| `/a2a/v1/groups/{id}/members/{pid}` | DELETE | Remove group member           |
+| `/a2a/v1/groups/{id}`               | DELETE | Close group                   |
 
 ### SDK Components
 

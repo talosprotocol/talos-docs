@@ -251,6 +251,9 @@ restored = MessagePayload.from_bytes(binary)
 
 Main interface for sending/receiving.
 
+> [!CAUTION]
+> **LEGACY DEPENDENCY**: `TransmissionEngine` currently depends on the legacy `P2PNode` stack. It is recommended to migrate to gateway-based transmission for new applications.
+
 ```python
 from src.engine import TransmissionEngine
 
@@ -327,6 +330,9 @@ print(transfer.status)            # TransferStatus.IN_PROGRESS
 
 High-level client interface.
 
+> [!CAUTION]
+> **LEGACY DEPENDENCY**: The `Client` class utilizes the legacy WebSocket P2P stack for direct peer connections.
+
 ```python
 from src.client import Client, ClientConfig
 
@@ -371,3 +377,24 @@ talos send-file <recipient> /path/to/file
 talos status
 talos history
 ```
+
+---
+
+## Legacy Modules
+
+> [!WARNING]
+> The modules below are part of the **Legacy WebSocket P2P Stack**. These components are scheduled for removal and should not be used in new developments. Refer to the [Gateway Service](../../services/gateway/README.md) for the modern libp2p-based implementation.
+
+### Legacy P2P Stack (`src.network`)
+
+#### `src.network.p2p.P2PNode`
+
+Custom WebSocket-based P2P node for direct peer communication.
+
+#### `src.network.dht.DHTNode`
+
+Legacy Kademlia DHT implementation for peer discovery.
+
+#### `src.network.peer.Peer`
+
+Representation of a peer in the legacy stack.

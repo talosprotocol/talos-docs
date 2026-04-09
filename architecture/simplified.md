@@ -67,4 +67,4 @@ We use a **Master Blueprints** (Contracts) to make sure that the Python version,
 ---
 
 > [!TIP]
-> **Ready to try it?** Go to the [Quickstart](getting-started-quickstart) guide to see this flow in action!
+> **Ready to try it?** Go to the [Quickstart](../getting-started/quickstart.md) guide to see this flow in action.

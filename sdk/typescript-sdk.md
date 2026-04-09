@@ -14,6 +14,56 @@ Or with yarn:
 yarn add @talosprotocol/sdk
 ```
 
+## Standards-First A2A v1
+
+Use `A2AJsonRpcClient` for the public A2A v1 Agent Card and `/rpc` task surface. Talos secure channels remain a separate extension layered on top of the standard Agent Card.
+
+```typescript
+import {
+  A2AJsonRpcClient,
+  TALOS_SECURE_CHANNELS_EXTENSION,
+} from '@talosprotocol/sdk';
+
+const client = new A2AJsonRpcClient('https://gateway.talos.example', {
+  apiToken: process.env.TALOS_API_TOKEN,
+});
+
+const card = await client.getAgentCard();
+const interfaces = await client.supportedInterfaces(card);
+
+if (await client.supportsExtension(TALOS_SECURE_CHANNELS_EXTENSION, card)) {
+  console.log('Talos secure-channel extension available');
+}
+
+const result = await client.sendMessage('Hello from TypeScript');
+console.log(result.task);
+console.log(interfaces[0]?.url);
+```
+
+The helper methods emit canonical A2A v1 JSON-RPC operations such as `GetExtendedAgentCard`, `SendMessage`, `ListTasks`, and `SubscribeToTask`. Talos alias methods are kept only as a gateway migration fallback.
+
+For official upstream servers that are not Talos-style `/rpc` targets, the TypeScript client also supports explicit compatibility profiles:
+
+```typescript
+const legacyV03 = new A2AJsonRpcClient("http://127.0.0.1:9999", {
+  interopProfile: "upstream_v0_3",
+});
+
+const javaHybrid = new A2AJsonRpcClient("http://127.0.0.1:9999", {
+  interopProfile: "upstream_java_hybrid",
+});
+```
+
+These profiles are opt-in. `upstream_v0_3` remaps discovery and RPC to upstream `v0.3.0` conventions such as `agent/getAuthenticatedExtendedCard` and `message/send`, while `upstream_java_hybrid` uses the Agent Card's root JSON-RPC URL plus Java-style enum roles for the official Java sample. Canonical `/rpc` remains the default.
+
+For a real HTTP smoke against the local reference fixture, build the SDK and run:
+
+```bash
+cd sdks/typescript
+npm --workspace @talosprotocol/sdk run build
+node examples/a2a_v1_live_interop.mjs --gateway-url http://127.0.0.1:8011 --api-token sdk-token --prompt "hello" --exercise-streams
+```
+
 ## Quick Start
 
 ```typescript

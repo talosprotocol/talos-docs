@@ -183,7 +183,7 @@ See [MCP Cookbook](../integrations/mcp-cookbook.md) for integration details.
 
 ## Related Pages
 
-- [Protocol Specification](../../PROTOCOL.md)
+- [Protocol Specification](../../architecture/wire-format.md)
 - [MCP Cookbook](../integrations/mcp-cookbook.md)
 - [Threat Model](../../architecture/threat-model.md)
 - [Agent Capabilities](agent-capabilities.md)

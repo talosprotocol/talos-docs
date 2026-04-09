@@ -36,6 +36,7 @@ Practical how-to guides for common tasks:
 
 - **[Deployment](guides/deployment.md)** - Production deployment guide
 - **[Development](guides/development.md)** - Local development setup
+- **[A2A v1 Rollout](guides/a2a-v1-rollout.md)** - Protocol migration plan and PR sequence
 - **[Production Hardening](guides/production-hardening.md)** - Production best practices
 - **[Hardening Guide](guides/hardening-guide.md)** - Security hardening
 - **[Runbook (Non-Technical)](guides/runbook-non-technical.md)** - Operations guide
@@ -136,11 +137,11 @@ Testing guides and documentation:
 
 ## Network Protocols
 
-- [Talos Overlays](file:///Users/nileshchakraborty/workspace/talos/docs/protocols/overlays.md): Secure mesh networking protocol.
+- [A2A Channels](features/messaging/a2a-channels.md): Standards-first agent-to-agent messaging and the Talos secure-channel extension.
 
 ## Configuration Reference
 
-- [Core Schemas](file:///Users/nileshchakraborty/workspace/talos/contracts/schemas/config/v1): JSON schemas for all configuration objects.
+- [Core Schemas](../contracts/schemas/config/v1): JSON schemas for configuration objects and policy surfaces.
 
 ## Reference
 

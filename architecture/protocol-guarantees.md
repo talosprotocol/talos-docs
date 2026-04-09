@@ -7,7 +7,7 @@ audience: Security, Developer
 
 > **Problem**: Non-cryptographers need to understand Talos security.  
 > **Guarantee**: Clear mapping from property to mechanism.  
-> **Non-goal**: Full cryptographic proofs—see [Security Proof](Mathematical-Security-Proof).
+> **Non-goal**: Full cryptographic proofs. See [Security Proof](../security/mathematical-proof.md).
 
 ---
 
@@ -210,4 +210,4 @@ audience: Security, Developer
 
 ---
 
-**See also**: [Threat Model](threat-model.md) | [Cryptography](../security/cryptography.md) | [Security Proof](Mathematical-Security-Proof)
+**See also**: [Threat Model](threat-model.md) | [Cryptography](../security/cryptography.md) | [Security Proof](../security/mathematical-proof.md)

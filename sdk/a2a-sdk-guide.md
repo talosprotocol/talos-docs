@@ -4,7 +4,53 @@
 
 ## Overview
 
-The **A2A (Agent-to-Agent) SDK** enables secure, forward-secret communication between autonomous agents using the Signal Double Ratchet protocol.
+This page documents the **Talos secure-channel extension** in `talos_sdk.a2a`, not the standards-first A2A v1 JSON-RPC client.
+
+Use:
+
+- `talos_sdk.A2AJsonRpcClient` for the public A2A v1 RPC surface at `/.well-known/agent-card.json`, `/rpc`, and `/extendedAgentCard`
+- `talos_sdk.a2a` for Talos-specific secure sessions, encrypted frames, and Double Ratchet state
+
+The Talos secure-channel SDK layers on top of Talos extension URIs advertised in the Agent Card, especially `https://talosprotocol.com/extensions/a2a/secure-channels/v1`.
+
+The **Talos secure-channel SDK** enables secure, forward-secret communication between autonomous agents using the Signal Double Ratchet protocol.
+
+## Standards-First A2A v1
+
+```python
+from talos_sdk import A2AJsonRpcClient
+
+client = A2AJsonRpcClient("http://localhost:8000", api_token="sk-test-key")
+
+card = client.get_agent_card()
+assert client.supports_talos_secure_channels(card) is True
+
+task = client.send_message("Summarize the latest audit findings")
+print(task["task"]["status"]["state"])
+```
+
+The helper methods issue canonical A2A v1 JSON-RPC operations such as `GetExtendedAgentCard`, `SendMessage`, `ListTasks`, and `SubscribeToTask`. Talos alias methods remain a gateway-side migration fallback, not the primary SDK contract.
+
+For official upstream servers that are not Talos-style `/rpc` targets, the Python client also supports explicit compatibility profiles:
+
+```python
+legacy_v03 = A2AJsonRpcClient(
+    "http://127.0.0.1:9999",
+    interop_profile="upstream_v0_3",
+)
+
+java_hybrid = A2AJsonRpcClient(
+    "http://127.0.0.1:9999",
+    interop_profile="upstream_java_hybrid",
+)
+```
+
+These profiles are opt-in. `upstream_v0_3` remaps discovery and RPC to upstream `v0.3.0` conventions such as `agent/getAuthenticatedExtendedCard` and `message/send`, while `upstream_java_hybrid` uses the Agent Card's root JSON-RPC URL plus Java-style enum roles for the official Java sample. Canonical `/rpc` remains the default.
+
+Current SDK matrix:
+
+- Python and TypeScript: full standards-first A2A v1 helper surface, including streaming/subscription helpers
+- Go, Rust, and Java: discovery, canonical `/rpc`, streaming/subscription helpers, Talos extension introspection, callback-style incremental handling, and native stream-return APIs (`<-chan`, `Stream`, or `Iterable`)
 
 **Key Features**:
 
@@ -489,7 +535,8 @@ class A2ASessionClient:
 
 ## 8. See Also
 
-- [A2A Channels](../features/messaging/a2a-channels.md) - Protocol specification
+- [A2A v1 Rollout](../guides/a2a-v1-rollout.md) - Public Agent Card and `/rpc` task surface
+- [A2A Channels](../features/messaging/a2a-channels.md) - Talos secure-channel extension
 - [Production Hardening](../guides/production-hardening.md) - Phase 11 features
 - [Double Ratchet](../features/messaging/double-ratchet.md) - Cryptographic details
 - [API Reference](../api/api-reference.md) - Complete API documentation

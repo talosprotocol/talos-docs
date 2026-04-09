@@ -60,4 +60,4 @@ Thank you for your interest in contributing to the Talos Protocol ecosystem! We 
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the project's [LICENSE](./LICENSE).
+By contributing, you agree that your contributions will be licensed under the project's [LICENSE](../../LICENSE).

@@ -67,5 +67,5 @@ export TGA_SUPERVISOR_PUBLIC_KEY="-----BEGIN PUBLIC KEY-----
 
 ## Related Documentation
 
-- [TGA Digest Spec](file:///Users/nileshchakraborty/workspace/study/blockchain-mcp-security/deploy/repos/talos-contracts/docs/tga/digests.md)
-- [Implementation Plan Phase 9](file:///Users/nileshchakraborty/.gemini/antigravity/brain/6dcb8bf8-b76a-4199-bb0a-5e38c34c1022/implementation_plan.md)
+- [TGA Digest Spec](../../../../contracts/docs/tga/digests.md)
+- [Implementation Tracker](../../../../implementation.md)

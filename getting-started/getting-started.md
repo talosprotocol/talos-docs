@@ -53,21 +53,24 @@ The setup script initializes all submodules and configures SSH/HTTPS fallback:
 
 The test runner checks for:
 
-- bash, python3, node, npm, curl
-- cargo (Rust toolchain)
-- rg (ripgrep, optional)
+- supported CLI flags and target selection
+- required local toolchain for the selected component entrypoints
+- owned test entrypoints such as `.agent/test_manifest.yml`, `scripts/test.sh`, `make test`, or `npm test`
 
 ## Step 4: Run Tests
 
 ```bash
-# Run all unit tests (no live services)
-./deploy/scripts/run_all_tests.sh
+# Run the required component set with manifest-backed CI defaults
+./deploy/scripts/run_all_tests.sh --ci
 
-# Run with live integration tests (starts Gateway + Dashboard)
-./deploy/scripts/run_all_tests.sh --with-live
+# Run a wider/integration-oriented slice
+./deploy/scripts/run_all_tests.sh --full
 
-# Test single repo
+# Test only one component
 ./deploy/scripts/run_all_tests.sh --only talos-contracts
+
+# Test only changed SDK repos
+./deploy/scripts/run_all_tests.sh --changed --only category:sdk
 ```
 
 ## Step 5: Start Services
@@ -81,20 +84,24 @@ curl http://localhost:8000/api/gateway/status  # Gateway
 curl http://localhost:3000                      # Dashboard
 ```
 
-## Per-Repo Development
+## Per-Component Development
 
-Each repo has a Makefile:
+The root workspace `Makefile` is the supported default:
 
 ```bash
-cd services/gateway
+make test
+make test TEST_ARGS="--only talos-dashboard --skip-build"
+make dev
+```
 
-make install    # Install dependencies
-make build      # Build artifacts
-make test       # Run tests
-make lint       # Run linters
-make start      # Start service
-make stop       # Stop service
-make clean      # Remove all dependencies
+Many components also have their own `Makefile` or `scripts/test.sh`, but that is not universal across every repo. For example:
+
+```bash
+cd services/ai-gateway
+make test
+
+cd site/dashboard
+bash scripts/test.sh
 ```
 
 ## Directory Structure

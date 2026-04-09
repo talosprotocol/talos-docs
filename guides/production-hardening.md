@@ -51,7 +51,7 @@ In **production mode** (`MODE=prod`):
 
 ### Surface-Specific Limits
 
-Override rates per-surface in [`gateway_surface.json`](file:///Users/nileshchakraborty/workspace/talos/services/ai-gateway/gateway_surface.json):
+Override rates per-surface in [`contracts/inventory/gateway_surface.json`](../../contracts/inventory/gateway_surface.json):
 
 ```json
 {
@@ -115,7 +115,7 @@ In **production mode** (`MODE=prod`):
 
 ### Automatic Redaction
 
-The [`TalosSpanProcessor`](file:///Users/nileshchakraborty/workspace/talos/services/ai-gateway/app/observability/tracing.py) automatically redacts:
+The [`TalosSpanProcessor`](../../services/ai-gateway/app/observability/tracing.py) automatically redacts:
 
 - **Headers**: `Authorization`, `Cookie`, `Set-Cookie`
 - **A2A Fields**: `header_b64u`, `ciphertext_b64u`, `ciphertext_hash`
@@ -228,7 +228,7 @@ spec:
 
 ### Graceful Shutdown Overview
 
-Talos implements graceful shutdown via [`ShutdownGateMiddleware`](file:///Users/nileshchakraborty/workspace/talos/services/ai-gateway/app/middleware/shutdown_gate.py):
+Talos implements graceful shutdown via [`ShutdownGateMiddleware`](../../services/ai-gateway/app/middleware/shutdown_gate.py):
 
 - Rejects new requests with **503 SERVER_SHUTTING_DOWN**
 - Allows `/health/live` to continue responding

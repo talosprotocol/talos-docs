@@ -69,5 +69,5 @@ This file tracks features that are partially implemented or planned for future d
 
 ## Related Documentation
 
-- [Implementation Plan v3.2](implementation_plan.md)
+- [Implementation Tracker](../../../implementation.md)
 - [Run Dashboard](run-dashboard.md)

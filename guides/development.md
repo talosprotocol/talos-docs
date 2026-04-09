@@ -1,10 +1,10 @@
 # Development
 
-This guide covers the development workflow for the Talos multi-repo project.
+This guide covers the development workflow for the Talos workspace. Talos still tracks component ownership in [deploy/submodules.json](../../deploy/submodules.json), but day-to-day development happens from this monorepo root.
 
 ## Repository Structure
 
-Talos uses git submodules for 8 component repositories:
+Talos tracks component ownership through the submodule manifest in [deploy/submodules.json](../../deploy/submodules.json). The current workspace includes a mix of contracts, SDKs, services, sites, and tools:
 
 | Repo | Type | Tech |
 | :--- | :--- | :--- |
@@ -25,24 +25,19 @@ Talos uses git submodules for 8 component repositories:
 | `talos-aiops` | Service | Python/Go |
 | `talos-governance-agent` | Service | Python |
 
-## Makefile Targets
+## Root Makefile and Component Commands
 
-Every repo has a `Makefile` with consistent targets:
+The root `Makefile` is the supported entrypoint for common workspace tasks:
 
 ```bash
-cd <repo-name>
-
-make install    # Install dependencies
-make build      # Build artifacts
-make test       # Run tests
-make lint       # Run linters
-make clean      # Remove dependencies (source-only)
-
-# Services only:
-make start      # Start service
-make stop       # Stop service
-make status     # Check service status
+make build
+make test
+make test TEST_ARGS="--only talos-contracts"
+make test TEST_ARGS="--only category:sdk --changed"
+make test-all
 ```
+
+Many major components still ship their own `Makefile` or `scripts/test.sh`, but that interface is not uniform across every repo in `services/`, `site/`, or `tools/`. When a component does not have a `Makefile`, use its owned test/start entrypoint directly.
 
 ## Master Scripts
 
@@ -88,18 +83,28 @@ Leaves only source code, ready for fresh `setup.sh`.
 ### `run_all_tests.sh` – Master Test Runner
 
 ```bash
-# Default (unit tests)
-./deploy/scripts/run_all_tests.sh
+# Show supported flags
+./deploy/scripts/run_all_tests.sh --help
 
-# With live integration
-./deploy/scripts/run_all_tests.sh --with-live
+# Required component set with manifest-backed CI defaults when available
+./deploy/scripts/run_all_tests.sh --ci
 
-# Skip build steps
-./deploy/scripts/run_all_tests.sh --skip-build
+# Wider/full run across selected components
+./deploy/scripts/run_all_tests.sh --full
 
-# Single repo
-./deploy/scripts/run_all_tests.sh --only talos-contracts
+# Narrow to dirty SDK repos only
+./deploy/scripts/run_all_tests.sh --changed --only category:sdk
+
+# Single component without build-heavy steps
+./deploy/scripts/run_all_tests.sh --only talos-contracts --skip-build
 ```
+
+Runner behavior:
+
+- Prefers `.agent/test_manifest.yml` when a component ships one.
+- Otherwise falls back to the nearest owned test entrypoint such as `scripts/test.sh`, `make test`, or `npm test`.
+- `--only` accepts a repo name, repo path, basename, or `category:<name>`.
+- `--with-live` is supported as an alias for a wider integration-oriented run and sets `TALOS_WITH_LIVE=true`.
 
 ## Environment Variables
 
@@ -153,7 +158,7 @@ TALOS_SETUP_MODE=strict ./deploy/scripts/setup.sh
 # Full CI pipeline
 ./deploy/scripts/check_boundaries.sh
 ./deploy/scripts/ci_verify_vectors.sh
-./deploy/scripts/run_all_tests.sh
+./deploy/scripts/run_all_tests.sh --ci
 ```
 
 ## Logs and Reports

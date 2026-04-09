@@ -25,12 +25,19 @@ audience: Developer, Operator
 
 ## Authentication
 
-Access to the dashboard is restricted to authenticated users.
+Access to the dashboard is restricted to authenticated users via **WebAuthn (Passkeys)**.
 
 - **Login Page**: `/login` (Automatically redirected)
-- **Default Admin**: `admin@talosprotocol.com` / `talos_secure_start`
+- **Mechanism**: Passkey-based authentication (WebAuthn)
+- **Initial Setup**: Admin access must be bootstrapped using a secret token.
 - **Protected Routes**: `/`, `/console`, `/status`
-- **Mechanism**: NextAuth v5 with Middleware protection
+
+### Bootstrap Process
+
+For initial installation or adding a new admin device:
+1. Obtain the `TALOS_BOOTSTRAP_TOKEN` from the environment configuration.
+2. Navigate to `/login` and select **Setup Admin Access**.
+3. Enter the bootstrap token and register your security key/biometric as the primary admin.
 
 ---
 
@@ -114,20 +121,22 @@ Exported evidence follows the v3.2 frozen schema:
 
 ## Data Sources
 
-The dashboard supports multiple data sources:
+The dashboard supports several runtime data modes, configured via `NEXT_PUBLIC_TALOS_DATA_MODE`:
 
-| Mode     | Description              | Use Case                     |
-| -------- | ------------------------ | ---------------------------- |
-| `MOCK`   | In-memory synthetic data | Development, demos           |
-| `HTTP`   | REST API polling         | Production with demo traffic |
-| `WS`     | WebSocket streaming      | Real-time production (v1.1+) |
-| `SQLITE` | Local database           | Offline analysis             |
+| Mode     | Description                   | Use Case                              |
+| -------- | ----------------------------- | ------------------------------------- |
+| `HTTP`   | REST API polling (Default)    | Production monitoring                 |
+| `LIVE`   | Real-time via SSE/WebSocket   | Performance-sensitive monitoring      |
+| `MOCK`   | Synthetic in-memory data      | Development and isolated demos        |
+| `SQLITE` | Local database (Legacy/Dev)   | Local troubleshooting and testing     |
 
 Set via environment variable:
 
 ```bash
-NEXT_PUBLIC_TALOS_DATA_MODE=HTTP npm run dev
+NEXT_PUBLIC_TALOS_DATA_MODE=WS npm run dev
 ```
+
+Note: `SQLITE` mode is restricted to `NODE_ENV=development` for security.
 
 ---
 
@@ -206,13 +215,13 @@ graph TD
 
 ## Pending Features (v1.1+)
 
-| Feature                            | Status     | Description                           |
-| ---------------------------------- | ---------- | ------------------------------------- |
-| Audit Explorer (`/audit`)          | 🔴 Planned | Virtualized table with deep filtering |
-| Session Intelligence (`/sessions`) | 🔴 Planned | Suspicious score calculation          |
-| Gateway Status (`/gateway`)        | 🔴 Planned | Uptime, cache stats, version          |
-| Gap Backfill UI                    | 🔴 Planned | "Gap in history" banner               |
-| WebSocket Streaming                | 🔴 Planned | Real-time event stream                |
+| Feature                            | Status      | Description                           |
+| ---------------------------------- | ----------- | ------------------------------------- |
+| WebSocket Streaming                | 🟢 Finished | Real-time event stream via WSS        |
+| Audit Explorer (`/audit`)          | 🔴 Planned  | Virtualized table with deep filtering |
+| Session Intelligence (`/sessions`) | 🔴 Planned  | Suspicious score calculation          |
+| Gateway Status (`/gateway`)        | 🔴 Planned  | Uptime, cache stats, version          |
+| Gap Backfill UI                    | 🔴 Planned  | "Gap in history" banner               |
 
 ---
 
