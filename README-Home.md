@@ -51,11 +51,11 @@ This release focuses on **economic security** for autonomous agents:
 
 ## 📊 Project Health
 
-- **Total Tests**: `1,000+` across polyglot SDKs and services
+- **Total Tests**: `850+` verified across polyglot SDKs and services
 - **Latency (p95)**: `< 5ms` for Authz and Audit ingest
 - **Throughput**: `12,000 req/sec` per gateway node
-- **Coverage**: `92%` average across services
-- **Status**: [Production Ready]
+- **Coverage**: `~70%` average across core components
+- **Status**: [Stable / LTS]
 
 ---
 
