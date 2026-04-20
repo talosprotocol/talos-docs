@@ -6,6 +6,11 @@
 
 ## High-Level System Design
 
+For the current source-derived project map, including active modules, routes,
+feature ownership, submodules, and service edges, see the
+[Talos Context Graph](context_graph.md). For the active backlog and execution
+order, see the [Full-Scale Development Plan](fullscale_development_plan.md).
+
 Talos adopts a **Contract-Driven Kernel** architecture using the **Ports & Adapters (Hexagonal)** pattern. This ensures that the core security rules are enforced identically across all languages and regions.
 
 ### Logical Interaction Flow
@@ -37,7 +42,7 @@ flowchart LR
     AI_Gateway -->|Secure Bridge| MCP
 
     %% Styling
-    style Gateway fill:#f9f,stroke:#333,stroke-width:2px
+    style AI_Gateway fill:#f9f,stroke:#333,stroke-width:2px
     style Config fill:#bbf,stroke:#333,stroke-width:2px
     style Audit fill:#dfd,stroke:#333,stroke-width:2px
 ```

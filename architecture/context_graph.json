@@ -1,0 +1,3709 @@
+{
+  "components": [
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [],
+      "exists": true,
+      "features": [],
+      "id": "api-testing",
+      "internal_refs": [],
+      "kind": "tooling",
+      "manifests": [],
+      "path": "api-testing",
+      "role": "API test suites and Postman/Karate assets",
+      "routes": [],
+      "source_counts": {
+        ".js": 1,
+        ".json": 1,
+        ".md": 2,
+        ".py": 3
+      },
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "jcs>=0.2.1",
+        "jsonschema>=4.0.0"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "contracts/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "165 JSON schemas",
+        "107 test vector files"
+      ],
+      "id": "contracts",
+      "internal_refs": [
+        "sdks/python",
+        "sdks/typescript"
+      ],
+      "kind": "contract-source",
+      "manifests": [
+        "contracts/pyproject.toml",
+        "contracts/Makefile",
+        "contracts/scripts/test.sh"
+      ],
+      "path": "contracts",
+      "role": "Schema, inventory, and vector source of truth",
+      "routes": [],
+      "source_counts": {
+        ".json": 1223,
+        ".md": 22,
+        ".mjs": 3,
+        ".py": 49,
+        ".toml": 2,
+        ".ts": 40,
+        ".yaml": 4,
+        ".yml": 2,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "contracts",
+        "ref": "(v1.1.15-57-gdd7549d)",
+        "sha": "dd7549d169c842ce19d3d1edae41be4ef00c3efc",
+        "url": "https://github.com/talosprotocol/talos-contracts.git"
+      },
+      "tests": [
+        "contracts/Makefile",
+        "contracts/scripts/test.sh",
+        "contracts/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "base64",
+        "bs58",
+        "chacha20poly1305",
+        "ed25519-dalek",
+        "hex",
+        "hkdf",
+        "hmac",
+        "pyo3",
+        "rand",
+        "serde",
+        "serde_jcs",
+        "serde_json",
+        "sha2",
+        "thiserror",
+        "uuid",
+        "x25519-dalek"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "core/Cargo.toml",
+        "core/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "core",
+      "internal_refs": [
+        "contracts",
+        "sdks/python"
+      ],
+      "kind": "module",
+      "manifests": [
+        "core/pyproject.toml",
+        "core/Cargo.toml",
+        "core/Makefile",
+        "core/scripts/test.sh",
+        "core/.agent/test_manifest.yml"
+      ],
+      "path": "core",
+      "role": "Rust security kernel and protocol primitives",
+      "routes": [],
+      "source_counts": {
+        ".json": 1,
+        ".md": 7,
+        ".rs": 18,
+        ".toml": 2,
+        ".yml": 3,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "core",
+        "ref": "(v1.1.6-17-gd0b1e92)",
+        "sha": "d0b1e92271c7f09747ef3aff166517efaa580130",
+        "url": "https://github.com/talosprotocol/talos-core-rs.git"
+      },
+      "tests": [
+        "core/.agent/test_manifest.yml",
+        "core/Makefile",
+        "core/scripts/test.sh",
+        "core/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [
+        "docs/guides/deployment.md"
+      ],
+      "entrypoints": [],
+      "exists": true,
+      "features": [],
+      "id": "deploy",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "sdks/python",
+        "services/governance-agent"
+      ],
+      "kind": "tooling",
+      "manifests": [],
+      "path": "deploy",
+      "role": "Deployment, Docker, Helm, and local stack scripts",
+      "routes": [],
+      "source_counts": {
+        ".json": 1,
+        ".md": 19,
+        ".py": 4,
+        ".yaml": 49
+      },
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [
+        "docs/.agent/README.md",
+        "docs/.agent/agents/design/brand-guardian.md",
+        "docs/.agent/agents/design/ui-designer.md",
+        "docs/.agent/agents/design/ux-researcher.md",
+        "docs/.agent/agents/design/visual-storyteller.md",
+        "docs/.agent/agents/design/whimsy-injector.md",
+        "docs/.agent/agents/engineering/ai-engineer.md",
+        "docs/.agent/agents/engineering/backend-architect.md",
+        "docs/.agent/agents/engineering/devops-automator.md",
+        "docs/.agent/agents/engineering/frontend-developer.md",
+        "docs/.agent/agents/engineering/mobile-app-builder.md",
+        "docs/.agent/agents/engineering/rapid-prototyper.md",
+        "docs/.agent/agents/marketing/app-store-optimizer.md",
+        "docs/.agent/agents/marketing/content-creator.md",
+        "docs/.agent/agents/marketing/growth-hacker.md",
+        "docs/.agent/agents/marketing/instagram-curator.md"
+      ],
+      "entrypoints": [],
+      "exists": true,
+      "features": [],
+      "id": "docs",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "sdks/python",
+        "sdks/typescript",
+        "services/governance-agent"
+      ],
+      "kind": "docs",
+      "manifests": [
+        "docs/scripts/test.sh"
+      ],
+      "path": "docs",
+      "role": "Documentation and operator guides",
+      "routes": [],
+      "source_counts": {
+        ".md": 93
+      },
+      "submodule": {
+        "path": "docs",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "0c56ad2800ced5bbb5d01e3a1a26011e8d18b328",
+        "url": "https://github.com/talosprotocol/talos-docs.git"
+      },
+      "tests": [
+        "docs/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [
+        "docs/sdk/examples.md",
+        "docs/sdk/usage-examples.md"
+      ],
+      "entrypoints": [],
+      "exists": true,
+      "features": [
+        "LLM/chat",
+        "Health checks",
+        "MCP tools",
+        "Session management",
+        "Commerce/UCP"
+      ],
+      "id": "examples",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "module",
+      "manifests": [
+        "examples/scripts/test.sh"
+      ],
+      "path": "examples",
+      "role": "Runnable examples and demos",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/.well-known/ucp",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/api/shopping/v1/checkout-sessions",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/shopping/v1/checkout-sessions/{session_id}",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "PUT",
+          "path": "/api/shopping/v1/checkout-sessions/{session_id}",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/api/shopping/v1/checkout-sessions/{session_id}/cancel",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/api/shopping/v1/checkout-sessions/{session_id}/complete",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "examples/devops-agent/mcp_tools/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "examples/devops-agent/talos_node/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "examples/secure_chat/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "examples/ucp-merchant/app/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "source": "examples/devops-agent/mcp_tools/server.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp",
+          "source": "examples/devops-agent/talos_node/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/chat/completions",
+          "source": "examples/devops-agent/talos_node/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/chat/feedback",
+          "source": "examples/secure_chat/server.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/chat/send",
+          "source": "examples/secure_chat/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/chat/stats",
+          "source": "examples/secure_chat/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/chat/summary",
+          "source": "examples/secure_chat/server.py"
+        }
+      ],
+      "source_counts": {
+        ".json": 2,
+        ".md": 6,
+        ".py": 35,
+        ".toml": 1,
+        ".yml": 1
+      },
+      "submodule": {
+        "path": "examples",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "d9508cc1b1adedf038839771cc1993c713b5dbcd",
+        "url": "https://github.com/talosprotocol/talos-examples.git"
+      },
+      "tests": [
+        "examples/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "pydantic>=2.0.0",
+        "pyyaml>=6.0",
+        "talos-contracts"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "libs/talos-config/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Configuration management"
+      ],
+      "id": "libs/talos-config",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "module",
+      "manifests": [
+        "libs/talos-config/pyproject.toml"
+      ],
+      "path": "libs/talos-config",
+      "role": "Shared configuration library",
+      "routes": [],
+      "source_counts": {
+        ".py": 4,
+        ".toml": 1
+      },
+      "submodule": null,
+      "tests": [
+        "libs/talos-config/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [
+        "docs/.agent/agents/engineering/rapid-prototyper.md",
+        "docs/architecture/protocol-guarantees.md"
+      ],
+      "entrypoints": [],
+      "exists": true,
+      "features": [],
+      "id": "proto",
+      "internal_refs": [],
+      "kind": "module",
+      "manifests": [],
+      "path": "proto",
+      "role": "Protocol buffers and generated interface inputs",
+      "routes": [],
+      "source_counts": {},
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [],
+      "exists": true,
+      "features": [],
+      "id": "scripts",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "libs/talos-config",
+        "sdks/python",
+        "sdks/typescript",
+        "services/governance-agent"
+      ],
+      "kind": "tooling",
+      "manifests": [],
+      "path": "scripts",
+      "role": "Repository automation and verification scripts",
+      "routes": [],
+      "source_counts": {
+        ".json": 1,
+        ".md": 1,
+        ".py": 40
+      },
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "github.com/google/uuid",
+        "github.com/gowebpki/jcs",
+        "golang.org/x/crypto"
+      ],
+      "docs": [
+        "docs/reference/non-goals.md",
+        "docs/sdk/sdk-ergonomics.md"
+      ],
+      "entrypoints": [
+        "sdks/go/go.mod"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "sdks/go",
+      "internal_refs": [
+        "contracts",
+        "sdks/python"
+      ],
+      "kind": "sdk",
+      "manifests": [
+        "sdks/go/go.mod",
+        "sdks/go/Makefile",
+        "sdks/go/scripts/test.sh",
+        "sdks/go/.agent/test_manifest.yml"
+      ],
+      "path": "sdks/go",
+      "role": "Go SDK",
+      "routes": [],
+      "source_counts": {
+        ".go": 32,
+        ".json": 1,
+        ".md": 4,
+        ".mod": 1,
+        ".yml": 2,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "sdks/go",
+        "ref": "(v0.1.0-12-g439a1b9)",
+        "sha": "439a1b9a1eda79f0552c41432afec96bec39da22",
+        "url": "https://github.com/talosprotocol/talos-sdk-go.git"
+      },
+      "tests": [
+        "sdks/go/.agent/test_manifest.yml",
+        "sdks/go/Makefile",
+        "sdks/go/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "com.fasterxml.jackson.core:jackson-databind",
+        "org.bouncycastle:bcprov-jdk18on",
+        "org.springframework.boot:spring-boot-starter",
+        "org.springframework.boot:spring-boot-starter-test"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "sdks/java/pom.xml"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "sdks/java",
+      "internal_refs": [
+        "contracts",
+        "sdks/python"
+      ],
+      "kind": "sdk",
+      "manifests": [
+        "sdks/java/pom.xml",
+        "sdks/java/Makefile",
+        "sdks/java/scripts/test.sh",
+        "sdks/java/.agent/test_manifest.yml"
+      ],
+      "path": "sdks/java",
+      "role": "Java/JVM SDK",
+      "routes": [],
+      "source_counts": {
+        ".java": 15,
+        ".json": 1,
+        ".md": 4,
+        ".xml": 1,
+        ".yml": 2,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "sdks/java",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "a3ed8e6aa39579ec2d4813be101a21c3c69a9780",
+        "url": "https://github.com/talosprotocol/talos-sdk-java.git"
+      },
+      "tests": [
+        "sdks/java/.agent/test_manifest.yml",
+        "sdks/java/Makefile",
+        "sdks/java/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "build",
+        "cryptography>=46.0.3",
+        "jsonschema>=4.18.0",
+        "mypy",
+        "pydantic>=2.0.0",
+        "pytest",
+        "pytest-asyncio",
+        "requests>=2.32.2",
+        "ruff",
+        "talos-contracts>=1.2.0",
+        "types-jsonschema>=4.18.0",
+        "types-requests",
+        "types-setuptools",
+        "websockets>=12.0"
+      ],
+      "docs": [
+        "docs/sdk/python-sdk.md"
+      ],
+      "entrypoints": [
+        "sdks/python/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "A2A discovery"
+      ],
+      "id": "sdks/python",
+      "internal_refs": [
+        "contracts",
+        "core"
+      ],
+      "kind": "sdk",
+      "manifests": [
+        "sdks/python/pyproject.toml",
+        "sdks/python/Makefile",
+        "sdks/python/scripts/test.sh",
+        "sdks/python/.agent/test_manifest.yml"
+      ],
+      "path": "sdks/python",
+      "role": "Python client SDK and reference implementation",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "POST",
+          "path": "/",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "GET",
+          "path": "/.well-known/agent-card.json",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "GET",
+          "path": "/.well-known/agent-card.json",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "GET",
+          "path": "/.well-known/agent-card.json",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "GET",
+          "path": "/extendedAgentCard",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        },
+        {
+          "method": "POST",
+          "path": "/rpc",
+          "source": "sdks/python/tests/test_a2a_v1_client.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 10,
+        ".py": 73,
+        ".toml": 1,
+        ".yml": 2,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "sdks/python",
+        "ref": "(v1.2.0-15-gace0f19)",
+        "sha": "ace0f191a4bc2f7167615db186518b5b7406ac29",
+        "url": "https://github.com/talosprotocol/talos-sdk-py.git"
+      },
+      "tests": [
+        "sdks/python/.agent/test_manifest.yml",
+        "sdks/python/Makefile",
+        "sdks/python/scripts/test.sh",
+        "sdks/python/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "anyhow",
+        "base64-url",
+        "bytes",
+        "chacha20poly1305",
+        "futures-core",
+        "futures-util",
+        "hex",
+        "rand",
+        "reqwest",
+        "serde",
+        "serde_jcs",
+        "serde_json",
+        "sha2",
+        "talos-core-rs",
+        "thiserror",
+        "tokio",
+        "x25519-dalek"
+      ],
+      "docs": [
+        "docs/sdk/rust-sdk.md"
+      ],
+      "entrypoints": [
+        "sdks/rust/Cargo.toml"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "sdks/rust",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "sdks/python"
+      ],
+      "kind": "sdk",
+      "manifests": [
+        "sdks/rust/Cargo.toml",
+        "sdks/rust/Makefile",
+        "sdks/rust/scripts/test.sh",
+        "sdks/rust/.agent/test_manifest.yml"
+      ],
+      "path": "sdks/rust",
+      "role": "Rust SDK and UCP crate",
+      "routes": [],
+      "source_counts": {
+        ".md": 2,
+        ".rs": 22,
+        ".toml": 2,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "sdks/rust",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "bd7ea3ab216076c5e83e0d48f6807305a633b7d0",
+        "url": "https://github.com/talosprotocol/talos-sdk-rust.git"
+      },
+      "tests": [
+        "sdks/rust/.agent/test_manifest.yml",
+        "sdks/rust/Makefile",
+        "sdks/rust/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "@types/node",
+        "@typescript-eslint/eslint-plugin",
+        "@typescript-eslint/parser",
+        "@vitest/coverage-v8",
+        "eslint",
+        "eslint-config-prettier",
+        "lint-staged",
+        "prettier",
+        "tsup",
+        "typescript",
+        "vitest",
+        "workspace:packages/*"
+      ],
+      "docs": [
+        "docs/sdk/typescript-sdk.md"
+      ],
+      "entrypoints": [
+        "sdks/typescript/package.json"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "sdks/typescript",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "sdks/python"
+      ],
+      "kind": "sdk",
+      "manifests": [
+        "sdks/typescript/package.json",
+        "sdks/typescript/Makefile",
+        "sdks/typescript/scripts/test.sh",
+        "sdks/typescript/.agent/test_manifest.yml"
+      ],
+      "path": "sdks/typescript",
+      "role": "TypeScript/Node SDK and client packages",
+      "routes": [],
+      "source_counts": {
+        ".json": 26,
+        ".md": 7,
+        ".mjs": 2,
+        ".ts": 53,
+        ".yaml": 1,
+        ".yml": 2,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "sdks/typescript",
+        "ref": "(v1.0.0-41-g9b39740)",
+        "sha": "9b397408d3a344cd3aba0313b4ce2e8edf7cb0ff",
+        "url": "https://github.com/talosprotocol/talos-sdk-ts.git"
+      },
+      "tests": [
+        "sdks/typescript/.agent/test_manifest.yml",
+        "sdks/typescript/Makefile",
+        "sdks/typescript/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [
+        "services/ai-chat-agent/api/src/main.py"
+      ],
+      "exists": true,
+      "features": [
+        "End-to-End Encryption: Double Ratchet (X3DH + Signal)",
+        "Identity: DID-based peer identity",
+        "Audit: Blockchain-anchored message logs",
+        "Persistence: SQLite storage",
+        "UI: Modern Next.js interface",
+        "LLM/chat",
+        "Health checks"
+      ],
+      "id": "services/ai-chat-agent",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/ai-chat-agent/scripts/test.sh"
+      ],
+      "path": "services/ai-chat-agent",
+      "role": "Secure chat example agent service",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/ai-chat-agent/api/src/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/chat/send",
+          "source": "services/ai-chat-agent/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/chat/stats",
+          "source": "services/ai-chat-agent/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/chat/summary",
+          "source": "services/ai-chat-agent/api/src/main.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 2,
+        ".py": 2,
+        ".yml": 1,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "path": "services/ai-chat-agent",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "1e5fe6890c81e0438515d803837d7e539cf95744",
+        "url": "https://github.com/talosprotocol/talos-ai-chat-agent.git"
+      },
+      "tests": [
+        "services/ai-chat-agent/scripts/test.sh",
+        "services/ai-chat-agent/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "PyJWT>=2.8.0",
+        "aiohttp>=3.10.2",
+        "alembic>=1.13.0",
+        "click>=8.1.0",
+        "fastapi>=0.109.0",
+        "httpx>=0.26.0",
+        "mypy>=1.8.0",
+        "opentelemetry-api>=1.22.0",
+        "opentelemetry-exporter-otlp>=1.22.0",
+        "opentelemetry-instrumentation-fastapi>=0.43b0",
+        "opentelemetry-instrumentation-sqlalchemy>=0.43b0",
+        "opentelemetry-sdk>=1.22.0",
+        "prometheus-client>=0.19.0",
+        "psycopg2-binary>=2.9.0",
+        "pydantic-settings>=2.1.0",
+        "pydantic>=2.5.0",
+        "pytest-asyncio>=0.23.0",
+        "pytest>=7.4.0",
+        "python-dotenv>=1.0.0",
+        "redis>=5.0.0",
+        "requests>=2.32.2",
+        "ruff>=0.1.0",
+        "sqlalchemy>=2.0.0",
+        "talos-sdk-py",
+        "types-redis",
+        "types-requests",
+        "types-sqlalchemy",
+        "uuid6>=0.5.0",
+        "uvicorn[standard]>=0.27.0"
+      ],
+      "docs": [
+        "docs/features/messaging/a2a-channels.md",
+        "docs/guides/a2a-upstream-interop.md",
+        "docs/guides/a2a-v1-rollout.md",
+        "docs/sdk/a2a-sdk-guide.md"
+      ],
+      "entrypoints": [
+        "services/ai-gateway/app/main.py",
+        "services/ai-gateway/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Multi-Region Support: Single-primary, multi-region read with automatic replica fallback",
+        "Advanced Upstreams: Native support for Ollama (local/cloud) with API key rotation",
+        "LLM Inference: OpenAI-compatible `/v1/chat/completions`",
+        "MCP Discovery: Dynamic tool discovery and invocation",
+        "RBAC: Deny-by-default admin control plane with wildcard scope support",
+        "Virtual Keys: Unified auth for data plane",
+        "TGA Capabilities: Cryptographically signed tool authorization (JWS/EdDSA)",
+        "Secrets Encryption: AES-GCM envelope encryption for all upstream credentials",
+        "Rate Limiting: Distributed token bucket (Redis) per key/team",
+        "Audit: Deterministic hash-chained event logs for all operations",
+        "A2A messaging",
+        "A2A discovery",
+        "Audit and evidence",
+        "Adaptive budgets",
+        "LLM/chat",
+        "Configuration management",
+        "Gateway runtime",
+        "Health checks",
+        "Secrets rotation",
+        "LLM management",
+        "MCP tools",
+        "Metrics and telemetry",
+        "Policy enforcement",
+        "RBAC"
+      ],
+      "id": "services/ai-gateway",
+      "internal_refs": [
+        "contracts",
+        "sdks/python"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/ai-gateway/pyproject.toml",
+        "services/ai-gateway/Makefile",
+        "services/ai-gateway/scripts/test.sh",
+        "services/ai-gateway/.agent/test_manifest.yml"
+      ],
+      "path": "services/ai-gateway",
+      "role": "Primary AI Gateway control and data plane",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/",
+          "source": "services/ai-gateway/app/dashboard/router.py"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "dashboard_router.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "protocol_router.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "a2a_v1_router.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "agent_card.router"
+        },
+        {
+          "method": "POST",
+          "path": "/",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/",
+          "source": "services/ai-gateway/app/api/a2a_v1/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/.well-known/agent-card.json",
+          "source": "services/ai-gateway/app/api/a2a/agent_card.py"
+        },
+        {
+          "method": "GET",
+          "path": "/.well-known/agent.json",
+          "source": "services/ai-gateway/app/api/a2a/agent_card.py"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/a2a/v1",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "a2a_routes.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/a2a/v1",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "a2a_v1_router.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/a2a/v1",
+          "source": "services/ai-gateway/tests/integration/test_multi_region.py",
+          "target": "a2a_routes.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/admin/v1",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "admin_router.router"
+        },
+        {
+          "method": "GET",
+          "path": "/api/model-groups",
+          "source": "services/ai-gateway/app/dashboard/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/upstreams",
+          "source": "services/ai-gateway/app/dashboard/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/audit/stats",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/auth/token",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/budgets/usage/stats",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/catalog/provider-templates",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/chat/completions",
+          "source": "services/ai-gateway/app/api/public_ai/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/config:apply",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/config:export",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/config:reload",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/config:validate",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/extendedAgentCard",
+          "source": "services/ai-gateway/app/api/a2a_v1/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/groups",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/groups/{id}",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/groups/{id}",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/groups/{id}/members",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/groups/{id}/members/{pid}",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health/live",
+          "source": "services/ai-gateway/app/routers/health.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health/ollama",
+          "source": "services/ai-gateway/app/routers/health.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health/ready",
+          "source": "services/ai-gateway/app/routers/health.py"
+        },
+        {
+          "method": "GET",
+          "path": "/identity-check",
+          "source": "services/ai-gateway/tests/test_audit_hardening.py"
+        },
+        {
+          "method": "GET",
+          "path": "/llm/health",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/llm/model-groups",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/model-groups",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/llm/model-groups/{group_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "PATCH",
+          "path": "/llm/model-groups/{group_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/model-groups/{group_id}:disable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/model-groups/{group_id}:enable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/llm/routing-policies",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/routing-policies",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/llm/upstreams",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/upstreams",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/llm/upstreams/{upstream_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/llm/upstreams/{upstream_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "PATCH",
+          "path": "/llm/upstreams/{upstream_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/upstreams/{upstream_id}:disable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/llm/upstreams/{upstream_id}:enable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp/policies",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp/policies",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/mcp/policies/{policy_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/mcp/servers",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp/servers",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/mcp/servers/{server_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp/servers/{server_id}:disable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp/servers/{server_id}:enable",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/me",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics/summary",
+          "source": "services/ai-gateway/app/routers/health.py"
+        },
+        {
+          "method": "GET",
+          "path": "/models",
+          "source": "services/ai-gateway/app/api/public_ai/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/policy-check",
+          "source": "services/ai-gateway/tests/integration/test_policy_integration.py"
+        },
+        {
+          "method": "GET",
+          "path": "/policy-check-deny",
+          "source": "services/ai-gateway/tests/integration/test_policy_integration.py"
+        },
+        {
+          "method": "GET",
+          "path": "/protocol/metadata",
+          "source": "services/ai-gateway/app/api/a2a_v1/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/rbac/bindings",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/rbac/bindings",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/rbac/bindings/{principal_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/rbac/roles",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/rbac/roles",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/rbac/roles/{role_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/rpc",
+          "source": "services/ai-gateway/app/api/a2a_v1/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/secrets",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/secrets",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/secrets/kek-status",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/secrets/rotate-all",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/secrets/rotation-status/{op_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/secrets/{name}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/servers",
+          "source": "services/ai-gateway/app/api/public_mcp/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/servers/{server_id}/tools",
+          "source": "services/ai-gateway/app/api/public_mcp/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/servers/{server_id}/tools/{tool_name}/schema",
+          "source": "services/ai-gateway/app/api/public_mcp/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/servers/{server_id}/tools/{tool_name}:call",
+          "source": "services/ai-gateway/app/api/public_mcp/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/sessions",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/sessions/{id}",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/sessions/{id}",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/sessions/{id}/accept",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/sessions/{id}/frames",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/sessions/{id}/frames",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/sessions/{id}/rotate",
+          "source": "services/ai-gateway/app/api/a2a/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/telemetry/stats",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/test",
+          "source": "services/ai-gateway/tests/test_surface_registry.py"
+        },
+        {
+          "method": "GET",
+          "path": "/test",
+          "source": "services/ai-gateway/tests/test_surface_registry.py"
+        },
+        {
+          "method": "GET",
+          "path": "/test",
+          "source": "services/ai-gateway/tests/test_surface_registry.py"
+        },
+        {
+          "method": "GET",
+          "path": "/test/budget/scope/{scope_type}/{scope_id}",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/test/budget/simulate-leak",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/test/budget/trigger-cleanup",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "GET",
+          "path": "/test/sleep",
+          "source": "services/ai-gateway/app/api/admin/router.py"
+        },
+        {
+          "method": "POST",
+          "path": "/unmapped",
+          "source": "services/ai-gateway/tests/test_surface_registry.py"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/v1",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "ai_router.router"
+        },
+        {
+          "method": "MOUNT",
+          "path": "/v1/mcp",
+          "source": "services/ai-gateway/app/main.py",
+          "target": "mcp_router.router"
+        },
+        {
+          "method": "GET",
+          "path": "/version",
+          "source": "services/ai-gateway/app/routers/health.py"
+        }
+      ],
+      "source_counts": {
+        ".json": 5,
+        ".md": 8,
+        ".py": 226,
+        ".toml": 1,
+        ".ts": 1,
+        ".yml": 5,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "services/ai-gateway",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "ae79974caa7a913867af1bcb4c5359aa0a7b7058",
+        "url": "https://github.com/talosprotocol/talos-ai-gateway.git"
+      },
+      "tests": [
+        "services/ai-gateway/.agent/test_manifest.yml",
+        "services/ai-gateway/Makefile",
+        "services/ai-gateway/scripts/test.sh",
+        "services/ai-gateway/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [
+        "services/aiops/api/src/main.py"
+      ],
+      "exists": true,
+      "features": [
+        "Mission Control: Real-time dashboard for agent activities.",
+        "Secure Execution: Capability-based tool execution (AWS, K8s, Terraform).",
+        "Audit: Immutable usage logs.",
+        "Tools: MCP-compatible tool integration.",
+        "Health checks",
+        "Metrics and telemetry"
+      ],
+      "id": "services/aiops",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/aiops/scripts/test.sh"
+      ],
+      "path": "services/aiops",
+      "role": "DevOps/AIOps example agent service",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/aiops/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics",
+          "source": "services/aiops/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics/integrity",
+          "source": "services/aiops/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/logs",
+          "source": "services/aiops/api/src/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/status",
+          "source": "services/aiops/api/src/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/trigger",
+          "source": "services/aiops/api/src/main.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 2,
+        ".py": 9,
+        ".yml": 1,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "path": "services/aiops",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "d6499df8ed1ff1ad95295bc5ca238694c095870f",
+        "url": "https://github.com/talosprotocol/talos-aiops.git"
+      },
+      "tests": [
+        "services/aiops/scripts/test.sh"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "alembic",
+        "fastapi",
+        "httpx",
+        "pytest",
+        "pytest-cov",
+        "ruff",
+        "sqlalchemy",
+        "uvicorn"
+      ],
+      "docs": [
+        "docs/features/observability/audit-explorer.md",
+        "docs/features/observability/audit-scope.md",
+        "docs/features/observability/audit-use-cases.md"
+      ],
+      "entrypoints": [
+        "services/audit/src/main.py",
+        "services/audit/src/adapters/http/main.py",
+        "services/audit/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Audit and evidence",
+        "Health checks",
+        "Metrics and telemetry"
+      ],
+      "id": "services/audit",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "libs/talos-config",
+        "sdks/python"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/audit/pyproject.toml",
+        "services/audit/Makefile",
+        "services/audit/scripts/test.sh"
+      ],
+      "path": "services/audit",
+      "role": "Tamper-evident audit ingestion and Merkle proofs",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/api/events",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/api/events/ingest",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/events/stats",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/events",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/events",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/proof/{event_id}",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/root",
+          "source": "services/audit/src/adapters/http/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/version",
+          "source": "services/audit/src/adapters/http/main.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 4,
+        ".py": 25,
+        ".toml": 1,
+        ".yml": 1,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "services/audit",
+        "ref": "(v1.1.2-31-g78bd297)",
+        "sha": "78bd297368cea9ec52fb309eab3b63e82e8856c6",
+        "url": "https://github.com/talosprotocol/talos-audit-service.git"
+      },
+      "tests": [
+        "services/audit/Makefile",
+        "services/audit/scripts/test.sh",
+        "services/audit/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [
+        "services/configuration/main.py"
+      ],
+      "exists": true,
+      "features": [
+        "Validation: Validates configuration against strict JSON Schema.",
+        "Normalization: Canonicalizes configuration using JCS (RFC 8785).",
+        "management: Handles drafts, history, and publishing.",
+        "Configuration management",
+        "Health checks"
+      ],
+      "id": "services/configuration",
+      "internal_refs": [
+        "contracts",
+        "libs/talos-config"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/configuration/scripts/test.sh"
+      ],
+      "path": "services/configuration",
+      "role": "Configuration validation, draft, publish, and export service",
+      "routes": [
+        {
+          "method": "MOUNT",
+          "path": "/api/config",
+          "source": "services/configuration/main.py",
+          "target": "router"
+        },
+        {
+          "method": "GET",
+          "path": "/contracts-version",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/drafts",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/export",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/history",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/merchants",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/normalize",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/publish",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/schema",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/stats",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "GET",
+          "path": "/ui-bootstrap",
+          "source": "services/configuration/src/api/routes.py"
+        },
+        {
+          "method": "POST",
+          "path": "/validate",
+          "source": "services/configuration/src/api/routes.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 2,
+        ".py": 14,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "path": "services/configuration",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "7e7fcb1667ad0c39a123191e083adc08c11bb43c",
+        "url": "https://github.com/talosprotocol/talos-configuration.git"
+      },
+      "tests": [
+        "services/configuration/scripts/test.sh",
+        "services/configuration/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "fastapi",
+        "httpx",
+        "mypy",
+        "prometheus-client",
+        "pydantic",
+        "pytest",
+        "requests>=2.32.2",
+        "talos-sdk-py",
+        "types-PyYAML",
+        "types-redis",
+        "types-requests",
+        "uvicorn"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "services/gateway/main.py",
+        "services/gateway/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Audit and evidence",
+        "LLM/chat",
+        "Configuration management",
+        "Gateway runtime",
+        "Governance agent",
+        "Health checks",
+        "Secrets rotation",
+        "MCP tools",
+        "Metrics and telemetry",
+        "RBAC",
+        "Secrets management"
+      ],
+      "id": "services/gateway",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "libs/talos-config",
+        "sdks/python",
+        "services/governance-agent"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/gateway/pyproject.toml",
+        "services/gateway/Makefile",
+        "services/gateway/scripts/test.sh"
+      ],
+      "path": "services/gateway",
+      "role": "Legacy/consolidated gateway and local control plane",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/admin/v1/audit/stats",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "POST",
+          "path": "/admin/v1/config/:apply",
+          "source": "services/gateway/src/routers/config.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/config/:export",
+          "source": "services/gateway/src/routers/config.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/gateway/status",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/governance/logs",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/me",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/rbac/bindings",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "POST",
+          "path": "/admin/v1/rbac/bindings",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/admin/v1/rbac/bindings/{principal_id}",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/rbac/roles",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "POST",
+          "path": "/admin/v1/rbac/roles",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/admin/v1/rbac/roles/{role_id}",
+          "source": "services/gateway/src/routers/rbac.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/secrets",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "POST",
+          "path": "/admin/v1/secrets",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/secrets/kek-status",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "POST",
+          "path": "/admin/v1/secrets/rotate-all",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/secrets/rotation-status/{op_id}",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "DELETE",
+          "path": "/admin/v1/secrets/{name}",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/admin/v1/telemetry/stats",
+          "source": "services/gateway/src/routers/admin.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/events",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/api/events",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/events/stats",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/gateway/status",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/events",
+          "source": "services/gateway/src/handlers/stream.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health/ollama",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health/tga",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/healthz",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/mcp/tools/chat",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/metrics/summary",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/readyz",
+          "source": "services/gateway/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/mcp/servers",
+          "source": "services/gateway/src/routers/mcp.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/mcp/servers/{server_id}/tools",
+          "source": "services/gateway/src/routers/mcp.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/mcp/servers/{server_id}/tools",
+          "source": "services/gateway/src/routers/mcp.py"
+        },
+        {
+          "method": "GET",
+          "path": "/v1/mcp/servers/{server_id}/tools/{tool_name}/schema",
+          "source": "services/gateway/src/routers/mcp.py"
+        },
+        {
+          "method": "POST",
+          "path": "/v1/mcp/servers/{server_id}/tools/{tool_name}:call",
+          "source": "services/gateway/src/routers/mcp.py"
+        },
+        {
+          "method": "GET",
+          "path": "/version",
+          "source": "services/gateway/main.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 5,
+        ".py": 24,
+        ".toml": 1,
+        ".yml": 2,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "services/gateway",
+        "ref": "(v1.0.0-40-g7fcb9e8)",
+        "sha": "7fcb9e89e6d20266931ea37acd2f3838725205c6",
+        "url": "https://github.com/talosprotocol/talos-gateway.git"
+      },
+      "tests": [
+        "services/gateway/Makefile",
+        "services/gateway/scripts/test.sh",
+        "services/gateway/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "PyJWT>=2.8.0",
+        "aiosqlite>=0.19.0",
+        "cryptography>=46.0.3",
+        "fastecdsa>=2.3.0",
+        "jsonschema>=4.17.0",
+        "mcp[cli]>=1.0.0",
+        "pydantic>=2.0.0",
+        "sqlalchemy>=2.0.0",
+        "uvicorn>=0.22.0"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "services/governance-agent/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Governance agent"
+      ],
+      "id": "services/governance-agent",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/governance-agent/pyproject.toml",
+        "services/governance-agent/scripts/test.sh"
+      ],
+      "path": "services/governance-agent",
+      "role": "Talos Governance Agent runtime and supervisor logic",
+      "routes": [],
+      "source_counts": {
+        ".md": 3,
+        ".py": 32,
+        ".toml": 1,
+        ".yml": 1,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "path": "services/governance-agent",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "fea1e81fbdc773f811e99d7a9b72f43436700d05",
+        "url": "https://github.com/talosprotocol/talos-governance-agent.git"
+      },
+      "tests": [
+        "services/governance-agent/scripts/test.sh",
+        "services/governance-agent/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "click>=8.1.0",
+        "jsonpointer>=3.0.0",
+        "jsonschema>=4.0.0",
+        "pydantic>=2.0.0",
+        "pytest",
+        "pyyaml>=6.0",
+        "requests>=2.32.2",
+        "rich>=13.0.0",
+        "ruff",
+        "types-PyYAML",
+        "types-jsonschema"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "services/mcp-connector/main.py",
+        "services/mcp-connector/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Zero-Mod Integration: Connect any existing MCP server (Stdio/SSE) without changing a single line of code.",
+        "Security Sidecar: Implements Phase 10 A2A Encrypted Channels (Double Ratchet) for all tool invocations.",
+        "Policy Enforcement: Integrates with the Talos Policy Engine to enforce per-team tool access and read/write separation.",
+        "Durable Idempotency: Built-in support for Phase 9.3 Idempotency via Redis-backed caches for write operations.",
+        "Universal Transport: Unified handling of Stdio, SSE, and raw TCP tool transports.",
+        "Health checks",
+        "MCP tools"
+      ],
+      "id": "services/mcp-connector",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "libs/talos-config",
+        "sdks/python"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/mcp-connector/pyproject.toml",
+        "services/mcp-connector/Makefile",
+        "services/mcp-connector/scripts/test.sh"
+      ],
+      "path": "services/mcp-connector",
+      "role": "MCP server registry, tool discovery, and invocation bridge",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/mcp/invoke",
+          "source": "services/mcp-connector/legacy/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/mcp/resources",
+          "source": "services/mcp-connector/legacy/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/mcp/status",
+          "source": "services/mcp-connector/legacy/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/mcp/tools",
+          "source": "services/mcp-connector/legacy/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/mcp-connector/legacy/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/mcp-connector/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/servers",
+          "source": "services/mcp-connector/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/servers/{server_id}/tools",
+          "source": "services/mcp-connector/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/servers/{server_id}/tools/{tool_name}/call",
+          "source": "services/mcp-connector/main.py"
+        }
+      ],
+      "source_counts": {
+        ".json": 3,
+        ".md": 6,
+        ".py": 30,
+        ".toml": 1,
+        ".yaml": 2,
+        ".yml": 1,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "services/mcp-connector",
+        "ref": "(v1.0.0-42-g5074691)",
+        "sha": "507469143df95ab5214f268556d4f109c68b6188",
+        "url": "https://github.com/talosprotocol/talos-mcp-connector.git"
+      },
+      "tests": [
+        "services/mcp-connector/Makefile",
+        "services/mcp-connector/scripts/test.sh",
+        "services/mcp-connector/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "cryptography>=46.0.3",
+        "fastapi>=0.109.0",
+        "httpx>=0.26.0",
+        "pydantic>=2.5.0",
+        "pytest-asyncio>=0.23.0",
+        "pytest>=7.4.0",
+        "uvicorn>=0.27.0"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "services/terminal-adapter/src/terminal_adapter/main.py",
+        "services/terminal-adapter/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Health checks",
+        "Session management",
+        "Terminal tools"
+      ],
+      "id": "services/terminal-adapter",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/terminal-adapter/pyproject.toml",
+        "services/terminal-adapter/scripts/test.sh"
+      ],
+      "path": "services/terminal-adapter",
+      "role": "Structured terminal MCP adapter",
+      "routes": [
+        {
+          "method": "GET",
+          "path": "/health",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/tools/terminal:abort",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/tools/terminal:anchor_session",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/tools/terminal:execute",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/tools/terminal:list_sessions",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "GET",
+          "path": "/tools/terminal:stream",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        },
+        {
+          "method": "POST",
+          "path": "/tools/terminal:write_input",
+          "source": "services/terminal-adapter/src/terminal_adapter/main.py"
+        }
+      ],
+      "source_counts": {
+        ".md": 2,
+        ".py": 12,
+        ".toml": 1,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "path": "services/terminal-adapter",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "877e3126ea40d2d5f4f34ec26ba5a5c35ea59dab",
+        "url": "https://github.com/talosprotocol/talos-terminal-adapter.git"
+      },
+      "tests": [
+        "services/terminal-adapter/scripts/test.sh",
+        "services/terminal-adapter/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "cachetools>=5.3.0",
+        "cryptography>=46.0.3",
+        "http-sfv>=0.9.8",
+        "httpx>=0.24.0",
+        "mcp[cli]>=0.1.0",
+        "pydantic>=2.0.0",
+        "pytest-asyncio>=0.21.0",
+        "pytest>=7.0.0",
+        "respx>=0.20.0",
+        "rfc8785>=0.1.2"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "services/ucp-connector/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [
+        "Commerce/UCP"
+      ],
+      "id": "services/ucp-connector",
+      "internal_refs": [
+        "contracts",
+        "sdks/python",
+        "services/governance-agent"
+      ],
+      "kind": "service",
+      "manifests": [
+        "services/ucp-connector/pyproject.toml",
+        "services/ucp-connector/scripts/test.sh"
+      ],
+      "path": "services/ucp-connector",
+      "role": "UCP commerce MCP connector",
+      "routes": [],
+      "source_counts": {
+        ".md": 3,
+        ".py": 25,
+        ".toml": 1,
+        "Dockerfile": 1
+      },
+      "submodule": {
+        "branch": "main",
+        "path": "services/ucp-connector",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "5a2126322435510948238e1832564a7f785dd106",
+        "url": "https://github.com/talosprotocol/talos-ucp-connector.git"
+      },
+      "tests": [
+        "services/ucp-connector/scripts/test.sh",
+        "services/ucp-connector/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [
+        "/api/policies"
+      ],
+      "dependencies": [
+        "@playwright/test",
+        "@radix-ui/react-icons",
+        "@tailwindcss/postcss",
+        "@talosprotocol/contracts",
+        "@types/js-yaml",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@types/uuid",
+        "clsx",
+        "eslint",
+        "eslint-config-next",
+        "framer-motion",
+        "js-yaml",
+        "lucide-react",
+        "next",
+        "react",
+        "react-dom",
+        "tailwind-merge",
+        "tailwindcss",
+        "typescript",
+        "uuid"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "site/configuration-dashboard/src/app/page.tsx",
+        "site/configuration-dashboard/src/app/layout.tsx",
+        "site/configuration-dashboard/package.json"
+      ],
+      "exists": true,
+      "features": [
+        "Configuration management"
+      ],
+      "id": "site/configuration-dashboard",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "ui",
+      "manifests": [
+        "site/configuration-dashboard/package.json"
+      ],
+      "path": "site/configuration-dashboard",
+      "role": "Deprecated configuration dashboard",
+      "routes": [],
+      "source_counts": {
+        ".json": 4,
+        ".md": 1,
+        ".mjs": 2,
+        ".ts": 13,
+        ".tsx": 8
+      },
+      "submodule": {
+        "path": "site/configuration-dashboard",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "7d8a37e188d43e2168cfe8041f6183597fe477ae",
+        "url": "https://github.com/talosprotocol/talos-configuration-dashboard.git"
+      },
+      "tests": [
+        "site/configuration-dashboard/tests"
+      ],
+      "ui_routes": [
+        "/",
+        "/configuration"
+      ]
+    },
+    {
+      "api_routes": [
+        "/api/admin/v1/*slug",
+        "/api/admin/v1/audit/stream",
+        "/api/agent/chat",
+        "/api/agent/local-ollama",
+        "/api/agent/models",
+        "/api/agent/tools",
+        "/api/audit/proof/:id",
+        "/api/audit/stream",
+        "/api/auth/dev-login",
+        "/api/auth/logout",
+        "/api/auth/session",
+        "/api/auth/webauthn/login/options",
+        "/api/auth/webauthn/login/verify",
+        "/api/auth/webauthn/register/options",
+        "/api/auth/webauthn/register/verify",
+        "/api/config/*path",
+        "/api/config/ui-bootstrap",
+        "/api/debug/reset",
+        "/api/events",
+        "/api/examples/chat/feedback",
+        "/api/examples/chat/health",
+        "/api/examples/chat/send",
+        "/api/examples/chat/stats",
+        "/api/examples/chat/summary",
+        "/api/examples/devops/health",
+        "/api/examples/devops/logs",
+        "/api/examples/devops/status",
+        "/api/examples/devops/trigger",
+        "/api/examples/manifest",
+        "/api/gateway/status",
+        "/api/mcp/resources",
+        "/api/runtime-config",
+        "/api/setup/agents/:id/poll",
+        "/api/setup/agents/register",
+        "/api/setup/agents/token",
+        "/api/setup/jobs",
+        "/api/setup/status",
+        "/api/status",
+        "/api/status/aggregate",
+        "/healthz",
+        "/metrics",
+        "/readyz",
+        "/runtime-config",
+        "/version"
+      ],
+      "dependencies": [
+        "@monaco-editor/react",
+        "@playwright/test",
+        "@radix-ui/react-icons",
+        "@radix-ui/react-label",
+        "@radix-ui/react-slot",
+        "@simplewebauthn/browser",
+        "@simplewebauthn/server",
+        "@tailwindcss/postcss",
+        "@talosprotocol/contracts",
+        "@tanstack/react-table",
+        "@tanstack/react-virtual",
+        "@types/js-yaml",
+        "@types/node",
+        "@types/pg",
+        "@types/react",
+        "@types/react-dom",
+        "@types/react-syntax-highlighter",
+        "@types/uuid",
+        "class-variance-authority",
+        "clsx",
+        "drizzle-kit",
+        "drizzle-orm",
+        "eslint",
+        "eslint-config-next",
+        "framer-motion",
+        "js-yaml",
+        "lint-staged",
+        "lucide-react",
+        "next",
+        "next-themes",
+        "pg",
+        "prettier",
+        "react",
+        "react-dom",
+        "react-markdown",
+        "react-syntax-highlighter",
+        "recharts",
+        "server-only",
+        "tailwind-merge",
+        "tailwindcss",
+        "typescript",
+        "uuid",
+        "vitest",
+        "zod"
+      ],
+      "docs": [
+        "docs/.agent/workflows/development/run-dashboard.md",
+        "docs/.agent/workflows/run-dashboard.md",
+        "docs/security/security-dashboard.md"
+      ],
+      "entrypoints": [
+        "site/dashboard/src/app/page.tsx",
+        "site/dashboard/src/app/layout.tsx",
+        "site/dashboard/package.json"
+      ],
+      "exists": true,
+      "features": [
+        "Audit and evidence",
+        "LLM/chat",
+        "Configuration management",
+        "Gateway runtime",
+        "Governance agent",
+        "LLM management",
+        "MCP tools",
+        "RBAC",
+        "Secrets management",
+        "Session management"
+      ],
+      "id": "site/dashboard",
+      "internal_refs": [
+        "contracts",
+        "core"
+      ],
+      "kind": "ui",
+      "manifests": [
+        "site/dashboard/package.json",
+        "site/dashboard/Makefile",
+        "site/dashboard/scripts/test.sh"
+      ],
+      "path": "site/dashboard",
+      "role": "Operator dashboard and BFF proxy",
+      "routes": [],
+      "source_counts": {
+        ".js": 2,
+        ".json": 6,
+        ".md": 9,
+        ".mjs": 3,
+        ".ts": 104,
+        ".tsx": 76,
+        ".yml": 2,
+        "Dockerfile": 1,
+        "Makefile": 1
+      },
+      "submodule": {
+        "path": "site/dashboard",
+        "ref": "(v1.0.0-101-g65d1512c)",
+        "sha": "65d1512c0122a7cfd7c2112e92d7ecf04125997a",
+        "url": "https://github.com/talosprotocol/talos-dashboard.git"
+      },
+      "tests": [
+        "site/dashboard/Makefile",
+        "site/dashboard/scripts/test.sh",
+        "site/dashboard/src/__tests__",
+        "site/dashboard/tests"
+      ],
+      "ui_routes": [
+        "/",
+        "/admin/aiops",
+        "/admin/governance",
+        "/admin/rbac",
+        "/admin/secrets",
+        "/agent",
+        "/audit",
+        "/configuration",
+        "/console",
+        "/examples",
+        "/examples/chat",
+        "/examples/devops",
+        "/gateway",
+        "/llm/models",
+        "/llm/playground",
+        "/llm/upstreams",
+        "/login",
+        "/management",
+        "/mcp/policies",
+        "/mcp/servers",
+        "/sessions",
+        "/sessions/:id",
+        "/settings",
+        "/setup",
+        "/status",
+        "/telemetry"
+      ]
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "@playwright/test",
+        "@tailwindcss/postcss",
+        "@types/node",
+        "@types/react",
+        "@types/react-dom",
+        "@vercel/analytics",
+        "@vercel/speed-insights",
+        "eslint",
+        "eslint-config-next",
+        "linkinator",
+        "lucide-react",
+        "next",
+        "react",
+        "react-dom",
+        "tailwindcss",
+        "tsx",
+        "typescript",
+        "zod"
+      ],
+      "docs": [
+        "docs/.agent/agents/marketing/app-store-optimizer.md",
+        "docs/.agent/agents/marketing/content-creator.md",
+        "docs/.agent/agents/marketing/growth-hacker.md",
+        "docs/.agent/agents/marketing/instagram-curator.md",
+        "docs/.agent/agents/marketing/reddit-community-builder.md",
+        "docs/.agent/agents/marketing/tiktok-strategist.md",
+        "docs/.agent/agents/marketing/twitter-engager.md"
+      ],
+      "entrypoints": [
+        "site/marketing/src/app/page.tsx",
+        "site/marketing/src/app/layout.tsx",
+        "site/marketing/package.json"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "site/marketing",
+      "internal_refs": [
+        "contracts",
+        "core",
+        "sdks/python",
+        "sdks/typescript"
+      ],
+      "kind": "ui",
+      "manifests": [
+        "site/marketing/package.json",
+        "site/marketing/scripts/test.sh"
+      ],
+      "path": "site/marketing",
+      "role": "Public marketing site",
+      "routes": [],
+      "source_counts": {
+        ".js": 27,
+        ".json": 6,
+        ".md": 2,
+        ".mjs": 2,
+        ".ts": 6,
+        ".tsx": 27
+      },
+      "submodule": {
+        "path": "site/marketing",
+        "ref": "(heads/main)",
+        "sha": "704b8dbc6db00e7320f719bc9f40fac44490eb9d",
+        "url": "https://github.com/talosprotocol/talos-site.git"
+      },
+      "tests": [
+        "site/marketing/scripts/test.sh",
+        "site/marketing/tests"
+      ],
+      "ui_routes": [
+        "/",
+        "/contact",
+        "/developers",
+        "/docs",
+        "/methodology",
+        "/products",
+        "/products/:id",
+        "/protocol",
+        "/roadmap",
+        "/security",
+        "/security/disclosure",
+        "/services",
+        "/solutions"
+      ]
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [],
+      "exists": true,
+      "features": [
+        "Gateway runtime"
+      ],
+      "id": "src",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "module",
+      "manifests": [],
+      "path": "src",
+      "role": "Root Python gateway/demo API and protocol surface",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/demo/generate",
+          "source": "src/api/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/events",
+          "source": "src/api/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/gateway/status",
+          "source": "src/api/server.py"
+        }
+      ],
+      "source_counts": {
+        ".py": 44
+      },
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [
+        "docs/business/why-talos-wins.md",
+        "docs/getting-started/talos-60-seconds.md"
+      ],
+      "entrypoints": [],
+      "exists": true,
+      "features": [
+        "Gateway runtime"
+      ],
+      "id": "talos",
+      "internal_refs": [
+        "contracts"
+      ],
+      "kind": "module",
+      "manifests": [],
+      "path": "talos",
+      "role": "Root Python package mirror for protocol modules",
+      "routes": [
+        {
+          "method": "POST",
+          "path": "/api/demo/generate",
+          "source": "talos/api/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/events",
+          "source": "talos/api/server.py"
+        },
+        {
+          "method": "GET",
+          "path": "/api/gateway/status",
+          "source": "talos/api/server.py"
+        }
+      ],
+      "source_counts": {
+        ".py": 35
+      },
+      "submodule": null,
+      "tests": [],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [
+        "click",
+        "jsonschema",
+        "pydantic",
+        "pyyaml",
+        "requests>=2.32.2",
+        "rich",
+        "types-PyYAML",
+        "types-jsonschema"
+      ],
+      "docs": [],
+      "entrypoints": [
+        "tools/setup-helper/pyproject.toml"
+      ],
+      "exists": true,
+      "features": [],
+      "id": "tools/setup-helper",
+      "internal_refs": [
+        "sdks/python",
+        "sdks/typescript"
+      ],
+      "kind": "tool",
+      "manifests": [
+        "tools/setup-helper/pyproject.toml"
+      ],
+      "path": "tools/setup-helper",
+      "role": "Local setup helper",
+      "routes": [],
+      "source_counts": {
+        ".json": 1,
+        ".py": 9,
+        ".toml": 1
+      },
+      "submodule": null,
+      "tests": [
+        "tools/setup-helper/tests"
+      ],
+      "ui_routes": []
+    },
+    {
+      "api_routes": [],
+      "dependencies": [],
+      "docs": [],
+      "entrypoints": [
+        "tools/talos-tui/python/src/talos_tui/app.py"
+      ],
+      "exists": true,
+      "features": [
+        "Resilient State Machine: Formal coordinator with exponential backoff, jitter, and absolute handshake budgets.",
+        "Mechanized Contract Safety: Runtime JSON Schema validation for all audit events and a startup version gate.",
+        "Pure UI Projections: Centralized `StateStore` with reactive dashboard and audit viewer, ensuring UI stability.",
+        "Health & Freshness Tracking: Real-time status bar and stale-data indicators for all service dependencies.",
+        "Safe Execution: Redacted secrets (REGEX-based), hard timeouts, and payload size capping."
+      ],
+      "id": "tools/talos-tui",
+      "internal_refs": [
+        "contracts",
+        "sdks/python"
+      ],
+      "kind": "tool",
+      "manifests": [
+        "tools/talos-tui/Makefile"
+      ],
+      "path": "tools/talos-tui",
+      "role": "Terminal operator UI",
+      "routes": [],
+      "source_counts": {
+        ".md": 2,
+        ".py": 37,
+        ".toml": 1,
+        ".yaml": 3,
+        "Dockerfile": 1,
+        "Makefile": 2
+      },
+      "submodule": {
+        "path": "tools/talos-tui",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "7d5cf2452dbe29db213f2b45f43e919197b3f3e7",
+        "url": "https://github.com/talosprotocol/talos-tui.git"
+      },
+      "tests": [
+        "tools/talos-tui/Makefile"
+      ],
+      "ui_routes": []
+    }
+  ],
+  "edges": [
+    {
+      "relation": "black-box-tests",
+      "source": "api-testing",
+      "target": "services/ai-gateway"
+    },
+    {
+      "relation": "black-box-tests",
+      "source": "api-testing",
+      "target": "services/audit"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "contracts",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "contracts",
+      "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "core",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "core",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "core",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "deploy",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "deploy",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "deploy",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "deploy",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "deploys",
+      "source": "deploy",
+      "target": "services/ai-gateway"
+    },
+    {
+      "relation": "deploys",
+      "source": "deploy",
+      "target": "services/audit"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "deploy",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "deploys",
+      "source": "deploy",
+      "target": "site/dashboard"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "docs",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "docs",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "docs",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "docs",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "docs",
+      "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "docs",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "examples",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "examples",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "libs/talos-config",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "libs/talos-config",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "scripts",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "scripts",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "contract-vectors",
+      "source": "sdks/go",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/go",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "sdks/go",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/go",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "contract-vectors",
+      "source": "sdks/java",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/java",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "sdks/java",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/java",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "contract-vectors",
+      "source": "sdks/python",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/python",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "sdks/python",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/python",
+      "target": "core"
+    },
+    {
+      "relation": "contract-vectors",
+      "source": "sdks/rust",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/rust",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "sdks/rust",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/rust",
+      "target": "core"
+    },
+    {
+      "relation": "uses-core-kernel",
+      "source": "sdks/rust",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/rust",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "contract-vectors",
+      "source": "sdks/typescript",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/typescript",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "sdks/typescript",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/typescript",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/typescript",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ai-chat-agent",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/ai-chat-agent",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ai-gateway",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/ai-gateway",
+      "target": "contracts"
+    },
+    {
+      "relation": "loads-config",
+      "source": "services/ai-gateway",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ai-gateway",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "emits-audit-events",
+      "source": "services/ai-gateway",
+      "target": "services/audit"
+    },
+    {
+      "relation": "validates-capabilities",
+      "source": "services/ai-gateway",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "proxies-mcp-tools",
+      "source": "services/ai-gateway",
+      "target": "services/mcp-connector"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/aiops",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/aiops",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/audit",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/audit",
+      "target": "contracts"
+    },
+    {
+      "relation": "verifies-audit-schema",
+      "source": "services/audit",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/audit",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/audit",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/audit",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/configuration",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/configuration",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-config-schema",
+      "source": "services/configuration",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/configuration",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/gateway",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/gateway",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/gateway",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/gateway",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/gateway",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "emits-audit-events",
+      "source": "services/gateway",
+      "target": "services/audit"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/gateway",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "proxies-mcp-tools",
+      "source": "services/gateway",
+      "target": "services/mcp-connector"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/governance-agent",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/governance-agent",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/mcp-connector",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/mcp-connector",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/mcp-connector",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/mcp-connector",
+      "target": "libs/talos-config"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/mcp-connector",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/terminal-adapter",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/terminal-adapter",
+      "target": "contracts"
+    },
+    {
+      "relation": "policy-supervision",
+      "source": "services/terminal-adapter",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ucp-connector",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "services/ucp-connector",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ucp-connector",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "uses-sdk-primitives",
+      "source": "services/ucp-connector",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ucp-connector",
+      "target": "services/governance-agent"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/configuration-dashboard",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "site/configuration-dashboard",
+      "target": "contracts"
+    },
+    {
+      "relation": "configuration-ui",
+      "source": "site/configuration-dashboard",
+      "target": "services/configuration"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/dashboard",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "site/dashboard",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/dashboard",
+      "target": "core"
+    },
+    {
+      "relation": "example-proxy",
+      "source": "site/dashboard",
+      "target": "services/ai-chat-agent"
+    },
+    {
+      "relation": "admin-and-data-proxy",
+      "source": "site/dashboard",
+      "target": "services/ai-gateway"
+    },
+    {
+      "relation": "example-proxy",
+      "source": "site/dashboard",
+      "target": "services/aiops"
+    },
+    {
+      "relation": "audit-proxy",
+      "source": "site/dashboard",
+      "target": "services/audit"
+    },
+    {
+      "relation": "configuration-proxy",
+      "source": "site/dashboard",
+      "target": "services/configuration"
+    },
+    {
+      "relation": "mcp-resource-proxy",
+      "source": "site/dashboard",
+      "target": "services/mcp-connector"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/marketing",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "site/marketing",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/marketing",
+      "target": "core"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/marketing",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "site/marketing",
+      "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "src",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "src",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "talos",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "talos",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "tools/setup-helper",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "tools/setup-helper",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "tools/setup-helper",
+      "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "tools/talos-tui",
+      "target": "contracts"
+    },
+    {
+      "relation": "validates-against",
+      "source": "tools/talos-tui",
+      "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "tools/talos-tui",
+      "target": "sdks/python"
+    },
+    {
+      "relation": "operator-api",
+      "source": "tools/talos-tui",
+      "target": "services/ai-gateway"
+    },
+    {
+      "relation": "audit-reader",
+      "source": "tools/talos-tui",
+      "target": "services/audit"
+    }
+  ],
+  "feature_index": {
+    "107 test vector files": [
+      "contracts"
+    ],
+    "165 JSON schemas": [
+      "contracts"
+    ],
+    "A2A discovery": [
+      "sdks/python",
+      "services/ai-gateway"
+    ],
+    "A2A messaging": [
+      "services/ai-gateway"
+    ],
+    "Adaptive budgets": [
+      "services/ai-gateway"
+    ],
+    "Advanced Upstreams: Native support for Ollama (local/cloud) with API key rotation": [
+      "services/ai-gateway"
+    ],
+    "Audit and evidence": [
+      "services/ai-gateway",
+      "services/audit",
+      "services/gateway",
+      "site/dashboard"
+    ],
+    "Audit: Blockchain-anchored message logs": [
+      "services/ai-chat-agent"
+    ],
+    "Audit: Deterministic hash-chained event logs for all operations": [
+      "services/ai-gateway"
+    ],
+    "Audit: Immutable usage logs.": [
+      "services/aiops"
+    ],
+    "Commerce/UCP": [
+      "examples",
+      "services/ucp-connector"
+    ],
+    "Configuration management": [
+      "libs/talos-config",
+      "services/ai-gateway",
+      "services/configuration",
+      "services/gateway",
+      "site/configuration-dashboard",
+      "site/dashboard"
+    ],
+    "Durable Idempotency: Built-in support for Phase 9.3 Idempotency via Redis-backed caches for write operations.": [
+      "services/mcp-connector"
+    ],
+    "End-to-End Encryption: Double Ratchet (X3DH + Signal)": [
+      "services/ai-chat-agent"
+    ],
+    "Gateway runtime": [
+      "services/ai-gateway",
+      "services/gateway",
+      "site/dashboard",
+      "src",
+      "talos"
+    ],
+    "Governance agent": [
+      "services/gateway",
+      "services/governance-agent",
+      "site/dashboard"
+    ],
+    "Health & Freshness Tracking: Real-time status bar and stale-data indicators for all service dependencies.": [
+      "tools/talos-tui"
+    ],
+    "Health checks": [
+      "examples",
+      "services/ai-chat-agent",
+      "services/ai-gateway",
+      "services/aiops",
+      "services/audit",
+      "services/configuration",
+      "services/gateway",
+      "services/mcp-connector",
+      "services/terminal-adapter"
+    ],
+    "Identity: DID-based peer identity": [
+      "services/ai-chat-agent"
+    ],
+    "LLM Inference: OpenAI-compatible `/v1/chat/completions`": [
+      "services/ai-gateway"
+    ],
+    "LLM management": [
+      "services/ai-gateway",
+      "site/dashboard"
+    ],
+    "LLM/chat": [
+      "examples",
+      "services/ai-chat-agent",
+      "services/ai-gateway",
+      "services/gateway",
+      "site/dashboard"
+    ],
+    "MCP Discovery: Dynamic tool discovery and invocation": [
+      "services/ai-gateway"
+    ],
+    "MCP tools": [
+      "examples",
+      "services/ai-gateway",
+      "services/gateway",
+      "services/mcp-connector",
+      "site/dashboard"
+    ],
+    "Mechanized Contract Safety: Runtime JSON Schema validation for all audit events and a startup version gate.": [
+      "tools/talos-tui"
+    ],
+    "Metrics and telemetry": [
+      "services/ai-gateway",
+      "services/aiops",
+      "services/audit",
+      "services/gateway"
+    ],
+    "Mission Control: Real-time dashboard for agent activities.": [
+      "services/aiops"
+    ],
+    "Multi-Region Support: Single-primary, multi-region read with automatic replica fallback": [
+      "services/ai-gateway"
+    ],
+    "Normalization: Canonicalizes configuration using JCS (RFC 8785).": [
+      "services/configuration"
+    ],
+    "Persistence: SQLite storage": [
+      "services/ai-chat-agent"
+    ],
+    "Policy Enforcement: Integrates with the Talos Policy Engine to enforce per-team tool access and read/write separation.": [
+      "services/mcp-connector"
+    ],
+    "Policy enforcement": [
+      "services/ai-gateway"
+    ],
+    "Pure UI Projections: Centralized `StateStore` with reactive dashboard and audit viewer, ensuring UI stability.": [
+      "tools/talos-tui"
+    ],
+    "RBAC": [
+      "services/ai-gateway",
+      "services/gateway",
+      "site/dashboard"
+    ],
+    "RBAC: Deny-by-default admin control plane with wildcard scope support": [
+      "services/ai-gateway"
+    ],
+    "Rate Limiting: Distributed token bucket (Redis) per key/team": [
+      "services/ai-gateway"
+    ],
+    "Resilient State Machine: Formal coordinator with exponential backoff, jitter, and absolute handshake budgets.": [
+      "tools/talos-tui"
+    ],
+    "Safe Execution: Redacted secrets (REGEX-based), hard timeouts, and payload size capping.": [
+      "tools/talos-tui"
+    ],
+    "Secrets Encryption: AES-GCM envelope encryption for all upstream credentials": [
+      "services/ai-gateway"
+    ],
+    "Secrets management": [
+      "services/gateway",
+      "site/dashboard"
+    ],
+    "Secrets rotation": [
+      "services/ai-gateway",
+      "services/gateway"
+    ],
+    "Secure Execution: Capability-based tool execution (AWS, K8s, Terraform).": [
+      "services/aiops"
+    ],
+    "Security Sidecar: Implements Phase 10 A2A Encrypted Channels (Double Ratchet) for all tool invocations.": [
+      "services/mcp-connector"
+    ],
+    "Session management": [
+      "examples",
+      "services/terminal-adapter",
+      "site/dashboard"
+    ],
+    "TGA Capabilities: Cryptographically signed tool authorization (JWS/EdDSA)": [
+      "services/ai-gateway"
+    ],
+    "Terminal tools": [
+      "services/terminal-adapter"
+    ],
+    "Tools: MCP-compatible tool integration.": [
+      "services/aiops"
+    ],
+    "UI: Modern Next.js interface": [
+      "services/ai-chat-agent"
+    ],
+    "Universal Transport: Unified handling of Stdio, SSE, and raw TCP tool transports.": [
+      "services/mcp-connector"
+    ],
+    "Validation: Validates configuration against strict JSON Schema.": [
+      "services/configuration"
+    ],
+    "Virtual Keys: Unified auth for data plane": [
+      "services/ai-gateway"
+    ],
+    "Zero-Mod Integration: Connect any existing MCP server (Stdio/SSE) without changing a single line of code.": [
+      "services/mcp-connector"
+    ],
+    "management: Handles drafts, history, and publishing.": [
+      "services/configuration"
+    ]
+  },
+  "generated_at": "2026-04-20T03:27:44+00:00",
+  "generator": "scripts/python/generate_context_graph.py",
+  "schema": "talos.context_graph.v1",
+  "source": {
+    "notes": [
+      "Generated from current checked-out source, manifests, routes, docs, and submodule metadata.",
+      "No third-party graph dependencies are required."
+    ],
+    "root": "/Users/nileshchakraborty/workspace/talos"
+  }
+}

@@ -47,6 +47,10 @@ Practical how-to guides for common tasks:
 System design and technical architecture:
 
 - **[Overview](architecture/overview.md)** - High-level architecture
+- **[Context Graph](architecture/context_graph.md)** - Source-derived component,
+  route, feature, and dependency map
+- **[Full-Scale Development Plan](architecture/fullscale_development_plan.md)** -
+  Current pending tasks and execution order
 - **[Simplified View](architecture/simplified.md)** - Architecture for beginners
 - **[Infrastructure](architecture/infrastructure.md)** - Infrastructure design
 - **[Wire Format](architecture/wire-format.md)** - Protocol wire format
