@@ -2,7 +2,7 @@
 
 This graph is generated from the current checked-out Talos source tree. It is intended to be the durable MVP context map for code navigation, planning, drift checks, and onboarding.
 
-- Generated at: `2026-04-20T03:27:44+00:00`
+- Generated at: `2026-04-22T04:14:50+00:00`
 - Generator: `scripts/python/generate_context_graph.py`
 - Regenerate: `python3 scripts/python/generate_context_graph.py`
 - Scope: submodule metadata, manifests, FastAPI routes, Next.js routes, README feature bullets, docs links, tests, and source-level internal references.
@@ -95,7 +95,6 @@ graph TD
   sdks_python -->|"contract-vectors"| contracts
   sdks_python -->|"imports-or-bundles"| contracts
   sdks_python -->|"validates-against"| contracts
-  sdks_python -->|"imports-or-bundles"| core
   sdks_rust -->|"contract-vectors"| contracts
   sdks_rust -->|"imports-or-bundles"| contracts
   sdks_rust -->|"validates-against"| contracts
@@ -148,9 +147,7 @@ graph TD
   services_terminal_adapter -->|"policy-supervision"| services_governance_agent
   services_ucp_connector -->|"imports-or-bundles"| contracts
   services_ucp_connector -->|"validates-against"| contracts
-  services_ucp_connector -->|"imports-or-bundles"| sdks_python
   services_ucp_connector -->|"uses-sdk-primitives"| sdks_python
-  services_ucp_connector -->|"imports-or-bundles"| services_governance_agent
   site_configuration_dashboard -->|"imports-or-bundles"| contracts
   site_configuration_dashboard -->|"validates-against"| contracts
   site_configuration_dashboard -->|"configuration-ui"| services_configuration
@@ -205,7 +202,7 @@ graph TD
 | `scripts` | tooling | Repository automation and verification scripts | - | - | - | `contracts`, `core`, `libs/talos-config`, `sdks/python`, plus 2 more |
 | `sdks/go` | sdk | Go SDK | - | `sdks/go/go.mod` | `sdks/go/.agent/test_manifest.yml`, `sdks/go/Makefile`, `sdks/go/scripts/test.sh` | `contracts`, `sdks/python` |
 | `sdks/java` | sdk | Java/JVM SDK | - | `sdks/java/pom.xml` | `sdks/java/.agent/test_manifest.yml`, `sdks/java/Makefile`, `sdks/java/scripts/test.sh` | `contracts`, `sdks/python` |
-| `sdks/python` | sdk | Python client SDK and reference implementation | A2A discovery | `sdks/python/pyproject.toml` | `sdks/python/.agent/test_manifest.yml`, `sdks/python/Makefile`, `sdks/python/scripts/test.sh`, plus 1 more | `contracts`, `core` |
+| `sdks/python` | sdk | Python client SDK and reference implementation | A2A discovery | `sdks/python/pyproject.toml` | `sdks/python/.agent/test_manifest.yml`, `sdks/python/Makefile`, `sdks/python/scripts/test.sh`, plus 1 more | `contracts` |
 | `sdks/rust` | sdk | Rust SDK and UCP crate | - | `sdks/rust/Cargo.toml` | `sdks/rust/.agent/test_manifest.yml`, `sdks/rust/Makefile`, `sdks/rust/scripts/test.sh` | `contracts`, `core`, `sdks/python` |
 | `sdks/typescript` | sdk | TypeScript/Node SDK and client packages | - | `sdks/typescript/package.json` | `sdks/typescript/.agent/test_manifest.yml`, `sdks/typescript/Makefile`, `sdks/typescript/scripts/test.sh` | `contracts`, `core`, `sdks/python` |
 | `services/ai-chat-agent` | service | Secure chat example agent service | End-to-End Encryption: Double Ratchet (X3DH + Signal); Identity: DID-based peer identity; Audit: Blockchain-anchored message logs; Persistence: SQLite storage; UI: Modern Next.js interface; plus 2 more | `services/ai-chat-agent/api/src/main.py` | `services/ai-chat-agent/scripts/test.sh`, `services/ai-chat-agent/tests` | `contracts` |
@@ -217,9 +214,9 @@ graph TD
 | `services/governance-agent` | service | Talos Governance Agent runtime and supervisor logic | Governance agent | `services/governance-agent/pyproject.toml` | `services/governance-agent/scripts/test.sh`, `services/governance-agent/tests` | `contracts` |
 | `services/mcp-connector` | service | MCP server registry, tool discovery, and invocation bridge | Zero-Mod Integration: Connect any existing MCP server (Stdio/SSE) without changing a single line of code.; Security Sidecar: Implements Phase 10 A2A Encrypted Channels (Double Ratchet) for all tool invocations.; Policy Enforcement: Integrates with the Talos Policy Engine to enforce per-team tool access and read/write separation.; Durable Idempotency: Built-in support for Phase 9.3 Idempotency via Redis-backed caches for write operations.; Universal Transport: Unified handling of Stdio, SSE, and raw TCP tool transports.; plus 2 more | `services/mcp-connector/main.py`, `services/mcp-connector/pyproject.toml` | `services/mcp-connector/Makefile`, `services/mcp-connector/scripts/test.sh`, `services/mcp-connector/tests` | `contracts`, `core`, `libs/talos-config`, `sdks/python` |
 | `services/terminal-adapter` | service | Structured terminal MCP adapter | Health checks; Session management; Terminal tools | `services/terminal-adapter/src/terminal_adapter/main.py`, `services/terminal-adapter/pyproject.toml` | `services/terminal-adapter/scripts/test.sh`, `services/terminal-adapter/tests` | `contracts` |
-| `services/ucp-connector` | service | UCP commerce MCP connector | Commerce/UCP | `services/ucp-connector/pyproject.toml` | `services/ucp-connector/scripts/test.sh`, `services/ucp-connector/tests` | `contracts`, `sdks/python`, `services/governance-agent` |
+| `services/ucp-connector` | service | UCP commerce MCP connector | Commerce/UCP | `services/ucp-connector/pyproject.toml` | `services/ucp-connector/scripts/test.sh`, `services/ucp-connector/tests` | `contracts` |
 | `site/configuration-dashboard` | ui | Deprecated configuration dashboard | Configuration management | `site/configuration-dashboard/src/app/page.tsx`, `site/configuration-dashboard/src/app/layout.tsx`, `site/configuration-dashboard/package.json` | `site/configuration-dashboard/tests` | `contracts` |
-| `site/dashboard` | ui | Operator dashboard and BFF proxy | Audit and evidence; LLM/chat; Configuration management; Gateway runtime; Governance agent; plus 5 more | `site/dashboard/src/app/page.tsx`, `site/dashboard/src/app/layout.tsx`, `site/dashboard/package.json` | `site/dashboard/Makefile`, `site/dashboard/scripts/test.sh`, `site/dashboard/src/__tests__`, plus 1 more | `contracts`, `core` |
+| `site/dashboard` | ui | Operator dashboard and BFF proxy | Audit and evidence; Adaptive budgets; LLM/chat; Configuration management; Gateway runtime; plus 6 more | `site/dashboard/src/app/page.tsx`, `site/dashboard/src/app/layout.tsx`, `site/dashboard/package.json` | `site/dashboard/Makefile`, `site/dashboard/scripts/test.sh`, `site/dashboard/src/__tests__`, plus 1 more | `contracts`, `core` |
 | `site/marketing` | ui | Public marketing site | - | `site/marketing/src/app/page.tsx`, `site/marketing/src/app/layout.tsx`, `site/marketing/package.json` | `site/marketing/scripts/test.sh`, `site/marketing/tests` | `contracts`, `core`, `sdks/python`, `sdks/typescript` |
 | `src` | module | Root Python gateway/demo API and protocol surface | Gateway runtime | - | - | `contracts` |
 | `talos` | module | Root Python package mirror for protocol modules | Gateway runtime | - | - | `contracts` |
@@ -260,7 +257,36 @@ graph TD
 | `GET` | `/.well-known/agent-card.json` | `sdks/python/tests/test_a2a_v1_client.py` |
 | `GET` | `/.well-known/agent-card.json` | `sdks/python/tests/test_a2a_v1_client.py` |
 | `GET` | `/extendedAgentCard` | `sdks/python/tests/test_a2a_v1_client.py` |
+| `POST` | `/files/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `PATCH` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `PATCH` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `POST` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `POST` | `/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `DELETE` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `DELETE` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/exceptions.py` |
+| `GET` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
+| `PUT` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `PUT` | `/items/{item_id}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `POST` | `/login` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py` |
+| `POST` | `/login` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py` |
 | `POST` | `/rpc` | `sdks/python/tests/test_a2a_v1_client.py` |
+| `POST` | `/send-notification/{email}` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/background.py` |
+| `POST` | `/uploadfile/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py` |
+| `GET` | `/users/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/users/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/users/me` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me/items/` | `sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
 
 ### `services/ai-chat-agent`
 
@@ -292,6 +318,7 @@ graph TD
 | `GET` | `/api/upstreams` | `services/ai-gateway/app/dashboard/router.py` |
 | `GET` | `/audit/stats` | `services/ai-gateway/app/api/admin/router.py` |
 | `POST` | `/auth/token` | `services/ai-gateway/app/api/admin/router.py` |
+| `GET` | `/budgets/scopes` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/budgets/usage/stats` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/catalog/provider-templates` | `services/ai-gateway/app/api/admin/router.py` |
 | `POST` | `/chat/completions` | `services/ai-gateway/app/api/public_ai/router.py` |
@@ -309,6 +336,7 @@ graph TD
 | `GET` | `/health/ollama` | `services/ai-gateway/app/routers/health.py` |
 | `GET` | `/health/ready` | `services/ai-gateway/app/routers/health.py` |
 | `GET` | `/identity-check` | `services/ai-gateway/tests/test_audit_hardening.py` |
+| `GET` | `/keys` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/llm/health` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/llm/model-groups` | `services/ai-gateway/app/api/admin/router.py` |
 | `POST` | `/llm/model-groups` | `services/ai-gateway/app/api/admin/router.py` |
@@ -353,9 +381,7 @@ graph TD
 | `GET` | `/secrets/rotation-status/{op_id}` | `services/ai-gateway/app/api/admin/router.py` |
 | `DELETE` | `/secrets/{name}` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/servers` | `services/ai-gateway/app/api/public_mcp/router.py` |
-| `GET` | `/servers/{server_id}/tools` | `services/ai-gateway/app/api/public_mcp/router.py` |
-| `GET` | `/servers/{server_id}/tools/{tool_name}/schema` | `services/ai-gateway/app/api/public_mcp/router.py` |
-| ... | ... | 20 more routes in JSON artifact |
+| ... | ... | 23 more routes in JSON artifact |
 
 ### `services/aiops`
 
@@ -477,7 +503,7 @@ graph TD
 
 ### `site/dashboard`
 
-- UI routes: `/`, `/admin/aiops`, `/admin/governance`, `/admin/rbac`, `/admin/secrets`, `/agent`, `/audit`, `/configuration`, `/console`, `/examples`, `/examples/chat`, `/examples/devops`, `/gateway`, `/llm/models`, `/llm/playground`, `/llm/upstreams`, `/login`, `/management`, `/mcp/policies`, `/mcp/servers`, `/sessions`, `/sessions/:id`, `/settings`, `/setup`, plus 2 more
+- UI routes: `/`, `/admin/aiops`, `/admin/budgets`, `/admin/governance`, `/admin/rbac`, `/admin/secrets`, `/agent`, `/audit`, `/configuration`, `/console`, `/examples`, `/examples/chat`, `/examples/devops`, `/gateway`, `/llm/models`, `/llm/playground`, `/llm/upstreams`, `/login`, `/management`, `/mcp/policies`, `/mcp/servers`, `/sessions`, `/sessions/:id`, `/settings`, plus 3 more
 - API routes: `/api/admin/v1/*slug`, `/api/admin/v1/audit/stream`, `/api/agent/chat`, `/api/agent/local-ollama`, `/api/agent/models`, `/api/agent/tools`, `/api/audit/proof/:id`, `/api/audit/stream`, `/api/auth/dev-login`, `/api/auth/logout`, `/api/auth/session`, `/api/auth/webauthn/login/options`, `/api/auth/webauthn/login/verify`, `/api/auth/webauthn/register/options`, `/api/auth/webauthn/register/verify`, `/api/config/*path`, `/api/config/ui-bootstrap`, `/api/debug/reset`, `/api/events`, `/api/examples/chat/feedback`, `/api/examples/chat/health`, `/api/examples/chat/send`, `/api/examples/chat/stats`, `/api/examples/chat/summary`, plus 20 more
 
 ### `site/marketing`
@@ -508,7 +534,7 @@ graph TD
 | 165 JSON schemas | `contracts` |
 | A2A discovery | `sdks/python`, `services/ai-gateway` |
 | A2A messaging | `services/ai-gateway` |
-| Adaptive budgets | `services/ai-gateway` |
+| Adaptive budgets | `services/ai-gateway`, `site/dashboard` |
 | Advanced Upstreams: Native support for Ollama (local/cloud) with API key rotation | `services/ai-gateway` |
 | Audit and evidence | `services/ai-gateway`, `services/audit`, `services/gateway`, `site/dashboard` |
 | Audit: Blockchain-anchored message logs | `services/ai-chat-agent` |

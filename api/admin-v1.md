@@ -146,3 +146,49 @@ Exports a snapshot of the current platform configuration.
 
 ### POST `/config:apply`
 Applies a configuration snapshot atomically.
+
+---
+
+## Budget & Usage Monitoring
+
+### GET `/budget/scope/{scope_type}/{scope_id}`
+Returns the current budget status (limit, used, reserved) for a specific scope.
+
+**Parameters:**
+- `scope_type`: `team` or `virtual_key`
+- `scope_id`: The ID of the team or key.
+
+**Response:**
+```json
+{
+  "scope_type": "virtual_key",
+  "scope_id": "key-123",
+  "limit_usd": "100.00000000",
+  "used_usd": "45.50000000",
+  "reserved_usd": "2.00000000"
+}
+```
+
+---
+
+## Testing & Diagnostics (DEV_MODE only)
+
+These endpoints are only available when `DEV_MODE=true` and are intended for integration testing and manual troubleshooting.
+
+### POST `/auth/token`
+Mints a short-lived administrative JWT for a given principal. Requires `X-Talos-Admin-Secret`.
+
+**Request Body:**
+```json
+{
+  "principal": "admin-user",
+  "permissions": ["platform.admin"],
+  "ttl_seconds": 3600
+}
+```
+
+### POST `/test/budget/simulate-leak`
+Simulates an "orphaned" reservation that was never settled.
+
+### POST `/test/budget/trigger-cleanup`
+Manually triggers the background worker to reclaim expired reservations.
