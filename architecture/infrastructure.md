@@ -37,8 +37,7 @@ docker-compose -f talos-ai-gateway/docker-compose.multi-region.yml up -d
 | Service               | Ports           | Description                       |
 | --------------------- | --------------- | --------------------------------- |
 | `talos-node`          | 8765, 8468      | Main P2P node                     |
-| `talos-gateway`       | 8000            | Security Kernel (Policy/Identity) |
-| `talos-ai-gateway`    | 8001            | AI Safety & LLM Proxy             |
+| `talos-ai-gateway`    | 8001            | Production Ingress (Policy/AI)    |
 | `talos-audit-service` | 8002            | Tamper-proof Logging              |
 | `talos-config-service`| 8003            | Adaptive Budgets & Global Policy  |
 | `postgres`            | 5432            | Primary Persistence               |
