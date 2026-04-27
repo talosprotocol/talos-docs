@@ -4,14 +4,14 @@
 
 > **Note**: JSON Schemas for all core models are available in [Schemas](schemas.md).
 
-### `src.core.blockchain`
+### `talos.core.blockchain`
 
 #### Class: `Blockchain`
 
 Production-ready blockchain for message storage.
 
 ```python
-from src.core.blockchain import Blockchain
+from talos.core.blockchain import Blockchain
 
 # Create blockchain
 bc = Blockchain(
@@ -51,7 +51,7 @@ bc = Blockchain(
 ##### Example
 
 ```python
-from src.core.blockchain import Blockchain
+from talos.core.blockchain import Blockchain
 
 # Create and populate
 bc = Blockchain(difficulty=2)
@@ -76,7 +76,7 @@ loaded = Blockchain.load("~/.talos/blockchain.json")
 Individual blockchain block.
 
 ```python
-from src.core.blockchain import Block
+from talos.core.blockchain import Block
 
 block = Block(
     index=1,
@@ -107,14 +107,14 @@ block.mine(difficulty=2)
 
 ---
 
-### `src.core.crypto`
+### `talos.core.crypto`
 
 #### Class: `Wallet`
 
 User identity container.
 
 ```python
-from src.core.crypto import Wallet
+from talos.core.crypto import Wallet
 
 # Generate new wallet
 wallet = Wallet.generate(name="Alice")
@@ -145,14 +145,14 @@ restored = Wallet.from_dict(data)
 
 ---
 
-### `src.core.session`
+### `talos.core.session`
 
 #### Class: `SessionManager`
 
 Manages Double Ratchet sessions for forward secrecy.
 
 ```python
-from src.core.session import SessionManager
+from talos.core.session import SessionManager
 
 manager = SessionManager(wallet)
 
@@ -169,14 +169,14 @@ plaintext = session.decrypt(ciphertext)
 
 ---
 
-### `src.core.did`
+### `talos.core.did`
 
 #### Class: `DIDManager`
 
 W3C Decentralized Identity management.
 
 ```python
-from src.core.did import DIDManager
+from talos.core.did import DIDManager
 
 did_mgr = DIDManager(wallet.signing_keys)
 print(did_mgr.did)  # did:talos:abc123...
@@ -187,7 +187,7 @@ doc = did_mgr.create_document(service_endpoint="ws://localhost:8765")
 
 ---
 
-### `src.core.message`
+### `talos.core.message`
 
 #### Enum: `MessageType`
 
@@ -222,7 +222,7 @@ class MessageType(Enum):
 #### Class: `MessagePayload`
 
 ```python
-from src.core.message import MessagePayload, MessageType
+from talos.core.message import MessagePayload, MessageType
 
 msg = MessagePayload.create(
     msg_type=MessageType.TEXT,
@@ -245,7 +245,7 @@ restored = MessagePayload.from_bytes(binary)
 
 ---
 
-### `src.engine.engine`
+### `talos.engine.engine`
 
 #### Class: `TransmissionEngine`
 
@@ -255,7 +255,7 @@ Main interface for sending/receiving.
 > **LEGACY DEPENDENCY**: `TransmissionEngine` currently depends on the legacy `P2PNode` stack. It is recommended to migrate to gateway-based transmission for new applications.
 
 ```python
-from src.engine import TransmissionEngine
+from talos.engine import TransmissionEngine
 
 engine = TransmissionEngine(
     wallet=wallet,
@@ -281,14 +281,14 @@ received = engine.get_received_files()
 
 ---
 
-### `src.engine.media`
+### `talos.engine.media`
 
 #### Class: `MediaFile`
 
 Local file wrapper with validation.
 
 ```python
-from src.engine.media import MediaFile
+from talos.engine.media import MediaFile
 
 file = MediaFile.from_path("/path/to/photo.jpg")
 print(file.filename)      # photo.jpg
@@ -306,7 +306,7 @@ for chunk in file.read_chunks(chunk_size=256*1024):
 Concurrent transfer tracking.
 
 ```python
-from src.engine.media import TransferManager
+from talos.engine.media import TransferManager
 
 manager = TransferManager(max_concurrent=5)
 
@@ -324,7 +324,7 @@ print(transfer.status)            # TransferStatus.IN_PROGRESS
 
 ---
 
-### `src.client.client`
+### `talos.client.client`
 
 #### Class: `Client`
 
@@ -334,7 +334,7 @@ High-level client interface.
 > **LEGACY DEPENDENCY**: The `Client` class utilizes the legacy WebSocket P2P stack for direct peer connections.
 
 ```python
-from src.client import Client, ClientConfig
+from talos.client import Client, ClientConfig
 
 config = ClientConfig()
 client = Client(config)
@@ -385,16 +385,16 @@ talos history
 > [!WARNING]
 > The modules below are part of the **Legacy WebSocket P2P Stack**. These components are scheduled for removal and should not be used in new developments. Refer to the [Gateway Service](../../services/gateway/README.md) for the modern libp2p-based implementation.
 
-### Legacy P2P Stack (`src.network`)
+### Legacy P2P Stack (`talos.network`)
 
-#### `src.network.p2p.P2PNode`
+#### `talos.network.p2p.P2PNode`
 
 Custom WebSocket-based P2P node for direct peer communication.
 
-#### `src.network.dht.DHTNode`
+#### `talos.network.dht.DHTNode`
 
 Legacy Kademlia DHT implementation for peer discovery.
 
-#### `src.network.peer.Peer`
+#### `talos.network.peer.Peer`
 
 Representation of a peer in the legacy stack.
