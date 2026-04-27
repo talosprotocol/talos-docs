@@ -2,7 +2,7 @@
 
 This graph is generated from the current checked-out Talos source tree. It is intended to be the durable MVP context map for code navigation, planning, drift checks, and onboarding.
 
-- Generated at: `2026-04-22T04:14:50+00:00`
+- Generated at: `2026-04-27T05:39:45+00:00`
 - Generator: `scripts/python/generate_context_graph.py`
 - Regenerate: `python3 scripts/python/generate_context_graph.py`
 - Scope: submodule metadata, manifests, FastAPI routes, Next.js routes, README feature bullets, docs links, tests, and source-level internal references.
@@ -39,7 +39,6 @@ graph TD
     tools_talos_tui["tools<br/>talos-tui"]
   end
   subgraph Operator_And_Public_UI["Operator And Public UI"]
-    site_configuration_dashboard["site<br/>configuration-dashboard"]
     site_dashboard["site<br/>dashboard"]
     site_marketing["site<br/>marketing"]
   end
@@ -148,9 +147,6 @@ graph TD
   services_ucp_connector -->|"imports-or-bundles"| contracts
   services_ucp_connector -->|"validates-against"| contracts
   services_ucp_connector -->|"uses-sdk-primitives"| sdks_python
-  site_configuration_dashboard -->|"imports-or-bundles"| contracts
-  site_configuration_dashboard -->|"validates-against"| contracts
-  site_configuration_dashboard -->|"configuration-ui"| services_configuration
   site_dashboard -->|"imports-or-bundles"| contracts
   site_dashboard -->|"validates-against"| contracts
   site_dashboard -->|"imports-or-bundles"| core
@@ -172,7 +168,6 @@ graph TD
   tools_setup_helper -->|"validates-against"| contracts
   tools_setup_helper -->|"imports-or-bundles"| sdks_python
   tools_setup_helper -->|"imports-or-bundles"| sdks_typescript
-  tools_talos_tui -->|"imports-or-bundles"| contracts
   tools_talos_tui -->|"validates-against"| contracts
   tools_talos_tui -->|"imports-or-bundles"| sdks_python
   tools_talos_tui -->|"operator-api"| services_ai_gateway
@@ -215,13 +210,12 @@ graph TD
 | `services/mcp-connector` | service | MCP server registry, tool discovery, and invocation bridge | Zero-Mod Integration: Connect any existing MCP server (Stdio/SSE) without changing a single line of code.; Security Sidecar: Implements Phase 10 A2A Encrypted Channels (Double Ratchet) for all tool invocations.; Policy Enforcement: Integrates with the Talos Policy Engine to enforce per-team tool access and read/write separation.; Durable Idempotency: Built-in support for Phase 9.3 Idempotency via Redis-backed caches for write operations.; Universal Transport: Unified handling of Stdio, SSE, and raw TCP tool transports.; plus 2 more | `services/mcp-connector/main.py`, `services/mcp-connector/pyproject.toml` | `services/mcp-connector/Makefile`, `services/mcp-connector/scripts/test.sh`, `services/mcp-connector/tests` | `contracts`, `core`, `libs/talos-config`, `sdks/python` |
 | `services/terminal-adapter` | service | Structured terminal MCP adapter | Health checks; Session management; Terminal tools | `services/terminal-adapter/src/terminal_adapter/main.py`, `services/terminal-adapter/pyproject.toml` | `services/terminal-adapter/scripts/test.sh`, `services/terminal-adapter/tests` | `contracts` |
 | `services/ucp-connector` | service | UCP commerce MCP connector | Commerce/UCP | `services/ucp-connector/pyproject.toml` | `services/ucp-connector/scripts/test.sh`, `services/ucp-connector/tests` | `contracts` |
-| `site/configuration-dashboard` | ui | Deprecated configuration dashboard | Configuration management | `site/configuration-dashboard/src/app/page.tsx`, `site/configuration-dashboard/src/app/layout.tsx`, `site/configuration-dashboard/package.json` | `site/configuration-dashboard/tests` | `contracts` |
 | `site/dashboard` | ui | Operator dashboard and BFF proxy | Audit and evidence; Adaptive budgets; LLM/chat; Configuration management; Gateway runtime; plus 6 more | `site/dashboard/src/app/page.tsx`, `site/dashboard/src/app/layout.tsx`, `site/dashboard/package.json` | `site/dashboard/Makefile`, `site/dashboard/scripts/test.sh`, `site/dashboard/src/__tests__`, plus 1 more | `contracts`, `core` |
 | `site/marketing` | ui | Public marketing site | - | `site/marketing/src/app/page.tsx`, `site/marketing/src/app/layout.tsx`, `site/marketing/package.json` | `site/marketing/scripts/test.sh`, `site/marketing/tests` | `contracts`, `core`, `sdks/python`, `sdks/typescript` |
 | `src` | module | Root Python gateway/demo API and protocol surface | Gateway runtime | - | - | `contracts` |
 | `talos` | module | Root Python package mirror for protocol modules | Gateway runtime | - | - | `contracts` |
 | `tools/setup-helper` | tool | Local setup helper | - | `tools/setup-helper/pyproject.toml` | `tools/setup-helper/tests` | `sdks/python`, `sdks/typescript` |
-| `tools/talos-tui` | tool | Terminal operator UI | Resilient State Machine: Formal coordinator with exponential backoff, jitter, and absolute handshake budgets.; Mechanized Contract Safety: Runtime JSON Schema validation for all audit events and a startup version gate.; Pure UI Projections: Centralized `StateStore` with reactive dashboard and audit viewer, ensuring UI stability.; Health & Freshness Tracking: Real-time status bar and stale-data indicators for all service dependencies.; Safe Execution: Redacted secrets (REGEX-based), hard timeouts, and payload size capping. | `tools/talos-tui/python/src/talos_tui/app.py` | `tools/talos-tui/Makefile` | `contracts`, `sdks/python` |
+| `tools/talos-tui` | tool | Terminal operator UI | Resilient State Machine: Formal coordinator with exponential backoff, jitter, and absolute handshake budgets.; Mechanized Contract Safety: Runtime JSON Schema validation for all audit events and a startup version gate.; Pure UI Projections: Centralized `StateStore` with reactive dashboard and audit viewer, ensuring UI stability.; Health & Freshness Tracking: Real-time status bar and stale-data indicators for all service dependencies.; Safe Execution: Redacted secrets (REGEX-based), hard timeouts, and payload size capping. | `tools/talos-tui/python/src/talos_tui/app.py` | `tools/talos-tui/.agent/test_manifest.yml`, `tools/talos-tui/Makefile`, `tools/talos-tui/scripts/test.sh` | `sdks/python` |
 
 ## Route And Surface Inventory
 
@@ -314,6 +308,7 @@ graph TD
 | `MOUNT` | `/a2a/v1` | `services/ai-gateway/app/main.py` |
 | `MOUNT` | `/a2a/v1` | `services/ai-gateway/tests/integration/test_multi_region.py` |
 | `MOUNT` | `/admin/v1` | `services/ai-gateway/app/main.py` |
+| `GET` | `/api/gateway/status` | `services/ai-gateway/app/routers/health.py` |
 | `GET` | `/api/model-groups` | `services/ai-gateway/app/dashboard/router.py` |
 | `GET` | `/api/upstreams` | `services/ai-gateway/app/dashboard/router.py` |
 | `GET` | `/audit/stats` | `services/ai-gateway/app/api/admin/router.py` |
@@ -364,6 +359,7 @@ graph TD
 | `GET` | `/me` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/metrics/summary` | `services/ai-gateway/app/routers/health.py` |
 | `GET` | `/models` | `services/ai-gateway/app/api/public_ai/router.py` |
+| `GET` | `/peers` | `services/ai-gateway/app/routers/health.py` |
 | `GET` | `/policy-check` | `services/ai-gateway/tests/integration/test_policy_integration.py` |
 | `GET` | `/policy-check-deny` | `services/ai-gateway/tests/integration/test_policy_integration.py` |
 | `GET` | `/protocol/metadata` | `services/ai-gateway/app/api/a2a_v1/router.py` |
@@ -379,9 +375,7 @@ graph TD
 | `GET` | `/secrets/kek-status` | `services/ai-gateway/app/api/admin/router.py` |
 | `POST` | `/secrets/rotate-all` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/secrets/rotation-status/{op_id}` | `services/ai-gateway/app/api/admin/router.py` |
-| `DELETE` | `/secrets/{name}` | `services/ai-gateway/app/api/admin/router.py` |
-| `GET` | `/servers` | `services/ai-gateway/app/api/public_mcp/router.py` |
-| ... | ... | 23 more routes in JSON artifact |
+| ... | ... | 27 more routes in JSON artifact |
 
 ### `services/aiops`
 
@@ -455,7 +449,6 @@ graph TD
 | `GET` | `/api/events/stats` | `services/gateway/main.py` |
 | `GET` | `/api/gateway/status` | `services/gateway/main.py` |
 | `GET` | `/events` | `services/gateway/src/handlers/stream.py` |
-| `GET` | `/health` | `services/gateway/main.py` |
 | `GET` | `/health/ollama` | `services/gateway/main.py` |
 | `GET` | `/health/tga` | `services/gateway/main.py` |
 | `GET` | `/healthz` | `services/gateway/main.py` |
@@ -488,22 +481,75 @@ graph TD
 
 | Method | Path | Source |
 | --- | --- | --- |
+| `POST` | `/files/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/datastructures.py` |
+| `POST` | `/files/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py` |
 | `GET` | `/health` | `services/terminal-adapter/src/terminal_adapter/main.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `GET` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py` |
+| `PATCH` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `PATCH` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `PATCH` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `PATCH` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `POST` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `POST` | `/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `POST` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `POST` | `/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `DELETE` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `DELETE` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `DELETE` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `DELETE` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/exceptions.py` |
+| `GET` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py` |
+| `GET` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/exceptions.py` |
+| `GET` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
+| `PUT` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `PUT` | `/items/{item_id}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `PUT` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `PUT` | `/items/{item_id}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `POST` | `/login` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/oauth2.py` |
+| `POST` | `/login` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/oauth2.py` |
+| `POST` | `/login` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py` |
+| `POST` | `/login` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py` |
+| `POST` | `/send-notification/{email}` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/background.py` |
+| `POST` | `/send-notification/{email}` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/background.py` |
 | `POST` | `/tools/terminal:abort` | `services/terminal-adapter/src/terminal_adapter/main.py` |
 | `POST` | `/tools/terminal:anchor_session` | `services/terminal-adapter/src/terminal_adapter/main.py` |
 | `POST` | `/tools/terminal:execute` | `services/terminal-adapter/src/terminal_adapter/main.py` |
 | `GET` | `/tools/terminal:list_sessions` | `services/terminal-adapter/src/terminal_adapter/main.py` |
 | `GET` | `/tools/terminal:stream` | `services/terminal-adapter/src/terminal_adapter/main.py` |
 | `POST` | `/tools/terminal:write_input` | `services/terminal-adapter/src/terminal_adapter/main.py` |
-
-### `site/configuration-dashboard`
-
-- UI routes: `/`, `/configuration`
-- API routes: `/api/policies`
+| `POST` | `/uploadfile/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/datastructures.py` |
+| `POST` | `/uploadfile/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py` |
+| `GET` | `/users/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py` |
+| `GET` | `/users/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py` |
+| `GET` | `/users/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py` |
+| `GET` | `/users/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py` |
+| `GET` | `/users/me/items/` | `services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py` |
+| `GET` | `/users/me/items/` | `services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py` |
 
 ### `site/dashboard`
 
-- UI routes: `/`, `/admin/aiops`, `/admin/budgets`, `/admin/governance`, `/admin/rbac`, `/admin/secrets`, `/agent`, `/audit`, `/configuration`, `/console`, `/examples`, `/examples/chat`, `/examples/devops`, `/gateway`, `/llm/models`, `/llm/playground`, `/llm/upstreams`, `/login`, `/management`, `/mcp/policies`, `/mcp/servers`, `/sessions`, `/sessions/:id`, `/settings`, plus 3 more
+- UI routes: `/`, `/admin/aiops`, `/admin/budgets`, `/admin/governance`, `/admin/rbac`, `/admin/secrets`, `/agent`, `/api-workbench`, `/audit`, `/configuration`, `/console`, `/examples`, `/examples/chat`, `/examples/devops`, `/gateway`, `/llm/models`, `/llm/playground`, `/llm/upstreams`, `/login`, `/management`, `/mcp/policies`, `/mcp/servers`, `/sessions`, `/sessions/:id`, plus 4 more
 - API routes: `/api/admin/v1/*slug`, `/api/admin/v1/audit/stream`, `/api/agent/chat`, `/api/agent/local-ollama`, `/api/agent/models`, `/api/agent/tools`, `/api/audit/proof/:id`, `/api/audit/stream`, `/api/auth/dev-login`, `/api/auth/logout`, `/api/auth/session`, `/api/auth/webauthn/login/options`, `/api/auth/webauthn/login/verify`, `/api/auth/webauthn/register/options`, `/api/auth/webauthn/register/verify`, `/api/config/*path`, `/api/config/ui-bootstrap`, `/api/debug/reset`, `/api/events`, `/api/examples/chat/feedback`, `/api/examples/chat/health`, `/api/examples/chat/send`, `/api/examples/chat/stats`, `/api/examples/chat/summary`, plus 20 more
 
 ### `site/marketing`
@@ -541,7 +587,7 @@ graph TD
 | Audit: Deterministic hash-chained event logs for all operations | `services/ai-gateway` |
 | Audit: Immutable usage logs. | `services/aiops` |
 | Commerce/UCP | `examples`, `services/ucp-connector` |
-| Configuration management | `libs/talos-config`, `services/ai-gateway`, `services/configuration`, `services/gateway`, `site/configuration-dashboard`, `site/dashboard` |
+| Configuration management | `libs/talos-config`, `services/ai-gateway`, `services/configuration`, `services/gateway`, `site/dashboard` |
 | Durable Idempotency: Built-in support for Phase 9.3 Idempotency via Redis-backed caches for write operations. | `services/mcp-connector` |
 | End-to-End Encryption: Double Ratchet (X3DH + Signal) | `services/ai-chat-agent` |
 | Gateway runtime | `services/ai-gateway`, `services/gateway`, `site/dashboard`, `src`, `talos` |
