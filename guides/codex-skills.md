@@ -5,6 +5,45 @@ repository and gives a short example prompt for each one.
 
 ## Workflow Skills
 
+### `$talos-ops-sweep`
+
+Use when a Talos task starts with “analyse”, “find blockers”, or “classify the
+real surface” across CI/build, UI parity, and dirty submodules.
+
+Example prompt:
+
+```text
+Use $talos-ops-sweep to classify this Talos change across dirty submodules, reduce any CI failure to the first actionable signal, inventory UI parity where relevant, and route the next fix to the right owner.
+```
+
+Helper:
+
+```bash
+python3 .agent/skills/talos-ops-sweep/scripts/run_ops_sweep.py \
+  --repo-path . \
+  --submodules \
+  --format markdown
+```
+
+### `$talos-ci-triage`
+
+Use for GitHub Actions, local CI repros, or pasted build logs when you need
+the first actionable failure and the smallest local repro.
+
+Example prompt:
+
+```text
+Use $talos-ci-triage to collapse this failing Actions log to the first real error, map it to the owning Talos surface, and tell me the smallest repro command.
+```
+
+Helper:
+
+```bash
+python3 .agent/skills/talos-ci-triage/scripts/triage_ci_failure.py \
+  path/to/ci.log \
+  --format markdown
+```
+
 ### `$talos-contract-first`
 
 Use for schema, API, vector, or boundary-sensitive changes.
@@ -50,24 +89,24 @@ Use $talos-parallelize to break this multi-SDK A2A rollout into safe parallel la
 Helper:
 
 ```bash
-python3 .agents/skills/talos-parallelize/scripts/parallelize_task.py \
-  .agents/skills/talos-parallelize/assets/task-template.json \
+python3 .agent/skills/talos-parallelize/scripts/parallelize_task.py \
+  .agent/skills/talos-parallelize/assets/task-template.json \
   --format markdown
 ```
 
 Monitoring helper:
 
 ```bash
-python3 .agents/skills/talos-parallelize/scripts/monitor_parallel_plan.py \
+python3 .agent/skills/talos-parallelize/scripts/monitor_parallel_plan.py \
   plan.json \
-  .agents/skills/talos-parallelize/assets/status-template.json \
+  .agent/skills/talos-parallelize/assets/status-template.json \
   --format markdown
 ```
 
 Persistent run helper:
 
 ```bash
-python3 .agents/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
+python3 .agent/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
   init \
   task.json \
   .agent/parallel-runs/my-task
@@ -76,7 +115,7 @@ python3 .agents/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
 Lane handoff helper:
 
 ```bash
-python3 .agents/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
+python3 .agent/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
   handoffs \
   .agent/parallel-runs/my-task \
   --format markdown
@@ -84,11 +123,11 @@ python3 .agents/skills/talos-parallelize/scripts/orchestrate_parallel_run.py \
 
 Artifact schemas:
 
-- `.agents/skills/talos-parallelize/assets/schemas/task-manifest.schema.json`
-- `.agents/skills/talos-parallelize/assets/schemas/parallel-plan.schema.json`
-- `.agents/skills/talos-parallelize/assets/schemas/parallel-status.schema.json`
-- `.agents/skills/talos-parallelize/assets/schemas/parallel-decision.schema.json`
-- `.agents/skills/talos-parallelize/assets/schemas/parallel-handoffs.schema.json`
+- `.agent/skills/talos-parallelize/assets/schemas/task-manifest.schema.json`
+- `.agent/skills/talos-parallelize/assets/schemas/parallel-plan.schema.json`
+- `.agent/skills/talos-parallelize/assets/schemas/parallel-status.schema.json`
+- `.agent/skills/talos-parallelize/assets/schemas/parallel-decision.schema.json`
+- `.agent/skills/talos-parallelize/assets/schemas/parallel-handoffs.schema.json`
 
 ### `$talos-sdk-parity`
 
@@ -133,10 +172,48 @@ Example prompt:
 Use $talos-drift-sweep to check whether cursor logic or test-runner docs have drifted across submodules.
 ```
 
+### `$talos-ui-surface-parity`
+
+Use when dashboard shell pages, the dashboard API Workbench, and the Talos TUI
+need a parity pass before fixes or backlog planning.
+
+Example prompt:
+
+```text
+Use $talos-ui-surface-parity to compare secrets management across the dashboard shell, API Workbench, and TUI and tell me which owner paths are missing.
+```
+
+Helper:
+
+```bash
+python3 .agent/skills/talos-ui-surface-parity/scripts/build_surface_inventory.py \
+  --format markdown
+```
+
+### `$talos-submodule-hygiene`
+
+Use when root `git status` is noisy, dirty submodules hide the real work
+surface, or generated artifacts need cleanup or ignore-rule decisions.
+
+Example prompt:
+
+```text
+Use $talos-submodule-hygiene to classify the dirty Talos worktree, separate intentional edits from generated clutter, and propose the safest cleanup plan.
+```
+
+Helper:
+
+```bash
+python3 .agent/skills/talos-submodule-hygiene/scripts/classify_dirty_worktree.py \
+  --repo-path . \
+  --submodules \
+  --format markdown
+```
+
 ## Specialist Agent Skills
 
-These are explicit-only and work best when you want Codex to stay in a specific
-Talos specialist mode.
+These work best when you want Codex to stay in a specific Talos specialist
+mode, or when a task clearly matches a narrow specialist domain.
 
 ### `$talos-backend-architect-agent`
 
@@ -148,6 +225,18 @@ Use $talos-backend-architect-agent to design and implement this gateway API chan
 
 ```text
 Use $talos-api-tester-agent to add contract and negative-path tests for this MCP proxy endpoint.
+```
+
+### `$talos-ops-sweeper-agent`
+
+```text
+Use $talos-ops-sweeper-agent to run the combined Talos analysis sweep, merge the findings, and route the next work to the correct workflow skill or specialist agent.
+```
+
+### `$talos-ci-failure-manager-agent`
+
+```text
+Use $talos-ci-failure-manager-agent to triage this failing Talos CI job, isolate the first actionable signal, and choose the smallest safe local repro.
 ```
 
 ### `$talos-infra-maintainer-agent`
@@ -168,10 +257,64 @@ Use $talos-frontend-developer-agent to implement this dashboard change while kee
 Use $talos-ai-engineer-agent to add schema-validated tool outputs and eval coverage for this model-driven gateway feature.
 ```
 
+### `$talos-ui-parity-builder-agent`
+
+```text
+Use $talos-ui-parity-builder-agent to build a parity matrix across the dashboard shell, API Workbench, and TUI for this operator workflow.
+```
+
+### `$talos-artifact-janitor-agent`
+
+```text
+Use $talos-artifact-janitor-agent to classify the dirty submodules, identify generated noise, and recommend the narrowest cleanup and ignore actions.
+```
+
 ### `$talos-parallel-orchestrator-agent`
 
 ```text
 Use $talos-parallel-orchestrator-agent to run a parallelization pass on this repo-wide task, start the safe lanes, monitor blockers, and merge the results with one final verification pass.
+```
+
+### `$talos-deduplication-agent`
+
+```text
+Use $talos-deduplication-agent to scan this service and SDK scope for repeated logic, then consolidate only the duplicates that reduce drift without obscuring intent.
+```
+
+### `$talos-type-consolidation-agent`
+
+```text
+Use $talos-type-consolidation-agent to find duplicated type definitions for this protocol shape and migrate consumers to the correct source of truth.
+```
+
+### `$talos-dead-code-removal-agent`
+
+```text
+Use $talos-dead-code-removal-agent to identify unused exports and orphaned files in this package, manually verify dynamic references, and remove only confirmed-dead code.
+```
+
+### `$talos-circular-dependencies-agent`
+
+```text
+Use $talos-circular-dependencies-agent to map dependency cycles in this package and break the cycles that affect startup, tests, or ownership.
+```
+
+### `$talos-type-strengthening-agent`
+
+```text
+Use $talos-type-strengthening-agent to replace weak any or placeholder unknown types in this SDK code with researched strong types while preserving true boundary unknowns.
+```
+
+### `$talos-error-handling-cleanup-agent`
+
+```text
+Use $talos-error-handling-cleanup-agent to find swallowed errors and masking fallbacks in this service, then preserve only real recovery, cleanup, logging, audit, or user-facing reporting.
+```
+
+### `$talos-deprecated-code-cleanup-agent`
+
+```text
+Use $talos-deprecated-code-cleanup-agent to remove obsolete fallback paths, stubs, placeholder logic, and low-value generated-edit comments after checking active compatibility.
 ```
 
 ## Notes
@@ -182,5 +325,5 @@ Use $talos-parallel-orchestrator-agent to run a parallelization pass on this rep
   itself needs planning, not just execution.
 - Prefer the specialist agent skills when you want a narrower role with stronger
   guardrails for that domain.
-- Repo-local skills live in `.agents/skills/`. Global mirroring is handled by
+- Repo-local skills live in `.agent/skills/`. Global mirroring is handled by
   `python3 scripts/sync_codex_skills.py`.
