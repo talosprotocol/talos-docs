@@ -66,8 +66,8 @@
       },
       "submodule": {
         "path": "contracts",
-        "ref": "(v1.1.15-59-gae07078)",
-        "sha": "ae07078447b56fb81335a6d6132af366f77e647b",
+        "ref": "(v1.1.15-60-g01b7a0a)",
+        "sha": "01b7a0a1a7363ebbb16563ba97cb3e86ca89c737",
         "url": "https://github.com/talosprotocol/talos-contracts.git"
       },
       "tests": [
@@ -130,8 +130,8 @@
       },
       "submodule": {
         "path": "core",
-        "ref": "(v1.1.6-17-gd0b1e92)",
-        "sha": "d0b1e92271c7f09747ef3aff166517efaa580130",
+        "ref": "(v1.1.6-18-g7c20c89)",
+        "sha": "7c20c89bb05adcaf2b78a2790cf3739669cb5b09",
         "url": "https://github.com/talosprotocol/talos-core-rs.git"
       },
       "tests": [
@@ -217,8 +217,8 @@
       },
       "submodule": {
         "path": "docs",
-        "ref": "(remotes/origin/HEAD-4-gac0d4d8)",
-        "sha": "ac0d4d862858df061a8ef625a0e93c09c2662dac",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "cd1671f9217084aae14df439b98dcf44e6b3ff7d",
         "url": "https://github.com/talosprotocol/talos-docs.git"
       },
       "tests": [
@@ -348,8 +348,8 @@
       },
       "submodule": {
         "path": "examples",
-        "ref": "(remotes/origin/HEAD-1-g8d74a41)",
-        "sha": "8d74a4146c9574c092917d65a5d09cfda1cdb6da",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "5f120bd6b51530271f66746d2fa8d079caedecb2",
         "url": "https://github.com/talosprotocol/talos-examples.git"
       },
       "tests": [
@@ -487,8 +487,8 @@
       },
       "submodule": {
         "path": "sdks/go",
-        "ref": "(v0.1.0-14-g5e2f1be)",
-        "sha": "5e2f1bec8adec0acde0d538a0b0e169a0e5a4ae2",
+        "ref": "(v0.1.0-15-ge341286)",
+        "sha": "e341286a5ccdae20a204f2c7156e781edcc23360",
         "url": "https://github.com/talosprotocol/talos-sdk-go.git"
       },
       "tests": [
@@ -538,8 +538,8 @@
       },
       "submodule": {
         "path": "sdks/java",
-        "ref": "(remotes/origin/HEAD-2-g6b5b24b)",
-        "sha": "6b5b24b5b453a1ff8386d587c547208a080d6ec2",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "2792c6ab86de90307ff9b9f95a141278299b2976",
         "url": "https://github.com/talosprotocol/talos-sdk-java.git"
       },
       "tests": [
@@ -786,8 +786,8 @@
       },
       "submodule": {
         "path": "sdks/python",
-        "ref": "(v1.2.0-17-g1f98242)",
-        "sha": "1f98242be150f7d18bd2474410372a4bee538a56",
+        "ref": "(v1.2.0-18-g317cb88)",
+        "sha": "317cb884f20e8a50f186f7deffbdafd533974f72",
         "url": "https://github.com/talosprotocol/talos-sdk-py.git"
       },
       "tests": [
@@ -852,8 +852,8 @@
       },
       "submodule": {
         "path": "sdks/rust",
-        "ref": "(remotes/origin/HEAD-2-g60a0bcb)",
-        "sha": "60a0bcbacd39ba1396971d52355a7ee4e3ba2fc1",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "27611b75c14532d1a46557f881c80bce6afe22ae",
         "url": "https://github.com/talosprotocol/talos-sdk-rust.git"
       },
       "tests": [
@@ -914,8 +914,8 @@
       },
       "submodule": {
         "path": "sdks/typescript",
-        "ref": "(v1.0.0-43-ga13f048)",
-        "sha": "a13f048fffd9396436ef70dd49f5b6febb6c2bce",
+        "ref": "(v1.0.0-44-gbc66f9b)",
+        "sha": "bc66f9b60fc15dbd21ad7d2530dffb6551377693",
         "url": "https://github.com/talosprotocol/talos-sdk-ts.git"
       },
       "tests": [
@@ -982,8 +982,8 @@
       },
       "submodule": {
         "path": "services/ai-chat-agent",
-        "ref": "(remotes/origin/HEAD-1-g71abe0a)",
-        "sha": "71abe0a9bc12cda2a787b13f7ddfddca24bfcb53",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "2d9a257ab5d5263b97f625e7c868db1829fc5704",
         "url": "https://github.com/talosprotocol/talos-ai-chat-agent.git"
       },
       "tests": [
@@ -1626,7 +1626,7 @@
       "source_counts": {
         ".json": 5,
         ".md": 8,
-        ".py": 228,
+        ".py": 229,
         ".toml": 1,
         ".ts": 1,
         ".yml": 5,
@@ -1635,8 +1635,8 @@
       },
       "submodule": {
         "path": "services/ai-gateway",
-        "ref": "(remotes/origin/HEAD-4-g44d9b35)",
-        "sha": "44d9b3505d70f6f2ea1f500b81c083bb541bc996",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "af3b2d172ac63e0def768952e6cb738b4f0f4b40",
         "url": "https://github.com/talosprotocol/talos-ai-gateway.git"
       },
       "tests": [
@@ -1713,8 +1713,8 @@
       },
       "submodule": {
         "path": "services/aiops",
-        "ref": "(remotes/origin/HEAD-1-g4c950ae)",
-        "sha": "4c950aea01b1f0b65d8d0f716278c598acb08004",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "ba199046a4caf9400a13976dc96f12cb1702c37d",
         "url": "https://github.com/talosprotocol/talos-aiops.git"
       },
       "tests": [
@@ -1827,8 +1827,8 @@
       },
       "submodule": {
         "path": "services/audit",
-        "ref": "(v1.1.2-32-gf317643)",
-        "sha": "f317643362eba66a5c06a0ab87d638e7a46e68fc",
+        "ref": "(v1.1.2-33-g8e27571)",
+        "sha": "8e27571250cd91f8f7b395687a358e11f92e0599",
         "url": "https://github.com/talosprotocol/talos-audit-service.git"
       },
       "tests": [
@@ -1939,8 +1939,8 @@
       },
       "submodule": {
         "path": "services/configuration",
-        "ref": "(remotes/origin/HEAD-2-g094c5f0)",
-        "sha": "094c5f03188a7879465ddf7468bb6d359841ae97",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "c028ca32ee3e5327b9a2c57e30f1d84d7de03fc3",
         "url": "https://github.com/talosprotocol/talos-configuration.git"
       },
       "tests": [
@@ -2197,8 +2197,8 @@
       },
       "submodule": {
         "path": "services/gateway",
-        "ref": "(v1.0.0-41-g800445e)",
-        "sha": "800445e7594fdd131d94ca503ebc234201fa4d70",
+        "ref": "(v1.0.0-42-g495c98a)",
+        "sha": "495c98a15561e39ef1a6c8b467f70839521f8efc",
         "url": "https://github.com/talosprotocol/talos-gateway.git"
       },
       "tests": [
@@ -2251,8 +2251,8 @@
       },
       "submodule": {
         "path": "services/governance-agent",
-        "ref": "(remotes/origin/HEAD-3-gfa1a05c)",
-        "sha": "fa1a05c23a0e536d0030665512f931c5768fcfc7",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "c7a4c125991e3b5ef932f1f9731fe3ef4f06bee7",
         "url": "https://github.com/talosprotocol/talos-governance-agent.git"
       },
       "tests": [
@@ -2365,8 +2365,8 @@
       },
       "submodule": {
         "path": "services/mcp-connector",
-        "ref": "(v1.0.0-44-g05960cc)",
-        "sha": "05960ccb9297591a94d59d3bd572d72e4a9c36bc",
+        "ref": "(v1.0.0-45-gcac45c1)",
+        "sha": "cac45c1e5f222ff68e70bb70414f634b9ffa020e",
         "url": "https://github.com/talosprotocol/talos-mcp-connector.git"
       },
       "tests": [
@@ -2746,8 +2746,8 @@
       },
       "submodule": {
         "path": "services/terminal-adapter",
-        "ref": "(remotes/origin/HEAD-3-gccf00ac)",
-        "sha": "ccf00ac25ba3324754631ac297a97c658632c494",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "f97949f101f5dc7caf63a541fd5c75110c428c5d",
         "url": "https://github.com/talosprotocol/talos-terminal-adapter.git"
       },
       "tests": [
@@ -2803,8 +2803,8 @@
       "submodule": {
         "branch": "main",
         "path": "services/ucp-connector",
-        "ref": "(remotes/origin/HEAD-2-ge6eb081)",
-        "sha": "e6eb0813ccbb10cbe22c5cc7085855f64ea17762",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "d562edf1edc3bd2d454e33a39f2c2eb14f450978",
         "url": "https://github.com/talosprotocol/talos-ucp-connector.git"
       },
       "tests": [
@@ -2960,8 +2960,8 @@
       },
       "submodule": {
         "path": "site/dashboard",
-        "ref": "(v1.0.0-105-g963b6b67)",
-        "sha": "963b6b677e15da74d0b68092d57bddee862b3147",
+        "ref": "(v1.0.0-106-g8b233682)",
+        "sha": "8b233682dc07f5ed3babedf5b29ac1c3fcc29b17",
         "url": "https://github.com/talosprotocol/talos-dashboard.git"
       },
       "tests": [
@@ -3065,7 +3065,7 @@
       "submodule": {
         "path": "site/marketing",
         "ref": "(heads/main)",
-        "sha": "51673dee2d4478e3cd66f07ea99f00ddf6014f61",
+        "sha": "eb77d991d57c8d15edc2ac136e0c736836162d56",
         "url": "https://github.com/talosprotocol/talos-site.git"
       },
       "tests": [
@@ -3254,8 +3254,8 @@
       },
       "submodule": {
         "path": "tools/talos-tui",
-        "ref": "(remotes/origin/HEAD-3-g810f943)",
-        "sha": "810f9431981ab57232b343e98677a4095b9a23ea",
+        "ref": "(remotes/origin/HEAD)",
+        "sha": "2dd8c774bf24ffcf2eece7d7a9d5e8e216a32a9c",
         "url": "https://github.com/talosprotocol/talos-tui.git"
       },
       "tests": [
@@ -4076,7 +4076,7 @@
       "services/configuration"
     ]
   },
-  "generated_at": "2026-04-27T05:39:45+00:00",
+  "generated_at": "2026-06-17T23:00:02+00:00",
   "generator": "scripts/python/generate_context_graph.py",
   "schema": "talos.context_graph.v1",
   "source": {
