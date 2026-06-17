@@ -217,8 +217,8 @@
       },
       "submodule": {
         "path": "docs",
-        "ref": "(remotes/origin/HEAD)",
-        "sha": "cd1671f9217084aae14df439b98dcf44e6b3ff7d",
+        "ref": "(heads/main)",
+        "sha": "f0b3be8b533afe1960c87fd97f6920b5c21dddb1",
         "url": "https://github.com/talosprotocol/talos-docs.git"
       },
       "tests": [
@@ -1635,8 +1635,8 @@
       },
       "submodule": {
         "path": "services/ai-gateway",
-        "ref": "(remotes/origin/HEAD)",
-        "sha": "af3b2d172ac63e0def768952e6cb738b4f0f4b40",
+        "ref": "(heads/main)",
+        "sha": "51f7241c0c13ef2ed7bb251a0a9f1283b34e1936",
         "url": "https://github.com/talosprotocol/talos-ai-gateway.git"
       },
       "tests": [
@@ -2251,8 +2251,8 @@
       },
       "submodule": {
         "path": "services/governance-agent",
-        "ref": "(remotes/origin/HEAD)",
-        "sha": "c7a4c125991e3b5ef932f1f9731fe3ef4f06bee7",
+        "ref": "(heads/main)",
+        "sha": "fb5f014dabd5f407c8f66208b9523a7f123c4f55",
         "url": "https://github.com/talosprotocol/talos-governance-agent.git"
       },
       "tests": [
@@ -4076,7 +4076,7 @@
       "services/configuration"
     ]
   },
-  "generated_at": "2026-06-17T23:00:02+00:00",
+  "generated_at": "2026-06-17T23:17:48+00:00",
   "generator": "scripts/python/generate_context_graph.py",
   "schema": "talos.context_graph.v1",
   "source": {
