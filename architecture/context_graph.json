@@ -175,22 +175,22 @@
       "api_routes": [],
       "dependencies": [],
       "docs": [
-        "docs/.agent/README.md",
-        "docs/.agent/agents/design/brand-guardian.md",
-        "docs/.agent/agents/design/ui-designer.md",
-        "docs/.agent/agents/design/ux-researcher.md",
-        "docs/.agent/agents/design/visual-storyteller.md",
-        "docs/.agent/agents/design/whimsy-injector.md",
-        "docs/.agent/agents/engineering/ai-engineer.md",
-        "docs/.agent/agents/engineering/backend-architect.md",
-        "docs/.agent/agents/engineering/devops-automator.md",
-        "docs/.agent/agents/engineering/frontend-developer.md",
-        "docs/.agent/agents/engineering/mobile-app-builder.md",
-        "docs/.agent/agents/engineering/rapid-prototyper.md",
-        "docs/.agent/agents/marketing/app-store-optimizer.md",
-        "docs/.agent/agents/marketing/content-creator.md",
-        "docs/.agent/agents/marketing/growth-hacker.md",
-        "docs/.agent/agents/marketing/instagram-curator.md"
+        "docs/COMPLIANCE.md",
+        "docs/README-Home.md",
+        "docs/README.md",
+        "docs/STANDARDIZATION_PLAN.md",
+        "docs/api/admin-v1.md",
+        "docs/api/api-reference.md",
+        "docs/api/schemas.md",
+        "docs/architecture/fullscale_development_plan.md",
+        "docs/architecture/infrastructure.md",
+        "docs/architecture/overview.md",
+        "docs/architecture/protocol-guarantees.md",
+        "docs/architecture/simplified.md",
+        "docs/architecture/threat-model.md",
+        "docs/architecture/wire-format.md",
+        "docs/audits/2026-10-07-talos-remediation-implementation-plan.md",
+        "docs/business/agent-lifecycle.md"
       ],
       "entrypoints": [],
       "exists": true,
@@ -392,7 +392,6 @@
       "api_routes": [],
       "dependencies": [],
       "docs": [
-        "docs/.agent/agents/engineering/rapid-prototyper.md",
         "docs/architecture/protocol-guarantees.md"
       ],
       "entrypoints": [],
@@ -2457,8 +2456,6 @@
         "zod"
       ],
       "docs": [
-        "docs/.agent/workflows/development/run-dashboard.md",
-        "docs/.agent/workflows/run-dashboard.md",
         "docs/security/security-dashboard.md"
       ],
       "entrypoints": [
@@ -2569,15 +2566,7 @@
         "typescript",
         "zod"
       ],
-      "docs": [
-        "docs/.agent/agents/marketing/app-store-optimizer.md",
-        "docs/.agent/agents/marketing/content-creator.md",
-        "docs/.agent/agents/marketing/growth-hacker.md",
-        "docs/.agent/agents/marketing/instagram-curator.md",
-        "docs/.agent/agents/marketing/reddit-community-builder.md",
-        "docs/.agent/agents/marketing/tiktok-strategist.md",
-        "docs/.agent/agents/marketing/twitter-engager.md"
-      ],
+      "docs": [],
       "entrypoints": [
         "site/marketing/src/app/page.tsx",
         "site/marketing/src/app/layout.tsx",
@@ -3640,7 +3629,7 @@
       "services/configuration"
     ]
   },
-  "generated_at": "2026-10-07T22:01:13+00:00",
+  "generated_at": "2026-10-07T22:06:06+00:00",
   "generator": "scripts/python/generate_context_graph.py",
   "schema": "talos.context_graph.v1",
   "source": {
