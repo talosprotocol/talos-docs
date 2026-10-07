@@ -2,7 +2,7 @@
 
 This graph is generated from the current checked-out Talos source tree. It is intended to be the durable MVP context map for code navigation, planning, drift checks, and onboarding.
 
-- Generated at: `2026-06-17T23:21:21+00:00`
+- Generated at: `2026-10-07T21:43:48+00:00`
 - Generator: `scripts/python/generate_context_graph.py`
 - Regenerate: `python3 scripts/python/generate_context_graph.py`
 - Scope: submodule metadata, manifests, FastAPI routes, Next.js routes, README feature bullets, docs links, tests, and source-level internal references.
@@ -375,7 +375,7 @@ graph TD
 | `GET` | `/secrets/kek-status` | `services/ai-gateway/app/api/admin/router.py` |
 | `POST` | `/secrets/rotate-all` | `services/ai-gateway/app/api/admin/router.py` |
 | `GET` | `/secrets/rotation-status/{op_id}` | `services/ai-gateway/app/api/admin/router.py` |
-| ... | ... | 27 more routes in JSON artifact |
+| ... | ... | 28 more routes in JSON artifact |
 
 ### `services/aiops`
 

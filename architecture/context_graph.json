@@ -123,15 +123,15 @@
       "source_counts": {
         ".json": 1,
         ".md": 7,
-        ".rs": 18,
+        ".rs": 19,
         ".toml": 2,
         ".yml": 3,
         "Makefile": 1
       },
       "submodule": {
         "path": "core",
-        "ref": "(v1.1.6-18-g7c20c89)",
-        "sha": "7c20c89bb05adcaf2b78a2790cf3739669cb5b09",
+        "ref": "(v1.1.6-19-g9258a8d)",
+        "sha": "9258a8d68c027d02b62daeadfa2a00458b7d4afd",
         "url": "https://github.com/talosprotocol/talos-core-rs.git"
       },
       "tests": [
@@ -164,9 +164,9 @@
       "role": "Deployment, Docker, Helm, and local stack scripts",
       "routes": [],
       "source_counts": {
-        ".json": 1,
+        ".json": 2,
         ".md": 19,
-        ".py": 4,
+        ".py": 5,
         ".yaml": 49
       },
       "submodule": null,
@@ -213,12 +213,12 @@
       "role": "Documentation and operator guides",
       "routes": [],
       "source_counts": {
-        ".md": 93
+        ".md": 94
       },
       "submodule": {
         "path": "docs",
-        "ref": "(heads/main)",
-        "sha": "841c3c65c87f32d5497271d6ef43b39dac96a02d",
+        "ref": "(heads/codex/align-protocol-guarantees)",
+        "sha": "b5f7e2fa545d0f30b866cf73f8b42f65fa2d6858",
         "url": "https://github.com/talosprotocol/talos-docs.git"
       },
       "tests": [
@@ -1577,6 +1577,11 @@
         },
         {
           "method": "GET",
+          "path": "/test/audit-scope-denial",
+          "source": "services/ai-gateway/tests/test_audit_e2e.py"
+        },
+        {
+          "method": "GET",
           "path": "/test/budget/scope/{scope_type}/{scope_id}",
           "source": "services/ai-gateway/app/api/admin/router.py"
         },
@@ -1635,8 +1640,8 @@
       },
       "submodule": {
         "path": "services/ai-gateway",
-        "ref": "(heads/main)",
-        "sha": "51f7241c0c13ef2ed7bb251a0a9f1283b34e1936",
+        "ref": "(heads/codex/audit-scope-denials)",
+        "sha": "5175964ea22a54aff58b4622eac770f4c5458c25",
         "url": "https://github.com/talosprotocol/talos-ai-gateway.git"
       },
       "tests": [
@@ -1735,6 +1740,7 @@
         "uvicorn"
       ],
       "docs": [
+        "docs/audits/2026-10-07-talos-remediation-implementation-plan.md",
         "docs/features/observability/audit-explorer.md",
         "docs/features/observability/audit-scope.md",
         "docs/features/observability/audit-use-cases.md"
@@ -1827,8 +1833,8 @@
       },
       "submodule": {
         "path": "services/audit",
-        "ref": "(v1.1.2-33-g8e27571)",
-        "sha": "8e27571250cd91f8f7b395687a358e11f92e0599",
+        "ref": "(v1.1.2-34-g3a26127)",
+        "sha": "3a26127c0837d546894fa468277083959919d117",
         "url": "https://github.com/talosprotocol/talos-audit-service.git"
       },
       "tests": [
@@ -2960,8 +2966,8 @@
       },
       "submodule": {
         "path": "site/dashboard",
-        "ref": "(v1.0.0-106-g8b233682)",
-        "sha": "8b233682dc07f5ed3babedf5b29ac1c3fcc29b17",
+        "ref": "(v1.0.0-107-g4c9700cd)",
+        "sha": "4c9700cd661b124dcbfde221681a5ca8234fba22",
         "url": "https://github.com/talosprotocol/talos-dashboard.git"
       },
       "tests": [
@@ -3133,6 +3139,7 @@
       "api_routes": [],
       "dependencies": [],
       "docs": [
+        "docs/audits/2026-10-07-talos-remediation-implementation-plan.md",
         "docs/business/why-talos-wins.md",
         "docs/getting-started/talos-60-seconds.md"
       ],
@@ -4076,7 +4083,7 @@
       "services/configuration"
     ]
   },
-  "generated_at": "2026-06-17T23:21:21+00:00",
+  "generated_at": "2026-10-07T21:43:48+00:00",
   "generator": "scripts/python/generate_context_graph.py",
   "schema": "talos.context_graph.v1",
   "source": {
