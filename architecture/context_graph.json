@@ -54,10 +54,10 @@
       "role": "Schema, inventory, and vector source of truth",
       "routes": [],
       "source_counts": {
-        ".json": 1224,
-        ".md": 24,
+        ".json": 893,
+        ".md": 22,
         ".mjs": 3,
-        ".py": 1259,
+        ".py": 32,
         ".toml": 2,
         ".ts": 40,
         ".yaml": 4,
@@ -66,8 +66,7 @@
       },
       "submodule": {
         "path": "contracts",
-        "ref": "(v1.1.15-60-g01b7a0a)",
-        "sha": "01b7a0a1a7363ebbb16563ba97cb3e86ca89c737",
+        "sha": "72174a29f093393e81eb6fb6837f71b1b02acd1c",
         "url": "https://github.com/talosprotocol/talos-contracts.git"
       },
       "tests": [
@@ -130,7 +129,6 @@
       },
       "submodule": {
         "path": "core",
-        "ref": "(v1.1.6-19-g9258a8d)",
         "sha": "9258a8d68c027d02b62daeadfa2a00458b7d4afd",
         "url": "https://github.com/talosprotocol/talos-core-rs.git"
       },
@@ -217,8 +215,6 @@
       },
       "submodule": {
         "path": "docs",
-        "ref": "(heads/codex/align-protocol-guarantees)",
-        "sha": "b5f7e2fa545d0f30b866cf73f8b42f65fa2d6858",
         "url": "https://github.com/talosprotocol/talos-docs.git"
       },
       "tests": [
@@ -348,7 +344,6 @@
       },
       "submodule": {
         "path": "examples",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "5f120bd6b51530271f66746d2fa8d079caedecb2",
         "url": "https://github.com/talosprotocol/talos-examples.git"
       },
@@ -487,7 +482,6 @@
       },
       "submodule": {
         "path": "sdks/go",
-        "ref": "(v0.1.0-15-ge341286)",
         "sha": "e341286a5ccdae20a204f2c7156e781edcc23360",
         "url": "https://github.com/talosprotocol/talos-sdk-go.git"
       },
@@ -538,7 +532,6 @@
       },
       "submodule": {
         "path": "sdks/java",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "2792c6ab86de90307ff9b9f95a141278299b2976",
         "url": "https://github.com/talosprotocol/talos-sdk-java.git"
       },
@@ -582,7 +575,8 @@
       ],
       "id": "sdks/python",
       "internal_refs": [
-        "contracts"
+        "contracts",
+        "core"
       ],
       "kind": "sdk",
       "manifests": [
@@ -626,167 +620,19 @@
         },
         {
           "method": "POST",
-          "path": "/files/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/exceptions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
           "path": "/rpc",
           "source": "sdks/python/tests/test_a2a_v1_client.py"
-        },
-        {
-          "method": "POST",
-          "path": "/send-notification/{email}",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/background.py"
-        },
-        {
-          "method": "POST",
-          "path": "/uploadfile/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me/items/",
-          "source": "sdks/python/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
         }
       ],
       "source_counts": {
-        ".js": 1,
-        ".json": 10,
-        ".md": 16,
-        ".py": 1899,
-        ".toml": 5,
+        ".md": 10,
+        ".py": 73,
+        ".toml": 1,
         ".yml": 2,
         "Makefile": 1
       },
       "submodule": {
         "path": "sdks/python",
-        "ref": "(v1.2.0-18-g317cb88)",
         "sha": "317cb884f20e8a50f186f7deffbdafd533974f72",
         "url": "https://github.com/talosprotocol/talos-sdk-py.git"
       },
@@ -852,7 +698,6 @@
       },
       "submodule": {
         "path": "sdks/rust",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "27611b75c14532d1a46557f881c80bce6afe22ae",
         "url": "https://github.com/talosprotocol/talos-sdk-rust.git"
       },
@@ -914,7 +759,6 @@
       },
       "submodule": {
         "path": "sdks/typescript",
-        "ref": "(v1.0.0-44-gbc66f9b)",
         "sha": "bc66f9b60fc15dbd21ad7d2530dffb6551377693",
         "url": "https://github.com/talosprotocol/talos-sdk-ts.git"
       },
@@ -982,7 +826,6 @@
       },
       "submodule": {
         "path": "services/ai-chat-agent",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "2d9a257ab5d5263b97f625e7c868db1829fc5704",
         "url": "https://github.com/talosprotocol/talos-ai-chat-agent.git"
       },
@@ -1640,7 +1483,6 @@
       },
       "submodule": {
         "path": "services/ai-gateway",
-        "ref": "(heads/codex/audit-scope-denials)",
         "sha": "5175964ea22a54aff58b4622eac770f4c5458c25",
         "url": "https://github.com/talosprotocol/talos-ai-gateway.git"
       },
@@ -1718,7 +1560,6 @@
       },
       "submodule": {
         "path": "services/aiops",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "ba199046a4caf9400a13976dc96f12cb1702c37d",
         "url": "https://github.com/talosprotocol/talos-aiops.git"
       },
@@ -1833,7 +1674,6 @@
       },
       "submodule": {
         "path": "services/audit",
-        "ref": "(v1.1.2-34-g3a26127)",
         "sha": "3a26127c0837d546894fa468277083959919d117",
         "url": "https://github.com/talosprotocol/talos-audit-service.git"
       },
@@ -1945,7 +1785,6 @@
       },
       "submodule": {
         "path": "services/configuration",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "c028ca32ee3e5327b9a2c57e30f1d84d7de03fc3",
         "url": "https://github.com/talosprotocol/talos-configuration.git"
       },
@@ -2203,7 +2042,6 @@
       },
       "submodule": {
         "path": "services/gateway",
-        "ref": "(v1.0.0-42-g495c98a)",
         "sha": "495c98a15561e39ef1a6c8b467f70839521f8efc",
         "url": "https://github.com/talosprotocol/talos-gateway.git"
       },
@@ -2247,17 +2085,14 @@
       "role": "Talos Governance Agent runtime and supervisor logic",
       "routes": [],
       "source_counts": {
-        ".json": 18,
-        ".md": 15,
-        ".py": 3982,
+        ".md": 3,
+        ".py": 32,
         ".toml": 1,
-        ".yaml": 2,
         ".yml": 1,
         "Dockerfile": 1
       },
       "submodule": {
         "path": "services/governance-agent",
-        "ref": "(heads/main)",
         "sha": "fb5f014dabd5f407c8f66208b9523a7f123c4f55",
         "url": "https://github.com/talosprotocol/talos-governance-agent.git"
       },
@@ -2371,7 +2206,6 @@
       },
       "submodule": {
         "path": "services/mcp-connector",
-        "ref": "(v1.0.0-45-gcac45c1)",
         "sha": "cac45c1e5f222ff68e70bb70414f634b9ffa020e",
         "url": "https://github.com/talosprotocol/talos-mcp-connector.git"
       },
@@ -2418,229 +2252,9 @@
       "role": "Structured terminal MCP adapter",
       "routes": [
         {
-          "method": "POST",
-          "path": "/files/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/datastructures.py"
-        },
-        {
-          "method": "POST",
-          "path": "/files/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py"
-        },
-        {
           "method": "GET",
           "path": "/health",
           "source": "services/terminal-adapter/src/terminal_adapter/main.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/api_key.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PATCH",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "POST",
-          "path": "/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "DELETE",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/exceptions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/exceptions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "PUT",
-          "path": "/items/{item_id}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
-          "path": "/login",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/oauth2.py"
-        },
-        {
-          "method": "POST",
-          "path": "/send-notification/{email}",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/background.py"
-        },
-        {
-          "method": "POST",
-          "path": "/send-notification/{email}",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/background.py"
         },
         {
           "method": "POST",
@@ -2671,88 +2285,16 @@
           "method": "POST",
           "path": "/tools/terminal:write_input",
           "source": "services/terminal-adapter/src/terminal_adapter/main.py"
-        },
-        {
-          "method": "POST",
-          "path": "/uploadfile/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/datastructures.py"
-        },
-        {
-          "method": "POST",
-          "path": "/uploadfile/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/datastructures.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/applications.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/routing.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/security/http.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me/items/",
-          "source": "services/terminal-adapter/.venv-test-py3.13/lib/python3.13/site-packages/fastapi/param_functions.py"
-        },
-        {
-          "method": "GET",
-          "path": "/users/me/items/",
-          "source": "services/terminal-adapter/.venv-test/lib/python3.14/site-packages/fastapi/param_functions.py"
         }
       ],
       "source_counts": {
-        ".json": 4,
-        ".md": 14,
-        ".py": 2658,
+        ".md": 2,
+        ".py": 12,
         ".toml": 1,
         "Dockerfile": 1
       },
       "submodule": {
         "path": "services/terminal-adapter",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "f97949f101f5dc7caf63a541fd5c75110c428c5d",
         "url": "https://github.com/talosprotocol/talos-terminal-adapter.git"
       },
@@ -2788,7 +2330,9 @@
       ],
       "id": "services/ucp-connector",
       "internal_refs": [
-        "contracts"
+        "contracts",
+        "sdks/python",
+        "services/governance-agent"
       ],
       "kind": "service",
       "manifests": [
@@ -2799,17 +2343,14 @@
       "role": "UCP commerce MCP connector",
       "routes": [],
       "source_counts": {
-        ".json": 10,
-        ".md": 12,
-        ".py": 1767,
+        ".md": 3,
+        ".py": 26,
         ".toml": 1,
-        ".yaml": 1,
         "Dockerfile": 1
       },
       "submodule": {
         "branch": "main",
         "path": "services/ucp-connector",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "d562edf1edc3bd2d454e33a39f2c2eb14f450978",
         "url": "https://github.com/talosprotocol/talos-ucp-connector.git"
       },
@@ -2966,7 +2507,6 @@
       },
       "submodule": {
         "path": "site/dashboard",
-        "ref": "(v1.0.0-107-g4c9700cd)",
         "sha": "4c9700cd661b124dcbfde221681a5ca8234fba22",
         "url": "https://github.com/talosprotocol/talos-dashboard.git"
       },
@@ -3061,16 +2601,15 @@
       "role": "Public marketing site",
       "routes": [],
       "source_counts": {
-        ".js": 27,
+        ".js": 1,
         ".json": 6,
         ".md": 2,
         ".mjs": 2,
-        ".ts": 6,
+        ".ts": 5,
         ".tsx": 27
       },
       "submodule": {
         "path": "site/marketing",
-        "ref": "(heads/main)",
         "sha": "eb77d991d57c8d15edc2ac136e0c736836162d56",
         "url": "https://github.com/talosprotocol/talos-site.git"
       },
@@ -3238,6 +2777,7 @@
       ],
       "id": "tools/talos-tui",
       "internal_refs": [
+        "contracts",
         "sdks/python"
       ],
       "kind": "tool",
@@ -3250,18 +2790,15 @@
       "role": "Terminal operator UI",
       "routes": [],
       "source_counts": {
-        ".js": 2,
-        ".json": 20,
-        ".md": 12,
-        ".py": 4397,
-        ".toml": 3,
-        ".yaml": 21,
+        ".md": 2,
+        ".py": 49,
+        ".toml": 1,
+        ".yaml": 3,
         "Dockerfile": 1,
         "Makefile": 2
       },
       "submodule": {
         "path": "tools/talos-tui",
-        "ref": "(remotes/origin/HEAD)",
         "sha": "2dd8c774bf24ffcf2eece7d7a9d5e8e216a32a9c",
         "url": "https://github.com/talosprotocol/talos-tui.git"
       },
@@ -3488,6 +3025,11 @@
       "relation": "validates-against",
       "source": "sdks/python",
       "target": "contracts"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "sdks/python",
+      "target": "core"
     },
     {
       "relation": "contract-vectors",
@@ -3750,9 +3292,19 @@
       "target": "contracts"
     },
     {
+      "relation": "imports-or-bundles",
+      "source": "services/ucp-connector",
+      "target": "sdks/python"
+    },
+    {
       "relation": "uses-sdk-primitives",
       "source": "services/ucp-connector",
       "target": "sdks/python"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "services/ucp-connector",
+      "target": "services/governance-agent"
     },
     {
       "relation": "imports-or-bundles",
@@ -3858,6 +3410,11 @@
       "relation": "imports-or-bundles",
       "source": "tools/setup-helper",
       "target": "sdks/typescript"
+    },
+    {
+      "relation": "imports-or-bundles",
+      "source": "tools/talos-tui",
+      "target": "contracts"
     },
     {
       "relation": "validates-against",
@@ -4083,7 +3640,7 @@
       "services/configuration"
     ]
   },
-  "generated_at": "2026-10-07T21:43:48+00:00",
+  "generated_at": "2026-10-07T22:01:13+00:00",
   "generator": "scripts/python/generate_context_graph.py",
   "schema": "talos.context_graph.v1",
   "source": {
@@ -4091,6 +3648,6 @@
       "Generated from current checked-out source, manifests, routes, docs, and submodule metadata.",
       "No third-party graph dependencies are required."
     ],
-    "root": "/Users/nileshchakraborty/workspace/talos"
+    "root": "."
   }
 }
