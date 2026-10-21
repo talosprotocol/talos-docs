@@ -5,8 +5,8 @@ audience: Security, Developer
 
 # Protocol Guarantees
 
-> **Problem**: Non-cryptographers need to understand Talos security.  
-> **Guarantee**: Clear mapping from property to mechanism.  
+> **Problem**: Non-cryptographers need to understand Talos security.
+> **Purpose**: Map intended security properties to implementation mechanisms and identify their verification limits.
 > **Non-goal**: Full cryptographic proofs. See [Security Proof](../security/mathematical-proof.md).
 
 ---
@@ -15,16 +15,16 @@ audience: Security, Developer
 
 | Guarantee | How Talos Provides It | Status |
 |-----------|----------------------|--------|
-| **Confidentiality** | Double Ratchet + E2EE | ✅ Implemented |
-| **Authenticity** | Ed25519 identity signatures | ✅ Implemented |
-| **Forward Secrecy** | Ephemeral key ratcheting | ✅ Implemented |
-| **Post-Compromise Security** | DH ratchet recovery | ✅ Implemented |
-| **Non-Repudiation** | Blockchain-anchored audit | ✅ Implemented |
-| **Integrity** | Poly1305 MAC + chain hashing | ✅ Implemented |
-| **Replay Resistance** | Nonces + ordering | ✅ Implemented |
-| **Capability Control** | Scoped, expiring tokens | ✅ Implemented |
-| **Verifiability** | Merkle proofs | ✅ Implemented |
-| **Censorship Resistance** | P2P routing | ✅ Implemented |
+| **Confidentiality** | Ratchet and authenticated encryption components | Implemented in selected SDK paths; deployment-wide property requires interop and operational verification |
+| **Authenticity** | Ed25519 identity signatures and signed prekeys | Implemented; cross-SDK and route-level coverage is required for each supported path |
+| **Forward Secrecy** | Ephemeral key ratcheting | Implementation present; full protocol guarantee not independently verified here |
+| **Post-Compromise Security** | DH ratchet recovery | Implementation present; full protocol guarantee not independently verified here |
+| **Non-Repudiation** | Audit events and Merkle proofs | Partial; external blockchain anchoring is not established by the default deployment |
+| **Integrity** | Authenticated encryption and audit-chain hashing | Implemented in component paths; deployment-wide coverage is not independently verified here |
+| **Replay Resistance** | Nonces, expiry, and ratchet state | Implementation present; verify every protected operation and transport |
+| **Capability Control** | Scoped, expiring authorization | Implementation present; verify each gateway route and policy configuration |
+| **Verifiability** | Merkle proof support | Partial; external anchoring and light-client verification are not part of the default deployment |
+| **Censorship Resistance** | Registry-based discovery and routing | Planned/partial; direct P2P and NAT traversal are not established |
 | **Metadata Protection** | Content E2EE, routing visible | ⚠️ Partial |
 
 ---
@@ -86,28 +86,27 @@ audience: Security, Developer
 
 ### Non-Repudiation
 
-**Property**: Participants cannot deny actions they performed.
+**Property**: Audit records can make unauthorized changes detectable and support review of recorded actions.
 
 **Mechanism**:
-- All significant events (messages, capabilities, sessions) are logged
-- Logs are Merkle-proofed
-- Merkle roots are anchored to blockchain
-- Proofs are independently verifiable
+- Configured gateway events are sent to an audit sink
+- The audit service supports hash-chain and Merkle verification
+- External blockchain anchoring must be separately configured and verified; it is not enabled by the default Compose profile
 
-**What it means**: You can prove in court or to auditors what happened, without trusting any party's word.
+**Limit**: Audit evidence covers events that were emitted and retained. This document does not claim legal non-repudiation or complete event capture without deployment-specific evidence.
 
 ---
 
 ### Integrity
 
-**Property**: Messages cannot be modified in transit.
+**Property**: Authenticated encryption can detect modification on the tested protocol paths.
 
 **Mechanism**:
 - Poly1305 MAC authenticated encryption
 - Block hash chaining in audit log
 - Validation engine rejects invalid data
 
-**What it means**: Tampering is detectable. Modified messages are rejected.
+**Limit**: Component support does not prove that every SDK and transport path applies the same checks.
 
 ---
 
@@ -118,10 +117,9 @@ audience: Security, Developer
 **Mechanism**:
 - Unique message IDs with nonce
 - Timestamp validation windows
-- Blockchain ordering provides global sequence
-- Ratchet state prevents key reuse
+- Ratchet state prevents key reuse within a session
 
-**What it means**: Attackers cannot replay captured messages to trigger repeated actions.
+**Limit**: Replay protection depends on the tested protocol and operation path; this summary does not establish a deployment-wide guarantee.
 
 ---
 
@@ -131,11 +129,11 @@ audience: Security, Developer
 
 **Mechanism**:
 - Capabilities specify scope, constraints, expiry
-- Capability hash anchored on-chain
-- Tools verify capability before execution
-- Revocation is logged and verifiable
+- Capability and policy data are evaluated by configured gateway components
+- Gateway components evaluate configured policy before protected operations
+- Revocation behavior depends on the configured policy and route
 
-**What it means**: Agents can only do what they're explicitly authorized to do, for as long as they're authorized.
+**Limit**: This repository-level summary does not establish complete route coverage or end-to-end enforcement for every tool.
 
 ---
 
@@ -146,24 +144,21 @@ audience: Security, Developer
 **Mechanism**:
 - Merkle proofs for audit log inclusion
 - Signature verification for all artifacts
-- Blockchain anchors for cross-org trust
-- Light client SPV verification
+- External anchors and independent verification require separately configured integrations; they are not a default system property
 
-**What it means**: You don't have to trust anyone's word. Everything is provable.
+**Limit**: Merkle proofs establish inclusion relative to the supplied tree state. They do not independently prove that every relevant event was captured or anchored.
 
 ---
 
 ### Censorship Resistance
 
-**Property**: No single party can block communication.
+**Property**: Reduce reliance on a single peer-discovery or routing path (planned).
 
 **Mechanism**:
-- Peer-to-peer architecture
-- No central server dependency
-- DHT-based peer discovery
-- Multiple transport options
+- Current deployments use configured gateway and registry services
+- DHT/NAT traversal and direct peer-to-peer fallback are planned and not established here
 
-**What it means**: If at least one path exists between peers, communication succeeds.
+**Limit**: The current architecture does not guarantee communication when the configured gateway or registry is unavailable.
 
 ---
 
@@ -173,7 +168,7 @@ audience: Security, Developer
 
 **Current state**:
 - ✅ Content is encrypted
-- ✅ P2P reduces central observation
+- Gateway and registry routing can expose peer and connection metadata
 - ⚠️ Peer IDs visible at transport layer
 - ⚠️ Message timing can be correlated
 - ⚠️ Message sizes can be inferred

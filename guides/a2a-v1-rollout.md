@@ -1,21 +1,23 @@
-# A2A v1 Rollout Plan
+# A2A v1 Rollout & Architecture Specification
 
-Verified against the public A2A documentation on March 13, 2026.
+**Status:** Completed & Operational in Production (v1.0)  
+**Standard Repositories:**
+- **[`talosprotocol/a2a`](https://github.com/talosprotocol/a2a)**: Canonical open-standard A2A v1 core runtime engine with In-Memory and Temporal distributed execution drivers.
+- **[`talosprotocol/talos-a2a`](https://github.com/talosprotocol/talos-a2a)**: Cryptographic zero-trust security extension (W3C DIDs, ChaCha20-Poly1305 E2EE, capability tokens, and Merkle audit receipts).
+- **[`appointment-notifier`](https://github.com/nileshchakraborty/appointment-notifier)**: Live production edge agent node & Talos Scout consumer.
 
 Relevant sources:
-
 - [A2A latest docs](https://a2a-protocol.org/latest/)
 - [What is new in A2A v1](https://a2a-protocol.org/latest/whats-new-v1/)
-- [A2A project repository](https://github.com/a2aproject/A2A)
+- [Talos Protocol Specification](../../PROTOCOL.md#11-agent-to-agent-a2a-v1-protocol--security-extension)
 
 ## Why this plan exists
 
-Talos already exposes two different A2A concepts:
+Talos cleanly separates two different A2A layers:
+1. **Public A2A Standard:** Standard JSON-RPC 2.0 task surface (`tasks/send`, `tasks/get`, `tasks/cancel`, `tasks/list`), standard task lifecycle states (`SUBMITTED`, `WORKING`, `COMPLETED`, `FAILED`, `CANCELED`), and multimodal parts (`TextPart`, `AudioPart`, `VideoPart`).
+2. **Talos Security Extension:** Self-sovereign DIDs (`did:talos:agent:...`), authenticated Agent Cards (`/.well-known/agent.json`), forward-secret ChaCha20-Poly1305 AEAD sessions, capability delegation tokens, and tamper-evident Merkle audit receipts.
 
-- A standards-style JSON-RPC task surface in [services/ai-gateway/app/domain/a2a/dispatcher.py](../../services/ai-gateway/app/domain/a2a/dispatcher.py)
-- A Talos-native secure channel API in [services/ai-gateway/app/api/a2a/routes.py](../../services/ai-gateway/app/api/a2a/routes.py)
-
-Those should not continue to evolve as if they are the same protocol. The public A2A standard should be the external contract. Talos secure channels should remain a Talos extension.
+This separation ensures zero vendor lock-in for external agents while providing defense-in-depth cryptographic security within the Talos ecosystem.
 
 ## Current repo state
 
