@@ -34,6 +34,7 @@ New to Talos? Start with these guides:
 
 Practical how-to guides for common tasks:
 
+- **[Homebrew Tap Guide](guides/homebrew-tap.md)** - Official Homebrew tap and CLI installation
 - **[Deployment](guides/deployment.md)** - Production deployment guide
 - **[Development](guides/development.md)** - Local development setup
 - **[A2A v1 Rollout](guides/a2a-v1-rollout.md)** - Protocol migration plan and PR sequence

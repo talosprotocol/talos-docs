@@ -16,7 +16,12 @@ Talos is a secure way for your AI Assistant (like Claude) to talk to other compu
 
 **Step 1. Install Talos**
 On both your computer and the target machine, open the terminal and type:
+
 ```bash
+# macOS / Linux (Homebrew)
+brew install talosprotocol/tap/talos
+
+# Or with pip
 pip install talos-protocol
 ```
 

@@ -16,6 +16,15 @@ audience: Developer
 
 ## Install
 
+### macOS / Linux (Homebrew)
+
+```bash
+brew tap talosprotocol/tap
+brew install talos
+```
+
+### Python Package (pip)
+
 ```bash
 pip install talos-protocol
 ```
